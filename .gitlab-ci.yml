@@ -36,4 +36,3 @@ integrationtest-job:
   script:
     - "mvn verify -f tdt4140-gr1805/pom.xml $MAVEN_CLI_OPTS"
     - "mvn verify -f tdt4140-gr1805/pom.xml $MAVEN_CLI_OPTS"
-//
