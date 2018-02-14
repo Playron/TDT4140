@@ -1,4 +1,4 @@
-package tdt4140;
+package tdt4140.gr1805.app.core;
 
 public class HelloWorld {
 
