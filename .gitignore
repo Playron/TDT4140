@@ -1,11 +1,16 @@
-// output folders
+# Output folders
 bin/
 target/
+log/
 .idea/
+
+# Mac
 .DS_Store
 
-// temporary generated files
+# Temporary generated files
 *.xtendbin
 *._trace
 
+# Node
 node_modules/
+
