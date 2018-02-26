@@ -1,4 +1,4 @@
-package tdt4140.gr1805.app.core;
+package tdt4140.gr1805.app.core.person;
 
 public class Person {
 	
