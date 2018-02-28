@@ -15,13 +15,21 @@ import org.junit.Test;
 
 public class TestAverageNumber
 {
+	AverageNumber gmen;
+	
+	@Before
+	public void setup()
+	{
+		gmen = new AverageNumber();
+	}
+	
 	
 	
 	@Test
 	public void testZeroes()
 	{
 		
-		AverageNumber gmen = new AverageNumber();
+		//AverageNumber gmen = new AverageNumber();
 		List<Double> list1 = Arrays.asList(0.0, 0.0, 0.0, 0.0);
 		double result = gmen.getResult(list1);
 		assertEquals(0, result, 0);
@@ -30,7 +38,7 @@ public class TestAverageNumber
 	@Test
 	public void testOnes()
 	{
-		AverageNumber gmen = new AverageNumber();
+		//AverageNumber gmen = new AverageNumber();
 		List<Double> list1 = Arrays.asList(1.0, 1.0, 1.0, 1.0);
 		double result = gmen.getResult(list1);
 		assertEquals(1, result, 0);
@@ -39,10 +47,14 @@ public class TestAverageNumber
 	@Test
 	public void testNoInput()
 	{
-		AverageNumber gmen = new AverageNumber();
+		//AverageNumber gmen = new AverageNumber();
 		List<Double> list1 = Arrays.asList();
 		double result = gmen.getResult(list1);
 		assertEquals(0, result, 0);
 	}
-	// TODO: Create package of testcases, which this runs through.
+	
+	
+	
+	
+	// TODO: Create package of testcases, which this runs through. ?
 }

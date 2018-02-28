@@ -4,16 +4,16 @@ public class SuperMethods
 {
 	boolean checkIfString(Object obj)		// Just checks if what is passed to it is a string and returns a boolean
 	{
-		if (obj instanceof String)
+		if (obj instanceof String)			// Checks if obj is a String
 		{
-			return true;
+			return true;					// If obj was a String, return true
 		}
-		else return false;
+		else return false;					// Else return false
 	}
 	
 	boolean checkIfInt(Object obj)			// Just checks if what is passed to it is an integer and returns a boolean
 	{
-		if (obj instanceof Integer)
+		if (obj instanceof Integer)			
 		{
 			return true;
 		}
@@ -40,18 +40,18 @@ public class SuperMethods
 
 	int stringToInt(Object obj)				// Converts a String to an int
 	{
-		if (!checkIfString(obj))
+		if (!checkIfString(obj))			// If obj is not a String, throw exception
 		{
 			throw new IllegalArgumentException("Argument not a String.");
 		}
 		else
 		{
 			try
-			{
-				return Integer.parseInt((String)obj);
+			{								// Tries to parse the string to an integer value
+				return Integer.parseInt((String)obj);	
 			}
 			catch (Exception e)
-			{
+			{								// If it could not parse the string, throws exception with trace.
 				throw new IllegalArgumentException("Could not convert to int.", e);
 			}
 		}
@@ -59,7 +59,7 @@ public class SuperMethods
 	
 	int doubleToInt(Object obj)				// Converts a Double to an int
 	{
-		if (!checkIfDouble(obj))
+		if (!checkIfDouble(obj))			// If obj was not a double then we throw exception
 		{
 			throw new IllegalArgumentException("Argument is not a double.");
 		}
@@ -85,7 +85,7 @@ public class SuperMethods
 		else 
 		{
 			try
-			{
+			{								// Checks if obj was null, if so it returns null, else it returns a rounded int of obj
 				return (obj == null) ? null : Math.round((float) obj);
 			}
 			catch (Exception e)
