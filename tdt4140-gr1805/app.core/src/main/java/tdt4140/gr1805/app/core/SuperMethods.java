@@ -67,7 +67,8 @@ public class SuperMethods
 		{
 			try
 			{
-				return (obj == null) ? null : Integer.valueOf(((Double) obj).intValue());
+				return (obj == null) ? null : (int)Math.round(Double.valueOf((double)obj)); //Integer.valueOf(((Double) obj).intValue());
+				
 			}
 			catch (Exception e)
 			{
@@ -129,6 +130,7 @@ public class SuperMethods
 	//	System.out.println(antad.stringToInt("ten"));		// Throws exception
 		System.out.println(antad.checkIfDouble(0.5f));		// False
 		System.out.println(antad.checkIfDouble(0.5));		// True
+		System.out.println(antad.doubleToInt(2.5));
 	}
 
 	

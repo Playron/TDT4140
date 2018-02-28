@@ -9,55 +9,55 @@ public class TestSuperMethods {
 	
 	SuperMethods tester;
 	
-	@Before  						//gjør dette før hver av testene
+	@Before  							//gjør dette før hver av testene
 	public void setup() {
 		tester = new SuperMethods();
 	}
-	@Test 							//Sjekker om "aadas" er en string
+	@Test 								//Sjekker om "aadas" er en string
 	public void checkIfStringTest1() {
 		boolean result = tester.checkIfString("aadas");
 		assertEquals(true, result);
 		
 	}
 	
-	@Test							//Sjekker at tallet 2 ikke er en string
+	@Test								//Sjekker at tallet 2 ikke er en string
 	public void checkIfStringTest2() {
 		int tall = 2;
 		boolean result = tester.checkIfString(tall);
 		assertEquals(false, result);
 	}
 	
-	@Test							// sjekker at tallet 1 er heltall/integer
+	@Test								// sjekker at tallet 1 er heltall/integer
 	public void checkIfIntTest1() {
 		int tall = 1;
 		boolean result = tester.checkIfInt(tall);
 		assertEquals(true,result);
 	}
 	
-	@Test							//sjekker at ordet "heyhey" ikke er integer
+	@Test								//sjekker at ordet "heyhey" ikke er integer
 	public void checkIfIntTest2() {
 		String ord = "heyhey";
 		boolean result = tester.checkIfInt(ord);
 		assertEquals(false,result);
 	}
 	
-	@Test							//sjekker at 1.23 er double
+	@Test								//sjekker at 1.23 er double
 	public void checkIfDoubleTest1() {
 		double tall = 1.23;
 		boolean result = tester.checkIfDouble(tall);
 		assertEquals(true,result);
 	}
 	
-	@Test								//Tester 
+	@Test								//Tester at en string ikke er double
 	public void checkIfDoubleTest2() {
 		String ord = "heyhey";
 		boolean result = tester.checkIfDouble(ord);
 		assertEquals(false,result);
 	}
 	
-	@Test
+	@Test								// Tester at float er float
 	public void checkIfFloatTest1() {
-		float tall = 10987690;
+		float tall = 10987690f;
 		boolean result = tester.checkIfFloat(tall);
 		assertEquals(true,result);
 	}
@@ -91,10 +91,29 @@ public class TestSuperMethods {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void stringToIntTest3() {
-		float tall = 215672;
+		float tall = 215672f;
 		tester.stringToInt(tall);
 	}
 	
+	@Test
+	public void doubleToIntTest1() {
+		double tall = 2.49;
+		int result = tester.doubleToInt(tall);
+		int expected = 2;
+		assertEquals(result,expected);
+	}
+	@Test
+	public void doubleToIntTest2() {
+		double tall = 2.51;
+		int result = tester.doubleToInt(tall);
+		int expected = 3;
+		assertEquals(result,expected); 
+	}
+	@Test(expected = IllegalArgumentException.class)
+	public void doubleToIntTest3() {
+		String ord = "juhuu";
+		tester.doubleToInt(ord);
+	}
 	
 	
 
