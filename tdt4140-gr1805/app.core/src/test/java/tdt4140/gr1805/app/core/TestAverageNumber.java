@@ -26,7 +26,8 @@ public class TestAverageNumber
 		double result = gmen.getResult(list1);
 		assertEquals(0, result, 0);
 	}
-
+	
+	@Test
 	public void testOnes()
 	{
 		AverageNumber gmen = new AverageNumber();
@@ -35,6 +36,7 @@ public class TestAverageNumber
 		assertEquals(1, result, 0);
 	}
 	
+	@Test
 	public void testNoInput()
 	{
 		AverageNumber gmen = new AverageNumber();
