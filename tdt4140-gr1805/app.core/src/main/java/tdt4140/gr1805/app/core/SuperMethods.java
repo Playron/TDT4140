@@ -1,4 +1,5 @@
 package tdt4140.gr1805.app.core;
+import java.lang.Math;
 
 public class SuperMethods
 {
@@ -118,8 +119,30 @@ public class SuperMethods
 	}
 	
 	
+	public double calculateAverage(int[] input)
+	{
+		int size = input.length;		// Starts with assigning the size of the list passed as argument.
+		if (size <=0)					// If the size is 0, we throw exception
+		{
+			throw new IllegalArgumentException("Must pass a list with at least 1 number");
+		}
+		else if (size == 1)				// If size is 1, we return the value
+		{
+			return (double) input[0];
+		}
+		else
+		{
+			int sum = 0;
+			for (int i = 0; i < input.length; i++)
+			{
+				sum += input[i];				
+			}
+			double average = sum/size;
+			return average;
+		}
+	}
 	
-	
+/*	
 	public static void main(String [] args)
 	{
 		SuperMethods antad = new SuperMethods();
@@ -131,8 +154,14 @@ public class SuperMethods
 		System.out.println(antad.checkIfDouble(0.5f));		// False
 		System.out.println(antad.checkIfDouble(0.5));		// True
 		System.out.println(antad.doubleToInt(2.5));
+		System.out.println(antad.convertToInt(5123151231.15123151f));
+		System.out.println(5123151231.15123151f);
+		System.out.println(antad.doubleToInt(5123151231.15123151));
+		System.out.println(antad.convertToInt(23151231.1f));
+		System.out.println(123151231.15126f);
+		System.out.println(antad.doubleToInt(123151231.15126));
 	}
-
+*/
 	
 
 

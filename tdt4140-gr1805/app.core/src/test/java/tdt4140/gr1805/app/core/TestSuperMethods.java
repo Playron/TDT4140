@@ -2,6 +2,9 @@ package tdt4140.gr1805.app.core;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -115,6 +118,28 @@ public class TestSuperMethods {
 		tester.doubleToInt(ord);
 	}
 	
+	@Test								// Tests if calculateAverage gives correct output when given list of int.
+	public void calculateAverageTest1()
+	{
+		int[] input = {1,4,1,51,13,3,123,54123,1,10};
+		double result = tester.calculateAverage(input);
+		assertEquals(5433, result, 0);
+	}
 	
+	@Test(expected = Exception.class)	// Tests if we get an exception if we pass an empty list to the method.
+	public void calculateAverageTest2()
+	{
+		int[] input = {};
+		double result = tester.calculateAverage(input);
+		assertEquals(0, result, 0); // This line should never be applicable.
+	}
+	
+	@Test
+	public void calculateAverageTest3()	// Tests if we get correct output with a list of 1 integer.
+	{
+		int[] input = {4};
+		double result = tester.calculateAverage(input);
+		assertEquals(4, result, 0);
+	}
 
 }
