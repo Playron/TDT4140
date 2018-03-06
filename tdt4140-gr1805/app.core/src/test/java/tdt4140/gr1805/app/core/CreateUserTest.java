@@ -14,10 +14,10 @@ public class CreateUserTest extends TestCase {
 		assertEquals("Per", excpected);
 	}
 	
-	public void testSletteBruker() {
+	/*public void testSletteBruker() {
 		CoreInput c = new CoreInput("001", 70, "Atle", 21);
 		assertEquals(c.brukere.contains(c), c);
 	}
-	
+	*/
 
 }
