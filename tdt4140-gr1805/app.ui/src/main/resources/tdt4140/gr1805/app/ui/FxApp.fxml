@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane xmlns:fx="http://javafx.com/fxml"
-<<<<<<< HEAD
-            fx:controller="tdt4140.gr18nn.app.ui.FxAppController"
-=======
-            fx:controller="tdt4140.gr1805.app.ui.FxAppController"
->>>>>>> branch 'master' of https://gitlab.stud.iie.ntnu.no/tdt4140-2018/05.git
-            prefHeight="750" prefWidth="1000">
-</Pane>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="tdt4140.gr1805.app.ui.FxAppController"
+	prefHeight="750" prefWidth="1000">
+</StackPane>
