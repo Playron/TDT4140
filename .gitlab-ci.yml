@@ -18,7 +18,6 @@ build-job:
   stage: build
   script:
     - "mvn clean compile -f tdt4140-gr1805/pom.xml $MAVEN_CLI_OPTS"
-    - "mvn clean compile -f tdt4140-gr1805/pom.xml $MAVEN_CLI_OPTS"
 
 unittest-job:
   stage: test
@@ -26,8 +25,8 @@ unittest-job:
     - build-job
   script:
     - "mvn package -f tdt4140-gr1805/pom.xml $MAVEN_CLI_OPTS"
-    - "mvn package -f tdt4140-gr1805/pom.xml $MAVEN_CLI_OPTS"
     - "cat tdt4140-gr1805/app.core/target/site/jacoco/index.html"
+
 
 integrationtest-job:
   stage: test
@@ -35,6 +34,4 @@ integrationtest-job:
     - build-job
   script:
     - "mvn verify -f tdt4140-gr1805/pom.xml $MAVEN_CLI_OPTS"
-    - "mvn verify -f tdt4140-gr1805/pom.xml $MAVEN_CLI_OPTS"
     
-awk -F"," '{ instructions += $4 + $5; covered += $5 } END { print covered, "/", instructions, " instructions covered"; print 100*covered/instructions, "% covered" }' tdt4140-gr1805/app.core/target/site/jacoco.csv
