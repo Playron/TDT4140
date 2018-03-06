@@ -65,20 +65,20 @@ public class TestSuperMethods {
 		assertEquals(true,result);
 	}
 	
-	@Test
+	@Test								//Tester at int ikke er float
 	public void checkIfFloatTest2() {
 		int tall = 12;
 		boolean result = tester.checkIfFloat(tall);
 		assertEquals(false,result);
 	}
-	@Test
+	@Test											//Tests that checkIfFloat is false when getting a string
 	public void checkIfFloatTest3() {
 		String ord = "heyhey";
 		boolean result = tester.checkIfFloat(ord);
 		assertEquals(false,result);
 	}
 	
-	@Test
+	@Test											//Tests that stringToInt works 
 	public void stringToIntTest1() {
 		String ord = "123";
 		int result = tester.stringToInt(ord);
@@ -86,36 +86,59 @@ public class TestSuperMethods {
 		assertEquals(tall,result);
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)		//Tests that stringToInt throws exception when getting a word and not a number
 	public void stringToIntTest2() {
 		String ord = "ten";
 		tester.stringToInt(ord);
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)		//Checst that string to int throws exception when getting a float
 	public void stringToIntTest3() {
 		float tall = 215672f;
 		tester.stringToInt(tall);
 	}
 	
-	@Test
+	@Test								//Test that double to int rounds up right with the number 2.49
 	public void doubleToIntTest1() {
 		double tall = 2.49;
 		int result = tester.doubleToInt(tall);
 		int expected = 2;
 		assertEquals(result,expected);
 	}
-	@Test
+	@Test								// Test that double to int rounds up right number = 2.51
 	public void doubleToIntTest2() {
 		double tall = 2.51;
 		int result = tester.doubleToInt(tall);
 		int expected = 3;
 		assertEquals(result,expected); 
 	}
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)	//Test that double to int thows IllegalArgument when getting a string
 	public void doubleToIntTest3() {
 		String ord = "juhuu";
 		tester.doubleToInt(ord);
+	}
+	
+	@Test								//Tests if convertToInt works with string
+	public void convertToIntTest1() {
+		String ord = "123";
+		int expected = 123;
+		int result = tester.convertToInt(ord);
+		assertEquals(expected, result);
+	}
+	@Test								//Tests if convertToInt works with int
+	public void convertToIntTest2() {
+		int tall = 123;
+		int expected = 123;
+		int result = tester.convertToInt(tall);
+		assertEquals(expected, result);
+	}
+	
+	@Test								//Tests if convertToInt works with double
+	public void convertToIntTest3() {
+		double tall = 122.5;
+		int expected = 123;
+		int result = tester.convertToInt(tall);
+		assertEquals(expected, result);
 	}
 	
 	@Test								// Tests if calculateAverage gives correct output when given list of int.
