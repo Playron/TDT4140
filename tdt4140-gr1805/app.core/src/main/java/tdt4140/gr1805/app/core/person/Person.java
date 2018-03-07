@@ -10,7 +10,11 @@ public class Person {
 	private static int id = 1;
 	private Gender gender;
 	
-	
+	// Nødvendig for å lage et Person-objekt fra JSON.
+	public Person() {
+		super();
+	}
+
 	public Person (int year, int month, int day, Gender gender) {
 		
 		setDOB(year, month, day);

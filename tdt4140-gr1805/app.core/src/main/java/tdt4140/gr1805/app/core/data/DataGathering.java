@@ -2,29 +2,29 @@ package tdt4140.gr1805.app.core.data;
 
 public class DataGathering{
 
-	public boolean GPSbool, PULSEbool, OPTOUT;
+	public boolean gpsbool, pulsebool, optout;
 	public int gpsdata, pulsedata;
 
 	public DataGathering(){
-		this.GPSbool=true;
-		this.PULSEbool=true;
-		this.OPTOUT=false;
+		this.gpsbool=true;
+		this.pulsebool=true;
+		this.optout=false;
 	}
 
 	public void setGPSGathering(boolean GPSenabled) {
-		GPSbool=GPSenabled;
+		gpsbool=GPSenabled;
 	}
 
 	public void setPulseGathering(boolean PULSEenabled) {
-		PULSEbool=PULSEenabled;
+		pulsebool=PULSEenabled;
 	}
 
 	public boolean getGPSbool() {
-		return GPSbool;
+		return gpsbool;
 	}
 
 	public boolean getPULSEbool() {
-		return PULSEbool;
+		return pulsebool;
 	}
 
 	public void addUpdate() {
@@ -43,10 +43,10 @@ public class DataGathering{
 	}
 
 	public void setOptOut(boolean toggleOO) {
-		OPTOUT=toggleOO;
+		optout=toggleOO;
 	}
 
 	public boolean getOptOut() { //use this method before calling addUpdate
-		return OPTOUT;
+		return optout;
 	}
 }
