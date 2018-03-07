@@ -10,6 +10,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.omg.PortableInterceptor.SUCCESSFUL;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
 public class TestPerson
 {
 	
@@ -26,6 +31,26 @@ public class TestPerson
 	public void tearDown() throws Exception
 	{
 		dateNow = null;
+	}
+	
+	public ArrayList<Object> createPerson()
+	{
+		LocalDate currentDate = LocalDate.now();
+		Random rand = new Random();
+		int years = 16 + rand.nextInt(100);
+		int months = 1 + rand.nextInt(12);
+		int days = 1 + rand.nextInt(27);
+		LocalDate dob = currentDate.minusYears(years).minusMonths(months).minusDays(days);
+		Gender gender =  Gender.values()[new Random().nextInt(Gender.values().length)];
+		int year = dob.getYear();
+		int month = dob.getMonthValue();
+		int day = dob.getDayOfMonth();
+		Person pers1 = new Person(year, month, day, gender);
+		ArrayList<Object> toReturn = new ArrayList<Object>();
+		toReturn.add(dob);
+		toReturn.add(gender);
+		toReturn.add(pers1);
+		return toReturn;
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -109,6 +134,74 @@ public class TestPerson
 		int day = 32;
 		Gender gender = Gender.FEMALE;
 		testcase1 = new Person(year, month, day, gender);
+	}
+	
+	@Test
+	public void checkIfIDIncrements()
+	{
+		ArrayList<Object> listen = createPerson();
+		Person pers1 = null;
+		long persID1 = 0, persID2 = 0;
+		for (int i = 0; i < listen.size(); i++)
+		{
+			if (listen.get(i) instanceof Person)
+			{
+				pers1 = (Person) listen.get(i);
+			}
+		}
+		if (pers1 != null)
+		{
+			persID1 = (long) pers1.getID();
+		}
+		ArrayList<Object> listen2 = createPerson();
+		Person pers2 = null;
+		for (int i = 0; i < listen2.size(); i++)
+		{
+			if (listen2.get(i) instanceof Person)
+			{
+				pers2 = (Person) listen2.get(i);
+			}
+		}
+		if (pers2 != null)
+		{
+			persID2 = (long) pers2.getID();
+		}
+		//System.out.println(persID1 + " " + persID2);
+		if (persID1 != 0 && persID2 != 0)
+		{	
+			assertEquals(persID2, persID1+1);
+		}
+		else
+		{
+			fail("Could not assert equals");
+		}
+	}
+	
+	@Test
+	public void checkIfGenderCorrect()
+	{
+		ArrayList<Object> listen = createPerson();
+		Person pers1 = null;
+		Gender pers1Gender = null;
+		for (int i = 0; i < listen.size(); i++)
+		{
+			if (listen.get(i) instanceof Person)
+			{
+				pers1 = (Person) listen.get(i);
+			}
+			if (listen.get(i) instanceof Gender)
+			{
+				pers1Gender = (Gender) listen.get(i);
+			}
+		}
+		if (pers1 != null && pers1Gender != null)
+		{
+			assertEquals(pers1Gender, pers1.getGender());
+		}
+		else
+		{
+			fail("Could not assert equal.");
+		}
 	}
 	
 }
