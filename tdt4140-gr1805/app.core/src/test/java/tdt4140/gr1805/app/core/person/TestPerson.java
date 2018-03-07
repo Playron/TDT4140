@@ -166,9 +166,10 @@ public class TestPerson
 		{
 			persID2 = (long) pers2.getID();
 		}
+		//System.out.println(persID1 + " " + persID2);
 		if (persID1 != 0 && persID2 != 0)
 		{	
-			assertEquals(persID2, persID2+1);
+			assertEquals(persID2, persID1+1);
 		}
 		else
 		{
