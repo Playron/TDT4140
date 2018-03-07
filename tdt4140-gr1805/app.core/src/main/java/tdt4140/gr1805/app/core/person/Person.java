@@ -4,7 +4,7 @@ import java.time.*;
 
 public class Person {
 	
-	private int ID;
+	//private int ID;
 	private LocalDate DOB;
 	private static int id = 1;
 	private Gender gender;
@@ -21,6 +21,22 @@ public class Person {
 
 	private void setDOB(int year, int month, int day)
 	{
+		if (year < 1900) {
+			throw new IllegalArgumentException("Du må være født etter 1900");
+		}
+		if (year > (LocalDate.now().getYear() - 16)) {
+			throw new IllegalArgumentException("Du må være eldre enn 16 år");
+		}
+		if (month <= 0) {
+			if(month > 12 ) {
+				throw new IllegalArgumentException("Måneden må være mellom 1 og 12");
+			}
+		}
+		if (day <= 0) {
+			if(day > 31 ) {
+				throw new IllegalArgumentException("Datoen må være mellom 1 og 31");
+			}
+		}
 		try
 		{
 			this.DOB = LocalDate.of(year, month, day);
@@ -32,7 +48,7 @@ public class Person {
 	}
 
 	public int getID() {
-		return ID;
+		return this.id;
 	}
 
 
@@ -41,10 +57,20 @@ public class Person {
 		return Period.between(this.DOB, dateNow).getYears();
 	}	
 	
-/*	public static void main(String[] args)
+	public Gender getGender() {
+		return this.gender;
+	}
+	
+	/*public static void main(String[] args)
 	{
 		Person pers1 = new Person(1991, 02, 20, Gender.MALE);
-		System.out.println();
-	}
-*/
+		System.out.println(pers1.getAge());
+		System.out.println(pers1.getID());
+		System.out.println(pers1.getGender());
+		Person pers2 = new Person(2000, 12, 20, Gender.FEMALE);
+		System.out.println(pers2.getAge());
+		System.out.println(pers2.getID());
+		System.out.println(pers2.getGender());
+	}*/
+	
 }
