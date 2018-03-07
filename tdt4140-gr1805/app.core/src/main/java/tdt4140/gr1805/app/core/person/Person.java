@@ -22,11 +22,12 @@ public class Person {
 
 	private void setDOB(int year, int month, int day)
 	{
-		if (year < 1900) {
-			throw new IllegalArgumentException("Du må være født etter 1900");
+		if (year < (LocalDate.now().minusYears(130).getYear())) 
+		{
+			throw new IllegalArgumentException("Du må være født etter 1900"); //TODO: fikse feilmelding
 		}
-		if (year > (LocalDate.now().getYear() - 16)) {
-			throw new IllegalArgumentException("Du må være eldre enn 16 år");
+		if (year > (LocalDate.now().minusYears(16).getYear())) {
+			throw new IllegalArgumentException("Du må være eldre enn 16 år");	// TODO: Fikse feilmelding.
 		}
 		if (month <= 0) {
 			if(month > 12 ) {
