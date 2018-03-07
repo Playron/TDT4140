@@ -71,4 +71,14 @@ public class TestPerson
 		assertEquals(Period.between(dob, LocalDate.now()).getYears(), testcase1.getAge());
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void checkIfWrongMonthException()
+	{
+		int year = LocalDate.now().minusYears(30).getYear();
+		int month = 0;
+		int day = 4;
+		Gender gender = Gender.FEMALE;
+		testcase1 = new Person(year, month, day, gender);
+	}
+	
 }
