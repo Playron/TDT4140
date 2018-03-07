@@ -22,28 +22,21 @@ public class Person {
 
 	private void setDOB(int year, int month, int day)
 	{
+		if (month <= 0 || month > 12 ) 
+		{
+			throw new IllegalArgumentException("Måneden må være mellom 1 og 12");
+		}
+		if (day <= 0 || day > 31 ) 
+		{
+			throw new IllegalArgumentException("Datoen må være mellom 1 og 31");
+		}
 		if (year < (LocalDate.now().minusYears(130).getYear())) 
 		{
 			throw new IllegalArgumentException("Du må være født etter 1900"); //TODO: fikse feilmelding
 		}
-
-/*		if (year > (LocalDate.now().minusYears(16).getYear())) 
-		{
-			throw new IllegalArgumentException("Du må være eldre enn 16 år");	// TODO: Fikse feilmelding.
-		} */
 		if (LocalDate.of(year, month, day).isAfter(LocalDate.now().minusYears(16))) 
 		{
 			throw new IllegalArgumentException("Du må være eldre enn 16 år");// TODO: Fikse feilmelding.
-		}
-		if (month <= 0) {
-			if(month > 12 ) {
-				throw new IllegalArgumentException("Måneden må være mellom 1 og 12");
-			}
-		}
-		if (day <= 0) {
-			if(day > 31 ) {
-				throw new IllegalArgumentException("Datoen må være mellom 1 og 31");
-			}
 		}
 		try
 		{
