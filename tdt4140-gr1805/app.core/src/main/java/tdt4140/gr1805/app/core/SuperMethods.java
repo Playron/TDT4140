@@ -77,7 +77,8 @@ public class SuperMethods
 			}
 		}
 	}
-	
+
+	/*
 	int floatToInt(Object obj)				// Converts a Float to an int
 	{
 		if (!checkIfFloat(obj))
@@ -96,6 +97,7 @@ public class SuperMethods
 			}
 		}
 	}
+	*/
 	
 	int convertToInt(Object obj)			// Converts the argument to an int
 	{
@@ -111,11 +113,11 @@ public class SuperMethods
 		{
 			return doubleToInt(obj);
 		}
-		else if (checkIfFloat(obj)) 
+/*		else if (checkIfFloat(obj)) 
 		{
 			return floatToInt(obj);
-		}
-		else throw new IllegalArgumentException("Argument was not Integer, String, Double or Float.");
+		}*/
+		else throw new IllegalArgumentException("Argument was not Integer, String or Double");
 	}
 	
 	
