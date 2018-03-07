@@ -17,7 +17,7 @@ public class Person {
 		this.gender = gender;
 		this.id = id;
 		id++;
-		System.out.println(gender);
+		//System.out.println(gender);
 	}
 
 	private void setDOB(int year, int month, int day)
@@ -25,7 +25,7 @@ public class Person {
 		if (year < 1900) {
 			throw new IllegalArgumentException("Du må være født etter 1900");
 		}
-		if (year > (LocalDate.now().getYear() - 16)) {
+		if (LocalDate.of(year, month, day).isAfter(LocalDate.now().minusYears(16))) {
 			throw new IllegalArgumentException("Du må være eldre enn 16 år");
 		}
 		if (month <= 0) {
