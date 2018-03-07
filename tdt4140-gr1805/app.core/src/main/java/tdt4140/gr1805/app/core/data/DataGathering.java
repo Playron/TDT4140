@@ -32,4 +32,10 @@ public class DataGathering{
 		//TODO
 		//addUpdate gathers Z
 	}
+	public int getPulseData() {
+		return this.pulsedata;
+	}
+	public int getGpsData() {
+		return this.gpsdata;
+	}
 }
