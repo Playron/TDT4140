@@ -170,6 +170,37 @@ public class TestPerson
 		{	
 			assertEquals(persID2, persID2+1);
 		}
+		else
+		{
+			fail("Could not assert equals");
+		}
+	}
+	
+	@Test
+	public void checkIfGenderCorrect()
+	{
+		ArrayList<Object> listen = createPerson();
+		Person pers1 = null;
+		Gender pers1Gender = null;
+		for (int i = 0; i < listen.size(); i++)
+		{
+			if (listen.get(i) instanceof Person)
+			{
+				pers1 = (Person) listen.get(i);
+			}
+			if (listen.get(i) instanceof Gender)
+			{
+				pers1Gender = (Gender) listen.get(i);
+			}
+		}
+		if (pers1 != null && pers1Gender != null)
+		{
+			assertEquals(pers1Gender, pers1.getGender());
+		}
+		else
+		{
+			fail("Could not assert equal.");
+		}
 	}
 	
 }
