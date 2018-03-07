@@ -13,6 +13,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
 
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="tdt4140.gr1805.app.ui.FxAppController"
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="tdt4140.gr1805.app.ui.FxAppController"
 	prefHeight="750" prefWidth="1000">
-</StackPane>
+
+<children>
+	<Text Size
+</children>	
+</AnchorPane>
