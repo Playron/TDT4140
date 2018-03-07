@@ -1,29 +1,35 @@
 package tdt4140.gr1805.app.core.data;
 
 public class DataGathering{
-	private boolean GPS;
-	private boolean PULSE;
+	private boolean gps;
+	private boolean pulse;
 
+	
+
+	public DataGathering() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public DataGathering(boolean GPS, boolean PULSE){
-		this.GPS=GPS;
-		this.PULSE=PULSE;
+		this.gps=GPS;
+		this.pulse=PULSE;
 	}
 
 	public void setGPSGathering(boolean GPSinput) {
-		GPS=GPSinput;
+		gps=GPSinput;
 	}
 
 	public void setPulseGathering(boolean PULSEinput) {
-		PULSE=PULSEinput;
+		pulse=PULSEinput;
 	}
 
 	public boolean getGPS() {
-		return GPS;
+		return gps;
 	}
 	
 	public boolean getPULSE() {
-		return PULSE;
+		return pulse;
 	}
 	
 }

@@ -1,9 +1,12 @@
 package tdt4140.gr1805.app.core.data;
 
 public class DataPoint extends DataGathering{
-
-
-	public DataPoint(boolean GPS, boolean PULSE, DataGathering DGL) {
+	
+	public DataPoint() {
+		super();
+	}
+	
+	public DataPoint(boolean GPS, boolean PULSE) {
 		super(GPS, PULSE);
 		//Auto-generated constructor stub
 	}

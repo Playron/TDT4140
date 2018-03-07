@@ -3,6 +3,7 @@ package tdt4140.gr1805.app.core.data;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -19,7 +20,7 @@ public class Database {
 	private static File personDB;
 	private static File pointDB;
 	private static File workoutDB;
-	private ObjectMapper mapper;
+	private ObjectMapper mapper = new ObjectMapper();
 	
 	public Database() {
 		this.personList = new ArrayList<Person>();
@@ -33,21 +34,44 @@ public class Database {
 	}
 
 	public void readObjects() throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		personList = mapper.readValue(personDB, new TypeReference<ArrayList<Person>>(){});
-		dataPoints = mapper.readValue(pointDB, new TypeReference<ArrayList<DataPoint>>(){});
-		workouts = mapper.readValue(workoutDB, new TypeReference<ArrayList<Workout>>(){});
+		readPeople();
+		readDataPoints();
+		readWorkouts();
 	}
 	
 	public void writeObjects() throws JsonGenerationException, JsonMappingException, IOException {
 		// Updates JSON files with current state of the lists.
 		// The app is however not expected to modify the database in any way,
 		// except maybe to add a Person/do something administrative.
-		ObjectMapper mapper = new ObjectMapper();
+		writePeople();
+		writeDataPoints();
+		writeWorkouts();
+		
+	}
+	
+	public void writePeople() throws JsonGenerationException, JsonMappingException, IOException {
 		mapper.writeValue(personDB, personList);
+	}
+	
+	public void writeDataPoints() throws JsonGenerationException, JsonMappingException, IOException {
 		mapper.writeValue(pointDB, dataPoints);
+	}
+	
+	public void writeWorkouts() throws JsonGenerationException, JsonMappingException, IOException {
 		mapper.writeValue(workoutDB, workouts);
 		
+	}
+	
+	public void readPeople() throws JsonParseException, JsonMappingException, IOException {
+		personList = mapper.readValue(personDB, new TypeReference<ArrayList<Person>>(){});
+	}
+	
+	public void readDataPoints() throws JsonParseException, JsonMappingException, IOException {
+		dataPoints = mapper.readValue(pointDB, new TypeReference<ArrayList<DataPoint>>(){});
+	}
+	
+	public void readWorkouts() throws JsonParseException, JsonMappingException, IOException {
+		workouts = mapper.readValue(workoutDB, new TypeReference<ArrayList<Workout>>(){});
 	}
 	
 	public ArrayList<Person> getPersonList() {
@@ -73,5 +97,27 @@ public class Database {
 	public void setWorkouts(ArrayList<Workout> workouts) {
 		this.workouts = workouts;
 	}
+	
+//	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
+//		Database db = new Database();
+//		
+//		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+//		DataPoint a = new DataPoint(true, false);
+//		DataPoint b = new DataPoint(true, false);
+//		points.add(a);
+//		points.add(b);
+//		Workout w1 = new Workout(1, "Run", new Date(), new Date(), points);
+//		Workout w2 = new Workout(2, "Bike", new Date(), new Date(), points);
+//		ArrayList<Workout> wlist = new ArrayList<Workout>();
+//		wlist.add(w1);
+//		wlist.add(w2);
+////		db.setWorkouts(wlist);
+////		db.writeWorkouts();
+//		
+//		db.readWorkouts();
+//		System.out.println(db.getWorkouts());
+//		
+//		
+//	}
 	
 }

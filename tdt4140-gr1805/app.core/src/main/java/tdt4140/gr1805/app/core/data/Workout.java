@@ -17,12 +17,12 @@ public class Workout {
 	}
 
 	public Workout(int id, String type, Date startTime, Date endTime, ArrayList<DataPoint> dataPoints) {
-		super();
 		this.id = id;
 		this.type = type;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.dataPoints = dataPoints;
+
 	}
 	
 	public int getId() {
