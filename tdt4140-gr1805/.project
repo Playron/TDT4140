@@ -2,11 +2,7 @@
 <projectDescription>
 	<name>tdt4140-gr1805</name>
 	<comment></comment>
-	<projects>
-	</projects>
-	<buildSpec>
-		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
+	<projec.ame>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
