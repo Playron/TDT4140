@@ -27,13 +27,13 @@ public class Person {
 			throw new IllegalArgumentException("Du må være født etter 1900"); //TODO: fikse feilmelding
 		}
 
-		if (year > (LocalDate.now().minusYears(16).getYear())) 
+/*		if (year > (LocalDate.now().minusYears(16).getYear())) 
 		{
 			throw new IllegalArgumentException("Du må være eldre enn 16 år");	// TODO: Fikse feilmelding.
-		}
+		} */
 		if (LocalDate.of(year, month, day).isAfter(LocalDate.now().minusYears(16))) 
 		{
-			throw new IllegalArgumentException("Du må være eldre enn 16 år");
+			throw new IllegalArgumentException("Du må være eldre enn 16 år");// TODO: Fikse feilmelding.
 		}
 		if (month <= 0) {
 			if(month > 12 ) {
