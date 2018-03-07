@@ -8,21 +8,35 @@ import org.junit.Test;
 
 public class TestUserContribution
 {
-
+	UserContribution testcase;
+	
 	@Before
 	public void setUp() throws Exception
 	{
+		testcase = new UserContribution();
 	}
 
 	@After
 	public void tearDown() throws Exception
 	{
+		testcase = null;
 	}
 
 	@Test
-	public void test()
+	public void checkUserContributionDefault()
 	{
-		fail("Not yet implemented");
+		assertTrue(testcase.getContribution());
 	}
+	
+	@Test
+	public void checkUserContributionOptOut()
+	{
+		testcase.setContribution(false);
+		assertFalse(testcase.getContribution());
+	}
+	
+	
+	
+	
 
 }
