@@ -18,7 +18,7 @@ public class RegMain extends Application {
 		this.registrationStage = registrationStage;
 		this.registrationStage.setTitle("RegistrationForm");
 		showRegistrationView();
-		showMainItems();
+		//showMainItems();
 	}
 	
 	public void showRegistrationView() throws IOException {
@@ -28,6 +28,10 @@ public class RegMain extends Application {
 		Scene scene = new Scene(registrationLayout);
 		registrationStage.setScene(scene);
 		registrationStage.show();
+	}
+	
+	public void registrationButtonClicked() {
+		System.out.println("Bruker er registrert!");
 	}
 	
 	public void showMainItems() throws IOException {
