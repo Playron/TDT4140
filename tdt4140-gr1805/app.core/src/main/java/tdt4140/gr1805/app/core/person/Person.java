@@ -17,7 +17,7 @@ public class Person {
 		this.gender = gender;
 		this.id = id;
 		id++;
-		System.out.println(gender);
+		//System.out.println(gender);
 	}
 
 	private void setDOB(int year, int month, int day)

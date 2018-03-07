@@ -1,29 +1,41 @@
 package tdt4140.gr1805.app.core.data;
 
 public class DataGathering{
-	private boolean GPS;
-	private boolean PULSE;
 
+	public boolean GPSbool, PULSEbool;
+	public int gpsdata, pulsedata;
 
-	public DataGathering(boolean GPS, boolean PULSE){
-		this.GPS=GPS;
-		this.PULSE=PULSE;
+	public DataGathering(){
+		this.GPSbool=true;
+		this.PULSEbool=true;
 	}
 
-	public void setGPSGathering(boolean GPSinput) {
-		GPS=GPSinput;
+	public void setGPSGathering(boolean GPSenabled) {
+		GPSbool=GPSenabled;
 	}
 
-	public void setPulseGathering(boolean PULSEinput) {
-		PULSE=PULSEinput;
+	public void setPulseGathering(boolean PULSEenabled) {
+		PULSEbool=PULSEenabled;
 	}
 
-	public boolean getGPS() {
-		return GPS;
+	public boolean getGPSbool() {
+		return GPSbool;
 	}
-	
-	public boolean getPULSE() {
-		return PULSE;
+
+	public boolean getPULSEbool() {
+		return PULSEbool;
 	}
-	
+
+	public void addUpdate() {
+		if (getPULSEbool()==false){pulsedata=0;}
+		if (getGPSbool()==false){gpsdata=0;}
+		//TODO
+		//addUpdate gathers Z
+	}
+	public int getPulseData() {
+		return this.pulsedata;
+	}
+	public int getGpsData() {
+		return this.gpsdata;
+	}
 }
