@@ -1,13 +1,19 @@
 package tdt4140.gr1805.app.core.data;
 
-public class DataGatheringLimits {
+public class DataGatheringLimits{
+	//public DataGatheringLimits(){
+	private boolean GPS=true;
+	private boolean PULSE=true;
 
-	public void gatherGPS(boolean input) {
-		UpdateDataPoint.includeGPS(input);
+	public void setGPSGathering(boolean GPSinput) {
 
 	}
 
-	public void gatherPulse(boolean input) {
-		UpdateDataPoint.includePulse(input);
+	public void setPulseGathering(boolean PULSEinput) {
+
+	}
+
+	public void getLimits(boolean GPS, boolean PULSE) {
+
 	}
 }
