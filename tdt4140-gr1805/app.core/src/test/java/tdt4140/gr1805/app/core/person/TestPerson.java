@@ -26,10 +26,15 @@ public class TestPerson
 	{
 	}
 
-	@Test
-	public void test()
-	{
-		assertTrue(true);
+	@Test(expected = IllegalArgumentException.class)
+	public void checkIfAbovePermittedAge()
+	{										// should get an exception, as 131 should be outside
+											// limits imposed.
+		int year = dateNow.getYear() - 131;
+		int month = dateNow.getMonthValue();
+		int day = dateNow.getDayOfMonth();
+		Gender gender = Gender.MALE;
+		testcase1 = new Person(year, month, day, gender);		
 	}
 
 }
