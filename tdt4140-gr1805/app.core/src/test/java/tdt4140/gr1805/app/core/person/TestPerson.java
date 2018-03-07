@@ -72,10 +72,20 @@ public class TestPerson
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void checkIfWrongMonthException()
+	public void checkIfWrongMonthException1()
 	{
 		int year = LocalDate.now().minusYears(30).getYear();
 		int month = 0;
+		int day = 4;
+		Gender gender = Gender.FEMALE;
+		testcase1 = new Person(year, month, day, gender);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void checkIfWrongMonthException2()
+	{
+		int year = LocalDate.now().minusYears(30).getYear();
+		int month = 13;
 		int day = 4;
 		Gender gender = Gender.FEMALE;
 		testcase1 = new Person(year, month, day, gender);
