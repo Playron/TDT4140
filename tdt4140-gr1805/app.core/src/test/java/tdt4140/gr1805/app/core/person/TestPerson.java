@@ -41,33 +41,34 @@ public class TestPerson
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void checkIfBelowPermittedAgeException()
-	{
-		int years = 16;
-		int days = 1;
-		dateNow.minusYears(years);
-		dateNow.plusDays(days);
-		int year = dateNow.getYear();
-		int month = dateNow.getMonthValue();
-		int day = dateNow.getDayOfMonth();
+	{										// Should get an exception as 1 day less than 16 years
+											// ago should be outside limits imposed.
+		int years = 16;			// How many years we subtract
+		int days = 1;			// How many days we add.
+		LocalDate dob = LocalDate.now();
+		int year = dob.minusYears(years).getYear();
+		int month = dob.getMonthValue();
+		int day = dob.plusDays(days).getDayOfMonth();
 		Gender gender = Gender.FEMALE;
 		testcase1 = new Person(year, month, day, gender);
 	}
 	
-/*	@Test
+	@Test
 	public void checkIfCorrectInputOK()
 	{
-		int years = 16;
-		int months = 0;
-		int days = 1;
-		dateNow.minusYears(years);
-		dateNow.minusMonths(months);
-		dateNow.minusDays(days);
-		int year = dateNow.getYear();
-		int month = dateNow.getMonthValue();
-		int day = dateNow.getDayOfMonth();
+		int years = 16;		// The number of years we subtract from the current date.
+		int months = 0;		// The number of months we subtract from the current date.
+		int days = 1;		// The number of days we subtract from the current date
+		LocalDate dob = LocalDate.now().minusYears(years).minusDays(days);
+							// dob is now a datepoint 16 years and 1 day ago.
+		int year = dob.getYear();
+		int month = dob.getMonthValue();
+		int day = dob.getDayOfMonth();
+//		System.out.println(dob);
+//		System.out.println("Year: " + year + "\nMonth: " + month + "\nDay: " + day);
 		Gender gender = Gender.FEMALE;
 		testcase1 = new Person(year, month, day, gender);
-		assertEquals(Period.between(dateNow, LocalDate.now()).getYears(), testcase1.getAge());
+		assertEquals(Period.between(dob, LocalDate.now()).getYears(), testcase1.getAge());
 	}
-*/	
+	
 }
