@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <BorderPane prefHeight="425.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <top>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Smud" wrappingWidth="35.17236328125" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="200.0" />
+               </BorderPane.margin></Text>
+         </top>
+      </BorderPane>
+   </center>
+   <top>
+      <ToolBar prefHeight="10.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="442.0" text="Registrer" />
+        </items>
+      </ToolBar>
+   </top>
+</BorderPane>
