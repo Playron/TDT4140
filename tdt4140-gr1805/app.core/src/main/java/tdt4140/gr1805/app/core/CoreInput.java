@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CoreInput {
 	
 	String id; int[][] lokasjon; int puls; String name; int alder;
-	public ArrayList<CoreInput> brukere = new ArrayList<CoreInput>();
+	
 	
 	
 	public CoreInput(String id, int puls, String name, int alder) {
@@ -16,6 +16,11 @@ public class CoreInput {
 		leggTilBruker(this);
 	}
 
+	
+	
+	
+	
+	
 	public void leggTilBruker(CoreInput nyBruker) {
 		if(!(brukere.contains(nyBruker))){
 			brukere.add(nyBruker);
