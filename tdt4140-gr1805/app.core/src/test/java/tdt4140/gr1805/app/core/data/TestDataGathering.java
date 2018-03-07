@@ -40,4 +40,13 @@ public class TestDataGathering {
 		assertEquals(0, tester.getPulseData());
 	}
 
+	@Test			// Tests if OptOut set to false gives correct output.
+	public void checkIfSetOptOutCorrect1()
+	{
+		tester.setOptOut(false);
+		assertFalse(tester.getOptOut());
+	}
+	
+	
+	
 }
