@@ -47,6 +47,12 @@ public class TestDataGathering {
 		assertFalse(tester.getOptOut());
 	}
 	
+	@Test			// Tests if OptOut set to true gives correct output.
+	public void checkIfSetOptOutCorrect2()
+	{
+		tester.setOptOut(true);
+		assertTrue(tester.getOptOut());
+	}
 	
 	
 }
