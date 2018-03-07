@@ -1,10 +1,10 @@
 package tdt4140.gr1805.app.core.data;
 
-public class DataGatheringLimits{
+public class DataGathering{
 	private boolean GPS;
 	private boolean PULSE;
 
-	public DataGatheringLimits(boolean GPS, boolean PULSE){
+	public DataGathering(boolean GPS, boolean PULSE){
 		this.GPS=GPS;
 		this.PULSE=PULSE;
 	}
