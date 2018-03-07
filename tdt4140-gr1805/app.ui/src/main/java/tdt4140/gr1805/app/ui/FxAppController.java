@@ -13,5 +13,6 @@ import javafx.scene.control.Slider;
 public class FxAppController {
 	
 	public void initialize() {
+		
 	}
 }
