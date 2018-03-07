@@ -26,7 +26,9 @@ public class LoginScreen {
 		loginText.setFont(new javafx.scene.text.Font(20));
 		loginText.setText("Velkommen\nLogg inn her");
 		loginText.setTextAlignment(TextAlignment.CENTER);
-		loginText.relocate(0.5*width, 0.12*height);
+		loginText.relocate(0.5*width, 0.01*height);
+		
+		
 		
 		root.getChildren().add(loginText);
 		this.login = new Scene(root,width,height);
