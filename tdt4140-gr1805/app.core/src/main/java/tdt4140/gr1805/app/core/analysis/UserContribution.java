@@ -2,10 +2,10 @@ package tdt4140.gr1805.app.core.analysis;
 
 public class UserContribution {
 
-	private boolean contribution=true;
+	private boolean contribution;
 
-	public UserContribution(boolean contribution){
-		this.contribution=contribution;
+	public UserContribution(){
+		this.contribution=true;
 	}
 
 	public void setContribution(boolean contributionInput) {
