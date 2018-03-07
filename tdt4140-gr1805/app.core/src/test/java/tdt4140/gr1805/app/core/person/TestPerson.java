@@ -97,10 +97,18 @@ public class TestPerson
 		int year = LocalDate.now().minusYears(30).getYear();
 		int month = 04;
 		int day = 0;
-		Gender gender = gender.FEMALE;
+		Gender gender = Gender.FEMALE;
 		testcase1 = new Person(year, month, day, gender);
 	}
 	
-	
+	@Test(expected = IllegalArgumentException.class)
+	public void checkIfWrongDayException2()
+	{
+		int year = LocalDate.now().minusYears(30).getYear();
+		int month = 04;
+		int day = 32;
+		Gender gender = Gender.FEMALE;
+		testcase1 = new Person(year, month, day, gender);
+	}
 	
 }
