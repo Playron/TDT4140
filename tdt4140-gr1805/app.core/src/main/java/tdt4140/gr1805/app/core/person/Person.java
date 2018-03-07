@@ -3,15 +3,18 @@ package tdt4140.gr1805.app.core.person;
 public class Person {
 	
 	private int ID;
-	private String name;
 	private int age;
+	private static int id = 1;
+	private Gender gender;
 	
 	
-	
-	public Person (int ID, String name, int age ) {
-		this.ID = ID;
-		this.name = name;
+	public Person (int age, Gender gender) {
+		
 		this.age = age;
+		this.gender = gender;
+		this.id = id;
+		id++;
+		System.out.println(gender);
 	}
 
 
@@ -20,13 +23,9 @@ public class Person {
 	}
 
 
-	public String getName() {
-		return name;
-	}
-
-
 	public int getAge() {
 		return age;
 	}	
+	
 
 }

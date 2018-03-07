@@ -2,20 +2,21 @@ package tdt4140.gr1805.app.core;
 
 import java.util.ArrayList;
 
+import tdt4140.gr1805.app.core.person.Person;
+
 public class CoreInput extends SuperMethods {
 	
-	String id, name; 
-	int[][] lokasjon; 
-	int puls, alder; // We cannot use age, we must use DOB!
+	private Person bruker;
+	private int puls;
+	private int[][] lokasjon; 
 	ArrayList<CoreInput> brukere = new ArrayList<CoreInput>();
 	
 	
-	public CoreInput(String id, int[][] lokasjon, int puls, String name, int alder) {
-		this.id = id;
+	public CoreInput(Person bruker, int[][] lokasjon, int puls) {
+		this.bruker = bruker;
 		this.lokasjon = lokasjon;
 		this.puls = puls;
-		this.name = name;
-		this.alder = alder;
+		
 	}
 
 	public void leggTilBruker(CoreInput nyBruker) {
