@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -38,7 +39,7 @@ public class Database {
 		workouts = mapper.readValue(workoutDB, new TypeReference<ArrayList<Workout>>(){});
 	}
 	
-	public void writeObjects() {
+	public void writeObjects() throws JsonGenerationException, JsonMappingException, IOException {
 		// Updates JSON files with current state of the lists.
 		// The app is however not expected to modify the database in any way,
 		// except maybe to add a Person/do something administrative.
