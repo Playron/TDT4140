@@ -165,7 +165,7 @@ public class TestSuperMethods {
 		assertEquals(4, result, 0);
 	}
 	
-	@Test								// Tests if calculateAverage gives correct output when given list of int.
+	@Test								// Tests if calculateAverage gives correct output when given list of doubles.
 	public void calculateDoubleAverageTest1()
 	{
 		double[] input = {36.9, 2.15, 21.77, 90.19, 60.84, 26.10};	// Numbers decided with random.org
@@ -184,7 +184,7 @@ public class TestSuperMethods {
 	}
 	
 	@Test
-	public void calculateDoubleAverageTest3()	// Tests if we get correct output with a list of 1 integer.
+	public void calculateDoubleAverageTest3()	// Tests if we get correct output with a list of 1 double.
 	{
 		double[] input = {14.14};
 		double result = tester.calculateDoubleAverage(input);
