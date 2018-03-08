@@ -121,7 +121,7 @@ public class SuperMethods
 	}
 	
 	
-	public double calculateAverage(int[] input)
+	public double calculateIntAverage(int[] input)
 	{
 		int size = input.length;		// Starts with assigning the size of the list passed as argument.
 		if (size <=0)					// If the size is 0, we throw exception
@@ -143,6 +143,8 @@ public class SuperMethods
 			return average;
 		}
 	}
+	
+	
 	
 /*	
 	public static void main(String [] args)
