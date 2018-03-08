@@ -145,7 +145,7 @@ public class TestSuperMethods {
 	public void calculateAverageTest1()
 	{
 		int[] input = {1,4,1,51,13,3,123,54123,1,10};
-		double result = tester.calculateAverage(input);
+		double result = tester.calculateIntAverage(input);
 		assertEquals(5433, result, 0);
 	}
 	
@@ -153,7 +153,7 @@ public class TestSuperMethods {
 	public void calculateAverageTest2()
 	{
 		int[] input = {};
-		double result = tester.calculateAverage(input);
+		double result = tester.calculateIntAverage(input);
 		assertEquals(0, result, 0); // This line should never be applicable.
 	}
 	
@@ -161,7 +161,7 @@ public class TestSuperMethods {
 	public void calculateAverageTest3()	// Tests if we get correct output with a list of 1 integer.
 	{
 		int[] input = {4};
-		double result = tester.calculateAverage(input);
+		double result = tester.calculateIntAverage(input);
 		assertEquals(4, result, 0);
 	}
 
