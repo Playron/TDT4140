@@ -14,13 +14,13 @@ import tdt4140.gr1805.app.core.person.*;
 
 public class Database {
 	
-	private ArrayList<Person> personList;
-	private ArrayList<DataPoint> dataPoints; // Add empty superclass default constructor to datapoint-class
-	private ArrayList<Workout> workouts;
-	private static File personDB;
-	private static File pointDB;
-	private static File workoutDB;
-	private ObjectMapper mapper = new ObjectMapper();
+	protected ArrayList<Person> personList;
+	protected ArrayList<DataPoint> dataPoints; // Add empty superclass default constructor to datapoint-class
+	protected ArrayList<Workout> workouts;
+	protected static File personDB;
+	protected static File pointDB;
+	protected static File workoutDB;
+/*	protected ObjectMapper mapper = new ObjectMapper();
 	
 	public Database() {
 		this.personList = new ArrayList<Person>();
@@ -118,5 +118,5 @@ public class Database {
 		db.readWorkouts();
 		System.out.println(db.getWorkouts());
 	}
-	
+	*/
 }
