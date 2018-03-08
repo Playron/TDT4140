@@ -164,5 +164,31 @@ public class TestSuperMethods {
 		double result = tester.calculateIntAverage(input);
 		assertEquals(4, result, 0);
 	}
+	
+	@Test								// Tests if calculateAverage gives correct output when given list of int.
+	public void calculateDoubleAverageTest1()
+	{
+		double[] input = {36.9, 2.15, 21.77, 90.19, 60.84, 26.10};	// Numbers decided with random.org
+//		double summ = 237.95;		// Added to aid debugging.
+//		int numbers = 6;			// Added to aid debugging.
+		double result = tester.calculateDoubleAverage(input);
+		assertEquals(39.6583333333, result, 0);
+	}
+	
+	@Test(expected = Exception.class)	// Tests if we get an exception if we pass an empty list to the method.
+	public void calculateDoubleAverageTest2()
+	{
+		double[] input = {};
+		double result = tester.calculateDoubleAverage(input);
+		assertEquals(0, result, 0); // This line should never be applicable.
+	}
+	
+	@Test
+	public void calculateDoubleAverageTest3()	// Tests if we get correct output with a list of 1 integer.
+	{
+		double[] input = {14.14};
+		double result = tester.calculateDoubleAverage(input);
+		assertEquals(14.14, result, 0);
+	}
 
 }
