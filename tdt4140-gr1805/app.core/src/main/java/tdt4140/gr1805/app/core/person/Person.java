@@ -4,6 +4,9 @@ import java.time.*;
 
 public class Person {
 	
+	//Klassen håndterer personObjekter. Dette er brukere som er registrert  applikasjonen
+	
+	
 
 	//private int ID;
 	private LocalDate DOB;
@@ -24,7 +27,7 @@ public class Person {
 		//System.out.println(gender);
 	}
 
-	private void setDOB(int year, int month, int day)
+	private void setDOB(int year, int month, int day) //Validerer vanlig kriterier for dato og fødeselsdato.
 	{
 		if (month <= 0 || month > 12 ) 
 		{
@@ -57,12 +60,12 @@ public class Person {
 	}
 
 
-	public int getAge() {
+	public int getAge() {  //regner ut alder
 		LocalDate dateNow = LocalDate.now();
-		return Period.between(this.DOB, dateNow).getYears();
-	}	
+		return Period.between(this.DOB, dateNow).getYears(); //Bruker betweet metode fra DOB(Tastet inn ved registrering)
+	}														// til dagens dato.
 	
-	public Gender getGender() {
+	public Gender getGender() { //Returnerer skjønn hentet fra ENUM Gender
 		return this.gender;
 	}
 	
