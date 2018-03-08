@@ -38,17 +38,17 @@
             </MenuBar>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <TextField prefHeight="27.0" prefWidth="156.0" text="Dag">
+                  <TextField prefHeight="27.0" prefWidth="156.0" text="7637845">
                      <HBox.margin>
                         <Insets left="20.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField text="Måned">
+                  <TextField text="234432">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField onAction="#registrationButtonClickedregistrationButtonClicked" text="År">
+                  <TextField onAction="#registrationButtonClickedregistrationButtonClicked" text="234234">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
