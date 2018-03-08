@@ -181,7 +181,7 @@ public class SuperMethods
 	}
 	
 	
-	
+	/*
 	public static void main(String [] args)
 	{
 		SuperMethods antad = new SuperMethods();
@@ -203,7 +203,7 @@ public class SuperMethods
 		System.out.println(antad.doubleToInt(123151231.15126));
 	}
 
-	
+	*/
 
 
 }
