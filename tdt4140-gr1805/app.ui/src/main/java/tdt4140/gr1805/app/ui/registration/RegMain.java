@@ -2,6 +2,7 @@ package tdt4140.gr1805.app.ui.registration;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -30,18 +31,19 @@ public class RegMain extends Application {
 		registrationStage.show();
 	}
 	
+	@FXML
 	public void registrationButtonClicked() {
 		System.out.println("Bruker er registrert!");
 	}
 	
-	public void showMainItems() throws IOException {
+/*	public void showMainItems() throws IOException {
 		FXMLLoader loader1 = new FXMLLoader();
 		loader1.setLocation(RegMain.class.getResource("view/MainItems.fxml"));
 		BorderPane mainItems = loader1.load();
 		registrationLayout.setCenter(mainItems);
 		
 	}
-
+*/
 	public static void main(String[] args) {
 		launch(args);
 	}

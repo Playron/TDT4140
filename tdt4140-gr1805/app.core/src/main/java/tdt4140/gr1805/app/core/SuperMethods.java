@@ -172,7 +172,7 @@ public class SuperMethods
 //			System.out.println(sum);
 //			System.out.println(size);
 			//NumberFormatter formatter = new NumberFormatter(format)
-			DecimalFormat df = new DecimalFormat("#.##########");		// Formats the output to 10 decimal places.
+			DecimalFormat df = new DecimalFormat(".###########");		// Formats the output to 10 decimal places.
 //			System.out.println(df.format(average));
 			average = Double.parseDouble(df.format(average));
 //			System.out.println(average);
@@ -185,7 +185,7 @@ public class SuperMethods
 	public static void main(String [] args)
 	{
 		SuperMethods antad = new SuperMethods();
-		double[] doubleinput = {36.9, 2.15, 21.77, 90.19, 60.84, 26.10};
+		double[] doubleinput = {36.9, 2.15, 21.77, 90.19, 60.84, 26.10, 2};
 		System.out.println(antad.calculateDoubleAverage(doubleinput));
 		System.out.println(antad.checkIfString("aadas"));	// True
 		System.out.println(antad.checkIfString(1));			// False
