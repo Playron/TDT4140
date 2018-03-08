@@ -1,5 +1,8 @@
 package tdt4140.gr1805.app.core;
 import java.lang.Math;
+import java.text.DecimalFormat;
+
+import javax.swing.text.NumberFormatter;
 
 public class SuperMethods
 {
@@ -140,6 +143,8 @@ public class SuperMethods
 				sum += input[i];				
 			}
 			double average = sum/size;
+			DecimalFormat df = new DecimalFormat("#.##########");			// Formats the output to 10 decimal places
+			average = Double.parseDouble(df.format(average));
 			return average;
 		}
 	}
@@ -157,21 +162,31 @@ public class SuperMethods
 		}
 		else
 		{
-			int sum = 0;
+			double sum = 0;
 			for (int i = 0; i < input.length; i++)
 			{
 				sum += input[i];				
 			}
 			double average = sum/size;
+//			System.out.println(average);
+//			System.out.println(sum);
+//			System.out.println(size);
+			//NumberFormatter formatter = new NumberFormatter(format)
+			DecimalFormat df = new DecimalFormat("#.##########");		// Formats the output to 10 decimal places.
+//			System.out.println(df.format(average));
+			average = Double.parseDouble(df.format(average));
+//			System.out.println(average);
 			return average;
 		}
 	}
 	
 	
-/*	
+	
 	public static void main(String [] args)
 	{
 		SuperMethods antad = new SuperMethods();
+		double[] doubleinput = {36.9, 2.15, 21.77, 90.19, 60.84, 26.10};
+		System.out.println(antad.calculateDoubleAverage(doubleinput));
 		System.out.println(antad.checkIfString("aadas"));	// True
 		System.out.println(antad.checkIfString(1));			// False
 		System.out.println(antad.stringToInt("10"));		// 10
@@ -180,14 +195,14 @@ public class SuperMethods
 		System.out.println(antad.checkIfDouble(0.5f));		// False
 		System.out.println(antad.checkIfDouble(0.5));		// True
 		System.out.println(antad.doubleToInt(2.5));
-		System.out.println(antad.convertToInt(5123151231.15123151f));
-		System.out.println(5123151231.15123151f);
+	//	System.out.println(antad.convertToInt(5123151231.15123151f));
+	//	System.out.println(5123151231.15123151f);
 		System.out.println(antad.doubleToInt(5123151231.15123151));
-		System.out.println(antad.convertToInt(23151231.1f));
+	//	System.out.println(antad.convertToInt(23151231.1f));
 		System.out.println(123151231.15126f);
 		System.out.println(antad.doubleToInt(123151231.15126));
 	}
-*/
+
 	
 
 
