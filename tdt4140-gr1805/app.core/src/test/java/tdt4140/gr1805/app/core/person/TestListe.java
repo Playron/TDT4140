@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 import org.junit.Before;
-
+/*
 public class TestListe {
 	
 	Liste testliste;
@@ -65,3 +65,4 @@ public class TestListe {
 	}
 
 }
+*/
