@@ -19,7 +19,7 @@ public class Person {
 		super();
 	}
 
-	public Person (int year, int month, int day) {
+	public Person (int year, int month, int day, Gender gender) {
 		
 		setDOB(year, month, day);
 		this.gender = gender;

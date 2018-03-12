@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import tdt4140.gr1805.app.ui.*;
 import tdt4140.gr1805.app.core.*;
+import tdt4140.gr1805.app.core.person.Gender;
 import tdt4140.gr1805.app.core.person.Person;
 import javafx.stage.Stage;
 
@@ -24,9 +25,9 @@ public class registrationScreenController extends Application {
 	@FXML
 	public void registerUser() {
 		int dag = Integer.parseInt(dag_ID.getText());
-		int måned = Integer.parseInt(måned_ID.getText());
-		int år = Integer.parseInt(år_ID.getText());
-		Person person = new Person(år, måned, dag);
+		int m�ned = Integer.parseInt(måned_ID.getText());
+		int �r = Integer.parseInt(år_ID.getText());
+		Person person = new Person(�r, m�ned, dag, Gender.MALE);
 		System.out.println(person);
 		logInMessage.setText(person.toString());
 	}
