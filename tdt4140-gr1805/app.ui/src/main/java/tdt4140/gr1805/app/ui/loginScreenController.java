@@ -30,6 +30,7 @@ public class loginScreenController extends Application  {
 	private Label duHarLoggetInn;
 	@FXML
 	AnchorPane rootPane;
+
 	
 	
 	

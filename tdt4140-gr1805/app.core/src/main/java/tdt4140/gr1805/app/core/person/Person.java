@@ -19,7 +19,7 @@ public class Person {
 		super();
 	}
 
-	public Person (int year, int month, int day, Gender gender) {
+	public Person (int year, int month, int day) {
 		
 		setDOB(year, month, day);
 		this.gender = gender;
@@ -28,7 +28,7 @@ public class Person {
 		//System.out.println(gender);
 	}
 	
-	//konstruktør som også tar inn hvilepuls
+	//konstruktï¿½r som ogsï¿½ tar inn hvilepuls
     public Person (int year, int month, int day, Gender gender, int restPuls) {
 		
 		setDOB(year, month, day);
@@ -87,6 +87,10 @@ public class Person {
 	
 	public void setRestingPulse(int restPuls) {
 		this.restingPulse = restPuls;
+	}
+
+	public String toString() {
+		return "Brukeren er " + this.getAge() +" Ã¥r gammel" + " og har fÃ¥tt ID-Nummer: " + this.getID();
 	}
 	
 }
