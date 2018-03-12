@@ -1,4 +1,4 @@
-package tdt4140.gr1805.app.ui.RegistrationScreen.Controller;
+package tdt4140.gr1805.app.ui;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;

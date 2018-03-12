@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.LoginScreen.Controller.loginScreenController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.loginScreenController">
    <children>
       <Button fx:id="loggInn" layoutX="263.0" layoutY="276.0" mnemonicParsing="false" onAction="#logInButtonClicked" text="Logg inn" />
-      <Button layoutX="502.0" layoutY="359.0" mnemonicParsing="false" text="Registrer Bruker" AnchorPane.rightAnchor="10.0" />
+      <Button layoutX="502.0" layoutY="359.0" mnemonicParsing="false" onAction="#signupUser" text="Registrer Bruker" AnchorPane.rightAnchor="10.0" />
       <TextField fx:id="ID" layoutX="224.0" layoutY="206.0" promptText="Skriv inn brukerID:" style="-fx-background-radius: 10;" />
       <Label layoutX="93.0" layoutY="66.0" />
       <Label layoutX="244.0" layoutY="145.0" text="Skriv inn Bruker-ID" />
