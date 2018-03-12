@@ -25,9 +25,9 @@ public class registrationScreenController extends Application {
 	@FXML
 	public void registerUser() {
 		int dag = Integer.parseInt(dag_ID.getText());
-		int måned = Integer.parseInt(mÃ¥ned_ID.getText());
-		int år = Integer.parseInt(Ã¥r_ID.getText());
-		Person person = new Person(år, måned, dag, Gender.MALE);
+		int maaned = Integer.parseInt(mÃ¥ned_ID.getText());
+		int aar = Integer.parseInt(Ã¥r_ID.getText());
+		Person person = new Person(aar, maaned, dag, Gender.MALE);
 		System.out.println(person);
 		logInMessage.setText(person.toString());
 	}
