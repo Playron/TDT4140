@@ -20,7 +20,7 @@ public class Database {
 	protected static File personDB;
 	protected static File pointDB;
 	protected static File workoutDB;
-/*	protected ObjectMapper mapper = new ObjectMapper();
+	protected ObjectMapper mapper = new ObjectMapper();
 	
 	public Database() {
 		this.personList = new ArrayList<Person>();
@@ -98,25 +98,24 @@ public class Database {
 		this.workouts = workouts;
 	}
 	
-	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
-		Database db = new Database();
-		
-		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
-		DataPoint a = new DataPoint(1, new Date(), 20);
-		DataPoint b = new DataPoint(2, new Date(), 50);
-		points.add(a);
-		points.add(b);
-		
-		Workout w1 = new Workout(1, "Run", new Date(), new Date(), points);
-		Workout w2 = new Workout(2, "Bike", new Date(), new Date(), points);
-		ArrayList<Workout> wlist = new ArrayList<Workout>();
-		wlist.add(w1);
-		wlist.add(w2);
-		
-		db.setWorkouts(wlist);
-		db.writeWorkouts();
-		db.readWorkouts();
-		System.out.println(db.getWorkouts());
-	}
-	*/
+//	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException {
+//		Database db = new Database();
+//		
+//		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+//		DataPoint a = new DataPoint(1, new Date(), 20);
+//		DataPoint b = new DataPoint(2, new Date(), 50);
+//		points.add(a);
+//		points.add(b);
+//		
+//		Workout w1 = new Workout(1, "Run", new Date(), new Date(), points);
+//		Workout w2 = new Workout(2, "Bike", new Date(), new Date(), points);
+//		ArrayList<Workout> wlist = new ArrayList<Workout>();
+//		wlist.add(w1);
+//		wlist.add(w2);
+//		
+//		db.setWorkouts(wlist);
+//		db.writeWorkouts();
+//		db.readWorkouts();
+//		System.out.println(db.getWorkouts());
+s	}
 }

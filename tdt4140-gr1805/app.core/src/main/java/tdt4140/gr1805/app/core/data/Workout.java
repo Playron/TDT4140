@@ -6,22 +6,18 @@ import java.util.Date;
 public class Workout {
 	
 	private int id;
-	private String type;
-	private Date startTime;
-	private Date endTime;
-	private ArrayList<DataPoint> dataPoints;
+	private Exercise type;
+	private ArrayList<DataPoint> datapoints;
 	
 	// Nødvendig for å lage et Workout-objekt fra JSON.
 	public Workout() {
 		super();
 	}
 
-	public Workout(int id, String type, Date startTime, Date endTime, ArrayList<DataPoint> dataPoints) {
+	public Workout(int id, Exercise type, ArrayList<DataPoint> datapoints) {
 		this.id = id;
 		this.type = type;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.dataPoints = dataPoints;
+		this.datapoints = datapoints;
 
 	}
 	
@@ -33,36 +29,20 @@ public class Workout {
 		this.id = id;
 	}
 	
-	public String getType() {
+	public Exercise getType() {
 		return type;
 	}
 	
-	public void setType(String type) {
+	public void setType(Exercise type) {
 		this.type = type;
 	}
 	
-	public Date getStartTime() {
-		return startTime;
+	public ArrayList<DataPoint> getDatapoints() {
+		return datapoints;
 	}
 	
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-	
-	public Date getEndTime() {
-		return endTime;
-	}
-	
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
-	
-	public ArrayList<DataPoint> getDataPoints() {
-		return dataPoints;
-	}
-	
-	public void setDataPoints(ArrayList<DataPoint> dataPoints) {
-		this.dataPoints = dataPoints;
+	public void setDatapoints(ArrayList<DataPoint> datapoints) {
+		this.datapoints = datapoints;
 	}
 	
 }
