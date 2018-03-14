@@ -1,43 +1,46 @@
 package tdt4140.gr1805.app.core.person;
 
 import java.time.*;
+import com.fasterxml.jackson.annotation.JacksonAnnotation;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Person {
 	
 	// The Class takes care of Person-Objects. This is users registered to the application
-	
 
 	//private int ID;
+	private int id;
 	private LocalDate DOB;
-	private static int id = 1;
-	private int personalID;
 	private Gender gender;
-	private int restingPulse;
+	private boolean gatherLocation;
 	
-	// Nescessary for saving a Person-Object from JSON
-	public Person() {
-		super();
+
+	@JsonCreator
+	public Person(
+			@JsonProperty("id") int id,
+			@JsonProperty("dob") LocalDate DOB,
+			@JsonProperty("gender") Gender gender,
+			@JsonProperty("gatherLocation") boolean gatherLocation) {
+		this.id = id;
+		this.DOB = DOB;
+		this.gender = gender;
+		this.gatherLocation = gatherLocation;
 	}
 
-	public Person (int year, int month, int day, Gender gender) {
-		
+	public Person(int year, int month, int day, Gender gender) {
 		setDOB(year, month, day);
 		this.gender = gender;
-		this.personalID = id;
-		id++;
-		//System.out.println(gender);
+		this.gatherLocation = true;
 	}
 	
-	// Constructor that also accepts resting pulse.
-    public Person (int year, int month, int day, Gender gender, int restPuls) {
-		
+	public Person(int id, int year, int month, int day, Gender gender) {
+		this.id = id;
 		setDOB(year, month, day);
 		this.gender = gender;
-		this.personalID = id;
-		this.restingPulse = restPuls;
-		id++;
-		//System.out.println(gender);
+		this.gatherLocation = true;
 	}
+
 
 	private void setDOB(int year, int month, int day) //Validates normal citeria and birthdate.
 	{
@@ -68,7 +71,7 @@ public class Person {
 	}
 
 	public int getID() {
-		return this.personalID;
+		return this.id;
 	}
 
 
@@ -81,16 +84,16 @@ public class Person {
 		return this.gender;
 	}
 	
-	public int getRestingPulse(){
-		return this.restingPulse;
-	}
-	
-	public void setRestingPulse(int restPuls) {
-		this.restingPulse = restPuls;
-	}
-
 	public String toString() {
 		return "The user is " + this.getAge() +" years old" + " and has ID-Number: " + this.getID() + ". Gender: " + this.gender;
+	}
+
+	public boolean isGatherLocation() {
+		return gatherLocation;
+	}
+
+	public void setGatherLocation(boolean gatherLocation) {
+		this.gatherLocation = gatherLocation;
 	}
 	
 }

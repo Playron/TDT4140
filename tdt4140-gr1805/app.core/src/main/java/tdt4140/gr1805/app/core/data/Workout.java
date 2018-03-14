@@ -1,24 +1,24 @@
 package tdt4140.gr1805.app.core.data;
 
 import java.util.ArrayList;
-import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Workout {
 	
 	private int id;
 	private Exercise type;
 	private ArrayList<DataPoint> datapoints;
-	
-	// Nødvendig for å lage et Workout-objekt fra JSON.
-	public Workout() {
-		super();
-	}
 
-	public Workout(int id, Exercise type, ArrayList<DataPoint> datapoints) {
+	@JsonCreator
+	public Workout(
+			@JsonProperty("id") int id,
+			@JsonProperty("type") Exercise type,
+			@JsonProperty("datapoints") ArrayList<DataPoint> datapoints) {
 		this.id = id;
 		this.type = type;
 		this.datapoints = datapoints;
-
 	}
 	
 	public int getId() {
