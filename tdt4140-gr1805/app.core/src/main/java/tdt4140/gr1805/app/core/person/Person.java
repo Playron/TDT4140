@@ -27,23 +27,23 @@ public class Person {
 		//System.out.println(gender);
 	}
 
-	private void setDOB(int year, int month, int day) //Validerer vanlig kriterier for dato og fødeselsdato.
+	private void setDOB(int year, int month, int day) //Validates normal citeria and birthdate.
 	{
 		if (month <= 0 || month > 12 ) 
 		{
-			throw new IllegalArgumentException("Måneden må være mellom 1 og 12");
+			throw new IllegalArgumentException("The month must be between 1 and 12");
 		}
 		if (day <= 0 || day > 31 ) 
 		{
-			throw new IllegalArgumentException("Datoen må være mellom 1 og 31");
+			throw new IllegalArgumentException("The date must be between 1 and 31");
 		}
 		if (year < (LocalDate.now().minusYears(130).getYear())) 
 		{
-			throw new IllegalArgumentException("Du må være født etter 1900"); //TODO: fikse feilmelding
+			throw new IllegalArgumentException("You have to be less than 130"); //TODO: fikse feilmelding
 		}
 		if (LocalDate.of(year, month, day).isAfter(LocalDate.now().minusYears(16))) 
 		{
-			throw new IllegalArgumentException("Du må være eldre enn 16 år");// TODO: Fikse feilmelding.
+			throw new IllegalArgumentException("You have to be older than 16 years.");// TODO: Fikse feilmelding.
 		}
 		try
 		{
@@ -60,12 +60,12 @@ public class Person {
 	}
 
 
-	public int getAge() {  //regner ut alder
+	public int getAge() {  //Calculates age
 		LocalDate dateNow = LocalDate.now();
-		return Period.between(this.DOB, dateNow).getYears(); //Bruker betweet metode fra DOB(Tastet inn ved registrering)
-	}														// til dagens dato.
+		return Period.between(this.DOB, dateNow).getYears(); // Uses between-metode from DOB(User-input at registration)
+	}														// Until today.
 	
-	public Gender getGender() { //Returnerer skjønn hentet fra ENUM Gender
+	public Gender getGender() { //Returns gender gathere from ENUM Gender
 		return this.gender;
 	}
 	
