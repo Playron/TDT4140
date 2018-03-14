@@ -13,20 +13,20 @@ import javafx.stage.Stage;
 public class registrationScreenController extends Application {
 
 	@FXML
-	TextField dag_ID;
+	TextField day_ID;
 	@FXML
-	TextField måned_ID;
+	TextField month_ID;
 	@FXML
-	TextField år_ID;
+	TextField year_ID;
 	@FXML
 	Label logInMessage;
 	
 	
 	@FXML
 	public void registerUser() {
-		int dag = Integer.parseInt(dag_ID.getText());
-		int maaned = Integer.parseInt(måned_ID.getText());
-		int aar = Integer.parseInt(år_ID.getText());
+		int dag = Integer.parseInt(day_ID.getText());
+		int maaned = Integer.parseInt(month_ID.getText());
+		int aar = Integer.parseInt(year_ID.getText());
 		Person person = new Person(aar, maaned, dag, Gender.MALE);
 		System.out.println(person);
 		logInMessage.setText(person.toString());
