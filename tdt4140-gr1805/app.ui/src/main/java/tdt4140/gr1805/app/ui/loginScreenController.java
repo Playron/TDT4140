@@ -36,18 +36,18 @@ public class loginScreenController extends Application  {
 	
 	public void logInButtonClicked() {
 		if(checkLoginInt(ID) == true) {
-			duHarLoggetInn.setText(ID.getText() + " har logget inn!");
+			duHarLoggetInn.setText(ID.getText() + " has logged in!");
 		}
 	}
 	
 	public boolean checkLoginInt(TextField input) {
 		try {
 			int id = Integer.parseInt(input.getText());
-			System.out.println("BrukerID er:" + id);
+			System.out.println("BrukerID is:" + id);
 			return true;
 			
 		}catch(NumberFormatException e) {
-		System.out.println("ID må være heltall");
+		System.out.println("ID must be an integer");
 		return false;
 		}
 		
