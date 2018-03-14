@@ -52,7 +52,7 @@ public class loginScreenController{
 			return true;
 			
 		}catch(NumberFormatException e) {
-		System.out.println("ID ma være heltall");
+		System.out.println("ID maa vaere heltall");
 		return false;
 		}
 		
