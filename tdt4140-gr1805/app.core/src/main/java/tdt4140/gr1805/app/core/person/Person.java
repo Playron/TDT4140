@@ -39,11 +39,11 @@ public class Person {
 		}
 		if (year < (LocalDate.now().minusYears(130).getYear())) 
 		{
-			throw new IllegalArgumentException("You have to be less than 130"); //TODO: fikse feilmelding
+			throw new IllegalArgumentException("You have to be less than 130"); 
 		}
 		if (LocalDate.of(year, month, day).isAfter(LocalDate.now().minusYears(16))) 
 		{
-			throw new IllegalArgumentException("You have to be older than 16 years.");// TODO: Fikse feilmelding.
+			throw new IllegalArgumentException("You have to be older than 16 years.");
 		}
 		try
 		{
