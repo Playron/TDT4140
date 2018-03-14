@@ -10,26 +10,26 @@ public class TestUserContribution
 {
 	UserContribution testcase;
 	
-	@Before
+	@Before								// Does this before each test.
 	public void setUp() throws Exception
 	{
 		testcase = new UserContribution();
 	}
 
-	@After
+	@After								// Does this after each test.
 	public void tearDown() throws Exception
 	{
 		testcase = null;
 	}
 
-	@Test
+	@Test								// Tests that the default value of usercontribution is true 
 	public void checkUserContributionDefault()
 	{
 		assertTrue(testcase.getContribution());
 	}
 	
-	@Test
-	public void checkUserContributionOptOut()
+	@Test								// Tests that if we set the value of usercontribution to false 
+	public void checkUserContributionOptOut()	// then the value actually is set to false.
 	{
 		testcase.setContribution(false);
 		assertFalse(testcase.getContribution());
