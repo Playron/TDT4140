@@ -12,6 +12,7 @@ public class Person {
 	private LocalDate DOB;
 	private static int id = 1;
 	private Gender gender;
+	private int restingPulse;
 	
 	// NÃ¸dvendig for Ã¥ lage et Person-objekt fra JSON.
 	public Person() {
@@ -23,6 +24,17 @@ public class Person {
 		setDOB(year, month, day);
 		this.gender = gender;
 		this.id = id;
+		id++;
+		//System.out.println(gender);
+	}
+	
+	//konstruktør som også tar inn hvilepuls
+    public Person (int year, int month, int day, Gender gender, int restPuls) {
+		
+		setDOB(year, month, day);
+		this.gender = gender;
+		this.id = id;
+		this.restingPulse = restPuls;
 		id++;
 		//System.out.println(gender);
 	}
@@ -67,6 +79,14 @@ public class Person {
 	
 	public Gender getGender() { //Returns gender gathere from ENUM Gender
 		return this.gender;
+	}
+	
+	public int getRestingPulse(){
+		return this.restingPulse;
+	}
+	
+	public void setRestingPulse(int restPuls) {
+		this.restingPulse = restPuls;
 	}
 	
 }

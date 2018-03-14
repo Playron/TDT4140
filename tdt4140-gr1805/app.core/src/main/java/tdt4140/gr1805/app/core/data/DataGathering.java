@@ -49,4 +49,13 @@ public class DataGathering{
 	public boolean getOptOut() { //use this method before calling addUpdate
 		return optout;
 	}
+	
+	public void disablePulse() {
+		setPulseGathering(false);
+	}
+	
+	public void disableGPS() {
+		setGPSGathering(false);
+	}
+	
 }
