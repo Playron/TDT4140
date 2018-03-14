@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
+
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.loginScreenController">
    <children>
       <Button fx:id="loggInn" layoutX="263.0" layoutY="276.0" mnemonicParsing="false" onAction="#logInButtonClicked" text="Logg inn" />
@@ -20,7 +20,7 @@
          </font>
       </Label>
       <Label fx:id="duHarLoggetInn" layoutX="283.0" layoutY="333.0" />
-=======
+
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.LoginScreen.Controller.loginScreenController">
    <children>
       <Button layoutX="263.0" layoutY="276.0" mnemonicParsing="false" onAction="#logInButtonClicked" text="Logg inn" />
@@ -33,6 +33,6 @@
             <Font size="36.0" />
          </font>
       </Label>
->>>>>>> refs/heads/gui
+
    </children>
 </AnchorPane>
