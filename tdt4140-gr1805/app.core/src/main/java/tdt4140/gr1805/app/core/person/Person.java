@@ -4,17 +4,17 @@ import java.time.*;
 
 public class Person {
 	
-	//Klassen håndterer personObjekter. Dette er brukere som er registrert  applikasjonen
-	
+	// The Class takes care of Person-Objects. This is users registered to the application
 	
 
 	//private int ID;
 	private LocalDate DOB;
 	private static int id = 1;
+	private int personalID;
 	private Gender gender;
 	private int restingPulse;
 	
-	// Nødvendig for å lage et Person-objekt fra JSON.
+	// Nescessary for saving a Person-Object from JSON
 	public Person() {
 		super();
 	}
@@ -23,39 +23,39 @@ public class Person {
 		
 		setDOB(year, month, day);
 		this.gender = gender;
-		this.id = id;
+		this.personalID = id;
 		id++;
 		//System.out.println(gender);
 	}
 	
-	//konstrukt�r som ogs� tar inn hvilepuls
+	// Constructor that also accepts resting pulse.
     public Person (int year, int month, int day, Gender gender, int restPuls) {
 		
 		setDOB(year, month, day);
 		this.gender = gender;
-		this.id = id;
+		this.personalID = id;
 		this.restingPulse = restPuls;
 		id++;
 		//System.out.println(gender);
 	}
 
-	private void setDOB(int year, int month, int day) //Validerer vanlig kriterier for dato og fødeselsdato.
+	private void setDOB(int year, int month, int day) //Validates normal citeria and birthdate.
 	{
 		if (month <= 0 || month > 12 ) 
 		{
-			throw new IllegalArgumentException("Måneden må være mellom 1 og 12");
+			throw new IllegalArgumentException("The month must be between 1 and 12");
 		}
 		if (day <= 0 || day > 31 ) 
 		{
-			throw new IllegalArgumentException("Datoen må være mellom 1 og 31");
+			throw new IllegalArgumentException("The date must be between 1 and 31");
 		}
 		if (year < (LocalDate.now().minusYears(130).getYear())) 
 		{
-			throw new IllegalArgumentException("Du må være født etter 1900"); //TODO: fikse feilmelding
+			throw new IllegalArgumentException("You have to be less than 130"); 
 		}
 		if (LocalDate.of(year, month, day).isAfter(LocalDate.now().minusYears(16))) 
 		{
-			throw new IllegalArgumentException("Du må være eldre enn 16 år");// TODO: Fikse feilmelding.
+			throw new IllegalArgumentException("You have to be older than 16 years.");
 		}
 		try
 		{
@@ -68,16 +68,16 @@ public class Person {
 	}
 
 	public int getID() {
-		return this.id;
+		return this.personalID;
 	}
 
 
-	public int getAge() {  //regner ut alder
+	public int getAge() {  //Calculates age
 		LocalDate dateNow = LocalDate.now();
-		return Period.between(this.DOB, dateNow).getYears(); //Bruker betweet metode fra DOB(Tastet inn ved registrering)
-	}														// til dagens dato.
+		return Period.between(this.DOB, dateNow).getYears(); // Uses between-method from DOB(User-input at registration)
+	}														// Until today.
 	
-	public Gender getGender() { //Returnerer skjønn hentet fra ENUM Gender
+	public Gender getGender() { //Returns gender gathered from ENUM Gender
 		return this.gender;
 	}
 	
@@ -87,6 +87,10 @@ public class Person {
 	
 	public void setRestingPulse(int restPuls) {
 		this.restingPulse = restPuls;
+	}
+
+	public String toString() {
+		return "The user is " + this.getAge() +" years old" + " and has ID-Number: " + this.getID() + ". Gender: " + this.gender;
 	}
 	
 }
