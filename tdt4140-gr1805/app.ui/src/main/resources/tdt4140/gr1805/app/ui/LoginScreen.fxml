@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.loginScreenController">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.loginScreenController">
    <children>
       <Button fx:id="loggInn" layoutX="263.0" layoutY="276.0" mnemonicParsing="false" onAction="#logInButtonClicked" text="Logg inn" />
       <Button layoutX="502.0" layoutY="359.0" mnemonicParsing="false" onAction="#signupUser" text="Registrer Bruker" AnchorPane.rightAnchor="10.0" />

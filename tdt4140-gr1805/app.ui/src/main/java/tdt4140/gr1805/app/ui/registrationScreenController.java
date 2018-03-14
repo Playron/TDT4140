@@ -6,20 +6,25 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionModel;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import tdt4140.gr1805.app.ui.*;
 import tdt4140.gr1805.app.core.*;
 import tdt4140.gr1805.app.core.person.Gender;
 import tdt4140.gr1805.app.core.person.Person;
 import javafx.stage.Stage;
 
-public class registrationScreenController extends Application {
+public class registrationScreenController{
 
 	ObservableList<Gender> genderList = FXCollections.observableArrayList(Gender.MALE, Gender.FEMALE); //Creates List with Gender-Enum
-	
+	MasterScreenController screenController;
 	
 	@FXML
 	TextField day_ID;
@@ -31,11 +36,19 @@ public class registrationScreenController extends Application {
 	Label logInMessage;
 	@FXML
 	ChoiceBox gender;
+	@FXML
+	Button backButton;
+	@FXML
+	AnchorPane rootPane;
 	
 	@FXML
 	public void initialize() {
 		gender.setItems(genderList); 		//Initialize List
 
+	}
+	
+	public void setScreenController(MasterScreenController screenController) {
+		this.screenController = screenController;
 	}
 	
 	
@@ -57,14 +70,12 @@ public class registrationScreenController extends Application {
 			throw new IllegalArgumentException("Not an instance of Gender-Enum!");  //Should never trigger
 		}
 	}
+	@FXML
+	public void backButtonClicked() 
+	{
+		screenController.activate("LoginScreen");
+	}
 	
 	
-	@Override
-	public void start(Stage primaryStage) {
-		
-	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
+	
 }

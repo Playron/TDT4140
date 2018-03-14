@@ -21,7 +21,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class loginScreenController extends Application  {
+public class loginScreenController{
+	public MasterScreenController screenController;
 	@FXML
 	private Button loggInn;
 	@FXML
@@ -30,24 +31,28 @@ public class loginScreenController extends Application  {
 	private Label duHarLoggetInn;
 	@FXML
 	AnchorPane rootPane;
-
 	
+	
+
+	public void setScreenController(MasterScreenController screenController) {
+		this.screenController = screenController;
+	}
 	
 	
 	public void logInButtonClicked() {
 		if(checkLoginInt(ID) == true) {
-			duHarLoggetInn.setText(ID.getText() + " has logged in!");
+			duHarLoggetInn.setText(ID.getText() + " har logget inn!");
 		}
 	}
 	
 	public boolean checkLoginInt(TextField input) {
 		try {
 			int id = Integer.parseInt(input.getText());
-			System.out.println("BrukerID is:" + id);
+			System.out.println("BrukerID er:" + id);
 			return true;
 			
 		}catch(NumberFormatException e) {
-		System.out.println("ID must be an integer");
+		System.out.println("ID må være heltall");
 		return false;
 		}
 		
@@ -55,22 +60,9 @@ public class loginScreenController extends Application  {
 	}
 	@FXML
 	public void signupUser(ActionEvent event) throws IOException {
-		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("RegistrationScreen.fxml"));
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	
-	
-	
-	@Override
-	public void start(Stage primaryStage) {
 		
-	}
-
-	public static void main(String[] args) {
-		launch(args);
+		screenController.activate("RegistrationScreen");
+		
 	}
 }
 
