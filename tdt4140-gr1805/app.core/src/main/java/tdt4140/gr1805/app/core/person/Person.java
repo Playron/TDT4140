@@ -4,8 +4,7 @@ import java.time.*;
 
 public class Person {
 	
-	//Klassen håndterer personObjekter. Dette er brukere som er registrert  applikasjonen
-	
+	// The Class takes care of Person-Objects. This is users registered to the application
 	
 
 	//private int ID;
@@ -15,7 +14,7 @@ public class Person {
 	private Gender gender;
 	private int restingPulse;
 	
-	// Nødvendig for å lage et Person-objekt fra JSON.
+	// Nescessary for saving a Person-Object from JSON
 	public Person() {
 		super();
 	}
@@ -29,7 +28,7 @@ public class Person {
 		//System.out.println(gender);
 	}
 	
-	//konstrukt�r som ogs� tar inn hvilepuls
+	// Constructor that also accepts resting pulse.
     public Person (int year, int month, int day, Gender gender, int restPuls) {
 		
 		setDOB(year, month, day);
