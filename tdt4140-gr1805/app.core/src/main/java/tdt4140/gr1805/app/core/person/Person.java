@@ -11,6 +11,7 @@ public class Person {
 	//private int ID;
 	private LocalDate DOB;
 	private static int id = 1;
+	private int personalID;
 	private Gender gender;
 	private int restingPulse;
 	
@@ -23,7 +24,7 @@ public class Person {
 		
 		setDOB(year, month, day);
 		this.gender = gender;
-		this.id = id;
+		this.personalID = id;
 		id++;
 		//System.out.println(gender);
 	}
@@ -33,7 +34,7 @@ public class Person {
 		
 		setDOB(year, month, day);
 		this.gender = gender;
-		this.id = id;
+		this.personalID = id;
 		this.restingPulse = restPuls;
 		id++;
 		//System.out.println(gender);
@@ -68,16 +69,16 @@ public class Person {
 	}
 
 	public int getID() {
-		return this.id;
+		return this.personalID;
 	}
 
 
 	public int getAge() {  //Calculates age
 		LocalDate dateNow = LocalDate.now();
-		return Period.between(this.DOB, dateNow).getYears(); // Uses between-metode from DOB(User-input at registration)
+		return Period.between(this.DOB, dateNow).getYears(); // Uses between-method from DOB(User-input at registration)
 	}														// Until today.
 	
-	public Gender getGender() { //Returns gender gathere from ENUM Gender
+	public Gender getGender() { //Returns gender gathered from ENUM Gender
 		return this.gender;
 	}
 	
@@ -90,7 +91,7 @@ public class Person {
 	}
 
 	public String toString() {
-		return "Brukeren er " + this.getAge() +" år gammel" + " og har fått ID-Nummer: " + this.getID();
+		return "The user is " + this.getAge() +" years old" + " and has ID-Number: " + this.getID();
 	}
 	
 }
