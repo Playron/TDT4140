@@ -17,22 +17,24 @@ import java.util.Set;
 public class TestPerson
 {
 	
-	Person testcase1;
-	LocalDate dateNow;
+	Person testcase1;			// assigns that testcase1 is instance of Person
+	LocalDate dateNow;			// Assigns that dateNow is a LocalDate.
 	
-	@Before
+	@Before									// Does this before each test
 	public void setUp() throws Exception
 	{
 		dateNow = LocalDate.now();
 	}
 
-	@After
+	@After									// Does this after each test.
 	public void tearDown() throws Exception
 	{
 		dateNow = null;
 	}
 	
-	public ArrayList<Object> createPerson()
+	public ArrayList<Object> createPerson()		// Creates a person with random values for birthday
+												// and random gender, and returns a list with the values
+												// of DOB, gender and the person-object
 	{
 		LocalDate currentDate = LocalDate.now();
 		Random rand = new Random();
@@ -96,7 +98,7 @@ public class TestPerson
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void checkIfWrongMonthException1()
+	public void checkIfWrongMonthException1()		// Checks if we get an exception if we use 0 as an argument for month.
 	{
 		int year = LocalDate.now().minusYears(30).getYear();
 		int month = 0;
@@ -106,7 +108,7 @@ public class TestPerson
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void checkIfWrongMonthException2()
+	public void checkIfWrongMonthException2()		// Checks if we get an exception if we use 13 as an argument for month.
 	{
 		int year = LocalDate.now().minusYears(30).getYear();
 		int month = 13;
@@ -116,7 +118,7 @@ public class TestPerson
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void checkIfWrongDayException1()
+	public void checkIfWrongDayException1()			// Checks if we get an exception if we use 0 as an argument for day.
 	{
 		int year = LocalDate.now().minusYears(30).getYear();
 		int month = 04;
@@ -126,7 +128,7 @@ public class TestPerson
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void checkIfWrongDayException2()
+	public void checkIfWrongDayException2()			// Checks if we get an exception if we use 32 as an argument for day.
 	{
 		int year = LocalDate.now().minusYears(30).getYear();
 		int month = 04;
@@ -136,7 +138,8 @@ public class TestPerson
 	}
 	
 	@Test
-	public void checkIfIDIncrements()
+	public void checkIfIDIncrements()			// Checks if the ID assigned to new Person-instances increments when 
+												// we create a new instance.
 	{
 		ArrayList<Object> listen = createPerson();
 		Person pers1 = null;
@@ -177,7 +180,8 @@ public class TestPerson
 	}
 	
 	@Test
-	public void checkIfGenderCorrect()
+	public void checkIfGenderCorrect()			// Checks if the gender in the Person-object is congruent with
+												// The gender supplied by the createPerson().
 	{
 		ArrayList<Object> listen = createPerson();
 		Person pers1 = null;
