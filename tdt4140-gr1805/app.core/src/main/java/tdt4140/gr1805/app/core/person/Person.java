@@ -91,7 +91,7 @@ public class Person {
 	}
 
 	public String toString() {
-		return "The user is " + this.getAge() +" years old" + " and has ID-Number: " + this.getID() + ". Kjønn: " + this.gender;
+		return "The user is " + this.getAge() +" years old" + " and has ID-Number: " + this.getID() + ". Gender: " + this.gender;
 	}
 	
 }

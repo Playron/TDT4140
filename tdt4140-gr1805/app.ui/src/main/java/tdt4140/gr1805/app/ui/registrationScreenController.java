@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 public class registrationScreenController extends Application {
 
-	ObservableList<Gender> kjønnListe = FXCollections.observableArrayList(Gender.MALE, Gender.FEMALE); //Creates List with Gender-Enum
+	ObservableList<Gender> genderList = FXCollections.observableArrayList(Gender.MALE, Gender.FEMALE); //Creates List with Gender-Enum
 	
 	
 	@FXML
@@ -30,11 +30,11 @@ public class registrationScreenController extends Application {
 	@FXML
 	Label logInMessage;
 	@FXML
-	ChoiceBox kjønn = new ChoiceBox(kjønnListe);
+	ChoiceBox gender;
 	
 	@FXML
 	public void initialize() {
-		kjønn.setItems(kjønnListe); 		//Initialize List
+		gender.setItems(genderList); 		//Initialize List
 
 	}
 	
@@ -44,13 +44,14 @@ public class registrationScreenController extends Application {
 		
 			//Next bit of code is parsing from textField to Int
 			//Need to write validation forinvalid inputs
+		
 		int dag = Integer.parseInt(day_ID.getText());   			
 		int maaned = Integer.parseInt(month_ID.getText());
 		int aar = Integer.parseInt(year_ID.getText());
 		
 		//Checks if choiceBox-choices is an instance of the Gender enum.
-		if(kjønn.getSelectionModel().getSelectedItem() instanceof Gender) {			
-			Person person = new Person(aar, maaned, dag, (Gender)kjønn.getSelectionModel().getSelectedItem()); //
+		if(gender.getSelectionModel().getSelectedItem() instanceof Gender) {			
+			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem()); //
 			System.out.println(person);
 		}else {
 			throw new IllegalArgumentException("Not an instance of Gender-Enum!");  //Should never trigger

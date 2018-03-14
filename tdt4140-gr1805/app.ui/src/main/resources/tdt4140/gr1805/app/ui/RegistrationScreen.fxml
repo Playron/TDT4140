@@ -43,17 +43,13 @@
       <TextField fx:id="day_ID" layoutX="128.0" layoutY="133.0" />
       <TextField fx:id="month_ID" layoutX="128.0" layoutY="187.0" />
       <TextField fx:id="year_ID" layoutX="128.0" layoutY="241.0" />
-      <Button alignment="TOP_CENTER" defaultButton="true" layoutX="345.0" layoutY="133.0" mnemonicParsing="false" onAction="#registerUser" text="REGISTRER!" textAlignment="JUSTIFY">
-         <padding>
-            <Insets bottom="115.0" right="115.0" />
-         </padding>
-      </Button>
+      <Button alignment="TOP_CENTER" defaultButton="true" layoutX="372.0" layoutY="187.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="27.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Registrer" textAlignment="JUSTIFY" />
       <Label fx:id="logInMessage" layoutX="-81.0" layoutY="339.0">
          <padding>
             <Insets left="300.0" right="300.0" />
          </padding>
       </Label>
-      <ChoiceBox fx:id="kjønn" layoutX="53.0" layoutY="304.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="gender" layoutX="53.0" layoutY="304.0" prefWidth="150.0" />
 
    </children>
 </AnchorPane>
