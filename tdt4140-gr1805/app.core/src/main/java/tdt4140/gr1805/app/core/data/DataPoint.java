@@ -33,10 +33,10 @@ public class DataPoint {
 		this.location = null;
 	}
 	
-	public int getId() {
+	public int getID() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setID(int id) {
 		this.id = id;
 	}
 	public Date getTimestamp() {
@@ -56,6 +56,11 @@ public class DataPoint {
 	}
 	public void setLocation(LatLong location) {
 		this.location = location;
+	}
+
+	@Override
+	public String toString() {
+		return "DataPoint [#" + id + ", " + timestamp + ", pulse=" + pulse + ", location=" + location + "]";
 	}
 	
 	

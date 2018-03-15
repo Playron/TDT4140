@@ -1,10 +1,16 @@
 package tdt4140.gr1805.app.core.data;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class LatLong {
 
 	public final double latitude, longitude;
 	
-	public LatLong(double latitude, double longitude) {
+	@JsonCreator
+	public LatLong(
+			@JsonProperty("latitude") double latitude,
+			@JsonProperty("longitude") double longitude) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
@@ -39,11 +45,5 @@ public class LatLong {
 	@Override
 	public String toString() {
 		return latitude + "," + longitude;
-	}
-	
-	public static void main(String[] args) {
-		LatLong latlong1 = new LatLong(60, 20);
-		LatLong latlong2 = new LatLong(0, 0);
-		System.out.println(distance(latlong1, latlong2));
 	}
 }

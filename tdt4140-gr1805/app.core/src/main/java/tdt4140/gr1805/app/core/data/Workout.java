@@ -21,11 +21,11 @@ public class Workout {
 		this.datapoints = datapoints;
 	}
 	
-	public int getId() {
+	public int getID() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setID(int id) {
 		this.id = id;
 	}
 	
@@ -44,5 +44,12 @@ public class Workout {
 	public void setDatapoints(ArrayList<DataPoint> datapoints) {
 		this.datapoints = datapoints;
 	}
+
+	@Override
+	public String toString() {
+		return "Workout [#" + id + ", type=" + type + ", datapoints=" + datapoints + "]";
+	}
+	
+	
 	
 }

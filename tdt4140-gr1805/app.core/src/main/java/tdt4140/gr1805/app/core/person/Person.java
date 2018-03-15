@@ -1,31 +1,27 @@
 package tdt4140.gr1805.app.core.person;
 
 import java.time.*;
-import com.fasterxml.jackson.annotation.JacksonAnnotation;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 public class Person {
 	
 	// The Class takes care of Person-Objects. This is users registered to the application
 
 	//private int ID;
-	private int id;
-	private LocalDate DOB;
-	private Gender gender;
-	private boolean gatherLocation;
+	@JsonProperty("id") private int id;
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	@JsonProperty("DOB") private LocalDate DOB;
+	@JsonProperty("gender") private Gender gender;
+	@JsonProperty("gatherLocation") private boolean gatherLocation;
 	
-
-	@JsonCreator
-	public Person(
-			@JsonProperty("id") int id,
-			@JsonProperty("dob") LocalDate DOB,
-			@JsonProperty("gender") Gender gender,
-			@JsonProperty("gatherLocation") boolean gatherLocation) {
-		this.id = id;
-		this.DOB = DOB;
-		this.gender = gender;
-		this.gatherLocation = gatherLocation;
+	public Person() {
+		super();
 	}
 
 	public Person(int year, int month, int day, Gender gender) {
@@ -41,7 +37,7 @@ public class Person {
 		this.gatherLocation = true;
 	}
 
-
+	@JsonIgnore
 	private void setDOB(int year, int month, int day) //Validates normal citeria and birthdate.
 	{
 		if (month <= 0 || month > 12 ) 
@@ -69,12 +65,21 @@ public class Person {
 			// TODO: handle exception
 		}
 	}
-
+	
+	@JsonIgnore
+	public LocalDate getDOB() {
+		return this.DOB;
+	}
+	
 	public int getID() {
 		return this.id;
 	}
+	
+	public void setID(int id) {
+		this.id = id;
+	}
 
-
+	@JsonIgnore
 	public int getAge() {  //Calculates age
 		LocalDate dateNow = LocalDate.now();
 		return Period.between(this.DOB, dateNow).getYears(); // Uses between-method from DOB(User-input at registration)
