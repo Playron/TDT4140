@@ -21,9 +21,11 @@ public class mainController extends Application {
 	
     @Override
     public void start(Stage stage) throws Exception {
+    	    //Stage is the root level object of the UI, screenController controls which scene is going to show on the stage.
     		this.stage = stage;
     	    screenController = new MasterScreenController(new Scene(new AnchorPane()),stage);
     	    
+    	    //Loading the FXML-file, injecting the screenController into the constructor of the controllers.
     	    FXMLLoader loader1 = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
     	    screenController.addScreen("LoginScreen",(Pane)loader1.load());
     	    loginScreenController controller1 = loader1.getController();
@@ -34,14 +36,13 @@ public class mainController extends Application {
     	    registrationScreenController controller2 = loader2.getController();
     	    controller2.setScreenController(screenController);
     		
+    	    //Activating the relevant scene
         screenController.activate("LoginScreen");
         
     }
     
     
-    public void switchScene(String sceneName) {
-    	screenController.activate(sceneName);
-    }
+    
     
 
     

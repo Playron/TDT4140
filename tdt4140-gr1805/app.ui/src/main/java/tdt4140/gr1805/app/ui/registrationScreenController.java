@@ -51,7 +51,7 @@ public class registrationScreenController{
 		this.screenController = screenController;
 	}
 	
-	
+	//Logic for the register user button
 	@FXML
 	public void registerUser() {
 		
@@ -70,6 +70,8 @@ public class registrationScreenController{
 			throw new IllegalArgumentException("Not an instance of Gender-Enum!");  //Should never trigger
 		}
 	}
+	
+	//Changing scenes on clicking the back button
 	@FXML
 	public void backButtonClicked() 
 	{
