@@ -13,7 +13,7 @@ public class Person {
 	// The Class takes care of Person-Objects. This is users registered to the application
 
 	//private int ID;
-	@JsonProperty("id") private int id;
+	@JsonProperty("id") private static int id;
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	@JsonProperty("DOB") private LocalDate DOB;
@@ -28,6 +28,7 @@ public class Person {
 		setDOB(year, month, day);
 		this.gender = gender;
 		this.gatherLocation = true;
+		this.id++;
 	}
 	
 	public Person(int id, int year, int month, int day, Gender gender) {

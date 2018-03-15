@@ -7,6 +7,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MasterScreenController {
+	
+	
+	
     private HashMap<String, Pane> screenMap = new HashMap<>();
     private Scene main;
     private Stage stage;

@@ -57,17 +57,18 @@ public class registrationScreenController{
 		
 			//Next bit of code is parsing from textField to Int
 			//Need to write validation forinvalid inputs
-		
 		int dag = Integer.parseInt(day_ID.getText());   			
 		int maaned = Integer.parseInt(month_ID.getText());
 		int aar = Integer.parseInt(year_ID.getText());
 		
-		//Checks if choiceBox-choices is an instance of the Gender enum.
+			//Checks if choiceBox-choices is an instance of the Gender enum.
+		
 		if(gender.getSelectionModel().getSelectedItem() instanceof Gender) {			
-			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem()); //
-			System.out.println(person);
-		}else {
-			throw new IllegalArgumentException("Not an instance of Gender-Enum!");  //Should never trigger
+			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem()); //Må caste Gender for å returnere
+			System.out.println(person);																		  //	type Gender. ChoiceBox viser 
+		}else {																								  //info fra observableList
+			
+			throw new IllegalArgumentException("Not an instance of Gender-Enum!");  //Should never trigger, since Gender-enum is only option.
 		}
 	}
 	@FXML
