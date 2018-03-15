@@ -24,7 +24,7 @@ import javafx.stage.Stage;
 public class registrationScreenController{
 
 	ObservableList<Gender> genderList = FXCollections.observableArrayList(Gender.MALE, Gender.FEMALE); //Creates List with Gender-Enum
-	MasterScreenController screenController;
+	MasterScreenController screenController; //Initiate MasterScreen in registrationScreen. 
 	
 	@FXML
 	TextField day_ID;
@@ -43,39 +43,45 @@ public class registrationScreenController{
 	
 	@FXML
 	public void initialize() {
-		gender.setItems(genderList); 		//Initialize List
-
+		//Initialize List
+		gender.setItems(genderList); 		
 	}
 	
 	public void setScreenController(MasterScreenController screenController) {
 		this.screenController = screenController;
 	}
+		//Logic for the register user button
 	
-	//Logic for the register user button
 	@FXML
 	public void registerUser() {
 		
-			//Next bit of code is parsing from textField to Int
-			//Need to write validation for invalid inputs
+		//Next bit of code is parsing from textField to Int
+		//Need to write validation for invalid inputs
+		
 		int dag = Integer.parseInt(day_ID.getText());   			
 		int maaned = Integer.parseInt(month_ID.getText());
 		int aar = Integer.parseInt(year_ID.getText());
 		
-			//Checks if choiceBox-choices is an instance of the Gender enum.
+		
+		//Checks if choiceBox-choices is an instance of the Gender enum.
 		
 		if(gender.getSelectionModel().getSelectedItem() instanceof Gender) {			
-			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem()); //Må caste Gender for å returnere
-			System.out.println(person);																		  //	type Gender. ChoiceBox viser 
-		}else {																								  //info fra observableList
+			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem()); 
 			
-			throw new IllegalArgumentException("Not an instance of Gender-Enum!");  //Should never trigger, since Gender-enum is only option.
+			//Må caste Gender for å returnere type Gender. ChoiceBox viser info fra observableList
+			
+			System.out.println(person);																		  
+		}else {																								  
+			//Should never trigger, since Gender-enum is only option.	
+			throw new IllegalArgumentException("Not an instance of Gender-Enum!");  
 		}
 	}
 	
-	//Changing scenes on clicking the back button
+	
 	@FXML
 	public void backButtonClicked() 
 	{
+		//Changing scenes on clicking the back button
 		screenController.activate("LoginScreen");
 	}
 	

@@ -38,13 +38,13 @@ public class loginScreenController{
 		this.screenController = screenController;
 	}
 	
-	//Logic for the LoginButton
+	//Logic for the LoginButton.
 	public void logInButtonClicked() {
 		if(checkLoginInt(ID) == true) {
 			duHarLoggetInn.setText(ID.getText() + " har logget inn!");
 		}
 	}
-	
+	//Method checks if login-textField only inputs INTEGER. Throws a NumberFormatException if input is not an INTEGER.
 	public boolean checkLoginInt(TextField input) {
 		try {
 			int id = Integer.parseInt(input.getText());
