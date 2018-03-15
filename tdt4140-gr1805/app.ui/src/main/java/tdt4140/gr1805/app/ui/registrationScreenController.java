@@ -56,7 +56,7 @@ public class registrationScreenController{
 	public void registerUser() {
 		
 			//Next bit of code is parsing from textField to Int
-			//Need to write validation forinvalid inputs
+			//Need to write validation for invalid inputs
 		int dag = Integer.parseInt(day_ID.getText());   			
 		int maaned = Integer.parseInt(month_ID.getText());
 		int aar = Integer.parseInt(year_ID.getText());
