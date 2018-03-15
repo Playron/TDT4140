@@ -1,68 +1,55 @@
 package tdt4140.gr1805.app.core.data;
 
 import java.util.ArrayList;
-import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Workout {
 	
 	private int id;
-	private String type;
-	private Date startTime;
-	private Date endTime;
-	private ArrayList<DataPoint> dataPoints;
-	
-	// Nødvendig for å lage et Workout-objekt fra JSON.
-	public Workout() {
-		super();
-	}
+	private Exercise type;
+	private ArrayList<DataPoint> datapoints;
 
-	public Workout(int id, String type, Date startTime, Date endTime, ArrayList<DataPoint> dataPoints) {
+	@JsonCreator
+	public Workout(
+			@JsonProperty("id") int id,
+			@JsonProperty("type") Exercise type,
+			@JsonProperty("datapoints") ArrayList<DataPoint> datapoints) {
 		this.id = id;
 		this.type = type;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.dataPoints = dataPoints;
-
+		this.datapoints = datapoints;
 	}
 	
-	public int getId() {
+	public int getID() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setID(int id) {
 		this.id = id;
 	}
 	
-	public String getType() {
+	public Exercise getType() {
 		return type;
 	}
 	
-	public void setType(String type) {
+	public void setType(Exercise type) {
 		this.type = type;
 	}
 	
-	public Date getStartTime() {
-		return startTime;
+	public ArrayList<DataPoint> getDatapoints() {
+		return datapoints;
 	}
 	
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
+	public void setDatapoints(ArrayList<DataPoint> datapoints) {
+		this.datapoints = datapoints;
+	}
+
+	@Override
+	public String toString() {
+		return "Workout [#" + id + ", type=" + type + ", datapoints=" + datapoints + "]";
 	}
 	
-	public Date getEndTime() {
-		return endTime;
-	}
 	
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
-	
-	public ArrayList<DataPoint> getDataPoints() {
-		return dataPoints;
-	}
-	
-	public void setDataPoints(ArrayList<DataPoint> dataPoints) {
-		this.dataPoints = dataPoints;
-	}
 	
 }

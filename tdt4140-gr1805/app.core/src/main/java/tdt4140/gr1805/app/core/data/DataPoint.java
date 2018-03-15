@@ -2,36 +2,41 @@ package tdt4140.gr1805.app.core.data;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 public class DataPoint {
 	int id;
 	Date timestamp;
-	int pulse;
-	LatLong location = null;
+	double pulse;
+	LatLong location;
 	
-	// Necessary to load from JSON
-	public DataPoint() {
-		super();
-	}
-	
-	public DataPoint(int id, Date timestamp, int pulse, LatLong location) {
+	@JsonCreator
+	public DataPoint(
+			@JsonProperty("id") int id,
+			@JsonProperty("timestamp") Date timestamp,
+			@JsonProperty("pulse") double pulse,
+			@JsonProperty("location") LatLong location) {
 		this.id = id;
 		this.timestamp = timestamp;
 		this.pulse = pulse;
 		this.location = location;
 	}
 	
-	// Use if location not applicable to set it to null.
-	public DataPoint(int id, Date timestamp, int pulse) {
+	// Constructor without location, default null
+	public DataPoint(int id, Date timestamp, double pulse) {
 		super();
 		this.id = id;
 		this.timestamp = timestamp;
 		this.pulse = pulse;
+		this.location = null;
 	}
 	
-	public int getId() {
+	public int getID() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setID(int id) {
 		this.id = id;
 	}
 	public Date getTimestamp() {
@@ -40,10 +45,10 @@ public class DataPoint {
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
-	public int getPulse() {
+	public double getPulse() {
 		return pulse;
 	}
-	public void setPulse(int pulse) {
+	public void setPulse(double pulse) {
 		this.pulse = pulse;
 	}
 	public LatLong getLocation() {
@@ -51,6 +56,11 @@ public class DataPoint {
 	}
 	public void setLocation(LatLong location) {
 		this.location = location;
+	}
+
+	@Override
+	public String toString() {
+		return "DataPoint [#" + id + ", " + timestamp + ", pulse=" + pulse + ", location=" + location + "]";
 	}
 	
 	
