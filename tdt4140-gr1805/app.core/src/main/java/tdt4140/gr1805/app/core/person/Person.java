@@ -1,44 +1,43 @@
 package tdt4140.gr1805.app.core.person;
 
 import java.time.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 public class Person {
 	
 	// The Class takes care of Person-Objects. This is users registered to the application
-	
 
 	//private int ID;
-	private LocalDate DOB;
-	private static int id = 1;
-	private int personalID;
-	private Gender gender;
-	private int restingPulse;
+	@JsonProperty("id") private int id;
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	@JsonProperty("DOB") private LocalDate DOB;
+	@JsonProperty("gender") private Gender gender;
+	@JsonProperty("gatherLocation") private boolean gatherLocation;
 	
-	// Nescessary for saving a Person-Object from JSON
 	public Person() {
 		super();
 	}
 
-	public Person (int year, int month, int day, Gender gender) {
-		
+	public Person(int year, int month, int day, Gender gender) {
 		setDOB(year, month, day);
 		this.gender = gender;
-		this.personalID = id;
-		id++;
-		//System.out.println(gender);
+		this.gatherLocation = true;
 	}
 	
-	// Constructor that also accepts resting pulse.
-    public Person (int year, int month, int day, Gender gender, int restPuls) {
-		
+	public Person(int id, int year, int month, int day, Gender gender) {
+		this.id = id;
 		setDOB(year, month, day);
 		this.gender = gender;
-		this.personalID = id;
-		this.restingPulse = restPuls;
-		id++;
-		//System.out.println(gender);
+		this.gatherLocation = true;
 	}
 
+	@JsonIgnore
 	private void setDOB(int year, int month, int day) //Validates normal citeria and birthdate.
 	{
 		if (month <= 0 || month > 12 ) 
@@ -66,12 +65,21 @@ public class Person {
 			// TODO: handle exception
 		}
 	}
-
+	
+	@JsonIgnore
+	public LocalDate getDOB() {
+		return this.DOB;
+	}
+	
 	public int getID() {
-		return this.personalID;
+		return this.id;
+	}
+	
+	public void setID(int id) {
+		this.id = id;
 	}
 
-
+	@JsonIgnore
 	public int getAge() {  //Calculates age
 		LocalDate dateNow = LocalDate.now();
 		return Period.between(this.DOB, dateNow).getYears(); // Uses between-method from DOB(User-input at registration)
@@ -81,16 +89,16 @@ public class Person {
 		return this.gender;
 	}
 	
-	public int getRestingPulse(){
-		return this.restingPulse;
-	}
-	
-	public void setRestingPulse(int restPuls) {
-		this.restingPulse = restPuls;
-	}
-
 	public String toString() {
 		return "The user is " + this.getAge() +" years old" + " and has ID-Number: " + this.getID() + ". Gender: " + this.gender;
+	}
+
+	public boolean isGatherLocation() {
+		return gatherLocation;
+	}
+
+	public void setGatherLocation(boolean gatherLocation) {
+		this.gatherLocation = gatherLocation;
 	}
 	
 }

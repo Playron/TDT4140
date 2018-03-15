@@ -7,6 +7,7 @@ import java.time.Period;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -137,6 +138,7 @@ public class TestPerson
 		testcase1 = new Person(year, month, day, gender);
 	}
 	
+	@Ignore // This test is unneeded with the new way of incrementing a person ID.
 	@Test
 	public void checkIfIDIncrements()			// Checks if the ID assigned to new Person-instances increments when 
 												// we create a new instance.
