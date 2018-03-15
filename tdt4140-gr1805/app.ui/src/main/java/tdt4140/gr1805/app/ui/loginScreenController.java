@@ -33,12 +33,12 @@ public class loginScreenController{
 	AnchorPane rootPane;
 	
 	
-
+    //Setting the screen controller
 	public void setScreenController(MasterScreenController screenController) {
 		this.screenController = screenController;
 	}
 	
-	
+	//Logic for the LoginButton
 	public void logInButtonClicked() {
 		if(checkLoginInt(ID) == true) {
 			duHarLoggetInn.setText(ID.getText() + " har logget inn!");
@@ -58,6 +58,8 @@ public class loginScreenController{
 		
 		
 	}
+	
+	//Changing scenes on clicking the registration button
 	@FXML
 	public void signupUser(ActionEvent event) throws IOException {
 		
