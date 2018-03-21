@@ -12,7 +12,7 @@ public class Liste {
 	
 	public void leggBrukerIListe(Person bruker) {
 		if(brukere.contains(bruker)) {
-			throw new IllegalArgumentException("Brukeren er allerede registrert");
+			throw new IllegalArgumentException("User is allredy registered");
 		}else {
 			brukere.add(bruker);
 		}
@@ -20,7 +20,7 @@ public class Liste {
 	
 	public void slettBrukerFraListe(Person bruker) {
 		if(!brukere.contains(bruker)) {
-			throw new IllegalArgumentException("Brukeren er ikke registrert");
+			throw new IllegalArgumentException("User is not registered");
 		}else {
 			brukere.remove(bruker);
 		}
