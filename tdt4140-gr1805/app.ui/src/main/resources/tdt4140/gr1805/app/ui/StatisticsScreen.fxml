@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.StatisticsScreenController">
    <children>
-      <Button fx:id="statistics_button1" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="Show Mean " />
+      <Button fx:id="showMeanButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="Show Mean " />
    </children>
 </AnchorPane>
