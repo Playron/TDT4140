@@ -51,12 +51,11 @@ public class Person implements java.io.Serializable{
 		out.writeObject(person);
 	}
 	
-	public static void readPersonFromFile(Person person) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public static Person readPersonFromFile(Person person) throws FileNotFoundException, IOException, ClassNotFoundException {
 		
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("Person.txt"));
 		person = (Person)in.readObject();
-		person.getAge();
-		System.out.println(person.getDOB());
+		return person;
 		
 	}
 
