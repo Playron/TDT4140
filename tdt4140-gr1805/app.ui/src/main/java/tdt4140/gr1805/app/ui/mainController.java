@@ -36,6 +36,11 @@ public class mainController extends Application {
     	    registrationScreenController controller2 = loader2.getController();
     	    controller2.setScreenController(screenController);
     		
+    	    FXMLLoader loader3 = new FXMLLoader(getClass().getResource("StatisticsScreen.fxml"));
+    	    screenController.addScreen("StatisticsScreen", (Pane)loader3.load());
+    	    StatisticsScreenController controller 3 = loader3.getController();
+    	    controller3.setScreenController(screenController);
+    	    
     	    //Activating the relevant scene
         screenController.activate("LoginScreen");
         
