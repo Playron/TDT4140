@@ -71,6 +71,14 @@ public class registrationScreenController{
 		if(gender.getSelectionModel().getSelectedItem() instanceof Gender) {			
 			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem()); 
 			
+			
+			try {
+				Person.writePersonToFile(person);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			//Må caste Gender for å returnere type Gender. ChoiceBox viser info fra observableList
 			
 			System.out.println(person);																		  

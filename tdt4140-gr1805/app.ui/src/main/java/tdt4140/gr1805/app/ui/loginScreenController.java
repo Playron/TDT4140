@@ -40,8 +40,11 @@ public class loginScreenController{
 	
 	//Logic for the LoginButton.
 	public void logInButtonClicked() {
-		if(checkLoginInt(ID) == true) {
-			duHarLoggetInn.setText(ID.getText() + " has logged inn!");
+		if(checkLoginInt(ID) == true) 
+		{
+			duHarLoggetInn.setText(ID.getText() + " har logget inn!");
+			screenController.activate("MenuScreen");
+
 		}
 	}
 	//Method checks if login-textField only inputs INTEGER. Throws a NumberFormatException if input is not an INTEGER.
