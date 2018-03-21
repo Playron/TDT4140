@@ -38,7 +38,7 @@ public class mainController extends Application {
     		
     	    FXMLLoader loader3 = new FXMLLoader(getClass().getResource("StatisticsScreen.fxml"));
     	    screenController.addScreen("StatisticsScreen", (Pane)loader3.load());
-    	    StatisticsScreenController controller 3 = loader3.getController();
+    	    StatisticsScreenController controller3 = loader3.getController();
     	    controller3.setScreenController(screenController);
     	    
     	    //Activating the relevant scene
