@@ -5,10 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.StatisticsScreenController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.StatisticsScreenController">
    <children>
       <Button fx:id="statisticsScreenShowMeanButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Show Mean " />
-      <Button fx:id="statisticsScreenBackToMenyButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Back to Menu" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Back to Menu" />
       <TextField fx:id="statisticsScreenShowMeanField" layoutX="14.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" />
       <TextArea fx:id="statisticsScreenTextArea1" layoutX="286.0" layoutY="14.0" prefHeight="100.0" prefWidth="300.0" />
    </children>

@@ -19,5 +19,11 @@ public class MenuScreenController
 		screenController.activate("SettingsScreen");
 	}
 	
+	@FXML
+	public void openStatisticsScreen() {
+		screenController.activate("StatisticsScreen");
+	}
+	
+	
 	
 }
