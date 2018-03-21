@@ -1,8 +1,12 @@
 package tdt4140.gr1805.app.core.data;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -27,9 +31,6 @@ public class Database {
 	private HashMap<Integer, Person> people;
 	private ArrayList<DataPoint> datapoints;
 	private ArrayList<Workout> workouts;
-	private File peopleFile;
-	private File datapointsFile;
-	private File workoutsFile;
 	private ObjectMapper mapper = new ObjectMapper();
 
 	public Database() {
@@ -37,20 +38,20 @@ public class Database {
 		this.datapoints = new ArrayList<DataPoint>();
 		this.workouts = new ArrayList<Workout>();
 		
-		this.peopleFile = new File("src/main/resources/tdt4140/gr1805/app/core/people.json");
-		this.datapointsFile = new File("src/main/resources/tdt4140/gr1805/app/core/datapoints.json");
-		this.workoutsFile = new File("src/main/resources/tdt4140/gr1805/app/core/workouts.json");
+		mapper.findAndRegisterModules();
+		mapper.registerModule(new JavaTimeModule());
+		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
+		
+//		this.peopleFile = new File("src/main/resources/tdt4140/gr1805/app/core/people.json");
+//		this.datapointsFile = new File("src/main/resources/tdt4140/gr1805/app/core/datapoints.json");
+//		this.workoutsFile = new File("src/main/resources/tdt4140/gr1805/app/core/workouts.json");
+	
 		
 		try {
 			readObjects();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		mapper.findAndRegisterModules();
-		mapper.registerModule(new JavaTimeModule());
-		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
-
 	}
 
 	/**
@@ -67,44 +68,62 @@ public class Database {
 		readWorkouts();
 	}
 	
+	public void readPeople() throws JsonParseException, JsonMappingException, IOException {
+		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/people.json");
+		this.people = mapper.readValue(input, new TypeReference<HashMap<Integer, Person>>(){});
+		input.close();
+
+	}
+	
+	public void readDatapoints() throws JsonParseException, JsonMappingException, IOException {
+		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/datapoints.json");
+		this.datapoints = mapper.readValue(input, new TypeReference<ArrayList<DataPoint>>(){});
+		input.close();
+	}
+	
+	public void readWorkouts() throws JsonParseException, JsonMappingException, IOException {
+		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/workouts.json");
+		this.workouts = mapper.readValue(input, new TypeReference<ArrayList<Workout>>(){});
+		input.close();
+	}
+	
 	/**
 	 * Saves changes made to the Database object to the files.
 	 * Must be used explicitly every time database has been
-	 * modified.
+	 * modified./tdt4140.gr1805.app.core/src/main/resources/tdt4140/gr1805/app/core/people.js
 	 * 
 	 * @throws JsonGenerationException
 	 * @throws JsonMappingException
 	 * @throws IOException
+	 * @throws URISyntaxException 
 	 */
-	public void writeObjects() throws JsonGenerationException, JsonMappingException, IOException {
-		writePeople();
-		writeDataPoints();
-		writeWorkouts();
-		
-	}
-	public void writePeople() throws JsonGenerationException, JsonMappingException, IOException {
-		mapper.writeValue(peopleFile, people);
+	public void writeObjects() throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+		writePeople(this.people);
+		writeDataPoints(this.datapoints);
+		writeWorkouts(this.workouts);
 	}
 	
-	public void writeDataPoints() throws JsonGenerationException, JsonMappingException, IOException {
-		mapper.writeValue(datapointsFile, datapoints);
+	public void writePeople(HashMap<Integer, Person> people) throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+		URL url = getClass().getResource("/tdt4140/gr1805/app/core/people.json");
+		OutputStream output = new FileOutputStream(new File(url.toURI()));
+		mapper.writeValue(output, people);
+		output.close();
 	}
 	
-	public void writeWorkouts() throws JsonGenerationException, JsonMappingException, IOException {
-		mapper.writeValue(workoutsFile, workouts);
-		
-	}
-	public void readPeople() throws JsonParseException, JsonMappingException, IOException {
-		this.people = mapper.readValue(peopleFile, new TypeReference<HashMap<Integer, Person>>(){});
-	}
-	
-	public void readDatapoints() throws JsonParseException, JsonMappingException, IOException {
-		this.datapoints = mapper.readValue(datapointsFile, new TypeReference<ArrayList<DataPoint>>(){});
+	public void writeDataPoints(ArrayList<DataPoint> datapoints) throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+		URL url = getClass().getResource("/tdt4140/gr1805/app/core/datapoints.json");
+		OutputStream output = new FileOutputStream(new File(url.toURI()));
+		mapper.writeValue(output, datapoints);
+		output.close();
 	}
 	
-	public void readWorkouts() throws JsonParseException, JsonMappingException, IOException {
-		this.workouts = mapper.readValue(workoutsFile, new TypeReference<ArrayList<Workout>>(){});
+	public void writeWorkouts(ArrayList<Workout> workouts) throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+		URL url = getClass().getResource("/tdt4140/gr1805/app/core/workouts.json");
+		OutputStream output = new FileOutputStream(new File(url.toURI()));
+		mapper.writeValue(output, workouts);
+		output.close();
 	}
+	
 	
 	/**
 	 * @return HashMap of all people in the database.
@@ -353,7 +372,7 @@ public class Database {
 	// Utility functions for generating data or cleaning the database.
 	
 	// This gives us something to look at, but is not realistic data.
-	public void populateDatabase() throws JsonGenerationException, JsonMappingException, IOException {
+	public void populateDatabase() throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
 		
 		for (int i = 1; i < 201; i++) {
 			DataPoint p = new DataPoint(i, new Date(), Math.random()*60+40);
@@ -387,16 +406,20 @@ public class Database {
 	}
 	
 	// Empties the entire database.
-	public void cleanDatabase() throws IOException {
-		PrintWriter pw = new PrintWriter(datapointsFile);
-		pw.close();
-		pw = new PrintWriter(peopleFile);
-		pw.close();		
-		pw = new PrintWriter(workoutsFile);
-		pw.close();
+	public void cleanDatabase() throws IOException, URISyntaxException {
+
+		HashMap<Integer, Person> emptyPeople = new HashMap<>();
+		ArrayList<DataPoint> emptyDatapoints = new ArrayList<>();
+		ArrayList<Workout> emptyWorkouts = new ArrayList<>();
+		this.writePeople(emptyPeople);
+		this.writeDataPoints(emptyDatapoints);
+		this.writeWorkouts(emptyWorkouts);
+		this.people.clear();
+		this.datapoints.clear();
+		this.workouts.clear();
 	}
 	
-	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
-		Database db = new Database();
-	}
+//	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
+//		Database db = new Database();
+//	}
 }
