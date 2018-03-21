@@ -2,6 +2,9 @@ package tdt4140.gr1805.app.ui;
 
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,7 +56,7 @@ public class registrationScreenController{
 		//Logic for the register user button
 	
 	@FXML
-	public void registerUser() {
+	public void registerUser() throws FileNotFoundException, ClassNotFoundException, IOException {
 		
 		//Next bit of code is parsing from textField to Int
 		//Need to write validation for invalid inputs

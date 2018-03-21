@@ -50,7 +50,7 @@ public class mainController extends Application {
     	    // -------- Menu Screen (after login success) ------------ //
     	    
     	    FXMLLoader loader4 = new FXMLLoader(getClass().getResource("MenuScreen.fxml"));
-    	    screenController.addScreen("StatisticsScreen", (Pane)loader4.load());
+    	    screenController.addScreen("MenuScreen", (Pane)loader4.load());
     	    StatisticsScreenController controller4 = loader4.getController();
     	    controller4.setScreenController(screenController);
     	    

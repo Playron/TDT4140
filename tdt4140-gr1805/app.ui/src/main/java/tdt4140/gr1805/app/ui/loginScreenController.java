@@ -41,18 +41,18 @@ public class loginScreenController{
 	//Logic for the LoginButton.
 	public void logInButtonClicked() {
 		if(checkLoginInt(ID) == true) {
-			duHarLoggetInn.setText(ID.getText() + " har logget inn!");
+			duHarLoggetInn.setText(ID.getText() + " has logged inn!");
 		}
 	}
 	//Method checks if login-textField only inputs INTEGER. Throws a NumberFormatException if input is not an INTEGER.
 	public boolean checkLoginInt(TextField input) {
 		try {
 			int id = Integer.parseInt(input.getText());
-			System.out.println("BrukerID er:" + id);
+			System.out.println("User id is:" + id);
 			return true;
 			
 		}catch(NumberFormatException e) {
-		System.out.println("ID maa vaere heltall");
+		System.out.println("ID must be an integer");
 		return false;
 		}
 		
