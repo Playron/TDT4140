@@ -17,7 +17,8 @@ public class DataPoint {
 			@JsonProperty("id") int id,
 			@JsonProperty("timestamp") Date timestamp,
 			@JsonProperty("pulse") double pulse,
-			@JsonProperty("location") LatLong location) {
+			@JsonProperty("location") LatLong location
+			) {
 		this.id = id;
 		this.timestamp = timestamp;
 		this.pulse = pulse;

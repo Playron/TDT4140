@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -11,7 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.registrationScreenController">
+=======
 <AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.registrationScreenController">
+>>>>>>> branch 'master' of https://gitlab.stud.iie.ntnu.no/tdt4140-2018/05.git
    <children>
       <MenuBar>
         <menus>
@@ -44,13 +48,9 @@
       <TextField fx:id="month_ID" layoutX="128.0" layoutY="187.0" />
       <TextField fx:id="year_ID" layoutX="128.0" layoutY="241.0" />
       <Button alignment="TOP_CENTER" defaultButton="true" layoutX="372.0" layoutY="187.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="27.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Registrer" textAlignment="JUSTIFY" />
-      <Label fx:id="logInMessage" layoutX="-81.0" layoutY="339.0">
-         <padding>
-            <Insets left="300.0" right="300.0" />
-         </padding>
-      </Label>
       <ChoiceBox fx:id="gender" layoutX="53.0" layoutY="304.0" prefWidth="150.0" />
       <Button id="backButton" layoutX="24.0" layoutY="356.0" mnemonicParsing="false" onAction="#backButtonClicked" text="Tilbake" />
+      <CheckBox layoutX="235.0" layoutY="309.0" mnemonicParsing="false" style="-fx-background-radius: 10;" text="Send inn lokasjon" />
 
    </children>
 </AnchorPane>
