@@ -5,7 +5,7 @@ public class MenuScreenController
 	public MasterScreenController screenController;
 	
 	
-	
+	 
 	 //Setting the screen controller
 	public void setScreenController(MasterScreenController screenController) 
 	{
