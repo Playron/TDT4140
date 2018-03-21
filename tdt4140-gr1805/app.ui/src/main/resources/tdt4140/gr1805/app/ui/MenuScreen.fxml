@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="toppbar" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" />
-      <AnchorPane layoutY="70.0" prefHeight="330.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" />
+      <AnchorPane fx:id="topbar" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #3D4956;">
+         <children>
+            <ImageView layoutX="34.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Record_40px.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="487.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Settings_40px.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="179.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../icons8_Combo_Chart_40px.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="323.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../icons8_User_40px_10.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="training" layoutY="70.0" prefHeight="330.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" />
+      <AnchorPane fx:id="statistics" layoutY="70.0" prefHeight="330.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" />
+      <AnchorPane fx:id="user" layoutY="70.0" prefHeight="330.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" />
+      <AnchorPane fx:id="training1" layoutY="70.0" prefHeight="330.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" />
    </children>
 </AnchorPane>
