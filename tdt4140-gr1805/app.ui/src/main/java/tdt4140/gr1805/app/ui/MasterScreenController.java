@@ -38,7 +38,7 @@ public class MasterScreenController {
     //Activate new Pane-views. Input is String --> Same as constructor String. Calls Pane which points at String-key.
     public void activate(String name){
         main.setRoot(screenMap.get(name));
-        stage.setTitle("Test");
+        stage.setTitle(" ");
         stage.setScene(main);
         stage.show();
     }
