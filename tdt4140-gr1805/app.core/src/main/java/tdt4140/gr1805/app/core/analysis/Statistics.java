@@ -73,7 +73,7 @@ public class Statistics {
 		liste.add(2.3);
 		Double median = computeMedian(liste);
 		System.out.println(median);
-		System.out.println(Exercise.values());
+		
 		ArrayList<Workout> liste1 = new ArrayList<Workout>();
 		LatLong exempelLat = new LatLong(2.1,2.2);
 		Date dato = new Date(0);
