@@ -29,11 +29,27 @@ public class StatisticsScreenController
 		this.screenController = screenController;
 	}
 	
-	//Changing scenes on clicking the registration button
+	//Changing scenes on clicking the Back to Menu button
 	@FXML
 	public void backToMenu(ActionEvent event) throws IOException 
 	{
 		screenController.activate("MenuScreen");
 	}
+	
+	//Changing scenes on clicking the Back to Menu button
+		@FXML
+		public void toPersonalStatistics(ActionEvent event) throws IOException 
+		{
+			screenController.activate("StatisticsMean");
+		}
+	
+		
+		//Changing scenes on clicking the Back to Menu button
+		@FXML
+		public void toCityStatistics(ActionEvent event) throws IOException 
+		{
+			screenController.activate("StatisticsCitiesMean");
+		}
+	
 
 }

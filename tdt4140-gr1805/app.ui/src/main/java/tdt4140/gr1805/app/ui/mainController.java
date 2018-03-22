@@ -101,21 +101,21 @@ public class mainController extends Application
 		screenController.addScreen("StatisticsMean", (Pane) statLoader2.load());
 		StatisticsMeanController statController2 = statLoader2.getController();
 		statController2.setScreenController(screenController);
-
+/*
 		// -------- Statistics Cities Median Screen ------------ //
 
 		FXMLLoader statLoader3 = new FXMLLoader(getClass().getResource("statisticsScreen/StatisticsCitiesMedian.fxml"));
 		screenController.addScreen("StatisticsCitiesMedian", (Pane) statLoader3.load());
 		StatisticsCitiesMedianController statController3 = statLoader3.getController();
 		statController3.setScreenController(screenController);
-
-		// -------- Statistics Median Screen ------------ //
+*/
+/*		// -------- Statistics Median Screen ------------ //
 
 		FXMLLoader statLoader4 = new FXMLLoader(getClass().getResource("statisticsScreen/StatisticsMedian.fxml"));
 		screenController.addScreen("StatisticsMean", (Pane) statLoader4.load());
 		StatisticsMedianController statController4 = statLoader4.getController();
 		statController4.setScreenController(screenController);
-
+*/
 	}
 
 }

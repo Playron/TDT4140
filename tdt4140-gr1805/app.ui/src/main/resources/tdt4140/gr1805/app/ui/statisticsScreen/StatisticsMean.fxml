@@ -3,9 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="tdt4140.gr1805.app.ui.statisticsScreen.StatisticsMeanController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.statisticsScreen.StatisticsMeanController">
 	<children>
-		<Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Back to Menu" />
+		<Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="120.0" style="-fx-background-radius: 10;" text="Back to Menu" />
+		<Button layoutX="14.0" layoutY="58.0" mnemonicParsing="false" onAction="#backToStatistics" prefHeight="30.0" prefWidth="120.0" text="Back to Statistics" />
 	</children>
 </AnchorPane>
