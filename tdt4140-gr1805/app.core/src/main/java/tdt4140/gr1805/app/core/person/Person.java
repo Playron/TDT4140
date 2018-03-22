@@ -48,13 +48,16 @@ public class Person implements java.io.Serializable{
 		
 		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Person.txt", true));
 		out.writeObject(person);
+		out.close();
 	}
 	
 	public static Person readPersonFromFile(Person person) throws FileNotFoundException, IOException, ClassNotFoundException {
 		
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("Person.txt"));
 		person = (Person)in.readObject();
+		in.close();
 		return person;
+		
 		
 	}
 
