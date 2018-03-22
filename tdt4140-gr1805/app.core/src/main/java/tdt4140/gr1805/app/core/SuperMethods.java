@@ -2,8 +2,6 @@ package tdt4140.gr1805.app.core;
 import java.lang.Math;
 import java.text.DecimalFormat;
 
-import javax.swing.text.NumberFormatter;
-
 public class SuperMethods
 {
 	boolean checkIfString(Object obj)		// Just checks if what is passed to it is a string and returns a boolean
