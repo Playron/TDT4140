@@ -22,9 +22,9 @@ public class TestListe {
 	public void testleggBrukeIListe1() {
 		
 		ArrayList<Person> expected = new ArrayList<Person>();
-		Person pers1 = new Person(2000, 1, 21, Gender.FEMALE);
-		Person pers2 = new Person(2000, 1, 21, Gender.MALE);
-		Person pers3 = new Person(2001, 1, 21, Gender.FEMALE);
+		Person pers1 = new Person(2000, 1, 21, Gender.FEMALE, City.KRISTIANSAND);
+		Person pers2 = new Person(2000, 1, 21, Gender.MALE, City.OSLO);
+		Person pers3 = new Person(2001, 1, 21, Gender.FEMALE, City.TROMSOE);
 		expected.add(pers1);
 		expected.add(pers2);
 		expected.add(pers3);
@@ -36,16 +36,16 @@ public class TestListe {
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void testleggBrukerIListe2() {
-		Person pers1 = new Person(2000, 1, 21, Gender.FEMALE);
+		Person pers1 = new Person(2000, 1, 21, Gender.FEMALE, City.OSLO);
 		testliste.leggBrukerIListe(pers1);
 		testliste.leggBrukerIListe(pers1);
 	}
 	
 	@Test
 	public void testslettBrukerFraListe1() {
-		Person pers1 = new Person(2000, 1, 21, Gender.FEMALE);
-		Person pers2 = new Person(2000, 1, 21, Gender.MALE);
-		Person pers3 = new Person(2001, 1, 21, Gender.FEMALE);
+		Person pers1 = new Person(2000, 1, 21, Gender.FEMALE, City.TROMSOE);
+		Person pers2 = new Person(2000, 1, 21, Gender.MALE, City.STAVANGER);
+		Person pers3 = new Person(2001, 1, 21, Gender.FEMALE, City.STAVANGER);
 		testliste.leggBrukerIListe(pers1);
 		testliste.leggBrukerIListe(pers2);
 		testliste.leggBrukerIListe(pers3);
@@ -58,8 +58,8 @@ public class TestListe {
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void testslettBrukerFraListe2(){
-		Person pers1 = new Person(2000, 1, 21, Gender.FEMALE);
-		Person pers2 = new Person(2000, 1, 21, Gender.MALE);
+		Person pers1 = new Person(2000, 1, 21, Gender.FEMALE, City.STAVANGER);
+		Person pers2 = new Person(2000, 1, 21, Gender.MALE, City.BERGEN);
 		testliste.leggBrukerIListe(pers1);
 		testliste.slettBrukerFraListe(pers2);
 	}

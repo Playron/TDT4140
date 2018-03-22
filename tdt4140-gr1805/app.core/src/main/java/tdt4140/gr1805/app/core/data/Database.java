@@ -372,7 +372,7 @@ public class Database {
 	// Utility functions for generating data or cleaning the database.
 	
 	// This gives us something to look at, but is not realistic data.
-	public void populateDatabase() throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+	/*public void populateDatabase() throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
 		
 		for (int i = 1; i < 201; i++) {
 			DataPoint p = new DataPoint(i, new Date(), Math.random()*60+40);
@@ -403,7 +403,7 @@ public class Database {
 		this.addPerson(p2);
 		
 		this.writeObjects();
-	}
+	}*/
 	
 	// Empties the entire database.
 	public void cleanDatabase() throws IOException, URISyntaxException {
