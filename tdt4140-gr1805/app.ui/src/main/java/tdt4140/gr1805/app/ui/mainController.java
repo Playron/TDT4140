@@ -8,6 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsCitiesMeanController;
+import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsCitiesMedianController;
+import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsMeanController;
+import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsMedianController;
 
 public class mainController extends Application
 {
@@ -64,9 +68,43 @@ public class mainController extends Application
 		screenController.addScreen("SettingsScreen", (Pane) loader5.load());
 		SettingsScreenController controller5 = loader5.getController();
 		controller5.setScreenController(screenController);
+		
+		activateStatisticsScreen();
+		
 		// Activating the relevant scene
 		screenController.activate("LoginScreen");
 
+	}
+
+	public void activateStatisticsScreen() throws Exception
+	{
+		// -------- Statistics Cities Mean Screen ------------ //
+
+		FXMLLoader statLoader1 = new FXMLLoader(getClass().getResource("SatisticsCitiesMean.fxml"));
+		screenController.addScreen("StatisticsCitiesMean", (Pane) statLoader1.load());
+		StatisticsCitiesMeanController statController1 = statLoader1.getController();
+		statController1.setScreenController(screenController);
+
+		// -------- Statistics Mean Screen ------------ //
+
+		FXMLLoader statLoader2 = new FXMLLoader(getClass().getResource("SatisticsMean.fxml"));
+		screenController.addScreen("StatisticsMean", (Pane) statLoader2.load());
+		StatisticsMeanController statController2 = statLoader2.getController();
+		statController2.setScreenController(screenController);
+
+		// -------- Statistics Cities Median Screen ------------ //
+
+		FXMLLoader statLoader3 = new FXMLLoader(getClass().getResource("SatisticsCitiesMedian.fxml"));
+		screenController.addScreen("StatisticsCitiesMedian", (Pane) statLoader3.load());
+		StatisticsCitiesMedianController statController3 = statLoader3.getController();
+		statController3.setScreenController(screenController);
+
+		// -------- Statistics Median Screen ------------ //
+
+		FXMLLoader statLoader4 = new FXMLLoader(getClass().getResource("SatisticsMedian.fxml"));
+		screenController.addScreen("StatisticsMean", (Pane) statLoader4.load());
+		StatisticsMedianController statController4 = statLoader4.getController();
+		statController4.setScreenController(screenController);
 	}
 
 }
