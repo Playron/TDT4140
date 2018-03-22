@@ -17,6 +17,7 @@ public class ComputeSpeed {
 	
 	
 	public void computeAverageSpeed(Workout workout) {
+		//TODO : add documentation
 		Database db = new Database();
 		ArrayList<DataPoint> speedCompute = workout.getDatapoints();
 		Date end_time = speedCompute.get(speedCompute.size()).getTimestamp(); 
@@ -24,7 +25,7 @@ public class ComputeSpeed {
 		for(DataPoint i : speedCompute) {
 		}
 		
-		
+		// TODO: Add functionality
 	}
 	
 	
