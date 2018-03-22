@@ -6,7 +6,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.StatisticsScreenController">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Back to Menu" />
-      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="See personal statistics" />
-      <Button layoutX="180.0" layoutY="361.0" mnemonicParsing="false" text="See city statistics" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#toPersonalStatistics" text="See personal statistics" />
+      <Button layoutX="180.0" layoutY="361.0" mnemonicParsing="false" onAction="#toCityStatistics" text="See city statistics" />
    </children>
 </AnchorPane>
