@@ -17,5 +17,16 @@ Now a new window will open. Here you will get two options:
   Click on the statistics icon to open the statistics view. From here you can
   click on "See personal statistics" or "See city statistics" to view windows that 
   will show personal statistics or city statistics. 
+    
+  Click on the profile icon to open the user view. Here you can let the app know when 
+  you’re going to bed, and when you’re waking up. 
   
+  Click on the gear icon to open the settings view. Here you have a variety of options. 
+  In the upper right, you can chose to delete your data, or delete your use altogether. 
+  If you wish to opt out of the project, you can find the checkbox in the lower right 
+  corner. Also, if you would like to temporarily pause gathering of either pulse data or 
+  GPS, the options are there as well. 
   
+  In all the different views, there’s an option in the upper left corner to go back 
+  to the previous menu. 
+
