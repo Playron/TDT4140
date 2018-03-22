@@ -22,7 +22,6 @@ public class ComputeSpeed {
 		Date end_time = speedCompute.get(speedCompute.size()).getTimestamp(); 
 		Date start_time = speedCompute.get(0).getTimestamp();
 		for(DataPoint i : speedCompute) {
-			db.get
 		}
 		
 		
