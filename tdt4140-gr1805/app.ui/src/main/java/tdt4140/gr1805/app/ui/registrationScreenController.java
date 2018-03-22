@@ -27,10 +27,9 @@ import javafx.stage.Stage;
 
 public class registrationScreenController{
 
-	ObservableList<Gender> genderList = FXCollections.observableArrayList(Gender.MALE, Gender.FEMALE); //Creates List with Gender-Enum
-	MasterScreenController screenController; //Initiate MasterScreen in registrationScreen. 
+	ObservableList<Gender> genderList = FXCollections.observableArrayList(Gender.MALE, Gender.FEMALE); //Creates List with Gender-Enum 
 	ObservableList<City> cityList = FXCollections.observableArrayList(City.BERGEN, City.KRISTIANSAND, City.OSLO, City.TROMSOE, City.TRONDHEIM, City.STAVANGER);
-	
+	MasterScreenController screenController; //Initiate MasterScreen in registrationScreen.
 	
 	@FXML
 	ChoiceBox cityBox;
@@ -75,7 +74,8 @@ public class registrationScreenController{
 		//Checks if choiceBox-choices is an instance of the Gender enum.
 		
 		if(gender.getSelectionModel().getSelectedItem() instanceof Gender) {			
-			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem(), (City) cityBox.getSelectionModel().getSelectedItem()); 
+			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem(), 
+					(City) cityBox.getSelectionModel().getSelectedItem()); 
 			
 			
 			try {
