@@ -3,15 +3,12 @@ package tdt4140.gr1805.app.ui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsCitiesMeanController;
-import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsCitiesMedianController;
 import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsMeanController;
-import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsMedianController;
 
 
 public class mainController extends Application
