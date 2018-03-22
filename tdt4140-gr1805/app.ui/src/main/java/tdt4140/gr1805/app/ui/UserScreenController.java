@@ -4,14 +4,11 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
 public class UserScreenController 
 {
 	public MasterScreenController screenController;
-	@FXML
-	private Button userScreenBackToMenu;
-	
+
 
 	public void setScreenController(MasterScreenController screenController) 
 	{
