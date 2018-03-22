@@ -1,20 +1,15 @@
 package tdt4140.gr1805.app.core.analysis;
 
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 
-import javafx.util.Pair;
-import tdt4140.gr1805.app.core.data.DataPoint;
 import tdt4140.gr1805.app.core.data.Exercise;
-import tdt4140.gr1805.app.core.data.LatLong;
 import tdt4140.gr1805.app.core.data.Workout;
 
 public class Statistics {
 	
-	
+	// TODO: Add documentation to computeMedian
 	public static Double computeMedian(ArrayList<Double> array) {
 		Collections.sort(array);
 		Double median;
