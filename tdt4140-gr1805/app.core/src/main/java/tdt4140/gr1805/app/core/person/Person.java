@@ -19,7 +19,7 @@ public class Person implements java.io.Serializable{
 	// The Class takes care of Person-Objects. This is users registered to the application
 
 	//private int ID;
-	@JsonProperty("id") private static int id;
+	@JsonProperty("id") private int id;
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	@JsonProperty("DOB") private LocalDate DOB;
@@ -34,7 +34,6 @@ public class Person implements java.io.Serializable{
 		setDOB(year, month, day);
 		this.gender = gender;
 		this.gatherLocation = true;
-		this.id++;
 	}
 	
 	public Person(int id, int year, int month, int day, Gender gender) {
@@ -49,13 +48,16 @@ public class Person implements java.io.Serializable{
 		
 		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Person.txt", true));
 		out.writeObject(person);
+		out.close();
 	}
 	
 	public static Person readPersonFromFile(Person person) throws FileNotFoundException, IOException, ClassNotFoundException {
 		
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("Person.txt"));
 		person = (Person)in.readObject();
+		in.close();
 		return person;
+		
 		
 	}
 
@@ -125,20 +127,20 @@ public class Person implements java.io.Serializable{
 	
 
 	
-	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException
-	{
-		Person pers1 = new Person(1991, 02, 20, Gender.MALE);
-		System.out.println(pers1.getAge());
-		System.out.println(pers1.getID());
-		System.out.println(pers1.getGender());
-		writePersonToFile(pers1);
-		readPersonFromFile(pers1);
-		Person pers2 = new Person(1993, 02, 20, Gender.FEMALE);
-		writePersonToFile(pers2);
-		readPersonFromFile(pers2);
-		readPersonFromFile(pers1);
-	
-	
-	}
+//	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException
+//	{
+//		Person pers1 = new Person(1991, 02, 20, Gender.MALE);
+//		System.out.println(pers1.getAge());
+//		System.out.println(pers1.getID());
+//		System.out.println(pers1.getGender());
+//		writePersonToFile(pers1);
+//		readPersonFromFile(pers1);
+//		Person pers2 = new Person(1993, 02, 20, Gender.FEMALE);
+//		writePersonToFile(pers2);
+//		readPersonFromFile(pers2);
+//		readPersonFromFile(pers1);
+//	
+//	
+//	}
 }
 

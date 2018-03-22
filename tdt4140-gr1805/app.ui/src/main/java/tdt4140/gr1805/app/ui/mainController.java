@@ -13,8 +13,10 @@ import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsCitiesMedianController;
 import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsMeanController;
 import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsMedianController;
 
+
 public class mainController extends Application
 {
+
 	public loginScreenController loginController;
 	public registrationScreenController registrationController;
 	public MasterScreenController screenController;
@@ -105,6 +107,7 @@ public class mainController extends Application
 		screenController.addScreen("StatisticsMean", (Pane) statLoader4.load());
 		StatisticsMedianController statController4 = statLoader4.getController();
 		statController4.setScreenController(screenController);
+
 	}
 
 }
