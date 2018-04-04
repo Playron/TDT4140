@@ -63,7 +63,7 @@ public class Statistics {
 		
 	}
 	
-	private ArrayList<DataPoint> PointsByTime(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd){
+	private static ArrayList<DataPoint> PointsByTime(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd){
 		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
 		for (DataPoint point:dp) {
 			if (point.getTimestamp().after(timeStart)) {
@@ -76,7 +76,7 @@ public class Statistics {
 		return points;
 	}
 	
-	private Double averageBPMhelper(ArrayList<DataPoint>dp){
+	private static Double averageBPMhelper(ArrayList<DataPoint>dp){
 		Double result = null;
 		int count = 0;
 		for(DataPoint point:dp) {
@@ -86,7 +86,7 @@ public class Statistics {
 		result = result/count;
 		return result;
 	}
-	public static ArrayList<ArrayList<Double>> averageBPM(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd, int deler) throws Exception{
+	public static ArrayList<ArrayList<Object>> averageBPM(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd, int deler) throws Exception{
 		if (timeEnd.before(timeStart)) {
 			throw new IllegalArgumentException("The starttime needs to be before the endtime");
 		}
@@ -101,11 +101,19 @@ public class Statistics {
 		}
 		long intervall = timeEnd.getTime() - timeStart.getTime();
 		long intervallDeler = intervall/deler;
-		for(int i = 0; i< deler;i++) {
-			
+		ArrayList<ArrayList<Object>> result = new ArrayList<ArrayList<Object>>();
+		for(int i = 1; i< deler;i++) {
+			Date intervallStart = new Date(timeStart.getTime() + (intervallDeler*i));
+			Date intervallEnd = new Date(timeStart.getTime() + (intervallDeler*i+1));
+			ArrayList<DataPoint> intervalldp = PointsByTime(dp, intervallStart, intervallEnd);
+			Date intervallDisplay = new Date(intervallStart.getTime()+(intervallDeler/2));
+			ArrayList<Object> intervallArray= new ArrayList<Object>();
+			intervallArray.add(intervalldp);
+			intervallArray.add(averageBPMhelper(intervalldp));
+			result.add(intervallArray);
 		}
 		
-		return null;
+		return result;
 		
 	}
 	
