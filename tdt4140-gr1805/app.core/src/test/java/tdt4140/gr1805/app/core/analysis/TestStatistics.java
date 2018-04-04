@@ -2,17 +2,24 @@ package tdt4140.gr1805.app.core.analysis;
 
 import static org.junit.Assert.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.junit.Test;
 
 import tdt4140.gr1805.app.core.data.DataPoint;
+import tdt4140.gr1805.app.core.data.Database;
 import tdt4140.gr1805.app.core.data.Exercise;
 import tdt4140.gr1805.app.core.data.LatLong;
 import tdt4140.gr1805.app.core.data.Workout;
 
 public class TestStatistics {
+	private static Date localDateTimeToDate(LocalDateTime date) {
+		return Date.from(date.atZone(ZoneId.systemDefault()).toInstant());
+	}
 
 	@Test
 	public void testComputeMedian1() {
@@ -78,5 +85,17 @@ public class TestStatistics {
 		Exercise mostused = Statistics.mostUsedExercise(liste1);
 		assertEquals(expected, mostused);
 	}
+	
+	@Test
+	public void testAverageBPM1() {
+		
+		ArrayList<DataPoint> dpa = new ArrayList<DataPoint>();
+		LocalDateTime date = LocalDateTime.of(2017, 8, 22, 3, 54);
+		Date dato = localDateTimeToDate(date);
+		System.out.println(dato.getTime());
+		
+	}
+	
+	
 
 }
