@@ -26,7 +26,7 @@ public class loginScreenController{
 	@FXML
 	private Button loggInn;
 	@FXML
-	private TextField ID;
+	private TextField ID_TextField;
 	@FXML
 	private Label duHarLoggetInn;
 	@FXML
@@ -40,18 +40,29 @@ public class loginScreenController{
 	
 	//Logic for the LoginButton.
 	public void logInButtonClicked() {
-		if(checkLoginInt(ID) == true) 
+		int id = Integer.parseInt(ID_TextField.getText());
+		
+		if(checkLoginInt(ID_TextField, id) == true) 
 		{
-			duHarLoggetInn.setText(ID.getText() + " har logget inn!");
-			screenController.activate("MenuScreen");
-		}else {
+			//Checking for admin ID (Which is zero)
+			
+			if(Integer.parseInt(ID_TextField.getText()) == 0) {
+				screenController.activate("AdminScreen");
+			}
+			else {
+				duHarLoggetInn.setText(ID_TextField.getText() + " har logget inn!");
+				screenController.setCurrentUserID(id);
+				screenController.activate("MenuScreen");
+			}
+		}
+		else {
 			duHarLoggetInn.setText("Login-ID must be an integer!");
 		}
 	}
 	//Method checks if login-textField only inputs INTEGER. Throws a NumberFormatException if input is not an INTEGER.
-	public boolean checkLoginInt(TextField input) {
+	public boolean checkLoginInt(TextField input, int id) {
 		try {
-			int id = Integer.parseInt(input.getText());
+			
 			System.out.println("User id is: " + id);
 			return true;
 			
