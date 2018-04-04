@@ -3,9 +3,11 @@ package tdt4140.gr1805.app.core.analysis;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
+import tdt4140.gr1805.app.core.data.DataPoint;
+import tdt4140.gr1805.app.core.data.Database;
 import tdt4140.gr1805.app.core.data.Exercise;
 import tdt4140.gr1805.app.core.data.Workout;
+import java.util.Date;
 
 public class Statistics {
 	
@@ -57,6 +59,25 @@ public class Statistics {
 		int max = Collections.max(count);  
 		int index = count.indexOf(max);
 		return liste.get(index); //returns the type of exersice that occurs the most in the array given in this method
+		
+	}
+	
+	public static ArrayList<ArrayList<Double>> averageBPM(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd, int deler) throws Exception{
+		if (timeEnd.before(timeStart)) {
+			throw new IllegalArgumentException("The starttime needs to be before the endtime");
+		}
+		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
+		for (DataPoint point:dp) {
+			if (point.getTimestamp().after(timeStart)) {
+				if(point.getTimestamp().before(timeEnd)) {
+					points.add(point);
+				}
+				
+			}
+		}
+		
+		
+		return null;
 		
 	}
 	
