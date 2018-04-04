@@ -46,4 +46,12 @@ public class LatLong {
 	public String toString() {
 		return latitude + "," + longitude;
 	}
+	
+	public static void main(String[] args) {
+		LatLong lat1 = new LatLong(59.68843129, 10.22543467);
+		LatLong lat2 = new LatLong(59.68746744, 10.22464073);
+		System.out.println(distance(lat1, lat2));
+	}
+	
+	
 }

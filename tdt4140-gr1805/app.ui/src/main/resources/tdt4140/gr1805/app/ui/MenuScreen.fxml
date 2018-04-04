@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.MenuScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.MenuScreenController">
    <children>
       <AnchorPane fx:id="topbar" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #3D4956;">
          <children>
@@ -23,7 +23,7 @@
                   <Image url="@../../../../icons8_Combo_Chart_40px.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="323.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="323.0" layoutY="10.0" onMouseClicked="#openUserScreen" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../icons8_User_40px_10.png" />
                </image>

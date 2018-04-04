@@ -9,7 +9,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
@@ -32,7 +31,8 @@ public class Database {
 	private ArrayList<DataPoint> datapoints;
 	private ArrayList<Workout> workouts;
 	private ObjectMapper mapper = new ObjectMapper();
-
+	
+	
 	public Database() {
 		this.people = new HashMap<Integer, Person>();
 		this.datapoints = new ArrayList<DataPoint>();
@@ -68,6 +68,7 @@ public class Database {
 		readWorkouts();
 	}
 	
+	// TODO: Add documentation to readPeople() in Database.java.
 	public void readPeople() throws JsonParseException, JsonMappingException, IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/people.json");
 		this.people = mapper.readValue(input, new TypeReference<HashMap<Integer, Person>>(){});
@@ -75,12 +76,14 @@ public class Database {
 
 	}
 	
+	// TODO: Add documentation to readDatapoints() in Database.java
 	public void readDatapoints() throws JsonParseException, JsonMappingException, IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/datapoints.json");
 		this.datapoints = mapper.readValue(input, new TypeReference<ArrayList<DataPoint>>(){});
 		input.close();
 	}
 	
+	// TODO: Add documentation to readWorkouts() in Database.java
 	public void readWorkouts() throws JsonParseException, JsonMappingException, IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/workouts.json");
 		this.workouts = mapper.readValue(input, new TypeReference<ArrayList<Workout>>(){});
@@ -103,6 +106,7 @@ public class Database {
 		writeWorkouts(this.workouts);
 	}
 	
+	// TODO: Add documentation to writePeopl() in Database.java
 	public void writePeople(HashMap<Integer, Person> people) throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/people.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
@@ -110,6 +114,7 @@ public class Database {
 		output.close();
 	}
 	
+	// TODO: Add documentation to writeDataPoints() in Database.java
 	public void writeDataPoints(ArrayList<DataPoint> datapoints) throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/datapoints.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
@@ -117,6 +122,7 @@ public class Database {
 		output.close();
 	}
 	
+	// TODO: Add documentation to writeWorkouts() in Database.java
 	public void writeWorkouts(ArrayList<Workout> workouts) throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/workouts.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
@@ -372,7 +378,7 @@ public class Database {
 	// Utility functions for generating data or cleaning the database.
 	
 	// This gives us something to look at, but is not realistic data.
-	public void populateDatabase() throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+	/*public void populateDatabase() throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
 		
 		for (int i = 1; i < 201; i++) {
 			DataPoint p = new DataPoint(i, new Date(), Math.random()*60+40);
@@ -403,7 +409,7 @@ public class Database {
 		this.addPerson(p2);
 		
 		this.writeObjects();
-	}
+	}*/
 	
 	// Empties the entire database.
 	public void cleanDatabase() throws IOException, URISyntaxException {

@@ -25,15 +25,18 @@ public class Person implements java.io.Serializable{
 	@JsonProperty("DOB") private LocalDate DOB;
 	@JsonProperty("gender") private Gender gender;
 	@JsonProperty("gatherLocation") private boolean gatherLocation;
+	private City city;
+	//TODO: connect city in person to database
 	
 	public Person() {
 		super();
 	}
 
-	public Person(int year, int month, int day, Gender gender) {
+	public Person(int year, int month, int day, Gender gender, City city) {
 		setDOB(year, month, day);
 		this.gender = gender;
 		this.gatherLocation = true;
+		this.city = city;
 	}
 	
 	public Person(int id, int year, int month, int day, Gender gender) {
@@ -123,6 +126,10 @@ public class Person implements java.io.Serializable{
 
 	public void setGatherLocation(boolean gatherLocation) {
 		this.gatherLocation = gatherLocation;
+	}
+	
+	public City getCity() {
+		return this.city;
 	}
 	
 

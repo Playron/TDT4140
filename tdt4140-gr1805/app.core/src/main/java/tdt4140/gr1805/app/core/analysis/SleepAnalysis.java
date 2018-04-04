@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import tdt4140.gr1805.app.core.data.DataPoint;
-import tdt4140.gr1805.app.core.person.Person;
 import tdt4140.gr1805.app.core.data.Database;
 
 public class SleepAnalysis {

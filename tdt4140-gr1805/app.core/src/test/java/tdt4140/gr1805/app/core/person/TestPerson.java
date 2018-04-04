@@ -47,7 +47,8 @@ public class TestPerson
 		int year = dob.getYear();
 		int month = dob.getMonthValue();
 		int day = dob.getDayOfMonth();
-		Person pers1 = new Person(year, month, day, gender);
+		City city = City.TROMSOE;
+		Person pers1 = new Person(year, month, day, gender,city);
 		ArrayList<Object> toReturn = new ArrayList<Object>();
 		toReturn.add(dob);
 		toReturn.add(gender);
@@ -63,7 +64,8 @@ public class TestPerson
 		int month = dateNow.getMonthValue();
 		int day = dateNow.getDayOfMonth();
 		Gender gender = Gender.MALE;
-		testcase1 = new Person(year, month, day, gender);		
+		City ciry = City.BERGEN;
+		testcase1 = new Person(year, month, day, gender,ciry);		
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -77,7 +79,8 @@ public class TestPerson
 		int month = dob.getMonthValue();
 		int day = dob.plusDays(days).getDayOfMonth();
 		Gender gender = Gender.FEMALE;
-		testcase1 = new Person(year, month, day, gender);
+		City city = City.STAVANGER;
+		testcase1 = new Person(year, month, day, gender, city);
 	}
 	
 	@Test
@@ -94,7 +97,8 @@ public class TestPerson
 //		System.out.println(dob);
 //		System.out.println("Year: " + year + "\nMonth: " + month + "\nDay: " + day);
 		Gender gender = Gender.FEMALE;
-		testcase1 = new Person(year, month, day, gender);
+		City city = City.OSLO;
+		testcase1 = new Person(year, month, day, gender, city);
 		assertEquals(Period.between(dob, LocalDate.now()).getYears(), testcase1.getAge());
 	}
 	
@@ -105,7 +109,8 @@ public class TestPerson
 		int month = 0;
 		int day = 4;
 		Gender gender = Gender.FEMALE;
-		testcase1 = new Person(year, month, day, gender);
+		City city = City.BERGEN;
+		testcase1 = new Person(year, month, day, gender, city);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -115,7 +120,8 @@ public class TestPerson
 		int month = 13;
 		int day = 4;
 		Gender gender = Gender.FEMALE;
-		testcase1 = new Person(year, month, day, gender);
+		City city = City.KRISTIANSAND;
+		testcase1 = new Person(year, month, day, gender, city);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -125,7 +131,8 @@ public class TestPerson
 		int month = 04;
 		int day = 0;
 		Gender gender = Gender.FEMALE;
-		testcase1 = new Person(year, month, day, gender);
+		City city = City.OSLO;
+		testcase1 = new Person(year, month, day, gender, city);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -135,7 +142,8 @@ public class TestPerson
 		int month = 04;
 		int day = 32;
 		Gender gender = Gender.FEMALE;
-		testcase1 = new Person(year, month, day, gender);
+		City city = City.KRISTIANSAND;
+		testcase1 = new Person(year, month, day, gender, city);
 	}
 	
 	@Ignore // This test is unneeded with the new way of incrementing a person ID.

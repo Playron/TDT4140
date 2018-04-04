@@ -53,8 +53,5 @@ public class TestAverageNumber
 		assertEquals(0, result, 0);
 	}
 	
-	
-	
-	
-	// TODO: Create package of testcases, which this runs through. ?
+
 }
