@@ -88,7 +88,6 @@ public class registrationScreenController{
 			Database db = new Database();
 			db.addPerson(person);
 			db.writeObjects();
-			
 			System.out.println(person);																		  
 		}else {																								  
 			//Should never trigger, since Gender-enum is only option.	
