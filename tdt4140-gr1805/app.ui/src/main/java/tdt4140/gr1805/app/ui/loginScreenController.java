@@ -3,23 +3,12 @@ package tdt4140.gr1805.app.ui;
 
 
 import java.io.IOException;
-import java.net.URL;
-
-import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class loginScreenController{
 	public MasterScreenController screenController;
