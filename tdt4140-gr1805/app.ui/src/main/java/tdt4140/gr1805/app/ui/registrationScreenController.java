@@ -36,7 +36,7 @@ public class registrationScreenController{
 	@FXML
 	Label logInMessage;
 	@FXML
-	ChoiceBox gender;
+	ChoiceBox<Gender> gender;
 	@FXML
 	Button backButton;
 	@FXML
