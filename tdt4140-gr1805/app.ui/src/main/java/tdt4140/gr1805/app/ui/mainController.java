@@ -54,6 +54,7 @@ public class mainController extends Application
 		screenController.addScreen("StatisticsScreen", (Pane) loader3.load());
 		StatisticsScreenController controller3 = loader3.getController();
 		controller3.setScreenController(screenController);
+		activateStatisticsScreen();
 
 		// -------- Menu Screen (after login success) ------------ //
 
@@ -62,13 +63,14 @@ public class mainController extends Application
 		MenuScreenController controller4 = loader4.getController();
 		controller4.setScreenController(screenController);
 
-		// -------- Menu Screen (after login success) ------------ //
+		// -------- Settings Screen ------------ //
+		
 		FXMLLoader loader5 = new FXMLLoader(getClass().getResource("SettingsScreen.fxml"));
 		screenController.addScreen("SettingsScreen", (Pane) loader5.load());
 		SettingsScreenController controller5 = loader5.getController();
 		controller5.setScreenController(screenController);
 		
-		// -------- Menu Screen (after login success) ------------ //
+		// -------- User Screen ------------ //
 
 		FXMLLoader loader6 = new FXMLLoader(getClass().getResource("UserScreen.fxml"));
 		screenController.addScreen("UserScreen", (Pane) loader6.load());
@@ -80,7 +82,7 @@ public class mainController extends Application
 		AdminScreenController controller7 = loader7.getController();
 		controller7.setScreenController(screenController);
 		
-		activateStatisticsScreen();
+		
 		
 		// Activating the relevant scene
 		screenController.activate("LoginScreen");
