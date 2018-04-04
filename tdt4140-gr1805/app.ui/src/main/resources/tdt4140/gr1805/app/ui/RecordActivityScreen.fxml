@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -8,11 +9,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.RecordActivityScreenController">
    <children>
-      <ImageView fitHeight="85.0" fitWidth="77.0" layoutX="262.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../target/classes/Record_40px.png" />
-         </image>
-      </ImageView>
       <RadioButton fx:id="cycling" layoutX="140.0" layoutY="215.0" mnemonicParsing="false" text="Cycling" textFill="WHITE">
          <toggleGroup>
             <ToggleGroup fx:id="Exercises" />
@@ -51,6 +47,12 @@
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="410.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../Standing%20Man_40px.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#backToMenu" text="Back to Menu " textFill="#5d4444" />
+      <ImageView layoutX="250.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Record_96px.png" />
          </image>
       </ImageView>
    </children>
