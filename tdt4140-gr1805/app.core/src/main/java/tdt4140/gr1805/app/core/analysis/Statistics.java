@@ -11,6 +11,7 @@ import java.util.Date;
 
 public class Statistics {
 	
+
 	// TODO: Add documentation to computeMedian
 	public static Double computeMedian(ArrayList<Double> array) {
 		Collections.sort(array);
@@ -75,7 +76,16 @@ public class Statistics {
 		return points;
 	}
 	
-	
+	private Double averageBPMhelper(ArrayList<DataPoint>dp){
+		Double result = null;
+		int count = 0;
+		for(DataPoint point:dp) {
+			count ++;
+			result += point.getPulse();
+		}
+		result = result/count;
+		return result;
+	}
 	public static ArrayList<ArrayList<Double>> averageBPM(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd, int deler) throws Exception{
 		if (timeEnd.before(timeStart)) {
 			throw new IllegalArgumentException("The starttime needs to be before the endtime");
