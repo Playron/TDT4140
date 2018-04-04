@@ -26,32 +26,32 @@
       <RadioButton fx:id="other_outdoor" layoutX="460.0" layoutY="215.0" mnemonicParsing="false" text="Other outdoor" textFill="WHITE" toggleGroup="$Exercises" />
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="90.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../OneDrive/Pictures/Running_40px.png" />
+            <Image url="@../../../../Running_40px.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="90.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../OneDrive/Pictures/Cycling_40px.png" />
+            <Image url="@../../../../Cycling_40px.png" />
          </image>
       </ImageView>
       <ImageView layoutX="250.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../OneDrive/Pictures/Dumbbell_40px.png" />
+            <Image url="@../../../../Dumbbell_40px.png" />
          </image>
       </ImageView>
       <ImageView layoutX="250.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../OneDrive/Pictures/Walking_40px.png" />
+            <Image url="@../../../../Walking_40px.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="410.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../OneDrive/Pictures/Standing%20Man_40px.png" />
+            <Image url="@../../../../Standing%20Man_40px.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="410.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../../OneDrive/Pictures/Standing%20Man_40px.png" />
+            <Image url="@../../../../Standing%20Man_40px.png" />
          </image>
       </ImageView>
    </children>
