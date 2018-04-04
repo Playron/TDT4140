@@ -49,7 +49,7 @@
             <Image url="@../../../../Standing%20Man_40px.png" />
          </image>
       </ImageView>
-      <Button layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#backToMenu" text="Back to Menu " textFill="#5d4444" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="120.0" style="-fx-background-radius: 10;" text="Back to Menu" />
       <ImageView layoutX="250.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../Record_96px.png" />
