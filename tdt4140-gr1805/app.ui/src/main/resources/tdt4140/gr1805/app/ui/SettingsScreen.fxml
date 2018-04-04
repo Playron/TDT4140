@@ -13,7 +13,7 @@
       <CheckBox layoutX="529.0" layoutY="369.0" mnemonicParsing="false" text="GPS" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Back to Menu" />
       <CheckBox layoutX="416.0" layoutY="369.0" mnemonicParsing="false" text="Pulse" />
-      <Button layoutX="508.0" layoutY="17.0" mnemonicParsing="false" text="Delete User" />
+      <Button fx:id="deleteUserButton" layoutX="479.0" layoutY="29.0" mnemonicParsing="false" onAction="#deleteUser" style="-fx-border-color: 000000; -fx-background-color: CC0000;" text="Delete user&#10;and user data" textAlignment="CENTER" />
       <Text layoutX="416.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable gathering of data">
          <font>
             <Font size="14.0" />
@@ -22,6 +22,5 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="78.0" layoutX="421.0" layoutY="234.0" stroke="BLACK" strokeType="INSIDE" width="174.0" />
       <Text layoutX="451.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Opt out of project" />
       <CheckBox layoutX="497.0" layoutY="269.0" mnemonicParsing="false" />
-      <Button layoutX="508.0" layoutY="49.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Delete data" />
    </children>
 </AnchorPane>
