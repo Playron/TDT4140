@@ -62,6 +62,20 @@ public class Statistics {
 		
 	}
 	
+	private ArrayList<DataPoint> PointsByTime(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd){
+		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
+		for (DataPoint point:dp) {
+			if (point.getTimestamp().after(timeStart)) {
+				if(point.getTimestamp().before(timeEnd)) {
+					points.add(point);
+				}
+				
+			}
+		}
+		return points;
+	}
+	
+	
 	public static ArrayList<ArrayList<Double>> averageBPM(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd, int deler) throws Exception{
 		if (timeEnd.before(timeStart)) {
 			throw new IllegalArgumentException("The starttime needs to be before the endtime");
@@ -75,7 +89,11 @@ public class Statistics {
 				
 			}
 		}
-		
+		long intervall = timeEnd.getTime() - timeStart.getTime();
+		long intervallDeler = intervall/deler;
+		for(int i = 0; i< deler;i++) {
+			
+		}
 		
 		return null;
 		
