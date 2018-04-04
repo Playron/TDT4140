@@ -77,22 +77,17 @@ public class registrationScreenController{
 		
 		
 		//Checks if choiceBox-choices is an instance of the Gender enum.
-		
+		//Have to Cast Gender, and CITY
 		if(gender.getSelectionModel().getSelectedItem() instanceof Gender) {			
 			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem(), 
 					(City) cityBox.getSelectionModel().getSelectedItem()); 
+			
 			
 			//Writes the person-Object to the corresponding JSON file. Automatically keeps track of ID
 			//Person-objects is beeing saved as HAshMap<ID, person>
 			Database db = new Database();
 			db.addPerson(person);
 			db.writeObjects();
-			
-			
-			
-			
-			
-			//Må caste Gender for å returnere type Gender. ChoiceBox viser info fra observableList
 			
 			System.out.println(person);																		  
 		}else {																								  
