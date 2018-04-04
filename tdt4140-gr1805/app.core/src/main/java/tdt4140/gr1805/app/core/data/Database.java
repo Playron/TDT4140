@@ -9,6 +9,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
@@ -378,7 +379,7 @@ public class Database {
 	// Utility functions for generating data or cleaning the database.
 	
 	// This gives us something to look at, but is not realistic data.
-	/*public void populateDatabase() throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+	public void populateDatabase() throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
 		
 		for (int i = 1; i < 201; i++) {
 			DataPoint p = new DataPoint(i, new Date(), Math.random()*60+40);
@@ -403,13 +404,13 @@ public class Database {
 			this.addWorkout(w);
 		}
 
-		Person p1 = new Person(1992, 4, 7, Gender.MALE);
-		Person p2 = new Person(1981, 10, 25, Gender.FEMALE);
+		Person p1 = new Person(1992, 4, 7, Gender.MALE, City.BERGEN);
+		Person p2 = new Person(1981, 10, 25, Gender.FEMALE, City.OSLO);
 		this.addPerson(p1);
 		this.addPerson(p2);
 		
 		this.writeObjects();
-	}*/
+	}
 	
 	// Empties the entire database.
 	public void cleanDatabase() throws IOException, URISyntaxException {
@@ -427,5 +428,14 @@ public class Database {
 	
 //	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
 //		Database db = new Database();
+//		try {
+//			db.cleanDatabase();
+//		} catch (URISyntaxException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		
+//		System.out.println(db.getAllPeople());
+//		
 //	}
 }

@@ -25,7 +25,7 @@ public class Person implements java.io.Serializable{
 	@JsonProperty("DOB") private LocalDate DOB;
 	@JsonProperty("gender") private Gender gender;
 	@JsonProperty("gatherLocation") private boolean gatherLocation;
-	private City city;
+	@JsonProperty("city") private City city;
 	//TODO: connect city in person to database
 	
 	public Person() {
@@ -39,11 +39,12 @@ public class Person implements java.io.Serializable{
 		this.city = city;
 	}
 	
-	public Person(int id, int year, int month, int day, Gender gender) {
+	public Person(int id, int year, int month, int day, Gender gender, City city) {
 		this.id = id;
 		setDOB(year, month, day);
 		this.gender = gender;
 		this.gatherLocation = true;
+		this.city = city;
 	}
 	
 	
