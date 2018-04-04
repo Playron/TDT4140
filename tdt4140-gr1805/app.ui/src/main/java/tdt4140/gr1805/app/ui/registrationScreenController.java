@@ -4,6 +4,7 @@ package tdt4140.gr1805.app.ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import tdt4140.gr1805.app.ui.*;
 import tdt4140.gr1805.app.core.*;
+import tdt4140.gr1805.app.core.data.Database;
 import tdt4140.gr1805.app.core.person.City;
 import tdt4140.gr1805.app.core.person.Gender;
 import tdt4140.gr1805.app.core.person.Person;
@@ -61,10 +63,13 @@ public class registrationScreenController{
 		//Logic for the register user button
 	
 	@FXML
-	public void registerUser() throws FileNotFoundException, ClassNotFoundException, IOException {
+	public void registerUser() throws FileNotFoundException, ClassNotFoundException, IOException, URISyntaxException {
 		
 		//Next bit of code is parsing from textField to Int
 		//Need to write validation for invalid inputs
+		
+		
+		
 		
 		int dag = Integer.parseInt(day_ID.getText());   			
 		int maaned = Integer.parseInt(month_ID.getText());
@@ -78,12 +83,13 @@ public class registrationScreenController{
 					(City) cityBox.getSelectionModel().getSelectedItem()); 
 			
 			
-			try {
-				Person.writePersonToFile(person);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			Database db = new Database();
+			db.addPerson(person);
+			db.writeObjects();
+			
+			
+			
+			
 			
 			//Må caste Gender for å returnere type Gender. ChoiceBox viser info fra observableList
 			
