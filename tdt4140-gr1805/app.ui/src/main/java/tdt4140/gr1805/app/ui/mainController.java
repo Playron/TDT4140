@@ -70,7 +70,7 @@ public class mainController extends Application
 		SettingsScreenController controller5 = loader5.getController();
 		controller5.setScreenController(screenController);
 		
-		// -------- Menu Screen (after login success) ------------ //
+		// -------- User Screen ------------ //
 
 		FXMLLoader loader6 = new FXMLLoader(getClass().getResource("UserScreen.fxml"));
 		screenController.addScreen("UserScreen", (Pane) loader6.load());
