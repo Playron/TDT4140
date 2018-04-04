@@ -3,9 +3,6 @@ package tdt4140.gr1805.app.core.person;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import tdt4140.gr1805.app.core.person.*;
-
 public class Liste {
 
 	private List<Person> brukere = new ArrayList<Person>();
