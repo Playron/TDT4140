@@ -26,7 +26,7 @@ public class registrationScreenController{
 	MasterScreenController screenController; //Initiate MasterScreen in registrationScreen.
 	
 	@FXML
-	ChoiceBox cityBox;
+	ChoiceBox<City> cityBox;
 	@FXML
 	TextField day_ID;
 	@FXML
