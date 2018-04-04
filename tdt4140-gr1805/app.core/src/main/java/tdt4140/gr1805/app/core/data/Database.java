@@ -320,6 +320,16 @@ public class Database {
 		}
 		return points;
 	}
+	
+	public ArrayList<DataPoint> getPointsByTimeInterval(Date start, Date end) {
+		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+		for (DataPoint point : this.datapoints) {
+			if (!start.after(point.getTimestamp()) && !end.before(point.getTimestamp()))
+					{points.add(point);}
+		}
+		return points;
+	}
+	
 
 	// WORKOUTS
 	
@@ -397,6 +407,22 @@ public class Database {
 		return workouts;
 	}
 	
+	/**
+	 * Returns all Workouts in an inclusive time interval.
+	 * 
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public ArrayList<Workout> getWorkoutsByTimeInterval(Date start, Date end) {
+		ArrayList<Workout> points = new ArrayList<Workout>();
+		for (Workout workout : this.workouts) {
+			if (!start.after(workout.getDatapoints().get(0).getTimestamp()) && !end.before(workout.getDatapoints().get(0).getTimestamp()))
+				{points.add(workout);}
+		}
+		return points;
+	}
+	
 	
 	// Utility functions for generating data or cleaning the database.
 	
@@ -448,16 +474,17 @@ public class Database {
 		this.workouts.clear();
 	}
 	
-//	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
-//		Database db = new Database();
-//		try {
-//			db.cleanDatabase();
-//		} catch (URISyntaxException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//		
-//		System.out.println(db.getAllPeople());
-//		
-//	}
+	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
+		Database db = new Database();
+		try {
+			db.cleanDatabase();
+			db.populateDatabase();
+		} catch (URISyntaxException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		System.out.println(db.getPointsByCity(City.BERGEN));
+		
+	}
 }
