@@ -15,6 +15,7 @@ public class MasterScreenController {
     private HashMap<String, Pane> screenMap = new HashMap<>();
     private Scene main;
     private Stage stage;
+    private int ID;
 
     
     	//Sets stage.
@@ -41,5 +42,14 @@ public class MasterScreenController {
         stage.setTitle("PU-prosjekt");
         stage.setScene(main);
         stage.show();
+    }
+    
+    //Stores the current logged in user in the master controller
+    
+    public void setCurrentUserID(int ID) {
+    		this.ID = ID;
+    }
+    public int getCurrentUserID() {
+    		return ID;
     }
 }

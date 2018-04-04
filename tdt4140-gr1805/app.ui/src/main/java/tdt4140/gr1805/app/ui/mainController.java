@@ -75,6 +75,10 @@ public class mainController extends Application
 		UserScreenController controller6 = loader6.getController();
 		controller6.setScreenController(screenController);
 		
+		FXMLLoader loader7 = new FXMLLoader(getClass().getResource("AdminScreen.fxml"));
+		screenController.addScreen("AdminScreen", (Pane) loader7.load());
+		AdminScreenController controller7 = loader7.getController();
+		controller7.setScreenController(screenController);
 		
 		activateStatisticsScreen();
 		

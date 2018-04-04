@@ -13,7 +13,7 @@
       <CheckBox layoutX="529.0" layoutY="369.0" mnemonicParsing="false" text="GPS" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Back to Menu" />
       <CheckBox layoutX="416.0" layoutY="369.0" mnemonicParsing="false" text="Pulse" />
-      <Button layoutX="508.0" layoutY="17.0" mnemonicParsing="false" text="Delete User" />
+      <Button fx:id="deleteUserButton" layoutX="508.0" layoutY="17.0" mnemonicParsing="false" onAction="#deleteUser" text="Delete User" />
       <Text layoutX="416.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disable gathering of data">
          <font>
             <Font size="14.0" />
