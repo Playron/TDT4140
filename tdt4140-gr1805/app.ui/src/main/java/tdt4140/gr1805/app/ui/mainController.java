@@ -54,6 +54,7 @@ public class mainController extends Application
 		screenController.addScreen("StatisticsScreen", (Pane) loader3.load());
 		StatisticsScreenController controller3 = loader3.getController();
 		controller3.setScreenController(screenController);
+		activateStatisticsScreen();
 
 		// -------- Menu Screen (after login success) ------------ //
 
@@ -76,7 +77,7 @@ public class mainController extends Application
 		controller6.setScreenController(screenController);
 		
 		
-		activateStatisticsScreen();
+		
 		
 		// Activating the relevant scene
 		screenController.activate("LoginScreen");
