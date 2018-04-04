@@ -45,9 +45,6 @@ public class StatisticsMeanController
 	public void showAveragePulse(ActionEvent event)
 	{
 		System.out.println("ShowAveragePulse");
-//		NumberAxis xAxis = new NumberAxis();	// Creates a new NumberAxis called xAxis for use in the LineChart.
-//		NumberAxis yAxis = new NumberAxis();	// Same as above
-//		LineChart<Number, Number> lC = new LineChart<>(xAxis, yAxis);	// Creates a new LineChart with the axis.
 		lC.setTitle("Average Pulse");			// Sets the title of the LineChart
 		Series<Number, Number> series = new Series<>();
 		series.getData().add(new Data<Number, Number>(1, 1));
@@ -58,5 +55,11 @@ public class StatisticsMeanController
 		lC.getData().add(series);
 		
 	}
+	
+//	public void showAverage()
+//	{
+//		lC.getData().clear();		// Removes all data from the LineChart lC.
+//		lC.getData().add(e);		// Adds the series e to the LineChart lC.
+//	}
 
 }
