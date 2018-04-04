@@ -85,7 +85,6 @@ public class TestPerson
 	public void checkIfCorrectInputOK()
 	{
 		int years = 16;		// The number of years we subtract from the current date.
-		int months = 0;		// The number of months we subtract from the current date.
 		int days = 1;		// The number of days we subtract from the current date
 		LocalDate dob = LocalDate.now().minusYears(years).minusDays(days);
 							// dob is now a datepoint 16 years and 1 day ago.
