@@ -14,9 +14,11 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
+@SuppressWarnings("serial")
 public class Person implements java.io.Serializable{
 	
 	// The Class takes care of Person-Objects. This is users registered to the application
+
 
 	//private int ID;
 	@JsonProperty("id") private int id;
@@ -89,6 +91,7 @@ public class Person implements java.io.Serializable{
 		}
 		catch (Exception e)
 		{
+			
 			// TODO: handle exception
 		}
 	}
