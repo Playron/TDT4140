@@ -82,7 +82,8 @@ public class registrationScreenController{
 			Person person = new Person(aar, maaned, dag, (Gender)gender.getSelectionModel().getSelectedItem(), 
 					(City) cityBox.getSelectionModel().getSelectedItem()); 
 			
-			
+			//Writes the person-Object to the corresponding JSON file. Automatically keeps track of ID
+			//Person-objects is beeing saved as HAshMap<ID, person>
 			Database db = new Database();
 			db.addPerson(person);
 			db.writeObjects();
