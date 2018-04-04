@@ -289,6 +289,17 @@ public class Database {
 		return points;
 	}
 	
+	public ArrayList<DataPoint> getPointsByCity(City city) {
+		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+		for (DataPoint point: this.datapoints) {
+			Person person = this.getPerson(point.getID());
+			if (person != null && person.getCity() == city) {
+				points.add(point);	
+			}
+		}
+		return points;
+	}
+	
 	/**
 	 * Returns all DataPoints in an inclusive age range.
 	 * 
@@ -347,6 +358,17 @@ public class Database {
 		for (Workout workout : this.workouts) {
 			Person person = this.getPerson(workout.getID());
 			if (person != null && person.getGender() == gender) {
+				workouts.add(workout);
+			}
+		}
+		return workouts;
+	}
+	
+	public ArrayList<Workout> getWorkoutsByCity(City city) {
+		ArrayList<Workout> workouts = new ArrayList<Workout>();
+		for (Workout workout : this.workouts) {
+			Person person = this.getPerson(workout.getID());
+			if (person != null && person.getCity() == city) {
 				workouts.add(workout);
 			}
 		}
