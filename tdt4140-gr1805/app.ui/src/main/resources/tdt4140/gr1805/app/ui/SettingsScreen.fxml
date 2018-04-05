@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -9,8 +10,6 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.SettingsScreenController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000022" height="30.0" layoutX="379.0" layoutY="321.0" stroke="BLACK" strokeType="INSIDE" width="211.0" />
-      <CheckBox layoutX="386.0" layoutY="327.0" mnemonicParsing="false" text="Disable gathering of GPS" />
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 10;" text="Back to Menu" />
       <Button fx:id="deleteUserButton" layoutX="411.0" layoutY="213.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="44.0" prefWidth="159.0" style="-fx-border-color: 000000; -fx-background-color: CC0000;" text="Delete user&#10;and user data" textAlignment="CENTER" />
       <Text layoutX="416.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0">
@@ -21,5 +20,6 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="30.0" layoutX="379.0" layoutY="281.0" stroke="BLACK" strokeType="INSIDE" width="211.0" />
       <Text layoutX="475.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <CheckBox layoutX="386.0" layoutY="287.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="187.0" text="Opt out of project" />
+      <ToggleButton layoutX="380.0" layoutY="330.0" mnemonicParsing="false" onAction="#toggleGPS" prefHeight="27.0" prefWidth="211.0" text="Disable gathering of GPS" />
    </children>
 </AnchorPane>
