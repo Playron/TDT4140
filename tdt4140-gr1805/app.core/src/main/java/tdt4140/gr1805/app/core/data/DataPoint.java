@@ -17,7 +17,9 @@ public class DataPoint
 	Date timestamp;
 	double pulse;
 	LatLong location;
-
+	
+	
+	// TODO: explain all the parameters below in the Javadoc
 	/**
 	 * @param id
 	 * @param timestamp
@@ -35,6 +37,7 @@ public class DataPoint
 	}
 
 	// Constructor without location, default null
+	// TODO: explain all the parameters below in the Javadoc
 	/**
 	 * @param id
 	 * @param timestamp
@@ -48,7 +51,8 @@ public class DataPoint
 		this.pulse = pulse;
 		this.location = null;
 	}
-
+	
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -57,6 +61,7 @@ public class DataPoint
 		return id;
 	}
 
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @param id
 	 */
@@ -65,6 +70,7 @@ public class DataPoint
 		this.id = id;
 	}
 
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -73,6 +79,7 @@ public class DataPoint
 		return timestamp;
 	}
 
+	// TODO: explain parameter in the Javadoc
 	/**
 	 * @param timestamp
 	 */
@@ -81,6 +88,7 @@ public class DataPoint
 		this.timestamp = timestamp;
 	}
 
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -89,6 +97,7 @@ public class DataPoint
 		return pulse;
 	}
 
+	// TODO: explain parameter in the Javadoc
 	/**
 	 * @param pulse
 	 */
@@ -97,6 +106,7 @@ public class DataPoint
 		this.pulse = pulse;
 	}
 
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -105,6 +115,7 @@ public class DataPoint
 		return location;
 	}
 
+	// TODO: explain parameter in the Javadoc
 	/**
 	 * @param location
 	 */
