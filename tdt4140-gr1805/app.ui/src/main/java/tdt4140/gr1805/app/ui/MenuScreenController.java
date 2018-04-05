@@ -29,5 +29,10 @@ public class MenuScreenController
 		screenController.activate("UserScreen");
 	}
 	
+	@FXML
+	public void openRecordActivityScreen() {
+		screenController.activate("RecordActivityScreen");
+	}
+	
 	
 }

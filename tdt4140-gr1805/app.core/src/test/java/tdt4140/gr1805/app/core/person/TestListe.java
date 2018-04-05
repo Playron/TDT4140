@@ -2,7 +2,6 @@ package tdt4140.gr1805.app.core.person;
 
 import static org.junit.Assert.*;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 import org.junit.Test;
