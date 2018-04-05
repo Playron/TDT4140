@@ -40,7 +40,6 @@ public class TestStatistics {
 	@Test
 	public void testmostUsedExercise1() {
 		ArrayList<Workout> liste1 = new ArrayList<Workout>();
-		LatLong exempelLat = new LatLong(2.1,2.2);
 		Date dato = new Date(0);
 		double tall = 70;
 		DataPoint point = new DataPoint(2, dato, tall);
@@ -61,7 +60,6 @@ public class TestStatistics {
 	@Test
 	public void testmostUsedExercise2() {
 		ArrayList<Workout> liste1 = new ArrayList<Workout>();
-		LatLong exempelLat = new LatLong(2.1,2.2);
 		Date dato = new Date(0);
 		double tall = 70;
 		DataPoint point = new DataPoint(2, dato, tall);
