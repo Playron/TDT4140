@@ -47,7 +47,12 @@ public class Workout {
 
 	@Override
 	public String toString() {
-		return "Workout [#" + id + ", type=" + type + ", datapoints=" + datapoints + "]";
+		String ut =  "Workout [#" + id + ", type=" + type + ", datapoints=";// + datapoints + "]";
+		for (int i = 0; i < datapoints.size(); i++)
+		{
+			ut += "\n" + datapoints.get(i).toString();
+		}
+		return ut;
 	}
 	
 	
