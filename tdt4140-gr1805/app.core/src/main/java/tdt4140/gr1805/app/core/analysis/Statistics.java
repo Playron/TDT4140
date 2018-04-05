@@ -23,17 +23,18 @@ public class Statistics
 	 */
 	public static Double computeMedian(ArrayList<Double> array)
 	{
-		Collections.sort(array);
-		Double median;
-		int length = array.size();
-		if (length % 2 == 0)
+		Collections.sort(array);	// Sorts the input Array
+		Double median;				// Assigns median to be a Double
+		int length = array.size();	// Finds the length of the input Array
+		if (length % 2 == 0)		// If the length of the array is an even number
 		{
-			int median_number = array.size() / 2;
-			median = (array.get(median_number) + array.get(median_number - 1)) / 2;
+			int median_number = array.size() / 2;	// We find the index right above the middle
+			median = (array.get(median_number) + array.get(median_number - 1)) / 2;	
+			// ^ We take the mean of the two middle values of the sorted array and assigns that as the median.
 		}
 		else
 		{
-			median = (array.get(length / 2));
+			median = (array.get(length / 2));	// We find the middle value of the array, this is the median
 		}
 		return median;
 	}
