@@ -116,7 +116,7 @@ public class TestStatistics
 	{
 		ArrayList<Workout> wl = exerciseCountGenerateWL(); // Creates a list with Cycling 5, Walking 10, Running 3,
 															// Strength 4.
-		ArrayList<Pair<Exercise, Integer>> exs = Statistics.exerciseCounts(wl, false);
+		ArrayList<Pair<Exercise, Integer>> exs = Statistics.exerciseCounts(wl, true);
 		Exercise expected = Exercise.WALKING;
 		assertEquals(expected, exs.get(0).getKey());
 		int expected2 = 10;
