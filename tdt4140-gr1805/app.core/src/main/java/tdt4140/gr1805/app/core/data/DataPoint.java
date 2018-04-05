@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DataPoint
 {
+	// TODO: Add comments explaining what id, timestamp, pulse, location is referring to.
 	int id;
 	Date timestamp;
 	double pulse;
