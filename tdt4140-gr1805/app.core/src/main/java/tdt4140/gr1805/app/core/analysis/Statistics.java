@@ -9,7 +9,11 @@ import tdt4140.gr1805.app.core.data.Workout;
 
 public class Statistics {
 	
-	// TODO: Add documentation to computeMedian
+	
+	/**
+	 * @param array {@link ArrayList<>} with {@link Double}s
+	 * @return {@link Double} which is the median number OR the mean of the two median numbers.
+	 */
 	public static Double computeMedian(ArrayList<Double> array) {
 		Collections.sort(array);
 		Double median;
@@ -37,6 +41,10 @@ public class Statistics {
 	}
 	*/
 	
+	/**
+	 * @param array
+	 * @return
+	 */
 	public static Exercise mostUsedExercise(ArrayList<Workout> array) {
 		//workout.getType() == Exersice.RUNNING;
 		ArrayList<Exercise> liste = new ArrayList<Exercise>(); 
@@ -60,8 +68,9 @@ public class Statistics {
 		
 	}
 	
-	/*
-	public static void main(String[] args) {
+	
+	public static void main(String[] args) 
+	{
 		ArrayList<Double> liste = new ArrayList<Double>();
 		liste.add(2.9);
 		liste.add(2.1);
@@ -70,21 +79,8 @@ public class Statistics {
 		System.out.println(median);
 		
 		ArrayList<Workout> liste1 = new ArrayList<Workout>();
-		LatLong exempelLat = new LatLong(2.1,2.2);
-		Date dato = new Date(0);
 		double tall = 70;
-		DataPoint point = new DataPoint(2, dato, tall);
-		ArrayList<DataPoint> dpa = new ArrayList<DataPoint>();
-		dpa.add(point);
-		dpa.add(point);
-		Workout w = new Workout(2,Exercise.RUNNING, dpa);
-		liste1.add(w);
-		for (int i = 0; i < 4; i++) {
-			Workout a = new Workout(2,Exercise.CYCLING, dpa);
-			liste1.add(a);
-		}
-	
 		
-		System.out.println(mostUsedExercise(liste1));
-	}*/
+		
+	}
 }
