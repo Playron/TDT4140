@@ -18,24 +18,25 @@ import tdt4140.gr1805.app.core.data.Workout;
 
 public class TestStatistics
 {
-	
+
 	/**
 	 * @return an {@link ArrayList} of random {@link DataPoint}s
-	 * @param id The user ID connected to these DataPoints
+	 * @param id
+	 *            The user ID connected to these DataPoints
 	 */
-	
+
 	private ArrayList<DataPoint> createDataPoints(int id)
 	{
 		Random rand = new Random();
 		ArrayList<DataPoint> dpa = new ArrayList<>();
-		double pulseBase = 60+(rand.nextDouble()*20);		// Sets the baseline for the persons pulse
-		int interval = 5;									// Sets the interval between DataPoints in seconds
-		LocalDateTime dateTime = LocalDateTime.now().minusDays(1);	// Sets the dateTime 1 day ago
+		double pulseBase = 60 + (rand.nextDouble() * 20); // Sets the baseline for the persons pulse
+		int interval = 5; // Sets the interval between DataPoints in seconds
+		LocalDateTime dateTime = LocalDateTime.now().minusDays(1); // Sets the dateTime 1 day ago
 		for (int i = 0; i < 20; i++)
 		{
 			// The following creates a Date which is 5 seconds after the previous dateTime.
-			Date date = Date.from(dateTime.plusSeconds(interval*i).atZone(ZoneId.systemDefault()).toInstant());
-			DataPoint dp = new DataPoint(id, date, pulseBase+(rand.nextDouble()*i));
+			Date date = Date.from(dateTime.plusSeconds(interval * i).atZone(ZoneId.systemDefault()).toInstant());
+			DataPoint dp = new DataPoint(id, date, pulseBase + (rand.nextDouble() * i));
 			dpa.add(dp);
 		}
 		return dpa;
@@ -109,50 +110,53 @@ public class TestStatistics
 		Exercise mostused = Statistics.mostUsedExercise(liste1);
 		assertEquals(expected, mostused);
 	}
-	
+
 	@Test
 	public void testExerciseCountsHighest()
 	{
-		ArrayList<Workout> wl = exerciseCountGenerateWL();	// Creates a list with Cycling 5, Walking 10, Running 3, Strength 4. 
+		ArrayList<Workout> wl = exerciseCountGenerateWL(); // Creates a list with Cycling 5, Walking 10, Running 3,
+															// Strength 4.
 		ArrayList<Pair<Exercise, Integer>> exs = Statistics.exerciseCounts(wl, false);
 		Exercise expected = Exercise.WALKING;
 		assertEquals(expected, exs.get(0).getKey());
 		int expected2 = 10;
 		assertEquals(expected2, exs.get(0).getValue().intValue());
 	}
-	
+
 	@Test
 	public void testExerciseCountsNextHighest()
 	{
-		ArrayList<Workout> wl = exerciseCountGenerateWL();	// Creates a list with Cycling 5, Walking 10, Running 3, Strength 4. 
+		ArrayList<Workout> wl = exerciseCountGenerateWL(); // Creates a list with Cycling 5, Walking 10, Running 3,
+															// Strength 4.
 		ArrayList<Pair<Exercise, Integer>> exs = Statistics.exerciseCounts(wl, false);
 		Exercise expected = Exercise.CYCLING;
 		assertEquals(expected, exs.get(1).getKey());
 		int expected2 = 5;
 		assertEquals(expected2, exs.get(1).getValue().intValue());
 	}
-	
+
 	@Test
 	public void testExerciseCountsLowest()
 	{
-		ArrayList<Workout> wl = exerciseCountGenerateWL();	// Creates a list with Cycling 5, Walking 10, Running 3, Strength 4.
+		ArrayList<Workout> wl = exerciseCountGenerateWL(); // Creates a list with Cycling 5, Walking 10, Running 3,
+															// Strength 4.
 		ArrayList<Pair<Exercise, Integer>> exs = Statistics.exerciseCounts(wl, false);
 		Exercise expected = Exercise.RUNNING;
-		assertEquals(expected, exs.get(exs.size()-1).getKey());
+		assertEquals(expected, exs.get(exs.size() - 1).getKey());
 		int expected2 = 3;
-		assertEquals(expected2, exs.get(exs.size()-1).getValue().intValue());
+		assertEquals(expected2, exs.get(exs.size() - 1).getValue().intValue());
 	}
-	
+
 	/**
-	 * @return a {@link ArrayList} of {@link Workout}s where RUNNING is 3, STRENGTH_TRAINING is 4,
-	 *  CYCLING is 5, and WALKING is 10
+	 * @return a {@link ArrayList} of {@link Workout}s where RUNNING is 3,
+	 *         STRENGTH_TRAINING is 4, CYCLING is 5, and WALKING is 10
 	 */
 	private ArrayList<Workout> exerciseCountGenerateWL()
 	{
 		ArrayList<Workout> wl = new ArrayList<>();
 		for (int i = 0; i < 3; i++)
 		{
-			int id = i+1;
+			int id = i + 1;
 			Workout wk = new Workout(id, Exercise.RUNNING, createDataPoints(id));
 			wl.add(wk);
 		}
@@ -162,7 +166,7 @@ public class TestStatistics
 			Workout wk = new Workout(id, Exercise.CYCLING, createDataPoints(id));
 			wl.add(wk);
 		}
-		//workoutSysOut(wl);
+		// workoutSysOut(wl);
 		for (int i = 0; i < 10; i++)
 		{
 			int id = i + 9;
@@ -177,18 +181,19 @@ public class TestStatistics
 		}
 		return wl;
 	}
-	
-//	/**
-//	 * @since To be used for debugging when you need to see all the stuff.
-//	 * @param wl And {@link ArrayList} with {@link Workout}s which is written out for all the Workouts
-//	 */
-//	
-//	private void workoutSysOut(ArrayList<Workout> wl)
-//	{
-//		for (int i = 0; i < wl.size(); i++)
-//		{
-//			System.out.println(wl.get(i).toString());
-//		}
-//	}
+
+	// /**
+	// * @since To be used for debugging when you need to see all the stuff.
+	// * @param wl And {@link ArrayList} with {@link Workout}s which is written out
+	// for all the Workouts
+	// */
+	//
+	// private void workoutSysOut(ArrayList<Workout> wl)
+	// {
+	// for (int i = 0; i < wl.size(); i++)
+	// {
+	// System.out.println(wl.get(i).toString());
+	// }
+	// }
 
 }
