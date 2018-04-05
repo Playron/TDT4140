@@ -147,36 +147,36 @@ public class SuperMethods
 		}
 	}
 	
-	public double calculateDoubleAverage(double[] input)
-	{
-		int size = input.length;		// Starts with assigning the size of the list passed as argument.
-		if (size <=0)					// If the size is 0, we throw exception
-		{
-			throw new IllegalArgumentException("Must pass a list with at least 1 number");
-		}
-		else if (size == 1)				// If size is 1, we return the value
-		{
-			return  input[0];
-		}
-		else
-		{
-			double sum = 0;
-			for (int i = 0; i < input.length; i++)
-			{
-				sum += input[i];				
-			}
-			double average = sum/size;
-//			System.out.println(average);
-//			System.out.println(sum);
-//			System.out.println(size);
-			//NumberFormatter formatter = new NumberFormatter(format)
-			DecimalFormat df = new DecimalFormat("#.##########");		// Formats the output to 10 decimal places.
-//			System.out.println(df.format(average));
-			average = Double.parseDouble(df.format(average));
-//			System.out.println(average);
-			return average;
-		}
-	}
+//	public double calculateDoubleAverage(double[] input)
+//	{
+//		int size = input.length;		// Starts with assigning the size of the list passed as argument.
+//		if (size <=0)					// If the size is 0, we throw exception
+//		{
+//			throw new IllegalArgumentException("Must pass a list with at least 1 number");
+//		}
+//		else if (size == 1)				// If size is 1, we return the value
+//		{
+//			return  input[0];
+//		}
+//		else
+//		{
+//			double sum = 0;
+//			for (int i = 0; i < input.length; i++)
+//			{
+//				sum += input[i];				
+//			}
+//			double average = sum/size;
+////			System.out.println(average);
+////			System.out.println(sum);
+////			System.out.println(size);
+//			//NumberFormatter formatter = new NumberFormatter(format)
+//			DecimalFormat df = new DecimalFormat("#.##########");		// Formats the output to 10 decimal places.
+////			System.out.println(df.format(average));
+//			average = Double.parseDouble(df.format(average));
+////			System.out.println(average);
+//			return average;
+//		}
+//	}
 	
 	
 	/*
