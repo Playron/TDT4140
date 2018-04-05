@@ -7,6 +7,11 @@ import java.util.Collections;
 import tdt4140.gr1805.app.core.data.Exercise;
 import tdt4140.gr1805.app.core.data.Workout;
 
+/**
+ * @author Anna, Torleif
+ * 
+ *
+ */
 public class Statistics {
 	
 	
@@ -42,8 +47,8 @@ public class Statistics {
 	*/
 	
 	/**
-	 * @param array
-	 * @return
+	 * @param array {@link ArrayList} of {@link app.core.data#Workout}
+	 * @return {@link app.core.data.Exercise} which is the most used in the input array
 	 */
 	public static Exercise mostUsedExercise(ArrayList<Workout> array) {
 		//workout.getType() == Exersice.RUNNING;
