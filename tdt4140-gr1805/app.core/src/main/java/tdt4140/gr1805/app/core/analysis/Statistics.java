@@ -1,9 +1,15 @@
 
 package tdt4140.gr1805.app.core.analysis;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.Random;
 
+import javafx.util.Pair;
+import tdt4140.gr1805.app.core.data.DataPoint;
 import tdt4140.gr1805.app.core.data.Exercise;
 import tdt4140.gr1805.app.core.data.Workout;
 
@@ -21,7 +27,7 @@ public class Statistics
 	 * @return {@link Double} which is the median number OR the mean of the two
 	 *         median numbers.
 	 */
-	public static Double computeMedian(ArrayList<Double> array)
+	public static final Double computeMedian(ArrayList<Double> array)
 	{
 		Collections.sort(array);	// Sorts the input Array
 		Double median;				// Assigns median to be a Double
@@ -54,7 +60,7 @@ public class Statistics
 	 * @return {@link app.core.data.Exercise} which is the most used in the input
 	 *         array
 	 */
-	public static Exercise mostUsedExercise(ArrayList<Workout> array)
+	public static final Exercise mostUsedExercise(ArrayList<Workout> array)
 	{
 		ArrayList<Exercise> liste = new ArrayList<Exercise>();	// Create new ArrayList of Exercises
 		ArrayList<Integer> count = new ArrayList<Integer>();	// Create new ArrayList of counts of each Exercise
@@ -79,18 +85,115 @@ public class Statistics
 									// method
 
 	}
+	
+	/**
+	 * @param array An {@link ArrayList} of {@link Workout}s
+	 * @return an {@link ArrayList} of {@link Pair} of {@link Exercise} and {@link Integer}.
+	 * 			The list is sorted such that the most common Exercise is first, and the number of times it was counted
+	 * 			is connected to it in the Pair. The list then extends in descending order such that the exercise
+	 */
+	public static final ArrayList<Pair<Exercise, Integer>> exerciseCounts(ArrayList<Workout> array, boolean useAllExercises)
+	{
+		ArrayList<Exercise> liste = new ArrayList<Exercise>();	// Create new ArrayList of Exercises
+		ArrayList<Integer> count = new ArrayList<Integer>();	// Create new ArrayList of counts of each Exercise
+		for (Exercise e : Exercise.values())	// Setup for counting
+		{ 
+			liste.add(e);	// Adds the Exercise to the list of them	
+			count.add(0);	// Adds the count of 0 to the list of counts of each Exercise
+		}
+		
+		for (Workout w : array)						// For each Workout in input array
+		{
+			int index = liste.indexOf(w.getType());	// Find the index of the specified Exercise in the Workout
+			int element = count.get(index) + 1;		// Add 1 to the current count of that Exercise
+			count.set(index, element);				// Update the ArrayList with the new count.
+		}
+		
+		if (!useAllExercises)
+		{
+			while (count.contains(0))
+			{
+				int index = count.lastIndexOf(0);
+				count.remove(index);
+				liste.remove(index);
+			}
+		}
+		
+		ArrayList<Pair<Exercise, Integer>> utputt = new ArrayList<>();
+		while (count.size() > 0)
+		{
+			int max = Collections.max(count);		// Finds the maximum count.
+			int index = count.indexOf(max);			// Finds the index of the maximum count.
+			Exercise ex = liste.get(index);			// Extracts the Exercise with maximum count
+			Pair<Exercise, Integer> e = new Pair<Exercise, Integer>(ex, max);	// Creates new Pair with Exercise and count
+			utputt.add(e);							// Adds the Pair to the output
+			liste.remove(index);					// Removes the Exercise at index from liste
+			count.remove(index);					// Removes the count at index from liste
+		}
+		
+		return utputt;								// Returns the ArrayList of Pairs, in descending order.
+	}
 
-//	public static void main(String[] args)
-//	{
-//		ArrayList<Double> liste = new ArrayList<Double>();
-//		liste.add(2.9);
-//		liste.add(2.1);
-//		liste.add(2.3);
-//		Double median = computeMedian(liste);
-//		System.out.println(median);
-//
-//		ArrayList<Workout> liste1 = new ArrayList<Workout>();
-//		double tall = 70;
-//
-//	}
+	
+	private static ArrayList<Workout> exerciseCountGenerateWL()
+	{
+		ArrayList<Workout> wl = new ArrayList<>();
+		for (int i = 0; i < 3; i++)
+		{
+			int id = i+1;
+			Workout wk = new Workout(id, Exercise.RUNNING, createDataPoints(id));
+			wl.add(wk);
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			int id = i + 4;
+			Workout wk = new Workout(id, Exercise.CYCLING, createDataPoints(id));
+			wl.add(wk);
+		}
+		//workoutSysOut(wl);
+		for (int i = 0; i < 10; i++)
+		{
+			int id = i + 9;
+			Workout wk = new Workout(id, Exercise.WALKING, createDataPoints(id));
+			wl.add(wk);
+		}
+		for (int i = 0; i < 4; i++)
+		{
+			int id = i + 19;
+			Workout wk = new Workout(id, Exercise.STRENGTH_TRANING, createDataPoints(id));
+			wl.add(wk);
+		}
+		return wl;
+	}
+	
+	private static ArrayList<DataPoint> createDataPoints(int id)
+	{
+		Random rand = new Random();
+		ArrayList<DataPoint> dpa = new ArrayList<>();
+		double pulseBase = 60+(rand.nextDouble()*20);		// Sets the baseline for the persons pulse
+		int interval = 5;									// Sets the interval between DataPoints in seconds
+		LocalDateTime dateTime = LocalDateTime.now().minusDays(1);	// Sets the dateTime 1 day ago
+		for (int i = 0; i < 20; i++)
+		{
+			// The following creates a Date which is 5 seconds after the previous dateTime.
+			Date date = Date.from(dateTime.plusSeconds(interval*i).atZone(ZoneId.systemDefault()).toInstant());
+			DataPoint dp = new DataPoint(id, date, pulseBase+(rand.nextDouble()*i));
+			dpa.add(dp);
+		}
+		return dpa;
+	}
+	
+	public static void main(String[] args)
+	{
+		ArrayList<Double> liste = new ArrayList<Double>();
+		liste.add(2.9);
+		liste.add(2.1);
+		liste.add(2.3);
+		Double median = computeMedian(liste);
+		System.out.println(median);
+		ArrayList<Workout> wl = exerciseCountGenerateWL();
+		ArrayList<Pair<Exercise, Integer>> arl = exerciseCounts(wl, true);
+		System.out.println(arl);
+
+	}
 }
