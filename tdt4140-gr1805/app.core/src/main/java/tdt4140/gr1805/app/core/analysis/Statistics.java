@@ -56,44 +56,41 @@ public class Statistics
 	 */
 	public static Exercise mostUsedExercise(ArrayList<Workout> array)
 	{
-		// workout.getType() == Exersice.RUNNING;
-		ArrayList<Exercise> liste = new ArrayList<Exercise>();
-		ArrayList<Integer> count = new ArrayList<Integer>();
-		for (Exercise e : Exercise.values())
-		{ // goes through the different instances of exercise and adds it to the
-			// ArrayList, liste, of exercises
-			liste.add(e);
-			count.add(0);
+		ArrayList<Exercise> liste = new ArrayList<Exercise>();	// Create new ArrayList of Exercises
+		ArrayList<Integer> count = new ArrayList<Integer>();	// Create new ArrayList of counts of each Exercise
+		for (Exercise e : Exercise.values())	// Setup for counting
+		{ 
+			liste.add(e);	// Adds the Exercise to the list of them	
+			count.add(0);	// Adds the count of 0 to the list of counts of each Exercise
 		}
-		// System.out.println(liste);
-
-		for (Workout w : array)
-		{ // goes through the different workouts in the array given.
-			int ex = 0;
-			while (w.getType() != liste.get(ex))
+		
+		for (Workout w : array)		// Goes through all the Workouts in the input ArrayList
+		{
+			int ex = 0;				// Starts at index 0 for the list of Exercises
+			while (w.getType() != liste.get(ex))	// While the Exercise of the Workout is not at the current index
 			{
-				ex++;
+				ex++;								// we increment the index
 			}
-			count.set(ex, count.get(ex) + 1); // counts the kind of exercise the workout uses
+			count.set(ex, count.get(ex) + 1); // counts the kind of exercise the workout uses (adds 1 to the count)
 		}
-		int max = Collections.max(count);
-		int index = count.indexOf(max);
-		return liste.get(index); // returns the type of exersice that occurs the most in the array given in this
+		int max = Collections.max(count);	// Finds the maximum count
+		int index = count.indexOf(max);		// Finds the index of the maximum count
+		return liste.get(index); // returns the type of exercise that occurs the most in the array given in this
 									// method
 
 	}
 
-	public static void main(String[] args)
-	{
-		ArrayList<Double> liste = new ArrayList<Double>();
-		liste.add(2.9);
-		liste.add(2.1);
-		liste.add(2.3);
-		Double median = computeMedian(liste);
-		System.out.println(median);
-
-		ArrayList<Workout> liste1 = new ArrayList<Workout>();
-		double tall = 70;
-
-	}
+//	public static void main(String[] args)
+//	{
+//		ArrayList<Double> liste = new ArrayList<Double>();
+//		liste.add(2.9);
+//		liste.add(2.1);
+//		liste.add(2.3);
+//		Double median = computeMedian(liste);
+//		System.out.println(median);
+//
+//		ArrayList<Workout> liste1 = new ArrayList<Workout>();
+//		double tall = 70;
+//
+//	}
 }
