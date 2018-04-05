@@ -450,6 +450,10 @@ public class Database {
 	//		
 	//	}
 
+	
+	
+	//sjekk av location gathering disabling
+	/*
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException, URISyntaxException {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -476,3 +480,4 @@ public class Database {
 
 	}
 }
+*/
