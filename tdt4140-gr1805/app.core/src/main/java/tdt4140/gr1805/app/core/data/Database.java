@@ -244,6 +244,15 @@ public class Database {
 		for (int i : indexes) {
 			this.workouts.remove(i);
 		}
+		try
+		{
+			writeObjects();
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	// DATAPOINTS
