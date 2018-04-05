@@ -41,6 +41,7 @@ public class Person implements java.io.Serializable{
 		this.city = city;
 	}
 	
+	//Jeg fikk ikke til å bruke denne konstruktøren. Selv om jeg satte en egen ID som første argument, ble den første konstruktøren brukt. Bjørn
 	public Person(int id, int year, int month, int day, Gender gender, City city) {
 		this.id = id;
 		setDOB(year, month, day);
