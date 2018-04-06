@@ -66,8 +66,14 @@ public class Statistics {
 	private static ArrayList<DataPoint> PointsByTime(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd){
 		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
 		for (DataPoint point:dp) {
+			
+			//System.out.println("runs through");
+			//System.out.println(timeStart + " \n" + point.getTimestamp() + " \n" +timeEnd );
 			if (point.getTimestamp().after(timeStart)) {
+				//System.out.println("is after timeStart");
+
 				if(point.getTimestamp().before(timeEnd)) {
+					//System.out.println("is before timeEnd");
 					points.add(point);
 				}
 				
@@ -77,17 +83,19 @@ public class Statistics {
 	}
 	
 	private static Double averageBPMhelper(ArrayList<DataPoint>dp){
-		Double result = null;
+		//System.out.println(dp);
+		Double result = 0.0;
 		int count = 0;
 		for(DataPoint point:dp) {
 			count ++;
-			result += point.getPulse();
+			result = result + point.getPulse();
 		}
 		result = result/count;
 		return result;
 	}
 	public static ArrayList<ArrayList<Object>> averageBPM(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd, int deler) throws Exception{
 		if (timeEnd.before(timeStart)) {
+			//System.out.println("hey");
 			throw new IllegalArgumentException("The starttime needs to be before the endtime");
 		}
 		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
@@ -100,19 +108,25 @@ public class Statistics {
 			}
 		}
 		long intervall = timeEnd.getTime() - timeStart.getTime();
+		System.out.println(intervall);
 		long intervallDeler = intervall/deler;
 		ArrayList<ArrayList<Object>> result = new ArrayList<ArrayList<Object>>();
-		for(int i = 1; i< deler;i++) {
+		for(int i = 0; i< deler;i++) {
 			Date intervallStart = new Date(timeStart.getTime() + (intervallDeler*i));
-			Date intervallEnd = new Date(timeStart.getTime() + (intervallDeler*i+1));
+			Date intervallEnd = new Date(timeStart.getTime() + (intervallDeler*(i+1)));
+			System.out.println(intervallStart + " " + intervallEnd + intervallDeler + " "+ (intervallDeler*i) +" ");
+			System.out.println("hey");
+			System.out.println(intervallStart + " " + intervallEnd);
 			ArrayList<DataPoint> intervalldp = PointsByTime(dp, intervallStart, intervallEnd);
 			Date intervallDisplay = new Date(intervallStart.getTime()+(intervallDeler/2));
 			ArrayList<Object> intervallArray= new ArrayList<Object>();
-			intervallArray.add(intervalldp);
+			//System.out.println(intervalldp);
+			intervallArray.add(intervallDisplay);
 			intervallArray.add(averageBPMhelper(intervalldp));
+			//System.out.println(intervallArray);
 			result.add(intervallArray);
 		}
-		
+		System.out.println(result);
 		return result;
 		
 	}
