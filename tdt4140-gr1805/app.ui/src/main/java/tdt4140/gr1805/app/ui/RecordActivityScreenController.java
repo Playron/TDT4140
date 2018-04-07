@@ -17,5 +17,10 @@ public class RecordActivityScreenController {
 	public void backToMenu(ActionEvent event) throws IOException {
 		screenController.activate("MenuScreen");
 	}
+	
+	@FXML
+	public void openWhileActivityScreen() {
+		screenController.activate("WhileActivityScreen");
+	}
 
 }
