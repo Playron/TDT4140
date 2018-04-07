@@ -90,6 +90,13 @@ public class mainController extends Application
 		controller8.setScreenController(screenController);
 		
 		
+		//----------WhileActivityScreen------------//
+		
+		FXMLLoader loader9 = new FXMLLoader(getClass().getResource("WhileActivityScreen.fxml"));
+		screenController.addScreen("WhileActivityScreen", (Pane) loader9.load());
+		WhileActivityScreenController controller9 = loader9.getController();
+		controller9.setScreenController(screenController);
+		
 		
 		// Activating the relevant scene
 		screenController.activate("LoginScreen");
