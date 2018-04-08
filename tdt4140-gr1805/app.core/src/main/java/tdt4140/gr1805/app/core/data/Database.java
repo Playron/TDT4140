@@ -26,6 +26,7 @@ import tdt4140.gr1805.app.core.person.*;
  * one of the write-functions after modifying anything.
  */
 
+@SuppressWarnings("WeakerAccess")
 public class Database {
 	
 	private HashMap<Integer, Person> people;
@@ -35,9 +36,9 @@ public class Database {
 	
 	
 	public Database() {
-		this.people = new HashMap<Integer, Person>();
-		this.datapoints = new ArrayList<DataPoint>();
-		this.workouts = new ArrayList<Workout>();
+		this.people = new HashMap<>();
+		this.datapoints = new ArrayList<>();
+		this.workouts = new ArrayList<>();
 		
 		mapper.findAndRegisterModules();
 		mapper.registerModule(new JavaTimeModule());
@@ -70,7 +71,7 @@ public class Database {
 	}
 	
 	// TODO: Add documentation to readPeople() in Database.java.
-	public void readPeople() throws JsonParseException, JsonMappingException, IOException {
+	public void readPeople() throws IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/people.json");
 		this.people = mapper.readValue(input, new TypeReference<HashMap<Integer, Person>>(){});
 		input.close();
@@ -78,14 +79,14 @@ public class Database {
 	}
 	
 	// TODO: Add documentation to readDatapoints() in Database.java
-	public void readDatapoints() throws JsonParseException, JsonMappingException, IOException {
+	public void readDatapoints() throws IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/datapoints.json");
 		this.datapoints = mapper.readValue(input, new TypeReference<ArrayList<DataPoint>>(){});
 		input.close();
 	}
 	
 	// TODO: Add documentation to readWorkouts() in Database.java
-	public void readWorkouts() throws JsonParseException, JsonMappingException, IOException {
+	public void readWorkouts() throws IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/workouts.json");
 		this.workouts = mapper.readValue(input, new TypeReference<ArrayList<Workout>>(){});
 		input.close();
@@ -108,7 +109,7 @@ public class Database {
 	}
 	
 	// TODO: Add documentation to writePeopl() in Database.java
-	public void writePeople(HashMap<Integer, Person> people) throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+	public void writePeople(HashMap<Integer, Person> people) throws IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/people.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
 		mapper.writeValue(output, people);
@@ -116,7 +117,7 @@ public class Database {
 	}
 	
 	// TODO: Add documentation to writeDataPoints() in Database.java
-	public void writeDataPoints(ArrayList<DataPoint> datapoints) throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+	public void writeDataPoints(ArrayList<DataPoint> datapoints) throws IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/datapoints.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
 		mapper.writeValue(output, datapoints);
@@ -124,7 +125,7 @@ public class Database {
 	}
 	
 	// TODO: Add documentation to writeWorkouts() in Database.java
-	public void writeWorkouts(ArrayList<Workout> workouts) throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+	public void writeWorkouts(ArrayList<Workout> workouts) throws IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/workouts.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
 		mapper.writeValue(output, workouts);
@@ -173,7 +174,7 @@ public class Database {
 		person.setID(nextID);
 		this.people.put(nextID, person);
 	}
-	
+
 	/**
 	 * Returns the Person with the provided ID.
 	 * If the ID does not exist, null is returned
@@ -181,13 +182,8 @@ public class Database {
 	 * @param id
 	 * @return Person or null
 	 */
-	public Person getPerson(int id) {		
-		if (this.people.containsKey(id)) {
-			return this.people.get(id);
-		}
-		else {
-			return null;
-		}
+	public Person getPerson(int id) {
+		return this.people.getOrDefault(id, null);
 	}
 	
 	/**
@@ -226,7 +222,7 @@ public class Database {
 	public void removePerson(int id) {
 		this.people.remove(id);
 		
-		ArrayList<Integer> indexes= new ArrayList<Integer>();
+		ArrayList<Integer> indexes= new ArrayList<>();
 		for (int i = 0; i < this.datapoints.size(); i++) {
 			if (this.datapoints.get(i).getID() == id)
 			{indexes.add(i);}
@@ -264,7 +260,7 @@ public class Database {
 	 * @return ArrayList of datapoints
 	 */
 	public ArrayList<DataPoint> getPointsByID(int id) {
-		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> points = new ArrayList<>();
 		for (DataPoint point : this.datapoints) {
 			if (point.getID() == id)
 			{points.add(point);}
@@ -279,36 +275,36 @@ public class Database {
 	 * @return ArrayList of datapoints
 	 */
 	public ArrayList<DataPoint> getPointsByGender(Gender gender) {
-		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> points = new ArrayList<>();
 		for (DataPoint point: this.datapoints) {
 			Person person = this.getPerson(point.getID());
 			if (person != null && person.getGender() == gender) {
-				points.add(point);	
+				points.add(point);
 			}
 		}
 		return points;
 	}
-	
+
 	public ArrayList<DataPoint> getPointsByCity(City city) {
-		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> points = new ArrayList<>();
 		for (DataPoint point: this.datapoints) {
 			Person person = this.getPerson(point.getID());
 			if (person != null && person.getCity() == city) {
-				points.add(point);	
+				points.add(point);
 			}
 		}
 		return points;
 	}
-	
+
 	/**
 	 * Returns all DataPoints in an inclusive age range.
-	 * 
+	 *
 	 * @param minAge
 	 * @param maxAge
 	 * @return
 	 */
 	public ArrayList<DataPoint> getPointsByAgeRange(int minAge, int maxAge) {
-		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> points = new ArrayList<>();
 		for (DataPoint point : this.datapoints) {
 			Person person = this.getPerson(point.getID());
 			if (person != null) {
@@ -322,7 +318,7 @@ public class Database {
 	}
 	
 	public ArrayList<DataPoint> getPointsByTimeInterval(Date start, Date end) {
-		ArrayList<DataPoint> points = new ArrayList<DataPoint>();
+		ArrayList<DataPoint> points = new ArrayList<>();
 		for (DataPoint point : this.datapoints) {
 			if (!start.after(point.getTimestamp()) && !end.before(point.getTimestamp()))
 					{points.add(point);}
@@ -349,7 +345,7 @@ public class Database {
 	 * @return ArrayList of workouts
 	 */
 	public ArrayList<Workout> getWorkoutsByID(int id) {
-		ArrayList<Workout> workouts = new ArrayList<Workout>();
+		ArrayList<Workout> workouts = new ArrayList<>();
 		for (Workout workout : this.workouts) {
 			if (workout.getID() == id)
 			{workouts.add(workout);}
@@ -364,7 +360,7 @@ public class Database {
 	 * @return ArrayList of workouts
 	 */
 	public ArrayList<Workout> getWorkoutsByGender(Gender gender) {
-		ArrayList<Workout> workouts = new ArrayList<Workout>();
+		ArrayList<Workout> workouts = new ArrayList<>();
 		for (Workout workout : this.workouts) {
 			Person person = this.getPerson(workout.getID());
 			if (person != null && person.getGender() == gender) {
@@ -375,7 +371,7 @@ public class Database {
 	}
 	
 	public ArrayList<Workout> getWorkoutsByCity(City city) {
-		ArrayList<Workout> workouts = new ArrayList<Workout>();
+		ArrayList<Workout> workouts = new ArrayList<>();
 		for (Workout workout : this.workouts) {
 			Person person = this.getPerson(workout.getID());
 			if (person != null && person.getCity() == city) {
@@ -393,7 +389,7 @@ public class Database {
 	 * @return
 	 */
 	public ArrayList<Workout> getWorkoutsByAgeRange(int minAge, int maxAge) {
-		ArrayList<Workout> workouts = new ArrayList<Workout>();
+		ArrayList<Workout> workouts = new ArrayList<>();
 		for (Workout workout: this.workouts) {
 			Person person = this.getPerson(workout.getID());
 			if (person != null) {
@@ -415,7 +411,7 @@ public class Database {
 	 * @return
 	 */
 	public ArrayList<Workout> getWorkoutsByTimeInterval(Date start, Date end) {
-		ArrayList<Workout> points = new ArrayList<Workout>();
+		ArrayList<Workout> points = new ArrayList<>();
 		for (Workout workout : this.workouts) {
 			if (!start.after(workout.getDatapoints().get(0).getTimestamp()) && !end.before(workout.getDatapoints().get(0).getTimestamp()))
 				{points.add(workout);}
@@ -427,7 +423,7 @@ public class Database {
 	// Utility functions for generating data or cleaning the database.
 	
 	// This gives us something to look at, but is not realistic data.
-	public void populateDatabase() throws JsonGenerationException, JsonMappingException, IOException, URISyntaxException {
+	public void populateDatabase() throws IOException, URISyntaxException {
 		
 		for (int i = 1; i < 201; i++) {
 			DataPoint p = new DataPoint(i, new Date(), Math.random()*60+40);
@@ -441,7 +437,7 @@ public class Database {
 			else
 			{e = Exercise.CYCLING;}
 			
-			ArrayList<DataPoint> list = new ArrayList<DataPoint>();
+			ArrayList<DataPoint> list = new ArrayList<>();
 			for (int j = 1; j < 31; j++) {
 				LatLong l = new LatLong(Math.random()*180-90, Math.random()*360-180);
 				DataPoint p = new DataPoint(i, new Date(), Math.random()*60+40, l);
@@ -474,7 +470,7 @@ public class Database {
 		this.workouts.clear();
 	}
 	
-	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
+	public static void main(String[] args) throws IOException {
 		Database db = new Database();
 		try {
 			db.cleanDatabase();
