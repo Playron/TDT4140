@@ -1,3 +1,4 @@
+
 package tdt4140.gr1805.app.core.data;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -9,8 +10,13 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 import java.time.LocalDateTime;
 
-
-public class DataPoint {
+/**
+ * @author
+ *
+ */
+public class DataPoint
+{
+	// TODO: Add comments explaining what id, timestamp, pulse, location is referring to.
 	int id;
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -18,6 +24,14 @@ public class DataPoint {
 	double pulse;
 	LatLong location;
 	
+	
+	// TODO: explain all the parameters below in the Javadoc
+	/**
+	 * @param id
+	 * @param timestamp
+	 * @param pulse
+	 * @param location
+	 */
 	@JsonCreator
 	public DataPoint(
 			@JsonProperty("id") int id,
@@ -30,9 +44,15 @@ public class DataPoint {
 		this.pulse = pulse;
 		this.location = location;
 	}
-	
+
 	// Constructor without location, default null
 	public DataPoint(int id, LocalDateTime timestamp, double pulse) {
+	// TODO: explain all the parameters below in the Javadoc
+	/**
+	 * @param id
+	 * @param timestamp
+	 * @param pulse
+	 */
 		super();
 		this.id = id;
 		this.timestamp = timestamp;
@@ -40,36 +60,86 @@ public class DataPoint {
 		this.location = null;
 	}
 	
-	public int getID() {
+	// TODO: explain what it returns in the Javadoc
+	/**
+	 * @return
+	 */
+	public int getID()
+	{
 		return id;
 	}
-	public void setID(int id) {
+
+	// TODO: explain what it returns in the Javadoc
+	/**
+	 * @param id
+	 */
+	public void setID(int id)
+	{
 		this.id = id;
 	}
-	public LocalDateTime getTimestamp() {
+
+	// TODO: explain what it returns in the Javadoc
+	/**
+	 * @return
+	 */
+	public LocalDateTime getTimestamp()
+	{
 		return timestamp;
 	}
+
+	// TODO: explain parameter in the Javadoc
+	/**
+	 * @param timestamp
+	 */
 	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
-	public double getPulse() {
+
+	// TODO: explain what it returns in the Javadoc
+	/**
+	 * @return
+	 */
+	public double getPulse()
+	{
 		return pulse;
 	}
-	public void setPulse(double pulse) {
+
+	// TODO: explain parameter in the Javadoc
+	/**
+	 * @param pulse
+	 */
+	public void setPulse(double pulse)
+	{
 		this.pulse = pulse;
 	}
-	public LatLong getLocation() {
+
+	// TODO: explain what it returns in the Javadoc
+	/**
+	 * @return
+	 */
+	public LatLong getLocation()
+	{
 		return location;
 	}
-	public void setLocation(LatLong location) {
+
+	// TODO: explain parameter in the Javadoc
+	/**
+	 * @param location
+	 */
+	public void setLocation(LatLong location)
+	{
 		this.location = location;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "DataPoint [#" + id + ", " + timestamp + ", pulse=" + pulse + ", location=" + location + "]";
 	}
-	
-	
-	
+
 }

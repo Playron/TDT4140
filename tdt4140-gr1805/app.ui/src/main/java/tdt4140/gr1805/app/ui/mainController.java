@@ -54,6 +54,7 @@ public class mainController extends Application
 		screenController.addScreen("StatisticsScreen", (Pane) loader3.load());
 		StatisticsScreenController controller3 = loader3.getController();
 		controller3.setScreenController(screenController);
+		activateStatisticsScreen();
 
 		// -------- Menu Screen (after login success) ------------ //
 
@@ -62,21 +63,40 @@ public class mainController extends Application
 		MenuScreenController controller4 = loader4.getController();
 		controller4.setScreenController(screenController);
 
-		// -------- Menu Screen (after login success) ------------ //
+		// -------- Settings Screen ------------ //
+		
 		FXMLLoader loader5 = new FXMLLoader(getClass().getResource("SettingsScreen.fxml"));
 		screenController.addScreen("SettingsScreen", (Pane) loader5.load());
 		SettingsScreenController controller5 = loader5.getController();
 		controller5.setScreenController(screenController);
 		
-		// -------- Menu Screen (after login success) ------------ //
+		// -------- User Screen ------------ //
 
 		FXMLLoader loader6 = new FXMLLoader(getClass().getResource("UserScreen.fxml"));
 		screenController.addScreen("UserScreen", (Pane) loader6.load());
 		UserScreenController controller6 = loader6.getController();
 		controller6.setScreenController(screenController);
 		
+		FXMLLoader loader7 = new FXMLLoader(getClass().getResource("AdminScreen.fxml"));
+		screenController.addScreen("AdminScreen", (Pane) loader7.load());
+		AdminScreenController controller7 = loader7.getController();
+		controller7.setScreenController(screenController);
 		
-		activateStatisticsScreen();
+		//-------RecordActivityScreen------------//
+		
+		FXMLLoader loader8 = new FXMLLoader(getClass().getResource("RecordActivityScreen.fxml"));
+		screenController.addScreen("RecordActivityScreen", (Pane) loader8.load());
+		RecordActivityScreenController controller8 = loader8.getController();
+		controller8.setScreenController(screenController);
+		
+		
+		//----------WhileActivityScreen------------//
+		
+		FXMLLoader loader9 = new FXMLLoader(getClass().getResource("WhileActivityScreen.fxml"));
+		screenController.addScreen("WhileActivityScreen", (Pane) loader9.load());
+		WhileActivityScreenController controller9 = loader9.getController();
+		controller9.setScreenController(screenController);
+		
 		
 		// Activating the relevant scene
 		screenController.activate("LoginScreen");

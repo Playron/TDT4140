@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.loginScreenController">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.loginScreenController">
    <children>
       <Button fx:id="loggInn" layoutX="257.0" layoutY="276.0" mnemonicParsing="false" onAction="#logInButtonClicked" text="Log in" />
       <Button layoutX="502.0" layoutY="359.0" mnemonicParsing="false" onAction="#signupUser" text="Register new User" AnchorPane.rightAnchor="10.0" />
-      <TextField fx:id="ID" layoutX="207.0" layoutY="206.0" promptText="ID:" style="-fx-background-radius: 10;" />
+      <TextField fx:id="ID_TextField" layoutX="207.0" layoutY="206.0" promptText="ID:" style="-fx-background-radius: 10;" />
       <Label layoutX="93.0" layoutY="66.0" />
-      <Label layoutX="244.0" layoutY="145.0" text="Enter user-ID" />
-      <Label layoutX="167.0" layoutY="44.0" text="Excercise app ">
+      <Label layoutX="244.0" layoutY="145.0" text="Enter user-ID" textFill="WHITE" />
+      <Label layoutX="167.0" layoutY="44.0" text="Excercise app " textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>

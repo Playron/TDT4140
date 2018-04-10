@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
+@SuppressWarnings("serial")
 public class Person implements java.io.Serializable{
 	
 	// The Class takes care of Person-Objects. This is users registered to the application
@@ -38,6 +39,7 @@ public class Person implements java.io.Serializable{
 		this.city = city;
 	}
 	
+	//Jeg fikk ikke til å bruke denne konstruktøren. Selv om jeg satte en egen ID som første argument, ble den første konstruktøren brukt. Bjørn
 	public Person(int id, int year, int month, int day, Gender gender, City city) {
 		this.id = id;
 		setDOB(year, month, day);
@@ -89,6 +91,7 @@ public class Person implements java.io.Serializable{
 		}
 		catch (Exception e)
 		{
+			
 			// TODO: handle exception
 		}
 	}
