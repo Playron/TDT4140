@@ -120,7 +120,7 @@ public class Person implements java.io.Serializable{
 	}
 	
 	public String toString() {
-		return "The user is " + this.getAge() +" years old." + "User is from: " + this.getCity() + " and has ID-Number: " + this.getID() + ". Gender: " + this.gender;
+		return "The user is " + this.getAge() +" years old. User is from: " + this.getCity() + " and has ID-Number: " + this.getID() + ". Gender: " + this.gender;
 	}
 
 	public boolean isGatherLocation() {
