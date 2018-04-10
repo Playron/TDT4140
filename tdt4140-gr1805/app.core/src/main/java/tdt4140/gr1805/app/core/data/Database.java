@@ -1,10 +1,17 @@
 package tdt4140.gr1805.app.core.data;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import tdt4140.gr1805.app.core.person.City;
+import tdt4140.gr1805.app.core.person.Gender;
+import tdt4140.gr1805.app.core.person.Person;
+
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -12,14 +19,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
-
-import com.fasterxml.jackson.core.*;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.*;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import tdt4140.gr1805.app.core.person.*;
-
-import java.text.*;//delete
 
 /* 
  * The Database object reads from its files when initialized, but 
@@ -258,7 +257,7 @@ public class Database {
 
 	public void addPoint(DataPoint point) {
 		Person p = getPerson(point.getID());
-		if (p.isGatherLocation() == false) {
+		if (p != null && !p.isGatherLocation()) {
 			//If Location data gathering is set to off, create a new object without latlong argument and add it
 			DataPoint LoclessPoint = new DataPoint(point.getID(), point.getTimestamp(), point.getPulse());
 			this.datapoints.add(LoclessPoint);
@@ -505,6 +504,6 @@ public class Database {
 			e1.printStackTrace();
 		}
 
-		System.out.println(db.getPointsByCity(City.BERGEN));
+		System.out.println(db.getWorkoutsByTimeInterval(LocalDateTime.of(2000,1,1,1,1), LocalDateTime.now()));
 	}
 }
