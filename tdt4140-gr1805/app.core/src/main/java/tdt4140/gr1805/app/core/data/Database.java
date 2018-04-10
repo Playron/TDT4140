@@ -175,7 +175,7 @@ public class Database {
 
 	/**
 	 * Returns the Person with the provided ID.
-	 * If the ID does not exist, null is returned
+	 * If the ID does not exist, returns null
 	 *
 	 * @param id
 	 * @return Person or null
@@ -196,7 +196,7 @@ public class Database {
 		if (this.people.keySet().contains(id)) {
 			this.people.put(id, person);
 		} else {
-			System.out.println("Can't update: no existing Person with that ID");
+			System.err.println("Can't update: no existing Person with that ID.");
 		}
 	}
 
@@ -257,12 +257,14 @@ public class Database {
 
 	public void addPoint(DataPoint point) {
 		Person p = getPerson(point.getID());
-		if (p != null && !p.isGatherLocation()) {
-			//If Location data gathering is set to off, create a new object without latlong argument and add it
-			DataPoint LoclessPoint = new DataPoint(point.getID(), point.getTimestamp(), point.getPulse());
-			this.datapoints.add(LoclessPoint);
-
-		} else {
+		if (p == null) {
+			System.err.println("Cannot add DataPoint. No person exists with that ID.");
+		}
+		else if (!p.isGatherLocation()) {
+			point.setLocation(null);
+			this.datapoints.add(point);
+		}
+		else {
 			this.datapoints.add(point);
 		}
 	}
@@ -354,7 +356,19 @@ public class Database {
 	 * @param workout Workout to be added
 	 */
 	public void addWorkout(Workout workout) {
-		this.workouts.add(workout);
+		if (getPerson(workout.getID()) == null) {
+			System.err.println("Cannot add Workout. No person exists with that ID.");
+		}
+		else {
+		    for (DataPoint point : workout.getDatapoints()) {
+                if (point.getID() != workout.getID()) {
+					System.err.println("Cannot add Workout. Not all DataPoints match Workout ID.");
+					return;
+				}
+            }
+            // Workout is valid and refers to an existing Person
+			this.workouts.add(workout);
+		}
 	}
 
 	/**

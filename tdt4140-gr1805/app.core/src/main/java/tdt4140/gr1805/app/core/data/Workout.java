@@ -20,7 +20,18 @@ public class Workout {
 		this.type = type;
 		this.datapoints = datapoints;
 	}
-	
+
+	/*
+	Constructor for creating a workout with an empty list of datapoints.
+	Intended to be used with addDataPoint() and then added to the database
+	with db.addWorkout() when complete.
+	*/
+	public Workout(int id, Exercise type) {
+		this.id = id;
+		this.type = type;
+		this.datapoints = new ArrayList<>();
+	}
+
 	public int getID() {
 		return id;
 	}
@@ -43,6 +54,12 @@ public class Workout {
 	
 	public void setDatapoints(ArrayList<DataPoint> datapoints) {
 		this.datapoints = datapoints;
+	}
+
+	public void addDataPoint(DataPoint point) {
+		// DataPoint ID is set to match Workout ID
+		point.setID(this.getID());
+		this.datapoints.add(point);
 	}
 
 	@Override
