@@ -3,6 +3,7 @@ package tdt4140.gr1805.app.core.analysis;
 import static org.junit.Assert.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -41,7 +42,7 @@ public class TestStatistics {
 	public void testmostUsedExercise1() {
 		ArrayList<Workout> liste1 = new ArrayList<Workout>();
 		LatLong exempelLat = new LatLong(2.1,2.2);
-		Date dato = new Date(0);
+		LocalDateTime dato = LocalDateTime.of(1970, 1, 1, 0, 0);
 		double tall = 70;
 		DataPoint point = new DataPoint(2, dato, tall);
 		ArrayList<DataPoint> dpa = new ArrayList<DataPoint>();
@@ -62,7 +63,7 @@ public class TestStatistics {
 	public void testmostUsedExercise2() {
 		ArrayList<Workout> liste1 = new ArrayList<Workout>();
 		LatLong exempelLat = new LatLong(2.1,2.2);
-		Date dato = new Date(0);
+		LocalDateTime dato = LocalDateTime.of(1970, 1, 1, 0, 0);
 		double tall = 70;
 		DataPoint point = new DataPoint(2, dato, tall);
 		ArrayList<DataPoint> dpa = new ArrayList<DataPoint>();

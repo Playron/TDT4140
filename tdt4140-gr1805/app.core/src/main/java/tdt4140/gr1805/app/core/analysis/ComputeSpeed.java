@@ -2,6 +2,7 @@ package tdt4140.gr1805.app.core.analysis;
 
 import tdt4140.gr1805.app.core.data.Database;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,8 +21,8 @@ public class ComputeSpeed {
 		//TODO : add documentation
 		Database db = new Database();
 		ArrayList<DataPoint> speedCompute = workout.getDatapoints();
-		Date end_time = speedCompute.get(speedCompute.size()).getTimestamp(); 
-		Date start_time = speedCompute.get(0).getTimestamp();
+		LocalDateTime end_time = speedCompute.get(speedCompute.size()).getTimestamp();
+		LocalDateTime start_time = speedCompute.get(0).getTimestamp();
 		for(DataPoint i : speedCompute) {
 		}
 		

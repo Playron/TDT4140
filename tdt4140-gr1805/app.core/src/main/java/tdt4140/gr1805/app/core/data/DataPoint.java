@@ -1,21 +1,27 @@
 package tdt4140.gr1805.app.core.data;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
+import java.time.LocalDateTime;
 
 
 public class DataPoint {
 	int id;
-	Date timestamp;
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	LocalDateTime timestamp;
 	double pulse;
 	LatLong location;
 	
 	@JsonCreator
 	public DataPoint(
 			@JsonProperty("id") int id,
-			@JsonProperty("timestamp") Date timestamp,
+			@JsonProperty("timestamp") LocalDateTime timestamp,
 			@JsonProperty("pulse") double pulse,
 			@JsonProperty("location") LatLong location
 			) {
@@ -26,7 +32,7 @@ public class DataPoint {
 	}
 	
 	// Constructor without location, default null
-	public DataPoint(int id, Date timestamp, double pulse) {
+	public DataPoint(int id, LocalDateTime timestamp, double pulse) {
 		super();
 		this.id = id;
 		this.timestamp = timestamp;
@@ -40,10 +46,10 @@ public class DataPoint {
 	public void setID(int id) {
 		this.id = id;
 	}
-	public Date getTimestamp() {
+	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
-	public void setTimestamp(Date timestamp) {
+	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
 	public double getPulse() {

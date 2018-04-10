@@ -26,8 +26,7 @@ public class Person implements java.io.Serializable{
 	@JsonProperty("gender") private Gender gender;
 	@JsonProperty("gatherLocation") private boolean gatherLocation;
 	@JsonProperty("city") private City city;
-	//TODO: connect city in person to database
-	
+
 	public Person() {
 		super();
 	}

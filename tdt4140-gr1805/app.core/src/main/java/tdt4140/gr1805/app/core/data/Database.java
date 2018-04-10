@@ -7,9 +7,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
@@ -317,11 +317,12 @@ public class Database {
 		return points;
 	}
 	
-	public ArrayList<DataPoint> getPointsByTimeInterval(Date start, Date end) {
+	public ArrayList<DataPoint> getPointsByTimeInterval(LocalDateTime start, LocalDateTime end) {
 		ArrayList<DataPoint> points = new ArrayList<>();
 		for (DataPoint point : this.datapoints) {
-			if (!start.after(point.getTimestamp()) && !end.before(point.getTimestamp()))
-					{points.add(point);}
+			if (!point.timestamp.isBefore(start) && !point.timestamp.isAfter(end)) {
+				points.add(point);
+			}
 		}
 		return points;
 	}
@@ -410,13 +411,15 @@ public class Database {
 	 * @param end
 	 * @return
 	 */
-	public ArrayList<Workout> getWorkoutsByTimeInterval(Date start, Date end) {
-		ArrayList<Workout> points = new ArrayList<>();
+	public ArrayList<Workout> getWorkoutsByTimeInterval(LocalDateTime start, LocalDateTime end ) {
+		ArrayList<Workout> workouts = new ArrayList<>();
 		for (Workout workout : this.workouts) {
-			if (!start.after(workout.getDatapoints().get(0).getTimestamp()) && !end.before(workout.getDatapoints().get(0).getTimestamp()))
-				{points.add(workout);}
+			ArrayList<DataPoint> points = workout.getDatapoints();
+			if (!points.get(0).getTimestamp().isBefore(start) && !points.get(points.size() - 1).getTimestamp().isAfter(end)) {
+				workouts.add(workout);
+			}
 		}
-		return points;
+		return workouts;
 	}
 	
 	
@@ -426,7 +429,7 @@ public class Database {
 	public void populateDatabase() throws IOException, URISyntaxException {
 		
 		for (int i = 1; i < 201; i++) {
-			DataPoint p = new DataPoint(i, new Date(), Math.random()*60+40);
+			DataPoint p = new DataPoint(i, LocalDateTime.now(), Math.random()*60+40);
 			this.addPoint(p);
 		}
 		
@@ -440,7 +443,7 @@ public class Database {
 			ArrayList<DataPoint> list = new ArrayList<>();
 			for (int j = 1; j < 31; j++) {
 				LatLong l = new LatLong(Math.random()*180-90, Math.random()*360-180);
-				DataPoint p = new DataPoint(i, new Date(), Math.random()*60+40, l);
+				DataPoint p = new DataPoint(i, LocalDateTime.now(), Math.random()*60+40, l);
 				list.add(p);
 			}
 			
@@ -476,7 +479,6 @@ public class Database {
 			db.cleanDatabase();
 			db.populateDatabase();
 		} catch (URISyntaxException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
