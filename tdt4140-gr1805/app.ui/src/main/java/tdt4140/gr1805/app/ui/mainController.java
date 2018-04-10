@@ -82,6 +82,20 @@ public class mainController extends Application
 		AdminScreenController controller7 = loader7.getController();
 		controller7.setScreenController(screenController);
 		
+		//-------RecordActivityScreen------------//
+		
+		FXMLLoader loader8 = new FXMLLoader(getClass().getResource("RecordActivityScreen.fxml"));
+		screenController.addScreen("RecordActivityScreen", (Pane) loader8.load());
+		RecordActivityScreenController controller8 = loader8.getController();
+		controller8.setScreenController(screenController);
+		
+		
+		//----------WhileActivityScreen------------//
+		
+		FXMLLoader loader9 = new FXMLLoader(getClass().getResource("WhileActivityScreen.fxml"));
+		screenController.addScreen("WhileActivityScreen", (Pane) loader9.load());
+		WhileActivityScreenController controller9 = loader9.getController();
+		controller9.setScreenController(screenController);
 		
 		
 		// Activating the relevant scene

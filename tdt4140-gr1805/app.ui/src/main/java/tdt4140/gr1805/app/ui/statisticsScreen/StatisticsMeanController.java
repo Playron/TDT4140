@@ -11,6 +11,10 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import tdt4140.gr1805.app.ui.MasterScreenController;
 
+/**
+ * @author Torleif
+ *
+ */
 public class StatisticsMeanController
 {
 	public MasterScreenController screenController;
@@ -22,12 +26,19 @@ public class StatisticsMeanController
 	private LineChart<Number, Number> lC;
 
 	// Setting the screen controller
+	/**
+	 * @param screenController the {@link MasterScreenController} which supervises this screen
+	 */
 	public void setScreenController(MasterScreenController screenController)
 	{
 		this.screenController = screenController;
 	}
 
 	// Changing scenes on clicking the Back to Menu button
+	/**
+	 * @param event onAction from the FXML-file associated with this controller.
+	 * @throws IOException
+	 */
 	@FXML
 	public void backToMenu(ActionEvent event) throws IOException
 	{
@@ -35,19 +46,23 @@ public class StatisticsMeanController
 	}
 
 	// Changing scenes on clicking the Back to Statistics button
+	/**
+	 * @param event onAction from the FXML-file associated with this controller.
+	 * @throws IOException
+	 */
 	@FXML
 	public void backToStatistics(ActionEvent event) throws IOException
 	{
 		screenController.activate("StatisticsScreen");
 	}
 	
+	/**
+	 * @param event onAction from the FXML-file associated with this controller.
+	 */
 	@FXML
 	public void showAveragePulse(ActionEvent event)
 	{
 		System.out.println("ShowAveragePulse");
-//		NumberAxis xAxis = new NumberAxis();	// Creates a new NumberAxis called xAxis for use in the LineChart.
-//		NumberAxis yAxis = new NumberAxis();	// Same as above
-//		LineChart<Number, Number> lC = new LineChart<>(xAxis, yAxis);	// Creates a new LineChart with the axis.
 		lC.setTitle("Average Pulse");			// Sets the title of the LineChart
 		Series<Number, Number> series = new Series<>();
 		series.getData().add(new Data<Number, Number>(1, 1));
@@ -58,5 +73,11 @@ public class StatisticsMeanController
 		lC.getData().add(series);
 		
 	}
+	
+//	public void showAverage()
+//	{
+//		lC.getData().clear();		// Removes all data from the LineChart lC.
+//		lC.getData().add(e);		// Adds the series e to the LineChart lC.
+//	}
 
 }
