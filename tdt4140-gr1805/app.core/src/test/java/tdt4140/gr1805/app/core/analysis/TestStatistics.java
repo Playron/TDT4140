@@ -1,6 +1,24 @@
 
 package tdt4140.gr1805.app.core.analysis;
 
+
+import static org.junit.Assert.*;
+
+
+import java.time.LocalDate;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+
+
+import java.util.Random;
+
+
+import org.junit.Test;
+
+
 import javafx.util.Pair;
 import org.junit.Test;
 import tdt4140.gr1805.app.core.data.DataPoint;
@@ -14,8 +32,12 @@ import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestStatistics
-{
+public class TestStatistics 
+	{
+	/*private static Date localDateTimeToDate(LocalDateTime date) {
+		return Date.from(date.atZone(ZoneId.systemDefault()).toInstant());
+	}*/
+
 
 	/**
 	 * @return an {@link ArrayList} of random {@link DataPoint}s
@@ -38,6 +60,7 @@ public class TestStatistics
 			dpa.add(dp);
 		}
 		return dpa;
+
 	}
 
 	@Test
@@ -110,6 +133,58 @@ public class TestStatistics
 		Exercise mostused = Statistics.mostUsedExercise(liste1);
 		assertEquals(expected, mostused);
 	}
+	
+	@Test
+	public void testAverageBPM1() throws Exception {
+		
+		ArrayList<DataPoint> dpa = new ArrayList<DataPoint>();
+		LocalDateTime date = LocalDateTime.of(2017, 8, 22, 3, 54, 13, 22);
+		
+		//System.out.println(dato.getTime());
+		DataPoint dp = new DataPoint(1, date, 65);
+		dpa.add(dp);
+		for(int i = 0; i<10; i++) {
+			LocalDateTime date1 = LocalDateTime.of(2015, 7, 22, 3, 54, 12, 22);
+			//Date dato1 = localDateTimeToDate(date1);
+			//System.out.println(dato1.getTime());
+			DataPoint dp1 = new DataPoint(1, date1, 70);
+			dpa.add(dp1);
+		}
+		//System.out.println(dpa);
+		for (int i = 0; i<10;i++) {
+			LocalDateTime date1 = LocalDateTime.of(2015, 12, 28, 16, 22, 54, 836142);
+			//Date dato1 = localDateTimeToDate(date1);
+			DataPoint dp1 = new DataPoint(2,date1,69);
+			dpa.add(dp1);
+		}
+		for(int i = 0;i<10;i++) {
+			LocalDateTime date1 = LocalDateTime.of(2015, 12, 8, 16, 22, 54, 836142);
+			//Date dato1 = localDateTimeToDate(date1);
+			DataPoint dp1 = new DataPoint(1,date1,68);
+			dpa.add(dp1);
+		}
+		LocalDateTime startDate = LocalDateTime.of(2015, 5, 12, 13, 14);
+		//Date startDate = localDateTimeToDate(start);
+		LocalDateTime endDate = LocalDateTime.of(2018, 4,1,1,1);
+		//Date endDate = localDateTimeToDate(end);
+		ArrayList<Pair<LocalDateTime,Double>> result = Statistics.averageBPM(dpa, startDate, endDate, 2);
+		//System.out.println(result);
+		ArrayList<Pair<LocalDateTime,Double>> expected = new ArrayList<>();
+		LocalDateTime date1 = LocalDateTime.of(2016, 1,31,4,10,45);
+		//Date dato1 = localDateTimeToDate(date1);
+		LocalDateTime date2 = LocalDateTime.of(2017, 7,11,10,4,15);
+		//Date dato2 = localDateTimeToDate(date2);
+		Pair<LocalDateTime, Double> parts = new Pair<LocalDateTime,Double>(date1,69.0);
+		
+		expected.add(parts);
+		Pair<LocalDateTime, Double> parts1 = new Pair<LocalDateTime,Double>(date2,65.0);
+		expected.add(parts1);
+		assertEquals(expected, result);
+		
+		
+	}
+	
+	
 
 	@Test
 	public void testExerciseCountsHighest()

@@ -1,6 +1,8 @@
 
 package tdt4140.gr1805.app.core.analysis;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -8,6 +10,11 @@ import javafx.util.Pair;
 
 import tdt4140.gr1805.app.core.data.Exercise;
 import tdt4140.gr1805.app.core.data.Workout;
+import java.util.Date;
+
+import tdt4140.gr1805.app.core.data.DataPoint;
+import tdt4140.gr1805.app.core.data.Database;
+
 
 // Used for testing with Main method
 //import tdt4140.gr1805.app.core.data.DataPoint;
@@ -48,6 +55,7 @@ public class Statistics
 		}
 		return median;
 	}
+
 	/*
 	 * //didn't see why we needed this and therefore didn't finish creating the
 	 * method// public static int computeMode(ArrayList<Double> array) {
@@ -64,6 +72,7 @@ public class Statistics
 	 * @return {@link app.core.data.Exercise} which is the most used in the input
 	 *         array
 	 */
+	
 	public static final Exercise mostUsedExercise(ArrayList<Workout> array)
 	{
 		ArrayList<Exercise> liste = new ArrayList<Exercise>(); // Create new ArrayList of Exercises
@@ -89,7 +98,7 @@ public class Statistics
 									// method
 
 	}
-
+	
 	/**
 	 * @param array
 	 *            An {@link ArrayList} of {@link Workout}s
@@ -99,6 +108,7 @@ public class Statistics
 	 *         connected to it in the Pair. The list then extends in descending
 	 *         order such that the exercise
 	 */
+	
 	public static final ArrayList<Pair<Exercise, Integer>> exerciseCounts(ArrayList<Workout> array,
 			boolean useAllExercises)
 	{
@@ -142,6 +152,66 @@ public class Statistics
 
 		return utputt; // Returns the ArrayList of Pairs, in descending order.
 	}
+	
+	private static ArrayList<DataPoint> PointsByTime(ArrayList<DataPoint> dp, LocalDateTime timeStart, LocalDateTime timeEnd){
+		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
+		for (DataPoint point:dp) {
+			if (point.getTimestamp().isAfter(timeStart)) {
+				if(point.getTimestamp().isBefore(timeEnd)) {
+					points.add(point);
+				}
+				
+			}
+		}
+		return points;
+	}
+	
+	private static Double averageBPMhelper(ArrayList<DataPoint>dp){ //computes the average beats per minute from a list of datapoints
+		Double result = 0.0; 					//creates a variable that will be the average BPM
+		int count = 0; 							// Variable to count how many datapoints/BPM we've gone through
+		for(DataPoint point:dp) {
+			count ++;							//counts +1 for every datapoint we go through
+			result = result + point.getPulse();	// adds up every datapoint
+		}
+		result = result/count;					//computes the average BPM by adding all the BPM and devides it on the amount of datapoints used
+		return result;							// returns averageBPM
+	}
+	public static ArrayList<Pair<LocalDateTime, Double>> averageBPM(ArrayList<DataPoint> dp, LocalDateTime timeStart, LocalDateTime timeEnd, int deler) throws Exception{
+		if (timeEnd.isBefore(timeStart)) { 													//Checks that endtime is before starttime
+			//System.out.println("hey");
+			throw new IllegalArgumentException("The starttime needs to be before the endtime");
+		}
+		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); 								//make an arraylist with the datapoints within our timeframe
+		for (DataPoint point:dp) {															// goes through all the datapoints and adds the ones within the timeframe
+			if (point.getTimestamp().isAfter(timeStart)) {
+				if(point.getTimestamp().isBefore(timeEnd)) {
+					points.add(point);
+				}
+				
+			}
+		}
+		Duration intervall = Duration.between(timeStart,timeEnd);								// gets the timeframe between the starttime and endtime
+		long intervallsekund = intervall.getSeconds();										//creates a long with the seconds of the timeframe
+		
+		long intervallDeler = intervallsekund/deler;											// devides the timeframe into how many parts they want it devided into
+		ArrayList<Pair<LocalDateTime, Double>> result = new ArrayList<Pair<LocalDateTime, Double>>();
+		for(int i = 0; i< deler;i++) {														// creates a pair with time and averageBPM for all the parts they want it devided into
+			LocalDateTime intervallStart = timeStart.plusSeconds(intervallDeler*i); 			// creates variable for the intervall start
+			
+			LocalDateTime intervallEnd = timeStart.plusSeconds(intervallDeler*(i+1)); 		// creates variable for intervall end
+			ArrayList<DataPoint> intervalldp = PointsByTime(dp, intervallStart, intervallEnd); // gets the datapoints within the intervall
+			LocalDateTime intervallDisplay = intervallStart.plusSeconds(intervallDeler/2);	// creates a LocalTimeDate that will be connected with the average BPM within the time frame. 
+			Pair<LocalDateTime,Double> intervallArray= new Pair<LocalDateTime,Double>(intervallDisplay, averageBPMhelper(intervalldp)); //create a pair of the intervallDisplay and average BPM within the time frame
+			result.add(intervallArray);														// adds the pair of time and ABPM
+		}
+		return result;																		//returns the list of pairs of LocalDateTime and ABPM
+		
+	}
+	
+
+
+	
+	
 
 	//
 	// private static ArrayList<Workout> exerciseCountGenerateWL()
