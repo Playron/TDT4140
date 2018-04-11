@@ -2,7 +2,6 @@
 bin/
 target/
 log/
-.idea/
 
 # Mac
 .DS_Store
@@ -13,4 +12,8 @@ log/
 
 # Node
 node_modules/
+
+# IntelliJ
+.idea/
+*.iml
 

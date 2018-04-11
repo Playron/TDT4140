@@ -1,10 +1,14 @@
 
 package tdt4140.gr1805.app.core.data;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
+import java.time.LocalDateTime;
 
 /**
  * @author
@@ -14,10 +18,14 @@ public class DataPoint
 {
 	// TODO: Add comments explaining what id, timestamp, pulse, location is referring to.
 	int id;
-	Date timestamp;
+	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
+	@JsonSerialize(using = LocalDateTimeSerializer.class)
+	LocalDateTime timestamp;
 	double pulse;
 	LatLong location;
-
+	
+	
+	// TODO: explain all the parameters below in the Javadoc
 	/**
 	 * @param id
 	 * @param timestamp
@@ -25,9 +33,12 @@ public class DataPoint
 	 * @param location
 	 */
 	@JsonCreator
-	public DataPoint(@JsonProperty("id") int id, @JsonProperty("timestamp") Date timestamp,
-			@JsonProperty("pulse") double pulse, @JsonProperty("location") LatLong location)
-	{
+	public DataPoint(
+			@JsonProperty("id") int id,
+			@JsonProperty("timestamp") LocalDateTime timestamp,
+			@JsonProperty("pulse") double pulse,
+			@JsonProperty("location") LatLong location
+			) {
 		this.id = id;
 		this.timestamp = timestamp;
 		this.pulse = pulse;
@@ -35,20 +46,21 @@ public class DataPoint
 	}
 
 	// Constructor without location, default null
+	public DataPoint(int id, LocalDateTime timestamp, double pulse) {
+	// TODO: explain all the parameters below in the Javadoc
 	/**
 	 * @param id
 	 * @param timestamp
 	 * @param pulse
 	 */
-	public DataPoint(int id, Date timestamp, double pulse)
-	{
 		super();
 		this.id = id;
 		this.timestamp = timestamp;
 		this.pulse = pulse;
 		this.location = null;
 	}
-
+	
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -57,6 +69,7 @@ public class DataPoint
 		return id;
 	}
 
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @param id
 	 */
@@ -65,22 +78,24 @@ public class DataPoint
 		this.id = id;
 	}
 
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
-	public Date getTimestamp()
+	public LocalDateTime getTimestamp()
 	{
 		return timestamp;
 	}
 
+	// TODO: explain parameter in the Javadoc
 	/**
 	 * @param timestamp
 	 */
-	public void setTimestamp(Date timestamp)
-	{
+	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
 
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -89,6 +104,7 @@ public class DataPoint
 		return pulse;
 	}
 
+	// TODO: explain parameter in the Javadoc
 	/**
 	 * @param pulse
 	 */
@@ -97,6 +113,7 @@ public class DataPoint
 		this.pulse = pulse;
 	}
 
+	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -105,6 +122,7 @@ public class DataPoint
 		return location;
 	}
 
+	// TODO: explain parameter in the Javadoc
 	/**
 	 * @param location
 	 */

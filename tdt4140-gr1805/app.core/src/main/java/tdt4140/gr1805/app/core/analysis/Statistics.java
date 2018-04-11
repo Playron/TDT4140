@@ -1,6 +1,7 @@
 
 package tdt4140.gr1805.app.core.analysis;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -150,17 +151,17 @@ public class Statistics
 
 		return utputt; // Returns the ArrayList of Pairs, in descending order.
 	}
-	
-	private static ArrayList<DataPoint> PointsByTime(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd){
+	/*
+	private static ArrayList<DataPoint> PointsByTime(ArrayList<DataPoint> dp, LocalDateTime timeStart, LocalDateTime timeEnd){
 		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
 		for (DataPoint point:dp) {
 			
 			//System.out.println("runs through");
 			//System.out.println(timeStart + " \n" + point.getTimestamp() + " \n" +timeEnd );
-			if (point.getTimestamp().after(timeStart)) {
+			if (point.getTimestamp().isAfter(timeStart)) {
 				//System.out.println("is after timeStart");
 
-				if(point.getTimestamp().before(timeEnd)) {
+				if(point.getTimestamp().isBefore(timeEnd)) {
 					//System.out.println("is before timeEnd");
 					points.add(point);
 				}
@@ -181,24 +182,25 @@ public class Statistics
 		result = result/count;
 		return result;
 	}
-	public static ArrayList<ArrayList<Object>> averageBPM(ArrayList<DataPoint> dp, Date timeStart, Date timeEnd, int deler) throws Exception{
-		if (timeEnd.before(timeStart)) {
+	public static ArrayList<Pair<LocalDateTime, Double>> averageBPM(ArrayList<DataPoint> dp, LocalDateTime timeStart, LocalDateTime timeEnd, int deler) throws Exception{
+		if (timeEnd.isBefore(timeStart)) {
 			//System.out.println("hey");
 			throw new IllegalArgumentException("The starttime needs to be before the endtime");
 		}
 		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
 		for (DataPoint point:dp) {
-			if (point.getTimestamp().after(timeStart)) {
-				if(point.getTimestamp().before(timeEnd)) {
+			if (point.getTimestamp().isAfter(timeStart)) {
+				if(point.getTimestamp().isBefore(timeEnd)) {
 					points.add(point);
 				}
 				
 			}
 		}
-		long intervall = timeEnd.getTime() - timeStart.getTime();
+		long intervall = LocalDateTime.until(timeEnd,timeStart);
+		
 		//System.out.println(intervall);
 		long intervallDeler = intervall/deler;
-		ArrayList<ArrayList<Object>> result = new ArrayList<ArrayList<Object>>();
+		ArrayList<Pair<LocalDateTime, Double>> result = new ArrayList<Pair<LocalDateTime, Double>>();
 		for(int i = 0; i< deler;i++) {
 			Date intervallStart = new Date(timeStart.getTime() + (intervallDeler*i));
 			Date intervallEnd = new Date(timeStart.getTime() + (intervallDeler*(i+1)));
@@ -218,7 +220,7 @@ public class Statistics
 		return result;
 		
 	}
-	
+	*/
 
 
 	

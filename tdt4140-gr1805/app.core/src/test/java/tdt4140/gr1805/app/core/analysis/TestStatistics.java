@@ -1,6 +1,7 @@
 
 package tdt4140.gr1805.app.core.analysis;
 
+
 import static org.junit.Assert.*;
 
 
@@ -17,17 +18,25 @@ import java.util.Random;
 
 import org.junit.Test;
 
+
 import javafx.util.Pair;
+import org.junit.Test;
 import tdt4140.gr1805.app.core.data.DataPoint;
 import tdt4140.gr1805.app.core.data.Exercise;
+import tdt4140.gr1805.app.core.data.LatLong;
 import tdt4140.gr1805.app.core.data.Workout;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Random;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestStatistics 
 	{
-	private static Date localDateTimeToDate(LocalDateTime date) {
+	/*private static Date localDateTimeToDate(LocalDateTime date) {
 		return Date.from(date.atZone(ZoneId.systemDefault()).toInstant());
-	}
+	}*/
 
 
 	/**
@@ -46,7 +55,7 @@ public class TestStatistics
 		for (int i = 0; i < 20; i++)
 		{
 			// The following creates a Date which is 5 seconds after the previous dateTime.
-			Date date = Date.from(dateTime.plusSeconds(interval * i).atZone(ZoneId.systemDefault()).toInstant());
+			LocalDateTime date = dateTime.plusSeconds(i*interval);
 			DataPoint dp = new DataPoint(id, date, pulseBase + (rand.nextDouble() * i));
 			dpa.add(dp);
 		}
@@ -83,7 +92,8 @@ public class TestStatistics
 	public void testmostUsedExercise1()
 	{
 		ArrayList<Workout> liste1 = new ArrayList<Workout>();
-		Date dato = new Date(0);
+		LatLong exempelLat = new LatLong(2.1,2.2);
+		LocalDateTime dato = LocalDateTime.of(1970, 1, 1, 0, 0);
 		double tall = 70;
 		DataPoint point = new DataPoint(2, dato, tall);
 		ArrayList<DataPoint> dpa = new ArrayList<DataPoint>();
@@ -105,7 +115,8 @@ public class TestStatistics
 	public void testmostUsedExercise2()
 	{
 		ArrayList<Workout> liste1 = new ArrayList<Workout>();
-		Date dato = new Date(0);
+		LatLong exempelLat = new LatLong(2.1,2.2);
+		LocalDateTime dato = LocalDateTime.of(1970, 1, 1, 0, 0);
 		double tall = 70;
 		DataPoint point = new DataPoint(2, dato, tall);
 		ArrayList<DataPoint> dpa = new ArrayList<DataPoint>();
@@ -123,7 +134,7 @@ public class TestStatistics
 		assertEquals(expected, mostused);
 	}
 	
-	@Test
+	/*@Test
 	public void testAverageBPM1() throws Exception {
 		
 		ArrayList<DataPoint> dpa = new ArrayList<DataPoint>();
@@ -175,7 +186,7 @@ public class TestStatistics
 		
 		
 	}
-	
+	*/
 	
 
 	@Test

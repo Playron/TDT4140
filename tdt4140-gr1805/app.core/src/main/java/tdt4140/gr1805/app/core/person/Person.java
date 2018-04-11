@@ -19,7 +19,6 @@ public class Person implements java.io.Serializable{
 	
 	// The Class takes care of Person-Objects. This is users registered to the application
 
-
 	//private int ID;
 	@JsonProperty("id") private int id;
 	@JsonDeserialize(using = LocalDateDeserializer.class)
@@ -28,8 +27,7 @@ public class Person implements java.io.Serializable{
 	@JsonProperty("gender") private Gender gender;
 	@JsonProperty("gatherLocation") private boolean gatherLocation;
 	@JsonProperty("city") private City city;
-	//TODO: connect city in person to database
-	
+
 	public Person() {
 		super();
 	}
@@ -122,7 +120,7 @@ public class Person implements java.io.Serializable{
 	}
 	
 	public String toString() {
-		return "The user is " + this.getAge() +" years old." + "User is from: " + this.getCity() + " and has ID-Number: " + this.getID() + ". Gender: " + this.gender;
+		return "The user is " + this.getAge() +" years old. User is from: " + this.getCity() + " and has ID-Number: " + this.getID() + ". Gender: " + this.gender;
 	}
 
 	public boolean isGatherLocation() {
