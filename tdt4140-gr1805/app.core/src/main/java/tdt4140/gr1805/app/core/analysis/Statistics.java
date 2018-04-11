@@ -156,14 +156,8 @@ public class Statistics
 	private static ArrayList<DataPoint> PointsByTime(ArrayList<DataPoint> dp, LocalDateTime timeStart, LocalDateTime timeEnd){
 		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
 		for (DataPoint point:dp) {
-			
-			//System.out.println("runs through");
-			//System.out.println(timeStart + " \n" + point.getTimestamp() + " \n" +timeEnd );
 			if (point.getTimestamp().isAfter(timeStart)) {
-				//System.out.println("is after timeStart");
-
 				if(point.getTimestamp().isBefore(timeEnd)) {
-					//System.out.println("is before timeEnd");
 					points.add(point);
 				}
 				
@@ -172,24 +166,23 @@ public class Statistics
 		return points;
 	}
 	
-	private static Double averageBPMhelper(ArrayList<DataPoint>dp){
-		//System.out.println(dp);
-		Double result = 0.0;
-		int count = 0;
+	private static Double averageBPMhelper(ArrayList<DataPoint>dp){ //computes the average beats per minute from a list of datapoints
+		Double result = 0.0; 					//creates a variable that will be the average BPM
+		int count = 0; 							// Variable to count how many datapoints/BPM we've gone through
 		for(DataPoint point:dp) {
-			count ++;
-			result = result + point.getPulse();
+			count ++;							//counts +1 for every datapoint we go through
+			result = result + point.getPulse();	// adds up every datapoint
 		}
-		result = result/count;
-		return result;
+		result = result/count;					//computes the average BPM by adding all the BPM and devides it on the amount of datapoints used
+		return result;							// returns averageBPM
 	}
 	public static ArrayList<Pair<LocalDateTime, Double>> averageBPM(ArrayList<DataPoint> dp, LocalDateTime timeStart, LocalDateTime timeEnd, int deler) throws Exception{
-		if (timeEnd.isBefore(timeStart)) {
+		if (timeEnd.isBefore(timeStart)) { 													//Checks that endtime is before starttime
 			//System.out.println("hey");
 			throw new IllegalArgumentException("The starttime needs to be before the endtime");
 		}
-		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
-		for (DataPoint point:dp) {
+		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); 								//make an arraylist with the datapoints within our timeframe
+		for (DataPoint point:dp) {															// goes through all the datapoints and adds the ones within the timeframe
 			if (point.getTimestamp().isAfter(timeStart)) {
 				if(point.getTimestamp().isBefore(timeEnd)) {
 					points.add(point);
@@ -197,35 +190,21 @@ public class Statistics
 				
 			}
 		}
-		Duration intervall = Duration.between(timeStart,timeEnd);
-		long intervallsekund = intervall.getSeconds();
+		Duration intervall = Duration.between(timeStart,timeEnd);								// gets the timeframe between the starttime and endtime
+		long intervallsekund = intervall.getSeconds();										//creates a long with the seconds of the timeframe
 		
-		/*ArrayList<Integer> intervall = new ArrayList<Integer>();
-		int year = timeEnd.getYear() - timeStart.getYear();
-		intervall.add(year);
-		int month = timeEnd.getMonthValue() - timeStart.getMonthValue();
-		intervall.add(month);
-		int day = timeEnd.getDayOfMonth() - timeStart.getDayOfMonth();
-		intervall.add(day);
-		*/
-		//System.out.println(intervall);
-		long intervallDeler = intervallsekund/deler;
+		long intervallDeler = intervallsekund/deler;											// devides the timeframe into how many parts they want it devided into
 		ArrayList<Pair<LocalDateTime, Double>> result = new ArrayList<Pair<LocalDateTime, Double>>();
-		for(int i = 0; i< deler;i++) {
-			LocalDateTime intervallStart = timeStart.plusSeconds(intervallDeler*i);
+		for(int i = 0; i< deler;i++) {														// creates a pair with time and averageBPM for all the parts they want it devided into
+			LocalDateTime intervallStart = timeStart.plusSeconds(intervallDeler*i); 			// creates variable for the intervall start
 			
-			LocalDateTime intervallEnd = timeStart.plusSeconds(intervallDeler*(i+1));
-			//System.out.println(intervallStart + " " + intervallEnd + intervallDeler + " "+ (intervallDeler*i) +" ");
-			//System.out.println("hey");
-			//System.out.println(intervallStart + " " + intervallEnd);
-			ArrayList<DataPoint> intervalldp = PointsByTime(dp, intervallStart, intervallEnd);
-			LocalDateTime intervallDisplay = intervallStart.plusSeconds(intervallDeler/2);
-			Pair<LocalDateTime,Double> intervallArray= new Pair<LocalDateTime,Double>(intervallDisplay, averageBPMhelper(intervalldp));
-			//System.out.println(intervallArray);
-			result.add(intervallArray);
+			LocalDateTime intervallEnd = timeStart.plusSeconds(intervallDeler*(i+1)); 		// creates variable for intervall end
+			ArrayList<DataPoint> intervalldp = PointsByTime(dp, intervallStart, intervallEnd); // gets the datapoints within the intervall
+			LocalDateTime intervallDisplay = intervallStart.plusSeconds(intervallDeler/2);	// creates a LocalTimeDate that will be connected with the average BPM within the time frame. 
+			Pair<LocalDateTime,Double> intervallArray= new Pair<LocalDateTime,Double>(intervallDisplay, averageBPMhelper(intervalldp)); //create a pair of the intervallDisplay and average BPM within the time frame
+			result.add(intervallArray);														// adds the pair of time and ABPM
 		}
-		//System.out.println(result);
-		return result;
+		return result;																		//returns the list of pairs of LocalDateTime and ABPM
 		
 	}
 	
