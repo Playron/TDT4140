@@ -1,6 +1,7 @@
 
 package tdt4140.gr1805.app.core.analysis;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -151,7 +152,7 @@ public class Statistics
 
 		return utputt; // Returns the ArrayList of Pairs, in descending order.
 	}
-	/*
+	
 	private static ArrayList<DataPoint> PointsByTime(ArrayList<DataPoint> dp, LocalDateTime timeStart, LocalDateTime timeEnd){
 		ArrayList<DataPoint> points= new ArrayList<DataPoint>(); //make an arraylist with the datapoints within our timeframe
 		for (DataPoint point:dp) {
@@ -196,23 +197,30 @@ public class Statistics
 				
 			}
 		}
-		long intervall = LocalDateTime.until(timeEnd,timeStart);
+		Duration intervall = Duration.between(timeStart,timeEnd);
+		long intervallsekund = intervall.getSeconds();
 		
+		/*ArrayList<Integer> intervall = new ArrayList<Integer>();
+		int year = timeEnd.getYear() - timeStart.getYear();
+		intervall.add(year);
+		int month = timeEnd.getMonthValue() - timeStart.getMonthValue();
+		intervall.add(month);
+		int day = timeEnd.getDayOfMonth() - timeStart.getDayOfMonth();
+		intervall.add(day);
+		*/
 		//System.out.println(intervall);
-		long intervallDeler = intervall/deler;
+		long intervallDeler = intervallsekund/deler;
 		ArrayList<Pair<LocalDateTime, Double>> result = new ArrayList<Pair<LocalDateTime, Double>>();
 		for(int i = 0; i< deler;i++) {
-			Date intervallStart = new Date(timeStart.getTime() + (intervallDeler*i));
-			Date intervallEnd = new Date(timeStart.getTime() + (intervallDeler*(i+1)));
+			LocalDateTime intervallStart = timeStart.plusSeconds(intervallDeler*i);
+			
+			LocalDateTime intervallEnd = timeStart.plusSeconds(intervallDeler*(i+1));
 			//System.out.println(intervallStart + " " + intervallEnd + intervallDeler + " "+ (intervallDeler*i) +" ");
 			//System.out.println("hey");
 			//System.out.println(intervallStart + " " + intervallEnd);
 			ArrayList<DataPoint> intervalldp = PointsByTime(dp, intervallStart, intervallEnd);
-			Date intervallDisplay = new Date(intervallStart.getTime()+(intervallDeler/2));
-			ArrayList<Object> intervallArray= new ArrayList<Object>();
-			//System.out.println(intervalldp);
-			intervallArray.add(intervallDisplay);
-			intervallArray.add(averageBPMhelper(intervalldp));
+			LocalDateTime intervallDisplay = intervallStart.plusSeconds(intervallDeler/2);
+			Pair<LocalDateTime,Double> intervallArray= new Pair<LocalDateTime,Double>(intervallDisplay, averageBPMhelper(intervalldp));
 			//System.out.println(intervallArray);
 			result.add(intervallArray);
 		}
@@ -220,7 +228,7 @@ public class Statistics
 		return result;
 		
 	}
-	*/
+	
 
 
 	
