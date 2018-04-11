@@ -1,3 +1,4 @@
+
 package tdt4140.gr1805.app.core.data;
 
 import java.util.Date;
@@ -5,65 +6,122 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
-public class DataPoint {
+/**
+ * @author
+ *
+ */
+public class DataPoint
+{
+	// TODO: Add comments explaining what id, timestamp, pulse, location is referring to.
 	int id;
 	Date timestamp;
 	double pulse;
 	LatLong location;
-	
+
+	/**
+	 * @param id
+	 * @param timestamp
+	 * @param pulse
+	 * @param location
+	 */
 	@JsonCreator
-	public DataPoint(
-			@JsonProperty("id") int id,
-			@JsonProperty("timestamp") Date timestamp,
-			@JsonProperty("pulse") double pulse,
-			@JsonProperty("location") LatLong location
-			) {
+	public DataPoint(@JsonProperty("id") int id, @JsonProperty("timestamp") Date timestamp,
+			@JsonProperty("pulse") double pulse, @JsonProperty("location") LatLong location)
+	{
 		this.id = id;
 		this.timestamp = timestamp;
 		this.pulse = pulse;
 		this.location = location;
 	}
-	
+
 	// Constructor without location, default null
-	public DataPoint(int id, Date timestamp, double pulse) {
+	/**
+	 * @param id
+	 * @param timestamp
+	 * @param pulse
+	 */
+	public DataPoint(int id, Date timestamp, double pulse)
+	{
 		super();
 		this.id = id;
 		this.timestamp = timestamp;
 		this.pulse = pulse;
 		this.location = null;
 	}
-	
-	public int getID() {
+
+	/**
+	 * @return
+	 */
+	public int getID()
+	{
 		return id;
 	}
-	public void setID(int id) {
+
+	/**
+	 * @param id
+	 */
+	public void setID(int id)
+	{
 		this.id = id;
 	}
-	public Date getTimestamp() {
+
+	/**
+	 * @return
+	 */
+	public Date getTimestamp()
+	{
 		return timestamp;
 	}
-	public void setTimestamp(Date timestamp) {
+
+	/**
+	 * @param timestamp
+	 */
+	public void setTimestamp(Date timestamp)
+	{
 		this.timestamp = timestamp;
 	}
-	public double getPulse() {
+
+	/**
+	 * @return
+	 */
+	public double getPulse()
+	{
 		return pulse;
 	}
-	public void setPulse(double pulse) {
+
+	/**
+	 * @param pulse
+	 */
+	public void setPulse(double pulse)
+	{
 		this.pulse = pulse;
 	}
-	public LatLong getLocation() {
+
+	/**
+	 * @return
+	 */
+	public LatLong getLocation()
+	{
 		return location;
 	}
-	public void setLocation(LatLong location) {
+
+	/**
+	 * @param location
+	 */
+	public void setLocation(LatLong location)
+	{
 		this.location = location;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "DataPoint [#" + id + ", " + timestamp + ", pulse=" + pulse + ", location=" + location + "]";
 	}
-	
-	
-	
+
 }
