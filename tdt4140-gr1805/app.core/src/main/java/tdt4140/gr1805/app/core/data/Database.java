@@ -344,6 +344,42 @@ public class Database {
 		return points;
 	}
 
+    public ArrayList<DataPoint> getPoints(Integer id, Gender gender, City city, Integer minAge,
+                                          Integer maxAge, LocalDateTime start, LocalDateTime end) {
+        ArrayList<DataPoint> result = new ArrayList<>();
+        for (DataPoint point : this.datapoints) {
+            Person person = getPerson(point.getID());
+            boolean match = true;
+
+            if (id != null && point.getID() != id) {
+                match = false;
+            }
+            if (gender != null && person.getGender() != gender) {
+                match = false;
+            }
+            if (city != null && person.getCity() != city) {
+                match = false;
+            }
+            int age = person.getAge();
+            if (minAge != null && age < minAge) {
+                match = false;
+            }
+            if (maxAge != null && maxAge < age) {
+                match = false;
+            }
+            if (start != null && point.timestamp.isBefore(start)) {
+                match = false;
+            }
+            if (end != null && point.timestamp.isAfter(end)) {
+                match = false;
+            }
+            if (match) {
+                result.add(point);
+            }
+        }
+        return result;
+    }
+
 
 	// WORKOUTS
 
@@ -456,47 +492,12 @@ public class Database {
 
 	// Utility functions for generating data or cleaning the database.
 
-	// This gives us something to look at, but is not realistic data.
-
-/*	public void populateDatabase() throws IOException, URISyntaxException {
-		
-		for (int i = 1; i < 201; i++) {
-			DataPoint p = new DataPoint(i, LocalDateTime.now(), Math.random() * 60 + 40);
-			this.addPoint(p);
-		}
-
-		for (int i = 1; i < 51; i++) {
-			Exercise e;
-			if (Math.random() < 0.5) {
-				e = Exercise.RUNNING;
-			} else {
-				e = Exercise.CYCLING;
-			}
-
-			ArrayList<DataPoint> list = new ArrayList<>();
-			for (int j = 1; j < 31; j++) {
-				LatLong l = new LatLong(Math.random() * 180 - 90, Math.random() * 360 - 180);
-				DataPoint p = new DataPoint(i, LocalDateTime.now(), Math.random() * 60 + 40, l);
-				list.add(p);
-			}
-
-			Workout w = new Workout(i, e, list);
-			this.addWorkout(w);
-		}
-
-		Person p1 = new Person(1992, 4, 7, Gender.MALE, City.BERGEN);
-		Person p2 = new Person(1981, 10, 25, Gender.FEMALE, City.OSLO);
-		this.addPerson(p1);
-		this.addPerson(p2);
-
-		this.writeObjects();
-	}*/
-
+	// 20 people, 2 workouts each, 1 month of pulse data
 	public void populateDatabase() {
         final LocalDateTime start = LocalDateTime.of(2018, 1, 1, 0, 0);
         final LocalDateTime end = LocalDateTime.of(2018, 2, 1, 1, 0, 0);
-        final int restInterval = 60;
-        final int exerciseInterval = 10;
+        final int restInterval = 3600; // every hour
+        final int exerciseInterval = 60; // every minute
 
 		for (int i = 0; i < 20; i++) {
             addPerson(new Person(Random.year(), Random.month(), Random.day(), Random.gender(), Random.city()));
@@ -558,5 +559,23 @@ public class Database {
 //		} catch (URISyntaxException e1) {
 //			e1.printStackTrace();
 //		}
+		
+		/*
+		Database db = new Database();
+		try {
+			db.cleanDatabase();
+			db.populateDatabase();
+			db.writeObjects();
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		}*//*
+        ArrayList<DataPoint> res = db.getPoints(null, Gender.FEMALE, null, 30, null, LocalDateTime.of(2018, 1, 15, 0, 0), null);
+        ArrayList<Person> pp = new ArrayList<>();
+        for (DataPoint p : res) {
+            if (!pp.contains(db.getPerson(p.getID()))) {
+                pp.add(db.getPerson(p.getID()));
+            }
+        }
+        System.out.println(pp);*/
 	}
 }
