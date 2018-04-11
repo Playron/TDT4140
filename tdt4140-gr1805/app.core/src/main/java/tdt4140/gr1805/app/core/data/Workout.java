@@ -1,5 +1,7 @@
 package tdt4140.gr1805.app.core.data;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -73,8 +75,15 @@ public class Workout {
 			double lat2 = datapoints.get(i+1).location.latitude;
 			distance = LatLong.distance(lat1, long1, lat2, long2);
 		}
-		System.out.println("The distance is: " + distance + " meters");
 		return distance;
+	}
+	
+	//Returns avg-speed for a workout in m/s
+	public double calculateAvgSpeed() {
+		Duration duration =Duration.between(datapoints.get(0).getTimestamp(), datapoints.get(datapoints.size() - 1).getTimestamp());
+		long seconds = Math.abs(duration.getSeconds());
+		double avg = (calculateWorkoutDistance() / seconds);
+		return avg;
 	}
 		
 
@@ -92,9 +101,8 @@ public class Workout {
 		Database db = new Database();
 		ArrayList<Workout> w = db.getWorkoutsByID(2);
 		Workout w2 = w.get(0);
-		System.out.println(w2.calculateWorkoutDistance());
-		
-		
+		System.out.println(w2.calculateAvgSpeed());	
 	}
+	
 	
 }
