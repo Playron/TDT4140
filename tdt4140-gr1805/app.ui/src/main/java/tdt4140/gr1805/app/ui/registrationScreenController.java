@@ -24,6 +24,7 @@ public class registrationScreenController{
 	ObservableList<Gender> genderList = FXCollections.observableArrayList(Gender.MALE, Gender.FEMALE); //Creates List with Gender-Enum 
 	ObservableList<City> cityList = FXCollections.observableArrayList(City.BERGEN, City.KRISTIANSAND, City.OSLO, City.TROMSOE, City.TRONDHEIM, City.STAVANGER);
 	MasterScreenController screenController; //Initiate MasterScreen in registrationScreen.
+	Database db;
 	
 	@FXML
 	ChoiceBox<City> cityBox;
@@ -42,6 +43,7 @@ public class registrationScreenController{
 	@FXML
 	AnchorPane rootPane;
 	
+	
 	@FXML
 	public void initialize() {
 		//Initialize List
@@ -51,6 +53,7 @@ public class registrationScreenController{
 	
 	public void setScreenController(MasterScreenController screenController) {
 		this.screenController = screenController;
+		this.db = this.screenController.getDatabase();
 	}
 		//Logic for the register user button
 	

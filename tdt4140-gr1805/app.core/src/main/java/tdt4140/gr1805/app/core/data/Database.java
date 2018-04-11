@@ -41,11 +41,11 @@ public class Database {
 		this.people = new HashMap<>();
 		this.datapoints = new ArrayList<>();
 		this.workouts = new ArrayList<>();
-
+		
 		mapper.findAndRegisterModules();
 		mapper.registerModule(new JavaTimeModule());
 		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
-
+		
 		try {
 			readObjects();
 		} catch (IOException e) {
@@ -130,6 +130,7 @@ public class Database {
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
 		mapper.writeValue(output, workouts);
 		output.close();
+		
 	}
 
 
@@ -239,12 +240,6 @@ public class Database {
 		}
 		for (int i : indexes) {
 			this.workouts.remove(i);
-		}
-		try {
-			writeObjects();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -553,13 +548,15 @@ public class Database {
 	}
 
 	public static void main (String[]args) throws IOException {
-		Database db = new Database();
-		try {
-			db.cleanDatabase();
-			db.populateDatabase();
-			db.writeObjects();
-		} catch (URISyntaxException e1) {
-			e1.printStackTrace();
-		}
+		//Uncomment to generate data
+		
+//		Database db = new Database();
+//		try {
+//			db.cleanDatabase();
+//			db.populateDatabase();
+//			db.writeObjects();
+//		} catch (URISyntaxException e1) {
+//			e1.printStackTrace();
+//		}
 	}
 }

@@ -19,11 +19,14 @@ public class SettingsScreenController
 	private Button settingsScreenBackToMenu;
 	@FXML
 	private Button deleteUserButton;
+	
+	Database db;
 
 
 	public void setScreenController(MasterScreenController screenController) 
 	{
 		this.screenController = screenController;
+		this.db = this.screenController.getDatabase();
 	}
 
 	@FXML
@@ -34,7 +37,6 @@ public class SettingsScreenController
 	@FXML
 	public void deleteUser(ActionEvent event) throws IOException, URISyntaxException 
 	{
-		Database db = new Database();
 		//Removing person by current ID
 		db.removePerson(screenController.getCurrentUserID());
 		db.writeObjects();

@@ -18,6 +18,8 @@ import tdt4140.gr1805.app.core.person.Person;
 
 public class loginScreenController{
 	public MasterScreenController screenController;
+	Database db;
+	
 	@FXML
 	private Button loggInn;
 	@FXML
@@ -31,11 +33,11 @@ public class loginScreenController{
     //Setting the screen controller
 	public void setScreenController(MasterScreenController screenController) {
 		this.screenController = screenController;
+		this.db = this.screenController.getDatabase();
 	}
 	
 	//Logic for the LoginButton.
 	public void logInButtonClicked() {
-		Database db = new Database();
 	
 		int id = Integer.parseInt(ID_TextField.getText());
 		

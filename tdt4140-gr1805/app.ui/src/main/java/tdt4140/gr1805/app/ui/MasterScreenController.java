@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import tdt4140.gr1805.app.core.data.Database;
 
 public class MasterScreenController {
 	
@@ -16,7 +17,7 @@ public class MasterScreenController {
     private Scene main;
     private Stage stage;
     private int ID;
-
+    private Database db = new Database();
     
     	//Sets stage.
     public MasterScreenController(Scene main,Stage stage) {
@@ -51,5 +52,8 @@ public class MasterScreenController {
     }
     public int getCurrentUserID() {
     		return ID;
+    }
+    public Database getDatabase() {
+    	return db;
     }
 }
