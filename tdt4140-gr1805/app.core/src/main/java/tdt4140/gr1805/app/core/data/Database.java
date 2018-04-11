@@ -7,10 +7,12 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import tdt4140.gr1805.app.core.Random;
 import tdt4140.gr1805.app.core.person.City;
 import tdt4140.gr1805.app.core.person.Gender;
 import tdt4140.gr1805.app.core.person.Person;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -39,7 +41,7 @@ public class Database {
 		this.people = new HashMap<>();
 		this.datapoints = new ArrayList<>();
 		this.workouts = new ArrayList<>();
-		
+
 		mapper.findAndRegisterModules();
 		mapper.registerModule(new JavaTimeModule());
 		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
@@ -455,13 +457,13 @@ public class Database {
 		}
 		return workouts;
 	}
-	
-	
+
+
 	// Utility functions for generating data or cleaning the database.
 
 	// This gives us something to look at, but is not realistic data.
 
-	public void populateDatabase() throws IOException, URISyntaxException {
+/*	public void populateDatabase() throws IOException, URISyntaxException {
 		
 		for (int i = 1; i < 201; i++) {
 			DataPoint p = new DataPoint(i, LocalDateTime.now(), Math.random() * 60 + 40);
@@ -493,11 +495,52 @@ public class Database {
 		this.addPerson(p2);
 
 		this.writeObjects();
+	}*/
+
+	public void populateDatabase() {
+        final LocalDateTime start = LocalDateTime.of(2018, 1, 1, 0, 0);
+        final LocalDateTime end = LocalDateTime.of(2018, 2, 1, 1, 0, 0);
+        final int restInterval = 60;
+        final int exerciseInterval = 10;
+
+		for (int i = 0; i < 20; i++) {
+            addPerson(new Person(Random.year(), Random.month(), Random.day(), Random.gender(), Random.city()));
+		}
+
+		for (Person p : this.people.values()) {
+		    int id = p.getID();
+
+			double pulse = Random.pulse();
+			LocalDateTime t = start;
+
+            while (t.isBefore(end)) {
+		        addPoint(new DataPoint(id, t, pulse));
+				pulse = Random.nearPulse(pulse);
+				t = t.plusSeconds(restInterval);
+            }
+
+			double fitness = Random.fitness();
+			for (int j = 0; j < 2; j++) {
+				Workout w = new Workout(id, Random.exercise());
+				pulse = Random.pulse();
+				LatLong location = Random.location();
+				t = Random.timeBetween(start, end);
+				LocalDateTime endOfWorkout = t.plusMinutes(10);
+
+				while (t.isBefore(endOfWorkout)) {
+					w.addDataPoint(new DataPoint(id, t, pulse, location));
+					pulse = Random.nearPulse(pulse);
+					location = Random.nearLocation(location, fitness);
+					t = t.plusSeconds(exerciseInterval);
+				}
+				addWorkout(w);
+			}
+		}
 	}
 
-	// Empties the entire database.
+	/* Empties the entire database in memory. Still needs to be followed
+	by writeObjects() to write to disk.*/
 	public void cleanDatabase() throws IOException, URISyntaxException {
-
 		HashMap<Integer, Person> emptyPeople = new HashMap<>();
 		ArrayList<DataPoint> emptyDatapoints = new ArrayList<>();
 		ArrayList<Workout> emptyWorkouts = new ArrayList<>();
@@ -514,10 +557,9 @@ public class Database {
 		try {
 			db.cleanDatabase();
 			db.populateDatabase();
+			db.writeObjects();
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		}
-
-		System.out.println(db.getWorkoutsByTimeInterval(LocalDateTime.of(2000,1,1,1,1), LocalDateTime.now()));
 	}
 }
