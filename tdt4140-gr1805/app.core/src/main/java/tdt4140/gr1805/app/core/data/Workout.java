@@ -60,7 +60,23 @@ public class Workout {
 		// DataPoint ID is set to match Workout ID
 		point.setID(this.getID());
 		this.datapoints.add(point);
+		
+		
 	}
+		
+	public double calculateWorkoutDistance() {
+		double distance = 0;
+		for(int i = 0; i<datapoints.size()-1; i++) {
+			double long1 = datapoints.get(i).location.longitude;
+			double lat1 = datapoints.get(i).location.latitude;
+			double long2 = datapoints.get(i+1).location.longitude;
+			double lat2 = datapoints.get(i+1).location.latitude;
+			distance = LatLong.distance(lat1, long1, lat2, long2);
+		}
+		System.out.println("The distance is: " + distance + " meters");
+		return distance;
+	}
+		
 
 	@Override
 	public String toString() {
@@ -72,6 +88,13 @@ public class Workout {
 		return ut;
 	}
 	
-	
+	public static void main(String[] args) {
+		Database db = new Database();
+		ArrayList<Workout> w = db.getWorkoutsByID(2);
+		Workout w2 = w.get(0);
+		System.out.println(w2.calculateWorkoutDistance());
+		
+		
+	}
 	
 }
