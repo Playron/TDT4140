@@ -196,15 +196,15 @@ public class Statistics
 			}
 		}
 		long intervall = timeEnd.getTime() - timeStart.getTime();
-		System.out.println(intervall);
+		//System.out.println(intervall);
 		long intervallDeler = intervall/deler;
 		ArrayList<ArrayList<Object>> result = new ArrayList<ArrayList<Object>>();
 		for(int i = 0; i< deler;i++) {
 			Date intervallStart = new Date(timeStart.getTime() + (intervallDeler*i));
 			Date intervallEnd = new Date(timeStart.getTime() + (intervallDeler*(i+1)));
-			System.out.println(intervallStart + " " + intervallEnd + intervallDeler + " "+ (intervallDeler*i) +" ");
-			System.out.println("hey");
-			System.out.println(intervallStart + " " + intervallEnd);
+			//System.out.println(intervallStart + " " + intervallEnd + intervallDeler + " "+ (intervallDeler*i) +" ");
+			//System.out.println("hey");
+			//System.out.println(intervallStart + " " + intervallEnd);
 			ArrayList<DataPoint> intervalldp = PointsByTime(dp, intervallStart, intervallEnd);
 			Date intervallDisplay = new Date(intervallStart.getTime()+(intervallDeler/2));
 			ArrayList<Object> intervallArray= new ArrayList<Object>();
@@ -214,7 +214,7 @@ public class Statistics
 			//System.out.println(intervallArray);
 			result.add(intervallArray);
 		}
-		System.out.println(result);
+		//System.out.println(result);
 		return result;
 		
 	}

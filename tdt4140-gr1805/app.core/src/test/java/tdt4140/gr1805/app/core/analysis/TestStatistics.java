@@ -129,17 +129,17 @@ public class TestStatistics
 		ArrayList<DataPoint> dpa = new ArrayList<DataPoint>();
 		LocalDateTime date = LocalDateTime.of(2017, 8, 22, 3, 54, 13, 22);
 		Date dato = localDateTimeToDate(date);
-		System.out.println(dato.getTime());
+		//System.out.println(dato.getTime());
 		DataPoint dp = new DataPoint(1, dato, 65);
 		dpa.add(dp);
 		for(int i = 0; i<10; i++) {
 			LocalDateTime date1 = LocalDateTime.of(2015, 7, 22, 3, 54, 12, 22);
 			Date dato1 = localDateTimeToDate(date1);
-			System.out.println(dato1.getTime());
+			//System.out.println(dato1.getTime());
 			DataPoint dp1 = new DataPoint(1, dato1, 70);
 			dpa.add(dp1);
 		}
-		System.out.println(dpa);
+		//System.out.println(dpa);
 		for (int i = 0; i<10;i++) {
 			LocalDateTime date1 = LocalDateTime.of(2015, 12, 28, 16, 22, 54, 836142);
 			Date dato1 = localDateTimeToDate(date1);
@@ -157,7 +157,7 @@ public class TestStatistics
 		LocalDateTime end = LocalDateTime.of(2018, 4,1,1,1);
 		Date endDate = localDateTimeToDate(end);
 		ArrayList<ArrayList<Object>> result = Statistics.averageBPM(dpa, startDate, endDate, 2);
-		System.out.println(result);
+		//System.out.println(result);
 		ArrayList<ArrayList<Object>> expected = new ArrayList<>();
 		LocalDateTime date1 = LocalDateTime.of(2016, 1,31,3,10,45);
 		Date dato1 = localDateTimeToDate(date1);
