@@ -80,7 +80,22 @@ public class Workout {
 		return distance;
 	}
 		
-
+	
+	public double calculateAverageExcercisePulse() {
+		double pulse = 0;
+		
+		for(int i = 0; i < datapoints.size()-1; i++) {
+			 System.out.println(datapoints.get(i).pulse);
+			 pulse += datapoints.get(i).pulse;
+		}
+		System.out.println();
+		System.out.println(pulse);
+		System.out.println(datapoints.size());
+		
+		return pulse/datapoints.size();
+		
+	}
+	
 	@Override
 	public String toString() {
 		String ut =  "Workout [#" + id + ", type=" + type + ", datapoints=";// + datapoints + "]";
@@ -95,7 +110,8 @@ public class Workout {
 		Database db = new Database();
 		ArrayList<Workout> w = db.getWorkoutsByID(2);
 		Workout w2 = w.get(0);
-		System.out.println(w2.calculateWorkoutDistance());
+		//System.out.println(w2.calculateWorkoutDistance());
+		System.out.println(w2.calculateAverageExcercisePulse());
 		
 		
 	}
