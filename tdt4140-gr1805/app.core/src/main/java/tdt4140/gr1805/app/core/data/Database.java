@@ -550,25 +550,15 @@ public class Database {
 
 	public static void main (String[]args) throws IOException {
 		//Uncomment to generate data
-		
-//		Database db = new Database();
-//		try {
-//			db.cleanDatabase();
-//			db.populateDatabase();
-//			db.writeObjects();
-//		} catch (URISyntaxException e1) {
-//			e1.printStackTrace();
-//		}
-		
-		/*
-		Database db = new Database();
+/*		Database db = new Database();
 		try {
 			db.cleanDatabase();
 			db.populateDatabase();
 			db.writeObjects();
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
-		}*//*
+		}*/
+		/*
         ArrayList<DataPoint> res = db.getPoints(null, Gender.FEMALE, null, 30, null, LocalDateTime.of(2018, 1, 15, 0, 0), null);
         ArrayList<Person> pp = new ArrayList<>();
         for (DataPoint p : res) {
@@ -576,6 +566,7 @@ public class Database {
                 pp.add(db.getPerson(p.getID()));
             }
         }
-        System.out.println(pp);*/
+        System.out.println(pp);
+        */
 	}
 }
