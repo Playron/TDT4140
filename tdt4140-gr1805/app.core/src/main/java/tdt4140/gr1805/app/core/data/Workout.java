@@ -64,6 +64,9 @@ public class Workout {
 		
 	}
 		
+	
+	//Method for calculating distance of an selected workout. 
+	//returns distance
 	public double calculateWorkoutDistance() {
 		double distance = 0;
 		for(int i = 0; i<datapoints.size()-1; i++) {
