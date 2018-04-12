@@ -12,11 +12,13 @@ public class TestDatabase
 	@Before
 	public void setUp() throws Exception
 	{
+		Database db = new Database();
 	}
 
 	@After
 	public void tearDown() throws Exception
 	{
+		
 	}
 
 	@Test
