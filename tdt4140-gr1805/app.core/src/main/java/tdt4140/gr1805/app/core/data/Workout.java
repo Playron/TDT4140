@@ -94,12 +94,10 @@ public class Workout {
 		double pulse = 0;
 		
 		for(int i = 0; i < datapoints.size(); i++) {
-			 System.out.println(datapoints.get(i).pulse);
+			
 			 pulse += datapoints.get(i).pulse;
 		}
-		System.out.println();
-		System.out.println(pulse);
-		System.out.println(datapoints.size());
+	
 		
 		return pulse/datapoints.size();
 		

@@ -27,11 +27,13 @@ public class TestWorkout {
 
 	@Test
 	public void testCalculateAvgExercisePulse() {
+		
 		double excpected = w1.calculateAverageExcercisePulse();
-		
-		
 		assertEquals(excpected, w1.calculateAverageExcercisePulse(),1);
 	}
+	
+	
+	
 	
 
 	
