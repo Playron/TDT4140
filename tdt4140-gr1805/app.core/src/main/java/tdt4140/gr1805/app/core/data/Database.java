@@ -17,10 +17,7 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /* 
  * The Database object reads from its files when initialized, but 
@@ -219,28 +216,12 @@ public class Database {
 	 *
 	 * @param id ID of Person to be removed
 	 */
-	public void removePerson(int id) {
+	public void removePerson(Integer id) {
+		if (getPerson(id) == null) {return;}
+
 		this.people.remove(id);
-
-		ArrayList<Integer> indexes = new ArrayList<>();
-		for (int i = 0; i < this.datapoints.size(); i++) {
-			if (this.datapoints.get(i).getID() == id) {
-				indexes.add(i);
-			}
-		}
-		for (int i : indexes) {
-			this.datapoints.remove(i);
-		}
-
-		indexes.clear();
-		for (int i = 0; i < this.workouts.size(); i++) {
-			if (this.workouts.get(i).getID() == id) {
-				indexes.add(i);
-			}
-		}
-		for (int i : indexes) {
-			this.workouts.remove(i);
-		}
+		this.datapoints.removeIf(dataPoint -> dataPoint.getID() == id);
+		this.workouts.removeIf(workout -> workout.getID() == id);
 	}
 
 	// DATAPOINTS
