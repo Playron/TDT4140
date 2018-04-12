@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.registrationScreenController">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.registrationScreenController">
    <children>
       <Label layoutX="198.0" layoutY="58.0" text="User information" textFill="WHITE">
          <font>
@@ -26,6 +26,7 @@
       <Button id="backButton" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonClicked" style="-fx-background-radius: 10;" text="Back" />
       <CheckBox layoutX="389.0" layoutY="309.0" mnemonicParsing="false" style="-fx-background-radius: 20;" text="Send location" textFill="WHITE" />
       <ChoiceBox fx:id="cityBox" layoutX="220.0" layoutY="304.0" prefWidth="150.0" style="-fx-background-radius: 10;" />
+      <Label fx:id="registrationMessage" layoutX="405.0" layoutY="255.0" text="Label" />
 
    </children>
 </AnchorPane>
