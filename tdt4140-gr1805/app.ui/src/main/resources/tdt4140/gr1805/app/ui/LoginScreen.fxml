@@ -12,7 +12,7 @@
       <Button layoutX="502.0" layoutY="359.0" mnemonicParsing="false" onAction="#signupUser" text="Register new User" AnchorPane.rightAnchor="10.0" />
       <TextField fx:id="ID_TextField" layoutX="207.0" layoutY="206.0" promptText="ID:" style="-fx-background-radius: 10;" />
       <Label layoutX="93.0" layoutY="66.0" />
-      <Label layoutX="244.0" layoutY="145.0" text="Enter user-ID" textFill="WHITE" />
+      <Label layoutX="244.0" layoutY="145.0" text="Enter user ID" textFill="WHITE" />
       <Label layoutX="167.0" layoutY="44.0" text="Excercise app " textFill="WHITE">
          <font>
             <Font size="36.0" />
