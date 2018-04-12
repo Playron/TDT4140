@@ -80,9 +80,10 @@ public class registrationScreenController{
 			
 			//Writes the person-Object to the corresponding JSON file. Automatically keeps track of ID
 			//Person-objects is beeing saved as HAshMap<ID, person>
-			Database db = new Database();
 			db.addPerson(person);
 			db.writeObjects();
+		//	db.readPeople();
+		//	db.readDatapoints();
 			System.out.println(person);																		  
 		}else {																								  
 			//Should never trigger, since Gender-enum is only option.	
