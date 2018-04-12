@@ -474,7 +474,7 @@ public class Database {
 	// Utility functions for generating data or cleaning the database.
 
 	// 20 people, 2 workouts each, 1 month of pulse data
-	/*public void populateDatabase() {
+	public void populateDatabase() {
         final LocalDateTime start = LocalDateTime.of(2018, 1, 1, 0, 0);
         final LocalDateTime end = LocalDateTime.of(2018, 2, 1, 1, 0, 0);
         final int restInterval = 3600; // every hour
@@ -513,7 +513,7 @@ public class Database {
 				addWorkout(w);
 			}
 		}
-	}*/
+	}
 
 	/* Empties the entire database in memory. Still needs to be followed
 	by writeObjects() to write to disk.*/
@@ -521,17 +521,17 @@ public class Database {
 		HashMap<Integer, Person> emptyPeople = new HashMap<>();
 		ArrayList<DataPoint> emptyDatapoints = new ArrayList<>();
 		ArrayList<Workout> emptyWorkouts = new ArrayList<>();
-		this.writePeople(emptyPeople);
-		this.writeDataPoints(emptyDatapoints);
-		this.writeWorkouts(emptyWorkouts);
+		//this.writePeople(emptyPeople);
+		//this.writeDataPoints(emptyDatapoints);
+		//this.writeWorkouts(emptyWorkouts);
 		this.people.clear();
 		this.datapoints.clear();
 		this.workouts.clear();
 	}
-
+	/*
 	public static void main (String[]args) throws IOException {
 		//Uncomment to generate data
-/*		Database db = new Database();
+		Database db = new Database();
 		try {
 			db.cleanDatabase();
 			db.populateDatabase();
@@ -539,6 +539,7 @@ public class Database {
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		}*/
+	
 		/*
         ArrayList<DataPoint> res = db.getPoints(null, Gender.FEMALE, null, 30, null, LocalDateTime.of(2018, 1, 15, 0, 0), null);
         ArrayList<Person> pp = new ArrayList<>();

@@ -21,22 +21,16 @@ public class TestWorkout {
 		workouts = db.getAllWorkouts();
 		w0 = workouts.get(0);
 		w1 = workouts.get(1);
-		w2 = workouts.get(2);
-		w3 = workouts.get(3);
-		w4 = workouts.get(4);
-		w5 = workouts.get(5);
+
 	}
 
-	@Test
-	public void test()
-	{
-		assertTrue(true);
-	}
-	
+
 	@Test
 	public void testCalculateAvgExercisePulse() {
+		double excpected = w1.calculateAverageExcercisePulse();
 		
-		assertEquals(100.19, w1.calculateAverageExcercisePulse(),0.1);
+		
+		assertEquals(excpected, w1.calculateAverageExcercisePulse(),1);
 	}
 	
 

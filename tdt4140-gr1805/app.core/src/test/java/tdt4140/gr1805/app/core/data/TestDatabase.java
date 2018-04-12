@@ -32,7 +32,7 @@ public class TestDatabase
 	@After
 	public void tearDown() throws Exception
 	{
-		
+		db.populateDatabase();
 	}
 
 	@Test
@@ -57,7 +57,6 @@ public class TestDatabase
 	public void testCleanDatabase() throws IOException, URISyntaxException {
 		db.addPerson(p1);
 		db.cleanDatabase();
-		db.writeObjects();
 		HashMap<Integer, Person> emptyPeople = new HashMap<>();
 		assertEquals(db.getAllPeople(), emptyPeople);
 	}
