@@ -56,8 +56,10 @@ public class loginScreenController{
 			}				
 				
 		else if(db.getPerson(id) != null){
-			
-				duHarLoggetInn.setText(ID_TextField.getText() + " har logget inn!");
+				//Fjernet siden den ikke vises når man logger inn, bare når man har slettet. 
+				//duHarLoggetInn.setText(ID_TextField.getText() + " har logget inn!");
+				
+				duHarLoggetInn.setText("");
 				screenController.setCurrentUserID(id);
 				screenController.activate("MenuScreen");
 			}
