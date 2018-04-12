@@ -93,7 +93,7 @@ public class Workout {
 	public double calculateAverageExcercisePulse() {
 		double pulse = 0;
 		
-		for(int i = 0; i < datapoints.size()-1; i++) {
+		for(int i = 0; i < datapoints.size(); i++) {
 			 System.out.println(datapoints.get(i).pulse);
 			 pulse += datapoints.get(i).pulse;
 		}
