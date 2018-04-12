@@ -2,6 +2,8 @@ package tdt4140.gr1805.app.core.data;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 
 import org.junit.After;
@@ -40,7 +42,6 @@ public class TestDatabase
 		int excpectedID = p1.getID();
 		people.put(excpectedID, p1);
 		assertEquals(people.get(excpectedID), p1);
-		
 	}
 
 	@Test
@@ -50,7 +51,17 @@ public class TestDatabase
 		p1.setGatherLocation(false);
 		db.updatePerson(p1);
 		assertEquals(db.getPerson(p1.getID()), p1);
-		
 	}
+	
+	@Test
+	public void testCleanDatabase() throws IOException, URISyntaxException {
+		db.addPerson(p1);
+		db.cleanDatabase();
+		db.writeObjects();
+		HashMap<Integer, Person> emptyPeople = new HashMap<>();
+		assertEquals(db.getAllPeople(), emptyPeople);
+	}
+	
+	
 
 }

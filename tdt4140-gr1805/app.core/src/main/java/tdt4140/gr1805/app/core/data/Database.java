@@ -474,7 +474,7 @@ public class Database {
 	// Utility functions for generating data or cleaning the database.
 
 	// 20 people, 2 workouts each, 1 month of pulse data
-	public void populateDatabase() {
+	/*public void populateDatabase() {
         final LocalDateTime start = LocalDateTime.of(2018, 1, 1, 0, 0);
         final LocalDateTime end = LocalDateTime.of(2018, 2, 1, 1, 0, 0);
         final int restInterval = 3600; // every hour
@@ -513,7 +513,7 @@ public class Database {
 				addWorkout(w);
 			}
 		}
-	}
+	}*/
 
 	/* Empties the entire database in memory. Still needs to be followed
 	by writeObjects() to write to disk.*/
