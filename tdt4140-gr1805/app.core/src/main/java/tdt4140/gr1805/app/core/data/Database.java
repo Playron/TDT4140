@@ -474,7 +474,7 @@ public class Database {
 	// Utility functions for generating data or cleaning the database.
 
 	// 20 people, 2 workouts each, 1 month of pulse data
-	public void populateDatabase() {
+	/* void populateDatabase() {
         final LocalDateTime start = LocalDateTime.of(2018, 1, 1, 0, 0);
         final LocalDateTime end = LocalDateTime.of(2018, 2, 1, 1, 0, 0);
         final int restInterval = 3600; // every hour
@@ -513,7 +513,7 @@ public class Database {
 				addWorkout(w);
 			}
 		}
-	}
+	}*/
 
 	/* Empties the entire database in memory. Still needs to be followed
 	by writeObjects() to write to disk.*/
@@ -538,9 +538,9 @@ public class Database {
 			db.writeObjects();
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
-		}*/
+		}
 	
-		/*
+		
         ArrayList<DataPoint> res = db.getPoints(null, Gender.FEMALE, null, 30, null, LocalDateTime.of(2018, 1, 15, 0, 0), null);
         ArrayList<Person> pp = new ArrayList<>();
         for (DataPoint p : res) {
@@ -549,6 +549,6 @@ public class Database {
             }
         }
         System.out.println(pp);
-        */
-	}
+        
+	}*/
 }

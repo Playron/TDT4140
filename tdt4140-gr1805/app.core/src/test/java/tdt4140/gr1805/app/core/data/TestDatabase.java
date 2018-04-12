@@ -32,7 +32,6 @@ public class TestDatabase
 	@After
 	public void tearDown() throws Exception
 	{
-		db.populateDatabase();
 	}
 
 	@Test
