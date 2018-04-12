@@ -82,8 +82,7 @@ public class registrationScreenController{
 			//Person-objects is beeing saved as HAshMap<ID, person>
 			db.addPerson(person);
 			db.writeObjects();
-		//	db.readPeople();
-		//	db.readDatapoints();
+
 			System.out.println(person);																		  
 		}else {																								  
 			//Should never trigger, since Gender-enum is only option.	
