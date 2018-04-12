@@ -45,12 +45,13 @@ public class SettingsScreenController
 
 	@FXML
 	public void toggleGPS(ActionEvent event) throws IOException, URISyntaxException {
-		Database db = new Database();
 		Person p=db.getPerson(screenController.getCurrentUserID());	
 		p.setGatherLocation(!p.isGatherLocation());
 		System.out.println("Location gathering is set to " + p.isGatherLocation());
 		db.updatePerson(p);
 		db.writeObjects();
+		db.readPeople();
+		System.out.println(p.isGatherLocation());
 	}
 
 }
