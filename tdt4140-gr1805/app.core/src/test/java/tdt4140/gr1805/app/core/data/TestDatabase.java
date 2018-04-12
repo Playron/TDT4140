@@ -2,17 +2,28 @@ package tdt4140.gr1805.app.core.data;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import tdt4140.gr1805.app.core.person.City;
+import tdt4140.gr1805.app.core.person.Gender;
+import tdt4140.gr1805.app.core.person.Person;
+
 public class TestDatabase
 {
-
+	Database db;
+	Person p1;
+	private HashMap<Integer, Person> people;
+	
 	@Before
 	public void setUp() throws Exception
 	{
-		Database db = new Database();
+		db = new Database();
+		p1 = new Person(1995, 10, 19, Gender.MALE, City.BERGEN);
+		people = new HashMap<>();
 	}
 
 	@After
@@ -22,9 +33,14 @@ public class TestDatabase
 	}
 
 	@Test
-	public void test()
+	public void testAddPerson()
 	{
-		assertTrue(true);
+		db.addPerson(p1);
+		int excpectedID = p1.getID();
+		people.put(excpectedID, p1);
+		assertEquals(people.get(excpectedID), p1);
+		
+		
 	}
 
 }
