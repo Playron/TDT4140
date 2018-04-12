@@ -115,7 +115,7 @@ public class Workout {
 		return ut;
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Database db = new Database();
 		ArrayList<Workout> w = db.getWorkoutsByID(2);
 		Workout w2 = w.get(0);
@@ -125,7 +125,7 @@ public class Workout {
 		
 
 		System.out.println(w2.calculateAvgSpeed());	
-	}
+	}*/
 	
 	
 }
