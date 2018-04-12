@@ -23,6 +23,7 @@ public class TestDatabase
 	{
 		db = new Database();
 		p1 = new Person(1995, 10, 19, Gender.MALE, City.BERGEN);
+		db.addPerson(p1);
 		people = new HashMap<>();
 	}
 
@@ -40,6 +41,15 @@ public class TestDatabase
 		people.put(excpectedID, p1);
 		assertEquals(people.get(excpectedID), p1);
 		
+	}
+
+	@Test
+	public void testUpdatePerson() {
+		Person p2 = new Person(1995, 10, 19, Gender.MALE, City.BERGEN);
+		p2.setGatherLocation(false);
+		p1.setGatherLocation(false);
+		db.updatePerson(p1);
+		assertEquals(db.getPerson(p1.getID()), p1);
 		
 	}
 
