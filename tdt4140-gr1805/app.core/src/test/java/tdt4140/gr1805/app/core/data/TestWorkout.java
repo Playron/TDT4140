@@ -76,10 +76,4 @@ public class TestWorkout {
 		double expected = 4115.2 / (40*60); // distance / time gives avg spedd in m/2
 		assertEquals(expected, w.calculateAvgSpeed(), 1);
 	}
-	
-	
-	
-	
-
-	
 }
