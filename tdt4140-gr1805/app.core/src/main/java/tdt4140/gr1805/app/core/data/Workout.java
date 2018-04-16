@@ -103,7 +103,8 @@ public class Workout {
 		
 	}
 	
-	/*@Override
+	//Kan aktiveres for å enklere skrive ut datapunkter
+	@Override
 	public String toString() {
 		String ut =  "Workout [#" + id + ", type=" + type + ", datapoints=";// + datapoints + "]";
 		for (int i = 0; i < datapoints.size(); i++)
@@ -112,18 +113,6 @@ public class Workout {
 		}
 		return ut;
 	}
-	
-	/*public static void main(String[] args) {
-		Database db = new Database();
-		ArrayList<Workout> w = db.getWorkoutsByID(2);
-		Workout w2 = w.get(0);
-		//System.out.println(w2.calculateWorkoutDistance());
-		System.out.println(w2.calculateAverageExcercisePulse());
-		
-		
-
-		System.out.println(w2.calculateAvgSpeed());	
-	}*/
 	
 	
 }

@@ -7,5 +7,4 @@ public enum City {
 	BERGEN, 
 	STAVANGER,
 	KRISTIANSAND,
-	//TODO: add/delete cities to make a good representation of Norway
 }

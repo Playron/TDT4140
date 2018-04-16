@@ -137,20 +137,6 @@ public class Person implements java.io.Serializable{
 	
 
 	
-//	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException
-//	{
-//		Person pers1 = new Person(1991, 02, 20, Gender.MALE);
-//		System.out.println(pers1.getAge());
-//		System.out.println(pers1.getID());
-//		System.out.println(pers1.getGender());
-//		writePersonToFile(pers1);
-//		readPersonFromFile(pers1);
-//		Person pers2 = new Person(1993, 02, 20, Gender.FEMALE);
-//		writePersonToFile(pers2);
-//		readPersonFromFile(pers2);
-//		readPersonFromFile(pers1);
-//	
-//	
-//	}
+
 }
 

@@ -62,7 +62,6 @@ public class Database {
 		readWorkouts();
 	}
 
-	// TODO: Add documentation to readPeople() in Database.java.
 	public void readPeople() throws IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/people.json");
 		this.people = mapper.readValue(input, new TypeReference<HashMap<Integer, Person>>() {
@@ -71,7 +70,6 @@ public class Database {
 
 	}
 
-	// TODO: Add documentation to readDatapoints() in Database.java
 	public void readDatapoints() throws IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/datapoints.json");
 		this.datapoints = mapper.readValue(input, new TypeReference<ArrayList<DataPoint>>() {
@@ -79,7 +77,6 @@ public class Database {
 		input.close();
 	}
 
-	// TODO: Add documentation to readWorkouts() in Database.java
 	public void readWorkouts() throws IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/workouts.json");
 		this.workouts = mapper.readValue(input, new TypeReference<ArrayList<Workout>>() {
@@ -103,7 +100,6 @@ public class Database {
 		writeWorkouts(this.workouts);
 	}
 
-	// TODO: Add documentation to writePeopl() in Database.java
 	public void writePeople(HashMap<Integer, Person> people) throws IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/people.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
@@ -111,7 +107,6 @@ public class Database {
 		output.close();
 	}
 
-	// TODO: Add documentation to writeDataPoints() in Database.java
 	public void writeDataPoints(ArrayList<DataPoint> datapoints) throws IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/datapoints.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
@@ -119,7 +114,6 @@ public class Database {
 		output.close();
 	}
 
-	// TODO: Add documentation to writeWorkouts() in Database.java
 	public void writeWorkouts(ArrayList<Workout> workouts) throws IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/workouts.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));

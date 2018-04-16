@@ -56,8 +56,6 @@ public class loginScreenController{
 			}				
 				
 		else if(db.getPerson(id) != null){
-				//Fjernet siden den ikke vises når man logger inn, bare når man har slettet. 
-				//duHarLoggetInn.setText(ID_TextField.getText() + " har logget inn!");
 				
 				duHarLoggetInn.setText("");
 				screenController.setCurrentUserID(id);
@@ -90,13 +88,5 @@ public class loginScreenController{
 	}
 	
 	
-//	public static void main(String[] args) throws IOException, URISyntaxException {
-//		Person p1 = new Person(1992, 10, 19, Gender.MALE, City.BERGEN);
-//		Database db = new Database();
-//		System.out.println(db.getPerson(4));
-//		db.removePerson(4);
-//		db.writeObjects();
-//		
-//	}
 }
 

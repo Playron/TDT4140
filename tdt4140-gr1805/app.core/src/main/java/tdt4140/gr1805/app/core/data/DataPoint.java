@@ -10,13 +10,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 import java.time.LocalDateTime;
 
-/**
- * @author
- *
- */
 public class DataPoint
 {
-	// TODO: Add comments explaining what id, timestamp, pulse, location is referring to.
 	int id;
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
 	@JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -25,7 +20,6 @@ public class DataPoint
 	LatLong location;
 	
 	
-	// TODO: explain all the parameters below in the Javadoc
 	/**
 	 * @param id
 	 * @param timestamp
@@ -47,7 +41,6 @@ public class DataPoint
 
 	// Constructor without location, default null
 	public DataPoint(int id, LocalDateTime timestamp, double pulse) {
-	// TODO: explain all the parameters below in the Javadoc
 	/**
 	 * @param id
 	 * @param timestamp
@@ -60,7 +53,6 @@ public class DataPoint
 		this.location = null;
 	}
 	
-	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -69,7 +61,6 @@ public class DataPoint
 		return id;
 	}
 
-	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @param id
 	 */
@@ -78,7 +69,6 @@ public class DataPoint
 		this.id = id;
 	}
 
-	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -87,7 +77,6 @@ public class DataPoint
 		return timestamp;
 	}
 
-	// TODO: explain parameter in the Javadoc
 	/**
 	 * @param timestamp
 	 */
@@ -95,7 +84,6 @@ public class DataPoint
 		this.timestamp = timestamp;
 	}
 
-	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -104,7 +92,6 @@ public class DataPoint
 		return pulse;
 	}
 
-	// TODO: explain parameter in the Javadoc
 	/**
 	 * @param pulse
 	 */
@@ -113,7 +100,6 @@ public class DataPoint
 		this.pulse = pulse;
 	}
 
-	// TODO: explain what it returns in the Javadoc
 	/**
 	 * @return
 	 */
@@ -122,7 +108,6 @@ public class DataPoint
 		return location;
 	}
 
-	// TODO: explain parameter in the Javadoc
 	/**
 	 * @param location
 	 */
@@ -137,12 +122,12 @@ public class DataPoint
 	 * @see java.lang.Object#toString()
 	 */
 	
-	/*@Override
 	
+	@Override
 	public String toString()
 	
 	{
 		return "DataPoint [#" + id + ", " + timestamp + ", pulse=" + pulse + ", location=" + location + "]";
-	}*/
+	}
 
 }
