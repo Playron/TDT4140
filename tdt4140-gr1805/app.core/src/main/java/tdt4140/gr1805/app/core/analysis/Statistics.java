@@ -408,6 +408,13 @@ public class Statistics
 	}
 
 	
+	/**
+	 * @param start The {@link LocalDateTime} for the startpoint used in calculations.
+	 * @param end The {@link LocalDateTime} for the endpoint used in calculations.
+	 * @param city The city we want to have statistics of.
+	 * @param parts The number of intervals we want.
+	 * @return A Series containing the pulse in an interval, pulse is y, interval is x.
+	 */
 	public static final Series<Number, Number> averagePulseSeriesByCity(LocalDateTime start, LocalDateTime end, City city, 
 			int parts)
 	{
@@ -441,77 +448,5 @@ public class Statistics
 	
 	
 
-	//
-	// private static ArrayList<Workout> exerciseCountGenerateWL()
-	// {
-	// ArrayList<Workout> wl = new ArrayList<>();
-	// for (int i = 0; i < 3; i++)
-	// {
-	// int id = i+1;
-	// Workout wk = new Workout(id, Exercise.RUNNING, createDataPoints(id));
-	// wl.add(wk);
-	// }
-	// for (int i = 0; i < 5; i++)
-	// {
-	// int id = i + 4;
-	// Workout wk = new Workout(id, Exercise.CYCLING, createDataPoints(id));
-	// wl.add(wk);
-	// }
-	// //workoutSysOut(wl);
-	// for (int i = 0; i < 10; i++)
-	// {
-	// int id = i + 9;
-	// Workout wk = new Workout(id, Exercise.WALKING, createDataPoints(id));
-	// wl.add(wk);
-	// }
-	// for (int i = 0; i < 4; i++)
-	// {
-	// int id = i + 19;
-	// Workout wk = new Workout(id, Exercise.STRENGTH_TRANING,
-	// createDataPoints(id));
-	// wl.add(wk);
-	// }
-	// return wl;
-	// }
-	//
-	// private static ArrayList<DataPoint> createDataPoints(int id)
-	// {
-	// Random rand = new Random();
-	// ArrayList<DataPoint> dpa = new ArrayList<>();
-	// double pulseBase = 60+(rand.nextDouble()*20); // Sets the baseline for the
-	// persons pulse
-	// int interval = 5; // Sets the interval between DataPoints in seconds
-	// LocalDateTime dateTime = LocalDateTime.now().minusDays(1); // Sets the
-	// dateTime 1 day ago
-	// for (int i = 0; i < 20; i++)
-	// {
-	// // The following creates a Date which is 5 seconds after the previous
-	// dateTime.
-	// Date date =
-	// Date.from(dateTime.plusSeconds(interval*i).atZone(ZoneId.systemDefault()).toInstant());
-	// DataPoint dp = new DataPoint(id, date, pulseBase+(rand.nextDouble()*i));
-	// dpa.add(dp);
-	// }
-	// return dpa;
-	// }
-	//
-//	 public static void main(String[] args)
-//	 {
-//	 ArrayList<Double> liste = new ArrayList<Double>();
-//	 liste.add(2.9);
-//	 liste.add(2.1);
-//	 liste.add(2.3);
-//	 Double median = computeMedian(liste);
-//	 System.out.println(median);
-//	 ArrayList<Workout> wl = exerciseCountGenerateWL();
-//	 ArrayList<Pair<Exercise, Integer>> arl = exerciseCounts(wl, true);
-//	 System.out.println(arl);
-//	
-//	 }
 	
-	public static void main(String[] args)
-	{
-		System.out.println(averagePulseSeriesByID(LocalDateTime.now().minusMonths(4), LocalDateTime.now(), 1, 120));
-		
-	}
 }
