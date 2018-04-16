@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsAdminController;
 import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsCitiesMeanController;
 import tdt4140.gr1805.app.ui.statisticsScreen.StatisticsMeanController;
 
@@ -126,13 +127,13 @@ public class mainController extends Application
 		StatisticsCitiesMedianController statController3 = statLoader3.getController();
 		statController3.setScreenController(screenController);
 */
-/*		// -------- Statistics Median Screen ------------ //
+		// -------- Statistics Median Screen ------------ //
 
-		FXMLLoader statLoader4 = new FXMLLoader(getClass().getResource("statisticsScreen/StatisticsMedian.fxml"));
-		screenController.addScreen("StatisticsMean", (Pane) statLoader4.load());
-		StatisticsMedianController statController4 = statLoader4.getController();
+		FXMLLoader statLoader4 = new FXMLLoader(getClass().getResource("statisticsScreen/StatisticsAdmin.fxml"));
+		screenController.addScreen("StatisticsAdmin", (Pane) statLoader4.load());
+		StatisticsAdminController statController4 = statLoader4.getController();
 		statController4.setScreenController(screenController);
-*/
+
 	}
 
 }

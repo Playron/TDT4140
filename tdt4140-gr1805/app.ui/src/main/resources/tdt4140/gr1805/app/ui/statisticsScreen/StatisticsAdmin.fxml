@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.statisticsScreen.StatisticsAdminController">
+	<children>
+      <LineChart fx:id="lC" layoutX="151.0" prefHeight="400.0" prefWidth="450.0">
+        <xAxis>
+          <NumberAxis side="BOTTOM" tickLabelFill="WHITE" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+        </yAxis>
+      </LineChart>
+      <Button layoutX="14.0" layoutY="120.0" mnemonicParsing="false" onAction="#showAveragePulse" prefHeight="30.0" prefWidth="120.0" text="Show avg pulse" />
+      <Button layoutX="14.0" layoutY="164.0" mnemonicParsing="false" onAction="#showAllAveragePulse" prefHeight="50.0" prefWidth="120.0" text="Show avg pulse, all cities" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="14.0" layoutY="239.0" mnemonicParsing="false" onAction="#showExercisesByCity" prefHeight="30.0" prefWidth="120.0" text="Show Exercises" />
+      <Button layoutX="14.0" layoutY="300.0" mnemonicParsing="false" onAction="#showTotalAveragePulse" prefHeight="30.0" prefWidth="120.0" text="Show avg total" />
+      <ChoiceBox fx:id="cityBox" layoutX="14.0" layoutY="67.0" prefWidth="120.0" />
+	</children>
+</AnchorPane>

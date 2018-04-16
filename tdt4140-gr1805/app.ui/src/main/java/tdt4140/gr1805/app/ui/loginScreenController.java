@@ -46,7 +46,8 @@ public class loginScreenController{
 		}
 			//Admin ID is 0!
 		else if(Integer.parseInt(ID_TextField.getText()) == 0) {
-				screenController.activate("AdminScreen");
+			screenController.activate("StatisticsAdmin");
+				//screenController.activate("AdminScreen");
 			}
 			
 			//If user does not exist, throw exception! 
