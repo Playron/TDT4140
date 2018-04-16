@@ -77,6 +77,15 @@ public class StatisticsAdminController
 	}
 	
 	@FXML
+	public void showTotalAveragePulse()
+	{
+		lC.getData().clear();
+		Series<Number, Number> series = Statistics.averagePulseSeries(LocalDateTime.now().minusDays(120), LocalDateTime.now().minusDays(60), 60);
+		series.setName("Total average pulse");
+		lC.getData().add(series);
+	}
+	
+	@FXML
 	public void showExercisesByCity()
 	{
 		lC.getData().clear();
