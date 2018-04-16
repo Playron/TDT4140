@@ -67,7 +67,7 @@ public class StatisticsMeanController
 	public void showAveragePulse(ActionEvent event)
 	{
 		int userID = screenController.getCurrentUserID();
-		Series<Number, Number> series = Statistics.averagePulseSeries(LocalDateTime.now().minusDays(120), LocalDateTime.now(), userID, 120);
+		Series<Number, Number> series = Statistics.averagePulseSeriesByID(LocalDateTime.now().minusDays(120), LocalDateTime.now(), userID, 120);
 		series.setName("Pulse");
 		lC.getData().add(series);
 		
