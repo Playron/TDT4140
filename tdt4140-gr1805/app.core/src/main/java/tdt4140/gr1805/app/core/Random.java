@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class Random {
+	
+	/*
     private static final java.util.Random R = new java.util.Random();
     private static final List<City> CITIES = Arrays.asList(City.values());
     private static final List<Exercise> EXERCISES = Arrays.asList(Exercise.values());
@@ -44,12 +46,24 @@ public final class Random {
         return LocalDate.of(year(), month(), day());
     }
 
-    public static double pulse() {
-        return Math.random() * 60 + 40;
+    public static double pulse(Boolean workoutBool) {
+    		if (workoutBool == false) {
+    			return Math.random() * 40 + 40;
+    		}
+    		return Math.random() * 55 + 100;
     }
-
-    public static double nearPulse(double pulse) {
-        return pulse + Math.random() * 5 * (R.nextBoolean() ? 1 : -1);
+    
+    //A function that randomly generates a pulse based on last recorded pulse
+    public static double nearPulse(double pulse, Boolean workoutBool) {
+    		double rnd = Math.random() * 5;
+    		if ((pulse < 40) || (workoutBool == true && pulse < 80)) {
+    			return pulse+rnd;
+    		}
+    		else if ((pulse > 100) || (workoutBool == true && pulse > 210)){
+    			return pulse-rnd;
+    		}
+    		return pulse + rnd *(R.nextBoolean() ? 1 : -1);
+    		
     }
 
     public static LatLong location() {
@@ -71,5 +85,5 @@ public final class Random {
     public static LocalDateTime timeBetween(LocalDateTime start, LocalDateTime end) {
         return start.plusMinutes((long) (Math.random()*Duration.between(start, end).toMinutes()));
     }
-
+	*/
 }

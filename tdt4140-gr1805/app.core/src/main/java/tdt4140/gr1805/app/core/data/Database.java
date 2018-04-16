@@ -61,7 +61,6 @@ public class Database {
 		readWorkouts();
 	}
 
-	// TODO: Add documentation to readPeople() in Database.java.
 	public void readPeople() throws IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/people.json");
 		this.people = mapper.readValue(input, new TypeReference<HashMap<Integer, Person>>() {
@@ -70,7 +69,6 @@ public class Database {
 
 	}
 
-	// TODO: Add documentation to readDatapoints() in Database.java
 	public void readDatapoints() throws IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/datapoints.json");
 		this.datapoints = mapper.readValue(input, new TypeReference<ArrayList<DataPoint>>() {
@@ -78,7 +76,6 @@ public class Database {
 		input.close();
 	}
 
-	// TODO: Add documentation to readWorkouts() in Database.java
 	public void readWorkouts() throws IOException {
 		InputStream input = getClass().getResourceAsStream("/tdt4140/gr1805/app/core/workouts.json");
 		this.workouts = mapper.readValue(input, new TypeReference<ArrayList<Workout>>() {
@@ -102,7 +99,6 @@ public class Database {
 		writeWorkouts(this.workouts);
 	}
 
-	// TODO: Add documentation to writePeopl() in Database.java
 	public void writePeople(HashMap<Integer, Person> people) throws IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/people.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
@@ -110,7 +106,6 @@ public class Database {
 		output.close();
 	}
 
-	// TODO: Add documentation to writeDataPoints() in Database.java
 	public void writeDataPoints(ArrayList<DataPoint> datapoints) throws IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/datapoints.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
@@ -118,7 +113,6 @@ public class Database {
 		output.close();
 	}
 
-	// TODO: Add documentation to writeWorkouts() in Database.java
 	public void writeWorkouts(ArrayList<Workout> workouts) throws IOException, URISyntaxException {
 		URL url = getClass().getResource("/tdt4140/gr1805/app/core/workouts.json");
 		OutputStream output = new FileOutputStream(new File(url.toURI()));
@@ -233,7 +227,7 @@ public class Database {
 	public void addPoint(DataPoint point) {
 		Person p = getPerson(point.getID());
 		if (p == null) {
-			System.err.println("Cannot add DataPoint. No person exists with that ID.");
+			throw new IllegalArgumentException("can not add this person");
 		}
 		else if (!p.isGatherLocation()) {
 			point.setLocation(null);
@@ -471,7 +465,8 @@ public class Database {
 	// Utility functions for generating data or cleaning the database.
 
 	// 20 people, 2 workouts each, 1 month of pulse data
-	/* void populateDatabase() {
+	/*
+	 void populateDatabase() {
         final LocalDateTime start = LocalDateTime.of(2018, 1, 1, 0, 0);
         final LocalDateTime end = LocalDateTime.of(2018, 2, 1, 1, 0, 0);
         final int restInterval = 3600; // every hour
@@ -484,26 +479,26 @@ public class Database {
 		for (Person p : this.people.values()) {
 		    int id = p.getID();
 
-			double pulse = Random.pulse();
+			double pulse = Random.pulse(false);
 			LocalDateTime t = start;
 
             while (t.isBefore(end)) {
 		        addPoint(new DataPoint(id, t, pulse));
-				pulse = Random.nearPulse(pulse);
+				pulse = Random.nearPulse(pulse,false);
 				t = t.plusSeconds(restInterval);
             }
 
 			double fitness = Random.fitness();
 			for (int j = 0; j < 2; j++) {
 				Workout w = new Workout(id, Random.exercise());
-				pulse = Random.pulse();
+				pulse = Random.pulse(true);
 				LatLong location = Random.location();
 				t = Random.timeBetween(start, end);
 				LocalDateTime endOfWorkout = t.plusMinutes(10);
 
 				while (t.isBefore(endOfWorkout)) {
 					w.addDataPoint(new DataPoint(id, t, pulse, location));
-					pulse = Random.nearPulse(pulse);
+					pulse = Random.nearPulse(pulse,true);
 					location = Random.nearLocation(location, fitness);
 					t = t.plusSeconds(exerciseInterval);
 				}
@@ -512,8 +507,11 @@ public class Database {
 		}
 	}*/
 
-	/* Empties the entire database in memory. Still needs to be followed
+	
+	 
+	 /* Empties the entire database in memory. Still needs to be followed
 	by writeObjects() to write to disk.*/
+	 
 	public void cleanDatabase() throws IOException, URISyntaxException {
 		HashMap<Integer, Person> emptyPeople = new HashMap<>();
 		ArrayList<DataPoint> emptyDatapoints = new ArrayList<>();
@@ -524,7 +522,8 @@ public class Database {
 		this.people.clear();
 		this.datapoints.clear();
 		this.workouts.clear();
-		writeObjects();					// Writes to disk.
+		//writeObjects();					// Writes to disk.
+
 	}	
 	/*
 	public static void main (String[]args) throws IOException {
@@ -534,19 +533,13 @@ public class Database {
 			db.cleanDatabase();
 			db.populateDatabase();
 			db.writeObjects();
+			
+			
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		}
 	
-		
-        ArrayList<DataPoint> res = db.getPoints(null, Gender.FEMALE, null, 30, null, LocalDateTime.of(2018, 1, 15, 0, 0), null);
-        ArrayList<Person> pp = new ArrayList<>();
-        for (DataPoint p : res) {
-            if (!pp.contains(db.getPerson(p.getID()))) {
-                pp.add(db.getPerson(p.getID()));
-            }
-        }
-        System.out.println(pp);
         
 	}*/
+	
 }
