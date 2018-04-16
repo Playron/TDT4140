@@ -62,7 +62,7 @@ public class TestWorkout {
 	@Test
 	public void testCalculateDistance() {
 		double expected = 4115.2; //converted km to m
-		assertEquals(expected, w.calculateWorkoutDistance(), 0.1);
+		assertEquals(expected, w.calculateWorkoutDistance(), 1);
 	}
 	
 	

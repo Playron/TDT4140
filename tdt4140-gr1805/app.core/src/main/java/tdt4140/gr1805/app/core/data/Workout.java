@@ -76,7 +76,7 @@ public class Workout {
 			double lat1 = datapoints.get(i).location.latitude;
 			double long2 = datapoints.get(i+1).location.longitude;
 			double lat2 = datapoints.get(i+1).location.latitude;
-			distance = LatLong.distance(lat1, long1, lat2, long2);
+			distance += LatLong.distance(lat1, long1, lat2, long2);
 		}
 		return distance;
 	}
