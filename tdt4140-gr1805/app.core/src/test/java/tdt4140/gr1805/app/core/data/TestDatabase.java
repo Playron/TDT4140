@@ -117,6 +117,7 @@ public class TestDatabase
 		int excpected = db.getPointsByGender(p1.getGender()).size();
 		db.addWorkout(w1);
 		assertEquals(excpected+1, db.getWorkoutsByGender(p1.getGender()).size());
+		System.out.println(db.getWorkoutsByGender(p1.getGender()).size());
 	}
 	
 	
