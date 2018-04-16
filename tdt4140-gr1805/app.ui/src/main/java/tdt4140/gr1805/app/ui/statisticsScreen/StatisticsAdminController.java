@@ -77,7 +77,7 @@ public class StatisticsAdminController
 	}
 	
 	@FXML
-	public void showExercises()
+	public void showExercisesByCity()
 	{
 		lC.getData().clear();
 		ArrayList<Pair<Exercise, Integer>> stat = Statistics.exerciseCounts(screenController.getDatabase().getWorkoutsByCity(cityBox.getSelectionModel().getSelectedItem()), true);
