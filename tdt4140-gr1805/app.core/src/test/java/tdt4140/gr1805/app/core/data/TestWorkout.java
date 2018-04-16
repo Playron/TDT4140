@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
-
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TestWorkout {
@@ -24,7 +24,7 @@ public class TestWorkout {
 
 	}
 
-
+	@Ignore
 	@Test
 	public void testCalculateAvgExercisePulse() {
 		
