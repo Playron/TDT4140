@@ -6,11 +6,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javafx.scene.chart.XYChart.Series;
 import javafx.util.Pair;
 
 import tdt4140.gr1805.app.core.data.Exercise;
 import tdt4140.gr1805.app.core.data.Workout;
 import java.util.Date;
+import java.util.List;
 
 import tdt4140.gr1805.app.core.data.DataPoint;
 import tdt4140.gr1805.app.core.data.Database;
@@ -226,6 +228,33 @@ public class Statistics
 		
 	}
 	
+	//TODO: finish method and add javadoc
+	public static final Series<Number, Number> averagePulseSeries(LocalDateTime start, LocalDateTime end, int userID, 
+			int parts)
+	{
+		Database db = new Database();	// Creates a database instance to use.
+		List<DataPoint> dataPoints = db.getPointsByID(userID);	// Gets the datapoints connected to the user logged in.
+		List<DataPoint> afasd = new ArrayList<>();
+		for (int i = 0; i < dataPoints.size(); i++)
+		{				// Culls the list such that we only get the dataPoints in the interval specified.
+			if (start.isBefore(dataPoints.get(i).getTimestamp()) && end.isAfter(dataPoints.get(i).getTimestamp()))
+			{
+				afasd.add(dataPoints.get(i));
+			}
+		}
+		Duration interval = Duration.between(start, end) ;
+		long intervalSeconds = interval.getSeconds();
+		long intervalParts = intervalSeconds/parts;
+		List<LocalDateTime> beforeDates = new ArrayList<>();
+		for (int i = 0; i < parts; i++)			// Creates an arrayList of LocalDateTimes which bookends the intervals.
+		{
+			beforeDates.add(start.plusSeconds(intervalParts*(i+1)));
+		}
+		//System.out.println(beforeDates);
+		
+		
+		return null; // TODO: Change return
+	}
 
 
 	
@@ -285,17 +314,22 @@ public class Statistics
 	// return dpa;
 	// }
 	//
-	// public static void main(String[] args)
-	// {
-	// ArrayList<Double> liste = new ArrayList<Double>();
-	// liste.add(2.9);
-	// liste.add(2.1);
-	// liste.add(2.3);
-	// Double median = computeMedian(liste);
-	// System.out.println(median);
-	// ArrayList<Workout> wl = exerciseCountGenerateWL();
-	// ArrayList<Pair<Exercise, Integer>> arl = exerciseCounts(wl, true);
-	// System.out.println(arl);
-	//
-	// }
+//	 public static void main(String[] args)
+//	 {
+//	 ArrayList<Double> liste = new ArrayList<Double>();
+//	 liste.add(2.9);
+//	 liste.add(2.1);
+//	 liste.add(2.3);
+//	 Double median = computeMedian(liste);
+//	 System.out.println(median);
+//	 ArrayList<Workout> wl = exerciseCountGenerateWL();
+//	 ArrayList<Pair<Exercise, Integer>> arl = exerciseCounts(wl, true);
+//	 System.out.println(arl);
+//	
+//	 }
+	
+	public static void main(String[] args)
+	{
+		averagePulseSeries(LocalDateTime.now().minusDays(30), LocalDateTime.now(), 1, 30);
+	}
 }
