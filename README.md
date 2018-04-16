@@ -21,7 +21,7 @@ From already innstalled eclipse you can import by pressing **File > Import...> G
 Choose this project and make sure you've checked the **Search for nested projects** box.
 
 
-##How to run the app
+## How to run the app
 To be able to see the app and use what we've made so far find the mainController.java
 class. 
 
@@ -40,7 +40,7 @@ When you've pressed **Run as > Java Application** a new window will open. Here y
 2) The second option is to insert the ID-number of a user and click on "Log Inn". Now you 
   have four options. 
 
-**Record**
+**Record**   
   Click on the record icon to open the workout recording view. This is an interface of what 
   recording workouts will look like. The user would be able to choose what kind of workout 
   they're executing and the app would then start gathering GPS and pulse and add it to workout. 
@@ -54,7 +54,7 @@ When you've pressed **Run as > Java Application** a new window will open. Here y
   Click on the profile icon to open the user view. Here you can let the app know when 
   you’re going to bed, and when you’re waking up. 
   
-**Settings**
+**Settings**      
   Click on the gear icon to open the settings view. Here you have a variety of options. 
   You can opt out of project, dissable gathering of GPS or delete user and user data
   all together. 
