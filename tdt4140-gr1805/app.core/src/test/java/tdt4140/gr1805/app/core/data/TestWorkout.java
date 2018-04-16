@@ -33,9 +33,9 @@ public class TestWorkout {
 	l4 =  new LatLong(63.430036, 10.393522); //Torget
 	l5 =  new LatLong(63.434923, 10.412233); //Solsiden
 	
-	/*Avstanden her er i følge https://www.movable-type.co.uk/scripts/latlong.html
-	 * lik 1.711 + 0.4844 + 0.8418 + 1.078 = 4.1152 km. 
-	 * Dette er i luftlinje, mellom hvert av de 5 stedene
+	/*The distance is according to https://www.movable-type.co.uk/scripts/latlong.html
+	 * like 1.711 + 0.4844 + 0.8418 + 1.078 = 4.1152 km. 
+	 * This is in airline (?), between all this 5 places.
 	 */
 	
 	p1.setLocation(l1);
@@ -63,6 +63,11 @@ public class TestWorkout {
 	public void testCalculateDistance() {
 		double expected = 4115.2; //converted km to m
 		assertEquals(expected, w.calculateWorkoutDistance(), 1);
+	}
+	
+	@Test
+	public void testCalculateAvgSpeed() {
+		
 	}
 	
 	
