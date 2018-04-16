@@ -52,7 +52,7 @@ public class TestWorkout {
 	
 	}
 
-	@Ignore
+
 	@Test
 	public void testCalculateAvgExercisePulse() {
 		double excpected = 99;
