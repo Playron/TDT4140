@@ -27,8 +27,8 @@ public class TestWorkout {
 	p4 = new DataPoint(1, man16.plusMinutes(30), 103);
 	p5 = new DataPoint(1, man16.plusMinutes(40), 107);
 	
-	l1 =  new LatLong(63.406637, 10.420940); //Njords veg 5a <3
-	l2 =  new LatLong(63.419499, 10.402077); //Gløshaugen
+	l1 =  new LatLong(63.406637, 10.420940); //Njords veg 5a
+	l2 =  new LatLong(63.419499, 10.402077); //Gloshaugen
 	l3 =  new LatLong(63.422495, 10.395008); //Samfundet
 	l4 =  new LatLong(63.430036, 10.393522); //Torget
 	l5 =  new LatLong(63.434923, 10.412233); //Solsiden
@@ -67,7 +67,8 @@ public class TestWorkout {
 	
 	@Test
 	public void testCalculateAvgSpeed() {
-		
+		double expected = 4115.2 / (40*60); // distance / time gives avg spedd in m/2
+		assertEquals(expected, w.calculateAvgSpeed(), 1);
 	}
 	
 	
