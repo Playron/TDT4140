@@ -8,7 +8,6 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1805.app.ui.statisticsScreen.StatisticsAdminController">
 	<children>
-		<Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="30.0" prefWidth="120.0" style="-fx-background-radius: 10;" text="Back to Menu" />
       <LineChart fx:id="lC" layoutX="151.0" prefHeight="400.0" prefWidth="450.0">
         <xAxis>
           <NumberAxis side="BOTTOM" tickLabelFill="WHITE" />

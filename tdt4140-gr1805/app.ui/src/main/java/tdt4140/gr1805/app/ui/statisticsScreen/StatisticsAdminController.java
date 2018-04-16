@@ -55,7 +55,7 @@ public class StatisticsAdminController
 	public void showAveragePulse(ActionEvent event)
 	{
 		lC.getData().clear();
-		Series<Number, Number> series = Statistics.averagePulseSeriesByCity(LocalDateTime.now().minusDays(120), LocalDateTime.now(), cityBox.getSelectionModel().getSelectedItem(), 120);
+		Series<Number, Number> series = Statistics.averagePulseSeriesByCity(LocalDateTime.now().minusDays(120), LocalDateTime.now().minusDays(60), cityBox.getSelectionModel().getSelectedItem(), 60);
 		series.setName("Pulse");
 		lC.getData().add(series);
 	}
@@ -66,7 +66,7 @@ public class StatisticsAdminController
 		lC.getData().clear();
 		for (int i = 0; i < cityList.size(); i++)
 		{
-			Series<Number, Number> series = Statistics.averagePulseSeriesByCity(LocalDateTime.now().minusDays(120), LocalDateTime.now(), cityList.get(i), 120);
+			Series<Number, Number> series = Statistics.averagePulseSeriesByCity(LocalDateTime.now().minusDays(120), LocalDateTime.now().minusDays(60), cityList.get(i), 60);
 			series.setName(cityList.get(i).toString());
 			lC.getData().add(series);
 		}
