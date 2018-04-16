@@ -527,7 +527,7 @@ public class Database {
 		this.workouts.clear();
 
 	
-		writeObjects();					// Writes to disk.
+		//writeObjects();					// Writes to disk.
 	}	
 	/*
 	public static void main (String[]args) throws IOException {
