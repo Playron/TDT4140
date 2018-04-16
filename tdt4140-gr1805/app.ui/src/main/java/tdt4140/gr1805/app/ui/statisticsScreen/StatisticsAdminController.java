@@ -84,7 +84,7 @@ public class StatisticsAdminController
 		for (int i = 0; i < stat.size(); i++)
 		{
 			Series<Number, Number> series = new Series<>();
-			series.getData().add(new Data<Number, Number>(i, stat.get(i).getValue()));
+			series.getData().add(new Data<Number, Number>(i+1, stat.get(i).getValue()));
 			series.setName(stat.get(i).getKey().toString());
 			lC.getData().add(series);
 		}
