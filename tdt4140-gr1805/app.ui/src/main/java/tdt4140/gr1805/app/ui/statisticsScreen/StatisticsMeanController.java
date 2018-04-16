@@ -66,6 +66,7 @@ public class StatisticsMeanController
 	@FXML
 	public void showAveragePulse(ActionEvent event)
 	{
+		lC.getData().clear();
 		int userID = screenController.getCurrentUserID();
 		Series<Number, Number> series = Statistics.averagePulseSeriesByID(LocalDateTime.now().minusDays(120), LocalDateTime.now(), userID, 120);
 		series.setName("Pulse");
