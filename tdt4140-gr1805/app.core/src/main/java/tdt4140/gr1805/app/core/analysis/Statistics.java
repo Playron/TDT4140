@@ -6,12 +6,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
+import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.util.Pair;
 
 import tdt4140.gr1805.app.core.data.Exercise;
 import tdt4140.gr1805.app.core.data.Workout;
-import java.util.Date;
 import java.util.List;
 
 import tdt4140.gr1805.app.core.data.DataPoint;
@@ -235,6 +236,7 @@ public class Statistics
 		Database db = new Database();	// Creates a database instance to use.
 		List<DataPoint> dataPoints = db.getPointsByID(userID);	// Gets the datapoints connected to the user logged in.
 		List<DataPoint> afasd = new ArrayList<>();
+		// System.out.println(dataPoints);
 		for (int i = 0; i < dataPoints.size(); i++)
 		{				// Culls the list such that we only get the dataPoints in the interval specified.
 			if (start.isBefore(dataPoints.get(i).getTimestamp()) && end.isAfter(dataPoints.get(i).getTimestamp()))
@@ -242,21 +244,91 @@ public class Statistics
 				afasd.add(dataPoints.get(i));
 			}
 		}
+		// System.out.println(afasd);
 		Duration interval = Duration.between(start, end) ;
 		long intervalSeconds = interval.getSeconds();
 		long intervalParts = intervalSeconds/parts;
 		List<LocalDateTime> beforeDates = new ArrayList<>();
+		beforeDates.add(start);
 		for (int i = 0; i < parts; i++)			// Creates an arrayList of LocalDateTimes which bookends the intervals.
 		{
 			beforeDates.add(start.plusSeconds(intervalParts*(i+1)));
 		}
-		//System.out.println(beforeDates);
+	//	System.out.println(beforeDates);
+	//	System.out.println(beforeDates.size());
+		List<Number> pulse = new ArrayList<>();
 		
+		for (int i = 0; i+1 < beforeDates.size(); i++)
+		{
+			//System.out.println(beforeDates.get(i) + " | " + beforeDates.get(i+1));
+			List<DataPoint> intervalPoints = new ArrayList<>();
+			//System.out.println(afasd.size());
+			for (int j = 0; j < afasd.size(); j++)				// Adds DataPoints to the interval
+			{
+				//System.out.println(afasd.get(j).getTimestamp());
+//				System.out.println(beforeDates.get(i).isBefore(afasd.get(j).getTimestamp()) + " | " +
+//				beforeDates.get(i+1).isAfter(afasd.get(j).getTimestamp()));
+				if (beforeDates.get(i).isBefore(afasd.get(j).getTimestamp()))
+				{
+				//	System.out.println(beforeDates.get(i).isBefore(afasd.get(j).getTimestamp()));
+					if (beforeDates.get(i+1).isAfter(afasd.get(j).getTimestamp()))
+					{
+					//	System.out.println(beforeDates.get(i+1).isAfter(afasd.get(j).getTimestamp()));
+						intervalPoints.add(afasd.get(j));
+					//	System.out.println(afasd.get(j));
+					}
+				}
+			}
+			List<Double> intervalPulses = new ArrayList<>();
+			for (int j = 0; j < intervalPoints.size(); j++)		// Removes the DataPoints we've already used.
+			{
+				afasd.remove(intervalPoints.get(j));
+				intervalPulses.add(new Double(intervalPoints.get(j).getPulse()));
+			//	System.out.println(intervalPoints.get(j));
+			}
+			
+			pulse.add(meanDouble(intervalPulses));
+		}
+		// Now we have a list of Numbers which is the pulse in an interval, which has the index 0 for the first interval
+		// and the index n for the n+1'th interval
 		
-		return null; // TODO: Change return
+		Series<Number, Number> output = new Series<>();
+		output.setName("haha");
+		for (int i = 0; i < pulse.size(); i++)
+		{
+			if (pulse.get(i) instanceof Double && !Double.isNaN(pulse.get(i).doubleValue()))
+			{
+//				Data<Number, Number> datatat = new Data<>();
+//				datatat.setXValue(-pulse.size()+1);
+//				datatat.setYValue(pulse.get(i).doubleValue());
+//				System.out.println(datatat);
+//				System.out.println(new Data<Number, Number>(-pulse.size()+i, pulse.get(i).doubleValue()));
+				output.getData().add(new Data<Number, Number>(-pulse.size()+i, pulse.get(i).doubleValue()));
+//				System.out.println(-pulse.size()+i + " | " + pulse.get(i).doubleValue());
+//				System.out.println(output);
+			}
+		}
+		
+//		System.out.println(pulse);
+//		System.out.println(output);
+		
+		return output; // TODO: Change return
 	}
 
 
+	public static final Double meanDouble(List<Double> p) 
+	{
+		if (p == null)
+		{
+			return null;
+		}
+	    double sum = 0;  // sum of all the elements
+	    for (int i = 0; i < p.size(); i++) 
+	    {
+	        sum += p.get(i);
+	    }
+	    return new Double(sum / p.size());
+	}
 	
 	
 
@@ -330,6 +402,6 @@ public class Statistics
 	
 	public static void main(String[] args)
 	{
-		averagePulseSeries(LocalDateTime.now().minusDays(30), LocalDateTime.now(), 1, 30);
+		averagePulseSeries(LocalDateTime.now().minusMonths(4), LocalDateTime.now(), 1, 120);
 	}
 }
