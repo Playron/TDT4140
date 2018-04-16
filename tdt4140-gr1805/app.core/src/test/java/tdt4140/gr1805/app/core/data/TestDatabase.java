@@ -95,16 +95,19 @@ public class TestDatabase
 		LocalDateTime man16 =LocalDateTime.of(2018, 4, 16, 13, 0);
 		DataPoint point = new DataPoint(p1.getID(), man16, 90);
 		Workout w1 = new Workout(p1.getID(), Exercise.RUNNING, db.getPointsByID(21));
+		
 		int before = db.getWorkoutsByID(21).size();
+		
 		db.addWorkout(w1);
 		assertEquals(before+1, db.getWorkoutsByID(p1.getID()).size());
 	}
+	
 	@Test
 	public void testGetWorkoutByCity() {
 		LocalDateTime man16 =LocalDateTime.of(2018, 4, 16, 13, 0);
 		DataPoint point = new DataPoint(p1.getID(), man16, 90);
 		Workout w1 = new Workout(p1.getID(), Exercise.RUNNING, db.getPointsByID(21));
-		int excpected = db.getPointsByCity(p1.getCity()).size();
+		int excpected = db.getPointsByCity(City.BERGEN).size();
 		db.addWorkout(w1);
 		assertEquals(excpected+1, db.getWorkoutsByCity(p1.getCity()).size());
 	}
@@ -114,7 +117,8 @@ public class TestDatabase
 		LocalDateTime man16 =LocalDateTime.of(2018, 4, 16, 13, 0);
 		DataPoint point = new DataPoint(p1.getID(), man16, 90);
 		Workout w1 = new Workout(p1.getID(), Exercise.RUNNING, db.getPointsByID(21));
-		int excpected = db.getPointsByGender(p1.getGender()).size();
+		int excpected = db.getPointsByGender(Gender.MALE).size();
+		System.out.println(db.getWorkoutsByGender(p1.getGender()).size());
 		db.addWorkout(w1);
 		assertEquals(excpected+1, db.getWorkoutsByGender(p1.getGender()).size());
 		System.out.println(db.getWorkoutsByGender(p1.getGender()).size());
