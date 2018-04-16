@@ -63,3 +63,13 @@ When you've pressed **Run as > Java Application** a new window will open. Here y
 In all the different views, there’s an option in the upper left corner to go back 
 to the previous menu. 
 
+## Authors
+*This project is written by:*
+* Anna Bakkebø
+* Jonas Sandberg
+* Torleif Hensvold
+* Per Dahl Haagensen
+* Bjørn Rude Jacobsen
+* Michael Moen Allport
+* Atle Vågen Svendsgaard
+
