@@ -19,13 +19,17 @@ public class TestWorkout {
 	@Before
 	public void setUp() throws Exception {	
 	LocalDateTime man16 =LocalDateTime.of(2018, 4, 16, 13, 0);
-	w = new Workout(1, Exercise.RUNNING);
+	w = new Workout(1, Exercise.STRENGTH_TRANING);
+	w.setType(Exercise.RUNNING);
+	w.setID(0);
 	
 	p1 = new DataPoint(1, man16, 90);
 	p2 = new DataPoint(1, man16.plusMinutes(10), 95);
 	p3 = new DataPoint(1, man16.plusMinutes(20), 100);
 	p4 = new DataPoint(1, man16.plusMinutes(30), 103);
 	p5 = new DataPoint(1, man16.plusMinutes(40), 107);
+	
+	ArrayList< DataPoint> datapoints = new ArrayList();
 	
 	l1 =  new LatLong(63.406637, 10.420940); //Njords veg 5a
 	l2 =  new LatLong(63.419499, 10.402077); //Gloshaugen
@@ -44,11 +48,13 @@ public class TestWorkout {
 	p4.setLocation(l4);
 	p5.setLocation(l5);
 	
-	w.addDataPoint(p1);
-	w.addDataPoint(p2);
-	w.addDataPoint(p3);
-	w.addDataPoint(p4);
-	w.addDataPoint(p5);
+	datapoints.add(p1);
+	datapoints.add(p2);
+	datapoints.add(p3);
+	datapoints.add(p4);
+	datapoints.add(p5);
+	
+	w.setDatapoints(datapoints);
 	
 	}
 
