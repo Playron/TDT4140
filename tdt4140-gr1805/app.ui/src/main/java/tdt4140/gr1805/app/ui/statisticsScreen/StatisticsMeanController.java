@@ -66,19 +66,12 @@ public class StatisticsMeanController
 	@FXML
 	public void showAveragePulse(ActionEvent event)
 	{
-		//System.out.println("ShowAveragePulse");
-		lC.setTitle("Average Pulse");			// Sets the title of the LineChart
-		Series<Number, Number> series = new Series<>();
-		series.getData().add(new Data<Number, Number>(1, 1));
-		series.getData().add(new Data<Number, Number>(-1, 1));
-		series.getData().add(new Data<Number, Number>(2, 2));
-		series.getData().add(new Data<Number, Number>(-2, 2));
+		int userID = screenController.getCurrentUserID();
+		Series<Number, Number> series = Statistics.averagePulseSeries(LocalDateTime.now().minusDays(120), LocalDateTime.now(), userID, 120);
 		series.setName("Pulse");
 		lC.getData().add(series);
-		int userID = screenController.getCurrentUserID();
-		Series<Number, Number> series2 = Statistics.averagePulseSeries(LocalDateTime.now().minusDays(30), LocalDateTime.now(), userID, 30);
-		series2.setName("Pulse");
-		lC.getData().add(series2);
+		
+		
 	}
 	
 //	public void showAverage()
