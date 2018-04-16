@@ -25,7 +25,6 @@ import java.util.*;
  * one of the write-functions after modifying anything.
  */
 
-@SuppressWarnings("WeakerAccess")
 public class Database {
 
 	private HashMap<Integer, Person> people;
