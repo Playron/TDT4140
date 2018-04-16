@@ -7,12 +7,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import tdt4140.gr1805.app.core.Random;
 import tdt4140.gr1805.app.core.person.City;
 import tdt4140.gr1805.app.core.person.Gender;
 import tdt4140.gr1805.app.core.person.Person;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -25,7 +23,6 @@ import java.util.*;
  * one of the write-functions after modifying anything.
  */
 
-@SuppressWarnings("WeakerAccess")
 public class Database {
 
 	private HashMap<Integer, Person> people;
@@ -236,7 +233,7 @@ public class Database {
 	public void addPoint(DataPoint point) {
 		Person p = getPerson(point.getID());
 		if (p == null) {
-			System.err.println("Cannot add DataPoint. No person exists with that ID.");
+			throw new IllegalArgumentException("can not add this person");
 		}
 		else if (!p.isGatherLocation()) {
 			point.setLocation(null);
@@ -527,7 +524,8 @@ public class Database {
 		this.people.clear();
 		this.datapoints.clear();
 		this.workouts.clear();
-	}
+		writeObjects();					// Writes to disk.
+	}	
 	/*
 	public static void main (String[]args) throws IOException {
 		//Uncomment to generate data
