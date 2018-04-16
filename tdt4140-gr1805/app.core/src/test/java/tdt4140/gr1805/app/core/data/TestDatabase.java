@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.junit.After;
@@ -87,9 +88,16 @@ public class TestDatabase
 		
 		DataPoint point2 = new DataPoint(100, man16, 90);
 		db.addPoint(point2);
+	}
 		
-
-		
+	@Test
+	public void testGetWorkoutById() throws IOException, URISyntaxException {
+		LocalDateTime man16 =LocalDateTime.of(2018, 4, 16, 13, 0);
+		DataPoint point = new DataPoint(p1.getID(), man16, 90);
+		Workout w1 = new Workout(p1.getID(), Exercise.RUNNING, db.getPointsByID(21));
+		int before = db.getWorkoutsByID(21).size();
+		db.addWorkout(w1);
+		assertEquals(before+1, db.getWorkoutsByID(p1.getID()).size());
 		
 		
 		
