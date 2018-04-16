@@ -2,6 +2,7 @@
 package tdt4140.gr1805.app.ui.statisticsScreen;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
+import tdt4140.gr1805.app.core.analysis.Statistics;
 import tdt4140.gr1805.app.ui.MasterScreenController;
 
 /**
@@ -42,6 +44,7 @@ public class StatisticsMeanController
 	@FXML
 	public void backToMenu(ActionEvent event) throws IOException
 	{
+		lC.getData().clear();
 		screenController.activate("MenuScreen");
 	}
 
@@ -53,6 +56,7 @@ public class StatisticsMeanController
 	@FXML
 	public void backToStatistics(ActionEvent event) throws IOException
 	{
+		lC.getData().clear();
 		screenController.activate("StatisticsScreen");
 	}
 	
@@ -62,7 +66,7 @@ public class StatisticsMeanController
 	@FXML
 	public void showAveragePulse(ActionEvent event)
 	{
-		System.out.println("ShowAveragePulse");
+		//System.out.println("ShowAveragePulse");
 		lC.setTitle("Average Pulse");			// Sets the title of the LineChart
 		Series<Number, Number> series = new Series<>();
 		series.getData().add(new Data<Number, Number>(1, 1));
@@ -71,7 +75,10 @@ public class StatisticsMeanController
 		series.getData().add(new Data<Number, Number>(-2, 2));
 		series.setName("Pulse");
 		lC.getData().add(series);
-		
+		int userID = screenController.getCurrentUserID();
+		Series<Number, Number> series2 = Statistics.averagePulseSeries(LocalDateTime.now().minusDays(30), LocalDateTime.now(), userID, 30);
+		series2.setName("Pulse");
+		lC.getData().add(series2);
 	}
 	
 //	public void showAverage()
