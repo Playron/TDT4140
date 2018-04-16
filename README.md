@@ -33,11 +33,11 @@ Right click and press **Run as > Java Application**.
 ### How the app works
 When you've pressed **Run as > Java Application** a new window will open. Here you will get two options:
 
-1) The first option is to click "Registrer new User". From here you can insert your birth
+**1)** The first option is to click "Registrer new User". From here you can insert your birth
    day, choose gender and city. After doing that you can click "Registrer user". You will 
    then get a ID-number that is unique for this user.
 
-2) The second option is to insert the ID-number of a user and click on "Log Inn". Now you 
+**2)** The second option is to insert the ID-number of a user and click on "Log Inn". Now you 
   have four options. 
 
 **Record**   
@@ -55,8 +55,8 @@ When you've pressed **Run as > Java Application** a new window will open. Here y
   you’re going to bed, and when you’re waking up. 
   
 **Settings**      
-  Click on the gear icon to open the settings view. Here you have a variety of options. 
-  You can opt out of project, dissable gathering of GPS or delete user and user data
+  Click on the gear icon to open the settings view. Here you have two options. 
+  You can dissable gathering of GPS or delete user and user data
   all together. 
   
 
@@ -71,7 +71,7 @@ to the previous menu.
 
 
 ## Authors
-*This project is written by:*
+**This project is written by:**
 * Anna Bakkebø
 * Jonas Sandberg
 * Torleif Hensvold
