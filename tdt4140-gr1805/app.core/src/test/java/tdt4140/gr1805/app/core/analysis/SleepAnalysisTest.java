@@ -30,6 +30,21 @@ public class SleepAnalysisTest {
 		assertEquals(expected2, s.getSleep());
 	}
 	
+	@Test
+	public void testHoursOfSleep() throws InterruptedException {
+		s.pushSleepButton();
+		Thread.sleep(100);//waits for 0.1 sec
+		/*Also checked if worked for longer periods, but
+		 *uses 0.1 sec now for not slowing down on gitlab
+		 */
+		s.pushSleepButton();
+		double expected = 0.1/ (double)3600;
+		System.out.println(expected);
+		assertEquals(expected, s.hoursOfSleep(), 0.001);
+				
+		
+	}
+	
 	
 
 }
