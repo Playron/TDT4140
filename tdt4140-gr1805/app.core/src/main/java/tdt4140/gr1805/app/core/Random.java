@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-/*public final class Random {
+public final class Random {
     private static final java.util.Random R = new java.util.Random();
     private static final List<City> CITIES = Arrays.asList(City.values());
     private static final List<Exercise> EXERCISES = Arrays.asList(Exercise.values());
@@ -85,4 +85,3 @@ import java.util.List;
     }
 
 }
-*/
