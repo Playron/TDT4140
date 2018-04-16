@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import tdt4140.gr1805.app.core.person.City;
@@ -101,7 +102,7 @@ public class TestDatabase
 		db.addWorkout(w1);
 		assertEquals(before+1, db.getWorkoutsByID(p1.getID()).size());
 	}
-	
+	@Ignore
 	@Test
 	public void testGetWorkoutByCity() {
 		LocalDateTime man16 =LocalDateTime.of(2018, 4, 16, 13, 0);
@@ -111,7 +112,7 @@ public class TestDatabase
 		db.addWorkout(w1);
 		assertEquals(excpected+1, db.getWorkoutsByCity(p1.getCity()).size());
 	}
-	
+	@Ignore
 	@Test
 	public void testGetWorkoutByGender() {
 		LocalDateTime man16 =LocalDateTime.of(2018, 4, 16, 13, 0);
