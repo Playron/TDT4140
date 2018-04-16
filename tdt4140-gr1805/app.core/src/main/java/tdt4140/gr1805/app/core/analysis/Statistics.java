@@ -370,87 +370,8 @@ public class Statistics
 		
 		return beforeDates; 
 	}
+		
 	
-	
-	/**
-	 * @param start The {@link LocalDateTime} for the startpoint used in calculations.
-	 * @param end The {@link LocalDateTime} for the endpoint used in calculations.
-	 * @param userID The userID we're interested in.
-	 * @param parts	The number of intervals we want.
-	 * @return	A Series that can be used by JavaFX natively.
-	 */
-	public static final Series<Number, Number> averagePafulseSeries(LocalDateTime start, LocalDateTime end, int userID, 
-			int parts)
-	{
-		Database db = new Database();	// Creates a database instance to use.
-		List<DataPoint> dataPoints = db.getPointsByID(userID);	// Gets the datapoints connected to the user logged in.
-		List<DataPoint> afasd = new ArrayList<>();
-
-		for (int i = 0; i < dataPoints.size(); i++)
-		{				// Culls the list such that we only get the dataPoints in the interval specified.
-			if (start.isBefore(dataPoints.get(i).getTimestamp()) && end.isAfter(dataPoints.get(i).getTimestamp()))
-			{
-				afasd.add(dataPoints.get(i));
-			}
-		}
-		Duration interval = Duration.between(start, end) ;
-		long intervalSeconds = interval.getSeconds();
-		long intervalParts = intervalSeconds/parts;
-		List<LocalDateTime> beforeDates = new ArrayList<>();
-		beforeDates.add(start);
-		for (int i = 0; i < parts; i++)			// Creates an arrayList of LocalDateTimes which bookends the intervals.
-		{
-			beforeDates.add(start.plusSeconds(intervalParts*(i+1)));
-		}
-
-		List<Number> pulse = new ArrayList<>();
-		
-		for (int i = 0; i+1 < beforeDates.size(); i++)
-		{
-			List<DataPoint> intervalPoints = new ArrayList<>();
-		
-			for (int j = 0; j < afasd.size(); j++)				// Adds DataPoints to the interval
-			{
-
-				if (beforeDates.get(i).isBefore(afasd.get(j).getTimestamp()))
-				{
-
-					if (beforeDates.get(i+1).isAfter(afasd.get(j).getTimestamp()))
-					{
-				
-						intervalPoints.add(afasd.get(j));
-	
-					}
-				}
-			}
-			List<Double> intervalPulses = new ArrayList<>();
-			for (int j = 0; j < intervalPoints.size(); j++)		// Removes the DataPoints we've already used.
-			{
-				afasd.remove(intervalPoints.get(j));
-				intervalPulses.add(new Double(intervalPoints.get(j).getPulse()));
-	
-			}
-			
-			pulse.add(meanDouble(intervalPulses));
-		}
-		// Now we have a list of Numbers which is the pulse in an interval, which has the index 0 for the first interval
-		// and the index n for the n+1'th interval
-		
-		Series<Number, Number> output = new Series<>();
-		output.setName("haha");
-		for (int i = 0; i < pulse.size(); i++)
-		{
-			if (pulse.get(i) instanceof Double && !Double.isNaN(pulse.get(i).doubleValue()))
-			{
-				output.getData().add(new Data<Number, Number>(-pulse.size()+i, pulse.get(i).doubleValue()));
-
-			}
-		}
-		
-		
-		return output; // TODO: Change return
-	}
-
 	/**
 	 * @param start The {@link LocalDateTime} for the startpoint used in calculations.
 	 * @param end The {@link LocalDateTime} for the endpoint used in calculations.
