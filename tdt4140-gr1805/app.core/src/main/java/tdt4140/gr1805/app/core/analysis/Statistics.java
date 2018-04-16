@@ -229,6 +229,43 @@ public class Statistics
 		
 	}
 	
+	public static final List<DataPoint> getDataPointList(LocalDateTime start, LocalDateTime end)
+	{
+		
+		
+		
+		return null; // TODO: fix return
+	}
+	
+	public static final List<DataPoint> getDataPointListByID(LocalDateTime start, LocalDateTime end, int userID)
+	{
+		
+		
+		return null; //TODO: fix return
+	}
+	
+	public static final List<DataPoint> getDataPointInInterval(LocalDateTime start, LocalDateTime end, List<DataPoint> p, boolean pruneOrgList)
+	{
+		List<DataPoint> output = new ArrayList<>();
+		for (int i = 0; i < p.size(); i++)
+		{				// Culls the list such that we only get the dataPoints in the interval specified.
+			if (start.isBefore(p.get(i).getTimestamp()) && end.isAfter(p.get(i).getTimestamp()))
+			{
+				output.add(p.get(i));
+			}
+		}
+		if (pruneOrgList)
+		{
+			for (int i = 0; i < output.size(); i++)
+			{
+				p.remove(output.get(i));
+			}
+		}
+		
+		return output; 
+	}
+	
+	
 	//TODO: finish method and add javadoc
 	public static final Series<Number, Number> averagePulseSeries(LocalDateTime start, LocalDateTime end, int userID, 
 			int parts)
@@ -315,6 +352,15 @@ public class Statistics
 		return output; // TODO: Change return
 	}
 
+	public static final Series<Number, Number> averagePulseSeriesByID(LocalDateTime start, LocalDateTime end, int userID, 
+			int parts)
+	{
+		Database db = new Database();	// Creates a database instance to use.
+		List<DataPoint> dataPoints = db.getPointsByID(userID);	// Gets the datapoints connected to the user logged in.
+		
+		
+		return output; // TODO: Change return
+	}
 
 	public static final Double meanDouble(List<Double> p) 
 	{
