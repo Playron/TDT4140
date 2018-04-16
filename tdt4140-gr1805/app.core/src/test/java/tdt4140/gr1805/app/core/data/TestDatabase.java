@@ -60,6 +60,19 @@ public class TestDatabase
 		assertEquals(db.getAllPeople(), emptyPeople);
 	}
 	
+	@Test
+	public void testRemovePerson() throws IOException, URISyntaxException {
+		System.out.println(p1);
+		db.removePerson(p1.getID());
+		assertEquals(db.getPerson(p1.getID()), null);
+	}
 	
+	@Test
+	public void testSetPersonGatherLocation() {
+		db.setPersonGatherLocation(p1.getID(), false);
+		assertEquals(p1.isGatherLocation(), false);
+		db.setPersonGatherLocation(p1.getID(), true);
+		assertEquals(p1.isGatherLocation(), true);
+	}
 
 }
