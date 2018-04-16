@@ -65,13 +65,9 @@ to the previous menu.
 
 
 ## Built with
-* [Jackson](https://github.com/FasterXML/jackson) - [JSON](https://www.json.org) library
-* [JPX](https://github.com/jenetics/jpx) - library for importing [GPX](https://en.wikipedia.org/wiki/GPS_Exchange_Format) files
-* [geojson-jackson](https://github.com/opendatalab-de/geojson-jackson) - library for [GeoJson](http://geojson.org)
-* [HSQLDB](http://www.hsqldb.org) - embedded database with SQL support
-* [FX-Map-Control](https://github.com/ClemensFischer/FX-Map-Control)
+* [JUnit4](https://junit.org/junit4/) - test framework
 * [TestFX](https://github.com/TestFX/TestFX) - test framework for JavaFX apps
-* [Jetty](https://www.eclipse.org/jetty/) - embedded HTTP server
+* [Jackson](https://github.com/FasterXML/jackson) - [JSON](https://www.json.org) library
 
 
 ## Authors
