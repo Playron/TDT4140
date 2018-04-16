@@ -136,10 +136,13 @@ public class DataPoint
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
+	
+	/*@Override
+	
 	public String toString()
+	
 	{
 		return "DataPoint [#" + id + ", " + timestamp + ", pulse=" + pulse + ", location=" + location + "]";
-	}
+	}*/
 
 }

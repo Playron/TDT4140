@@ -77,6 +77,7 @@ public class TestDatabase
 		db.setPersonGatherLocation(p1.getID(), true);
 		assertEquals(p1.isGatherLocation(), true);
 	}
+	
 	@Test (expected = Exception.class)
 	public void testAddPoint() throws IOException, URISyntaxException {
 		LocalDateTime man16 =LocalDateTime.of(2018, 4, 16, 13, 0);
@@ -99,8 +100,9 @@ public class TestDatabase
 		db.addWorkout(w1);
 		assertEquals(before+1, db.getWorkoutsByID(p1.getID()).size());
 		
-		
-		
 	}
+	
+	
+	
 
 }

@@ -103,7 +103,7 @@ public class Workout {
 		
 	}
 	
-	@Override
+	/*@Override
 	public String toString() {
 		String ut =  "Workout [#" + id + ", type=" + type + ", datapoints=";// + datapoints + "]";
 		for (int i = 0; i < datapoints.size(); i++)
