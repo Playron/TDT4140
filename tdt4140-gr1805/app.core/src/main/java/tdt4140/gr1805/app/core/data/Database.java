@@ -7,12 +7,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import tdt4140.gr1805.app.core.Random;
 import tdt4140.gr1805.app.core.person.City;
 import tdt4140.gr1805.app.core.person.Gender;
 import tdt4140.gr1805.app.core.person.Person;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
