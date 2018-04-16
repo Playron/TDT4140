@@ -12,14 +12,15 @@ import org.junit.Test;
 
 public class TestWorkout {
 
-	private Workout w;
-	private DataPoint p1, p2, p3, p4, p5 ;
+	private Workout w, w2;
+	private DataPoint p1, p2, p3, p4, p5, p6 ;
 	private LatLong l1, l2, l3, l4, l5 ;
 
 	@Before
 	public void setUp() throws Exception {	
 	LocalDateTime man16 =LocalDateTime.of(2018, 4, 16, 13, 0);
 	w = new Workout(1, Exercise.STRENGTH_TRANING);
+	w2 = new Workout(2, Exercise.RUNNING);
 	w.setType(Exercise.RUNNING);
 	w.setID(0);
 	
@@ -28,6 +29,7 @@ public class TestWorkout {
 	p3 = new DataPoint(1, man16.plusMinutes(20), 100);
 	p4 = new DataPoint(1, man16.plusMinutes(30), 103);
 	p5 = new DataPoint(1, man16.plusMinutes(40), 107);
+	p6 = new DataPoint(2, man16.plusMinutes(10), 95);
 	
 	ArrayList< DataPoint> datapoints = new ArrayList();
 	
@@ -47,6 +49,7 @@ public class TestWorkout {
 	p3.setLocation(l3);
 	p4.setLocation(l4);
 	p5.setLocation(l5);
+	p6.setLocation(l1); //same location as p1
 	
 	datapoints.add(p1);
 	datapoints.add(p2);
@@ -54,7 +57,9 @@ public class TestWorkout {
 	datapoints.add(p4);
 	datapoints.add(p5);
 	
-	w.setDatapoints(datapoints);
+	w.setDatapoints(datapoints); //adds all datapoints to Workout w
+	w2.addDataPoint(p1);
+
 	
 	}
 
@@ -69,6 +74,9 @@ public class TestWorkout {
 	public void testCalculateDistance() {
 		double expected = 4115.2; //converted km to m
 		assertEquals(expected, w.calculateWorkoutDistance(), 1);
+		
+		double expected0 = 0;
+		assertEquals(expected0, w2.calculateWorkoutDistance(), 0.001); 
 	}
 	
 	@Test
