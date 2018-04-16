@@ -13,6 +13,8 @@ import javafx.util.Pair;
 
 import tdt4140.gr1805.app.core.data.Exercise;
 import tdt4140.gr1805.app.core.data.Workout;
+import tdt4140.gr1805.app.core.person.City;
+
 import java.util.List;
 
 import tdt4140.gr1805.app.core.data.DataPoint;
@@ -243,6 +245,16 @@ public class Statistics
 		return points;
 	}
 	
+	public static final List<DataPoint> getDataPointListByCity(LocalDateTime start, LocalDateTime end, City city)
+	{
+		Database db = new Database();
+		List<DataPoint> points = db.getPointsByCity(city);
+		points = Statistics.getDataPointsInInterval(start, end, points, false);
+		
+		return points;
+	}
+	
+	
 	/**
 	 * @param start	The {@link LocalDateTime} for the startpoint used in calculations.
 	 * @param end	The {@link LocalDateTime} for the endpoint used in calculations.
@@ -395,6 +407,24 @@ public class Statistics
 		return output;
 	}
 
+	
+	public static final Series<Number, Number> averagePulseSeriesByCity(LocalDateTime start, LocalDateTime end, City city, 
+			int parts)
+	{
+		List<DataPoint> input = Statistics.getDataPointListByCity(start, end, city);
+		
+		List<LocalDateTime> beforeDates = Statistics.getIntervalDateTimes(start, end, parts);
+		
+		List<Number> pulse = Statistics.getPulse(beforeDates, input);
+		// Now we have a list of Numbers which is the pulse in an interval, which has the index 0 for the first interval
+		// and the index n for the n+1'th interval
+		
+		Series<Number, Number> output = Statistics.getSeriesFromIntervalPulses(pulse);
+		
+		return output;
+	}
+	
+	
 	public static final Double meanDouble(List<Double> p) 
 	{
 		if (p == null)
