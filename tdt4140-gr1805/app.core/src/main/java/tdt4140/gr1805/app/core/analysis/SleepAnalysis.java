@@ -34,5 +34,8 @@ public class SleepAnalysis {
 			return sleep;
 		}
 		
+		public boolean getSleep() {
+			return this.sleep;
+		}
 	
 }
