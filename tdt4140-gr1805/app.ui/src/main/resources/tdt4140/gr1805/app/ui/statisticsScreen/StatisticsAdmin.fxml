@@ -18,7 +18,7 @@
       </LineChart>
       <Button layoutX="14.0" layoutY="120.0" mnemonicParsing="false" onAction="#showAveragePulse" prefHeight="30.0" prefWidth="120.0" text="Show avg pulse" />
       <Button layoutX="14.0" layoutY="164.0" mnemonicParsing="false" onAction="#showAllAveragePulse" prefHeight="50.0" prefWidth="120.0" text="Show avg pulse, all cities" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="14.0" layoutY="239.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Show xxyx" />
+      <Button layoutX="14.0" layoutY="239.0" mnemonicParsing="false" onAction="#showExercises" prefHeight="30.0" prefWidth="120.0" text="Show Exercises" />
       <ChoiceBox fx:id="cityBox" layoutX="14.0" layoutY="67.0" prefWidth="120.0" />
 	</children>
 </AnchorPane>
