@@ -229,22 +229,43 @@ public class Statistics
 		
 	}
 	
+	/**
+	 * @param start The {@link LocalDateTime} for the startpoint used in calculations.
+	 * @param end The {@link LocalDateTime} for the endpoint used in calculations.
+	 * @return A list of datapoints within the interval.
+	 */
 	public static final List<DataPoint> getDataPointList(LocalDateTime start, LocalDateTime end)
 	{
+		Database db = new Database();
+		List<DataPoint> points = db.getAllDatapoints();
+		points = Statistics.getDataPointsInInterval(start, end, points, false);
 		
-		
-		
-		return null; // TODO: fix return
+		return points;
 	}
 	
+	/**
+	 * @param start	The {@link LocalDateTime} for the startpoint used in calculations.
+	 * @param end	The {@link LocalDateTime} for the endpoint used in calculations.
+	 * @param userID The ID of the user whose Datapoints we calculate on
+	 * @return	A list of datapoints within the interval belonging to the user.
+	 */
 	public static final List<DataPoint> getDataPointListByID(LocalDateTime start, LocalDateTime end, int userID)
 	{
+		Database db = new Database();
+		List<DataPoint> userPoints = db.getPointsByID(userID);
+		userPoints = Statistics.getDataPointsInInterval(start, end, userPoints, false);
 		
-		
-		return null; //TODO: fix return
+		return userPoints; 
 	}
 	
-	public static final List<DataPoint> getDataPointInInterval(LocalDateTime start, LocalDateTime end, List<DataPoint> p, boolean pruneOrgList)
+	/**
+	 * @param start	The {@link LocalDateTime} for the startpoint used in calculations.
+	 * @param end The {@link LocalDateTime} for the endpoint used in calculations.
+	 * @param p	The List of Datapoints used for creating the resturned list.
+	 * @param pruneOrgList A boolean on whether we should remove the objects added to the returned list.
+	 * @return A List of datapoints within the interval.
+	 */
+	public static final List<DataPoint> getDataPointsInInterval(LocalDateTime start, LocalDateTime end, List<DataPoint> p, boolean pruneOrgList)
 	{
 		List<DataPoint> output = new ArrayList<>();
 		for (int i = 0; i < p.size(); i++)
@@ -265,23 +286,78 @@ public class Statistics
 		return output; 
 	}
 	
-	
-	//TODO: finish method and add javadoc
-	public static final Series<Number, Number> averagePulseSeries(LocalDateTime start, LocalDateTime end, int userID, 
+	public static final Series<Number, Number> averagePulseSeries(LocalDateTime start, LocalDateTime end, 
 			int parts)
 	{
-		Database db = new Database();	// Creates a database instance to use.
-		List<DataPoint> dataPoints = db.getPointsByID(userID);	// Gets the datapoints connected to the user logged in.
-		List<DataPoint> afasd = new ArrayList<>();
-		// System.out.println(dataPoints);
-		for (int i = 0; i < dataPoints.size(); i++)
-		{				// Culls the list such that we only get the dataPoints in the interval specified.
-			if (start.isBefore(dataPoints.get(i).getTimestamp()) && end.isAfter(dataPoints.get(i).getTimestamp()))
+		List<DataPoint> input = Statistics.getDataPointList(start, end);	
+		List<LocalDateTime> beforeDates = Statistics.getIntervalDateTimes(start, end, parts);
+		
+		List<Number> pulse = Statistics.getPulse(beforeDates, input);
+		// Now we have a list of Numbers which is the pulse in an interval, which has the index 0 for the first interval
+		// and the index n for the n+1'th interval
+		
+		Series<Number, Number> output = Statistics.getSeriesFromIntervalPulses(pulse);
+		
+		return output; 
+	}
+	
+	/**
+	 * @param beforeDates A list of ending dates for the intervals, where the first 0th date is the startdate.
+	 * @param input A list of Datapoints we need for making the list
+	 * @return A list of pulses mapped to the interval, with the 0th index being the first interval from the startpoint
+	 */
+	public static final List<Number> getPulse(List<LocalDateTime> beforeDates, List<DataPoint> input)
+	{
+		List<Number> pulse = new ArrayList<>();
+		
+		for (int i = 0; i+1 < beforeDates.size(); i++)
+		{
+			List<DataPoint> intervalPoints = new ArrayList<>();
+			intervalPoints = Statistics.getDataPointsInInterval(beforeDates.get(i), beforeDates.get(i+1), input, true);
+			
+		
+			List<Double> intervalPulses = new ArrayList<>();
+			for (int j = 0; j < intervalPoints.size(); j++)	
 			{
-				afasd.add(dataPoints.get(i));
+				intervalPulses.add(new Double(intervalPoints.get(j).getPulse()));
+			}
+			
+			pulse.add(meanDouble(intervalPulses));
+		}
+		
+		return pulse;
+	}
+	
+	/**
+	 * @param pulse A list of mean pulses according to intervals
+	 * @return A Series mapping the pulses to the intervals
+	 */
+	public static final Series<Number, Number> getSeriesFromIntervalPulses(List<Number> pulse)
+	{
+		Series<Number, Number> output = new Series<>();
+		output.setName("haha");
+		for (int i = 0; i < pulse.size(); i++)
+		{
+			if (pulse.get(i) instanceof Double && !Double.isNaN(pulse.get(i).doubleValue()))
+			{
+				output.getData().add(new Data<Number, Number>(-pulse.size()+i, pulse.get(i).doubleValue()));
+
 			}
 		}
-		// System.out.println(afasd);
+		return output;
+	}
+	
+	
+	
+	/**
+	 * @param start The {@link LocalDateTime} for the startpoint used in calculations.
+	 * @param end The {@link LocalDateTime} for the endpoint used in calculations.
+	 * @param parts The number of parts we should divide into
+	 * @return	A list of LocalDateTimes where the 0'th index is the date we should be starting at, and the 
+	 * parts'th index is the date we should stop at.
+	 */
+	public static final List<LocalDateTime> getIntervalDateTimes(LocalDateTime start, LocalDateTime end, int parts)
+	{
 		Duration interval = Duration.between(start, end) ;
 		long intervalSeconds = interval.getSeconds();
 		long intervalParts = intervalSeconds/parts;
@@ -291,28 +367,59 @@ public class Statistics
 		{
 			beforeDates.add(start.plusSeconds(intervalParts*(i+1)));
 		}
-	//	System.out.println(beforeDates);
-	//	System.out.println(beforeDates.size());
+		
+		return beforeDates; 
+	}
+	
+	
+	/**
+	 * @param start The {@link LocalDateTime} for the startpoint used in calculations.
+	 * @param end The {@link LocalDateTime} for the endpoint used in calculations.
+	 * @param userID The userID we're interested in.
+	 * @param parts	The number of intervals we want.
+	 * @return	A Series that can be used by JavaFX natively.
+	 */
+	public static final Series<Number, Number> averagePafulseSeries(LocalDateTime start, LocalDateTime end, int userID, 
+			int parts)
+	{
+		Database db = new Database();	// Creates a database instance to use.
+		List<DataPoint> dataPoints = db.getPointsByID(userID);	// Gets the datapoints connected to the user logged in.
+		List<DataPoint> afasd = new ArrayList<>();
+
+		for (int i = 0; i < dataPoints.size(); i++)
+		{				// Culls the list such that we only get the dataPoints in the interval specified.
+			if (start.isBefore(dataPoints.get(i).getTimestamp()) && end.isAfter(dataPoints.get(i).getTimestamp()))
+			{
+				afasd.add(dataPoints.get(i));
+			}
+		}
+		Duration interval = Duration.between(start, end) ;
+		long intervalSeconds = interval.getSeconds();
+		long intervalParts = intervalSeconds/parts;
+		List<LocalDateTime> beforeDates = new ArrayList<>();
+		beforeDates.add(start);
+		for (int i = 0; i < parts; i++)			// Creates an arrayList of LocalDateTimes which bookends the intervals.
+		{
+			beforeDates.add(start.plusSeconds(intervalParts*(i+1)));
+		}
+
 		List<Number> pulse = new ArrayList<>();
 		
 		for (int i = 0; i+1 < beforeDates.size(); i++)
 		{
-			//System.out.println(beforeDates.get(i) + " | " + beforeDates.get(i+1));
 			List<DataPoint> intervalPoints = new ArrayList<>();
-			//System.out.println(afasd.size());
+		
 			for (int j = 0; j < afasd.size(); j++)				// Adds DataPoints to the interval
 			{
-				//System.out.println(afasd.get(j).getTimestamp());
-//				System.out.println(beforeDates.get(i).isBefore(afasd.get(j).getTimestamp()) + " | " +
-//				beforeDates.get(i+1).isAfter(afasd.get(j).getTimestamp()));
+
 				if (beforeDates.get(i).isBefore(afasd.get(j).getTimestamp()))
 				{
-				//	System.out.println(beforeDates.get(i).isBefore(afasd.get(j).getTimestamp()));
+
 					if (beforeDates.get(i+1).isAfter(afasd.get(j).getTimestamp()))
 					{
-					//	System.out.println(beforeDates.get(i+1).isAfter(afasd.get(j).getTimestamp()));
+				
 						intervalPoints.add(afasd.get(j));
-					//	System.out.println(afasd.get(j));
+	
 					}
 				}
 			}
@@ -321,7 +428,7 @@ public class Statistics
 			{
 				afasd.remove(intervalPoints.get(j));
 				intervalPulses.add(new Double(intervalPoints.get(j).getPulse()));
-			//	System.out.println(intervalPoints.get(j));
+	
 			}
 			
 			pulse.add(meanDouble(intervalPulses));
@@ -335,31 +442,36 @@ public class Statistics
 		{
 			if (pulse.get(i) instanceof Double && !Double.isNaN(pulse.get(i).doubleValue()))
 			{
-//				Data<Number, Number> datatat = new Data<>();
-//				datatat.setXValue(-pulse.size()+1);
-//				datatat.setYValue(pulse.get(i).doubleValue());
-//				System.out.println(datatat);
-//				System.out.println(new Data<Number, Number>(-pulse.size()+i, pulse.get(i).doubleValue()));
 				output.getData().add(new Data<Number, Number>(-pulse.size()+i, pulse.get(i).doubleValue()));
-//				System.out.println(-pulse.size()+i + " | " + pulse.get(i).doubleValue());
-//				System.out.println(output);
+
 			}
 		}
 		
-//		System.out.println(pulse);
-//		System.out.println(output);
 		
 		return output; // TODO: Change return
 	}
 
+	/**
+	 * @param start The {@link LocalDateTime} for the startpoint used in calculations.
+	 * @param end The {@link LocalDateTime} for the endpoint used in calculations.
+	 * @param userID The userID we're interested in.
+	 * @param parts	The number of intervals we want.
+	 * @return	A Series that can be used by JavaFX natively.
+	 */
 	public static final Series<Number, Number> averagePulseSeriesByID(LocalDateTime start, LocalDateTime end, int userID, 
 			int parts)
 	{
-		Database db = new Database();	// Creates a database instance to use.
-		List<DataPoint> dataPoints = db.getPointsByID(userID);	// Gets the datapoints connected to the user logged in.
+		List<DataPoint> input = Statistics.getDataPointListByID(start, end, userID);
+			
+		List<LocalDateTime> beforeDates = Statistics.getIntervalDateTimes(start, end, parts);
 		
+		List<Number> pulse = Statistics.getPulse(beforeDates, input);
+		// Now we have a list of Numbers which is the pulse in an interval, which has the index 0 for the first interval
+		// and the index n for the n+1'th interval
 		
-		return output; // TODO: Change return
+		Series<Number, Number> output = Statistics.getSeriesFromIntervalPulses(pulse);
+		
+		return output;
 	}
 
 	public static final Double meanDouble(List<Double> p) 
@@ -448,6 +560,7 @@ public class Statistics
 	
 	public static void main(String[] args)
 	{
-		averagePulseSeries(LocalDateTime.now().minusMonths(4), LocalDateTime.now(), 1, 120);
+		System.out.println(averagePulseSeriesByID(LocalDateTime.now().minusMonths(4), LocalDateTime.now(), 1, 120));
+		
 	}
 }
