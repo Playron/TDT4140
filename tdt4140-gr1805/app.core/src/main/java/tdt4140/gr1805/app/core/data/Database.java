@@ -513,8 +513,11 @@ public class Database {
 		}
 	}
 
-	/* Empties the entire database in memory. Still needs to be followed
+	
+	 
+	 /* Empties the entire database in memory. Still needs to be followed
 	by writeObjects() to write to disk.*/
+	 
 	public void cleanDatabase() throws IOException, URISyntaxException {
 		HashMap<Integer, Person> emptyPeople = new HashMap<>();
 		ArrayList<DataPoint> emptyDatapoints = new ArrayList<>();
@@ -525,8 +528,6 @@ public class Database {
 		this.people.clear();
 		this.datapoints.clear();
 		this.workouts.clear();
-
-	
 		//writeObjects();					// Writes to disk.
 	}	
 	/*
@@ -544,6 +545,6 @@ public class Database {
 		}
 	
         
-	}
-	*/
+	}*/
+	
 }
