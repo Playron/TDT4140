@@ -5,7 +5,7 @@ This will be an app that collects data from individuals and generates statistics
 It collects GPS and pulse from people. Individuals using the app will be able to 
 see their own statistics and statistics over large cities in Norway. 
 
-###Prerequisites
+### Prerequisites
 
 We develop using Eclipse, but other IDEs should also work. You also need maven, at least a standalone 
 install, but you should also install maven support in Eclipse, by means of the m2e plugins, which are 
@@ -26,7 +26,7 @@ To be able to see the app and use what we've made so far find the mainController
 class. 
 
 The class is located in:
-* [05/tdt4140-gr1805/app.ui/src/main/java/app/ui.](05/tdt4140-gr1805/app.ui/src/main/java/app/ui) (in app.ui folder): JavaFX app.
+* [05/tdt4140-gr1805/app.ui/src/main/java/app/ui.](app.ui) (in app.ui folder): JavaFX app.
 
 Right click and press **Run as > Java Application**. 
 
