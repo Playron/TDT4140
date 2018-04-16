@@ -524,7 +524,8 @@ public class Database {
 		this.people.clear();
 		this.datapoints.clear();
 		this.workouts.clear();
-	}
+		writeObjects();					// Writes to disk.
+	}	
 	/*
 	public static void main (String[]args) throws IOException {
 		//Uncomment to generate data
