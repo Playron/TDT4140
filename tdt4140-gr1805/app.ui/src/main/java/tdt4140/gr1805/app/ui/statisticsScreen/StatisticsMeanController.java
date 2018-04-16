@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import tdt4140.gr1805.app.core.analysis.Statistics;
 import tdt4140.gr1805.app.ui.MasterScreenController;
@@ -19,6 +18,7 @@ import tdt4140.gr1805.app.ui.MasterScreenController;
  */
 public class StatisticsMeanController
 {
+
 	public MasterScreenController screenController;
 	@FXML
 	private NumberAxis xAxis;
@@ -27,6 +27,7 @@ public class StatisticsMeanController
 	@FXML
 	private LineChart<Number, Number> lC;
 
+	
 	// Setting the screen controller
 	/**
 	 * @param screenController the {@link MasterScreenController} which supervises this screen
