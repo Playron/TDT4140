@@ -68,7 +68,7 @@ public class Workout {
 		
 	
 	//Method for calculating distance of an selected workout. 
-	//returns distance
+	//returns distance m
 	public double calculateWorkoutDistance() {
 		double distance = 0;
 		for(int i = 0; i<datapoints.size()-1; i++) {
@@ -76,7 +76,7 @@ public class Workout {
 			double lat1 = datapoints.get(i).location.latitude;
 			double long2 = datapoints.get(i+1).location.longitude;
 			double lat2 = datapoints.get(i+1).location.latitude;
-			distance = LatLong.distance(lat1, long1, lat2, long2);
+			distance += LatLong.distance(lat1, long1, lat2, long2);
 		}
 		return distance;
 	}
@@ -103,7 +103,7 @@ public class Workout {
 		
 	}
 	
-	@Override
+	/*@Override
 	public String toString() {
 		String ut =  "Workout [#" + id + ", type=" + type + ", datapoints=";// + datapoints + "]";
 		for (int i = 0; i < datapoints.size(); i++)
