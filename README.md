@@ -26,7 +26,7 @@ To be able to see the app and use what we've made so far find the mainController
 class. 
 
 The class is located in:
-* [05/tdt4140-gr1805/app.ui/src/main/java/app/ui.](app.ui) (in app.ui folder): JavaFX app.
+* [05/tdt4140-gr1805/app.ui/src/main/java/app/ui.](https://gitlab.stud.iie.ntnu.no/tdt4140-2018/05/tree/master/tdt4140-gr1805/app.ui/src/main/java/tdt4140/gr1805/app/ui) (in app.ui folder): JavaFX app.
 
 Right click and press **Run as > Java Application**. 
 
