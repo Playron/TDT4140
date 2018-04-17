@@ -39,7 +39,7 @@ public class Person implements java.io.Serializable{
 		this.city = city;
 	}
 	
-	//Jeg fikk ikke til å bruke denne konstruktøren. Selv om jeg satte en egen ID som første argument, ble den første konstruktøren brukt. Bjørn
+
 	public Person(int id, int year, int month, int day, Gender gender, City city) {
 		this.id = id;
 		setDOB(year, month, day);
@@ -137,20 +137,6 @@ public class Person implements java.io.Serializable{
 	
 
 	
-//	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException
-//	{
-//		Person pers1 = new Person(1991, 02, 20, Gender.MALE);
-//		System.out.println(pers1.getAge());
-//		System.out.println(pers1.getID());
-//		System.out.println(pers1.getGender());
-//		writePersonToFile(pers1);
-//		readPersonFromFile(pers1);
-//		Person pers2 = new Person(1993, 02, 20, Gender.FEMALE);
-//		writePersonToFile(pers2);
-//		readPersonFromFile(pers2);
-//		readPersonFromFile(pers1);
-//	
-//	
-//	}
+
 }
 

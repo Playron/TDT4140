@@ -56,8 +56,8 @@ public class loginScreenController{
 			}				
 				
 		else if(db.getPerson(id) != null){
-			
-				duHarLoggetInn.setText(ID_TextField.getText() + " har logget inn!");
+				
+				duHarLoggetInn.setText("");
 				screenController.setCurrentUserID(id);
 				screenController.activate("MenuScreen");
 			}
@@ -88,13 +88,5 @@ public class loginScreenController{
 	}
 	
 	
-//	public static void main(String[] args) throws IOException, URISyntaxException {
-//		Person p1 = new Person(1992, 10, 19, Gender.MALE, City.BERGEN);
-//		Database db = new Database();
-//		System.out.println(db.getPerson(4));
-//		db.removePerson(4);
-//		db.writeObjects();
-//		
-//	}
 }
 

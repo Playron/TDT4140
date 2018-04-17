@@ -35,7 +35,9 @@ public class registrationScreenController{
 	@FXML
 	TextField year_ID;
 	@FXML
-	Label logInMessage;
+	Label registrationMessage1;
+	@FXML
+	Label registrationMessage2;
 	@FXML
 	ChoiceBox<Gender> gender;
 	@FXML
@@ -82,8 +84,8 @@ public class registrationScreenController{
 			//Person-objects is beeing saved as HAshMap<ID, person>
 			db.addPerson(person);
 			db.writeObjects();
-		//	db.readPeople();
-		//	db.readDatapoints();
+			registrationMessage1.setText("User created!");
+			registrationMessage2.setText("ID: " + person.getID());
 			System.out.println(person);																		  
 		}else {																								  
 			//Should never trigger, since Gender-enum is only option.	
