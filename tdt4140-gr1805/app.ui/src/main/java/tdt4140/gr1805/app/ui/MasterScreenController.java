@@ -1,11 +1,13 @@
 package tdt4140.gr1805.app.ui;
 
 import java.util.HashMap;
+import java.util.ServiceConfigurationError;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import tdt4140.gr1805.app.core.data.Database;
+import tdt4140.gr1805.app.core.server.Server;
 
 public class MasterScreenController {
 	
@@ -18,11 +20,12 @@ public class MasterScreenController {
     private Stage stage;
     private int ID;
     private Database db = new Database();
-    
-    	//Sets stage.
+
+    //Sets stage.
     public MasterScreenController(Scene main,Stage stage) {
         this.main = main;
         this.stage = stage;
+        new Server(db).start();
     }
 
     

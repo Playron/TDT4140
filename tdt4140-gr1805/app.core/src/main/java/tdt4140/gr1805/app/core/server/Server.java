@@ -14,22 +14,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDateTime;
 
-public class Server {
+public class Server extends Thread {
     private Database db;
     private JsonFactory factory;
 
     public Server(Database db) {
         this.db = db;
-
         this.factory = new ObjectMapper().getFactory();
-        start();
     }
 
-    public void start() {
+    public void run() {
         try (ServerSocket server = new ServerSocket(6789)) {
             server.setReuseAddress(true);
+            System.out.println("Server waiting for connections...");
             while (true) {
                 Socket socket = server.accept();
+                System.out.println("Connection accepted");
                 handleConnection(socket);
             }
         } catch (IOException e) {
